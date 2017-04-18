@@ -30,6 +30,10 @@ Route::group(['prefix'=>'mantenimientos'], function () {
 
     Route::resource('grado','\App\Http\Controllers\Grado_Controller');
 
+    Route::resource('especialidad','\App\Http\Controllers\Especialidad_Controller');
+
+    Route::resource('categoria_trabajador','\App\Http\Controllers\Categoria_Trabajador_Controller');
+
     //Route::get('periodo_academico/listar','\App\Http\Controllers\Periodo_Academico_Controller@listar');
 
 

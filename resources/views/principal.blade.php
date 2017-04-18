@@ -62,8 +62,17 @@
                                 <li><a href="#">Registrar</a></li>
                                 <li><a href="#">Estadisticas </a></li>
                                 <li><a href="#">Pre-matricula </a></li>
-
-                                <li class="dropdown-header"><i class="fa fa-gear"></i>Config. Académica</li>
+                                <li class="dropdown-header"><i class="fa fa-legal"></i>Personas</li>
+                                <li><a href="#">Alumnos</a></li>
+                                <li><a href="#">Trabajadores</a></li>
+                                <li><a href="#">Familias</a></li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-6 no-padding">
+                            <ul>
+                                <li class="dropdown-header"><i class="fa fa-gear"></i>Procesos</li>
+                                <li><a href="/mantenimientos/anio_lectivo">Asistencia</a></li>
+                                <li class="dropdown-header"><i class="fa fa-book"></i>Config. Académica</li>
                                 <li><a href="/mantenimientos/anio_lectivo">Años Lectivos</a></li>
                                 <li><a href="/mantenimientos/periodo">Periodos</a></li>
                                 <li><a href="/mantenimientos/nivel">Niveles</a></li>
@@ -71,18 +80,13 @@
                                 <li><a href="/mantenimientos/seccion">Secciones</a></li>
                             </ul>
                         </li>
-                        <li class="col-sm-6 no-padding">
-                            <ul>
-                                <li class="dropdown-header"><i class="fa fa-legal"></i>Personas</li>
-                                <li><a href="#">Alumnos</a></li>
-                                <li><a href="#">Docentes</a></li>
-                                <li class="dropdown-header"><i class="fa fa-gear"></i>Procesos</li>
-                                <li><a href="/mantenimientos/anio_lectivo">Asistencia</a></li>
-                                <li><a href="/mantenimientos/periodo">Periodos Académicos</a></li>
-                                <li><a href="/mantenimientos/nivel">Niveles Académicos</a></li>
-                                <li><a href="/mantenimientos/grado">Grados y Secciones</a></li>
-                            </ul>
-                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Mantenimiento <b
+                                class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/mantenimientos/categoria_trabajador">Categoria de Trabajador</a></li>
+                        <li><a href="/mantenimientos/especialidad">Especialidades</a></li>
                     </ul>
                 </li>
             </ul>

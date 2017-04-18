@@ -13,4 +13,7 @@ class Trabajador extends Model
     public function categoria_trabajador(){
         return $this->belongsTo('App\Categoria_Trabajador');
     }
+    public function especialidad(){
+        return $this->belongsTo('App\Especialidad');
+    }
 }

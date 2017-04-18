@@ -19,12 +19,13 @@ class CreacionTablaPersona extends Migration
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
             $table->string('numero_documento',15);
+            $table->enum('tipo_documento',['DNI','CARNET DE EXTRANJERIA','PASAPORTE']);
             $table->date('fecha_nacimiento');
             $table->enum('sexo',['Masculino','Femenino']);
             $table->string('direccion');
+            $table->string('telf_movil');
+            $table->string('telf_fijo');
 
-            $table->integer('tipo_documento_id')->unsigned();
-            $table->foreign('tipo_documento_id')->references('id')->on('tipo_documento')->onDelete('cascade');
             $table->timestamps();
         });
     }
