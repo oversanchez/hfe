@@ -21,4 +21,8 @@ class Grado extends Model
     public function grado_anterior(){
         return $this->belongsTo('App\Grado');
     }
+
+    public function seccions(){
+        return $this->hasMany('App\Seccion');
+    }
 }

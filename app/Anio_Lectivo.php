@@ -14,6 +14,10 @@ class Anio_Lectivo extends Model
         return $this->hasMany('App\Periodo');
     }
 
+    public function seccions(){
+        return $this->hasMany('App\Seccion');
+    }
+    
 }
 
 
