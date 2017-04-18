@@ -8,7 +8,7 @@ class Trabajador extends Model
 {
     protected $table = "trabajador";
 
-    protected $fillable = ['activo','categoria_trabajador_id'];
+    protected $fillable = ['activo','categoria_trabajador_id','especialidad_id'];
 
     public function categoria_trabajador(){
         return $this->belongsTo('App\Categoria_Trabajador');
