@@ -6335,6 +6335,7 @@ ul.timeline li > .date {
 }
 
 .parsley-errors-list {
+    height: 0px;
     margin-top: 4px;
     padding: 0
 }

@@ -15,7 +15,6 @@ class CreacionTablaTrabajador extends Migration
     {
         Schema::create('trabajador', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('grado_academico',['TÉCNICO','BACHILLER','INGENIERO','LICENCIADO','MAESTRÍA','DOCTORADO']);
             $table->boolean('activo');
 
             $table->integer('persona_id')->unsigned();
@@ -24,6 +23,9 @@ class CreacionTablaTrabajador extends Migration
             $table->integer('categoria_trabajador_id')->unsigned();
             $table->foreign('categoria_trabajador_id')->references('id')->on('categoria_trabajador');
 
+            $table->integer('grado_profesional_id')->unsigned();
+            $table->foreign('grado_profesional_id')->references('id')->on('grado_profesional');
+            
             $table->integer('especialidad_id')->unsigned();
             $table->foreign('especialidad_id')->references('id')->on('especialidad');
 

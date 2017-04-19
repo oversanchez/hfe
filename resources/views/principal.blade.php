@@ -86,6 +86,7 @@
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/mantenimientos/categoria_trabajador">Categoria de Trabajador</a></li>
+                        <li><a href="/mantenimientos/grado_profesional">Grados Profesionales</a></li>
                         <li><a href="/mantenimientos/especialidad">Especialidades</a></li>
                     </ul>
                 </li>
@@ -176,6 +177,8 @@
     <!--Sidebar item function-->
     <!--Sidebar sub-item function-->
     @yield('content')
+
+    <div id="msg_error"></div>
 </div>
 
 {!! HTML::script('lib/jquery/jquery.min.js') !!}
@@ -231,6 +234,21 @@
     }
     function notificacion(titulo,texto,clase){
         $.gritter.add({title: titulo, text: texto, class_name: clase});
+    }
+
+    function mostrar_error(html){
+        var pag = $("#msg_error");
+        pag.append(request.responseText);
+        var errores = $(pag).find('.exception_message');
+        var errors_title = [];
+        var errors_detail = [];
+        $.each(errores,function(index,value){
+            errors_title.push($(value).html().split("<br>")[0]);
+            errors_detail.push($(value).html().split("<br>")[1]);
+        });
+        $.each(errors_title,function(index,value){
+            notificacion('Error', value, 'warning');
+        });
     }
 
 </script>
