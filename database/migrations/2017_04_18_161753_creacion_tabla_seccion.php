@@ -17,10 +17,10 @@ class CreacionTablaSeccion extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('numero');
-            $table->integer('nro_vacantes');
+            $table->integer('nro_carpetas');
             $table->boolean('activo');
-            $table->enum('turno',['Mañana','Tarde','Nocturna']);
-            $table->enum('tipo_calificacion',['Literal','Vigesimal']);
+            $table->enum('turno',['M','T','N']);
+            $table->enum('tipo_calificacion',['L','V']);
 
             $table->integer('anio_lectivo_id')->unsigned();
             $table->foreign('anio_lectivo_id')->references('id')->on('anio_lectivo');

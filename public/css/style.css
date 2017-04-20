@@ -617,7 +617,7 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 
 .dropdown-menu > li > a, .dropdown-menu li > a {
     font-size: 12px;
-    padding: 5px 20px;
+    padding: 3px 20px;
     clear: both;
     color: #333;
     display: block;

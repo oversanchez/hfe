@@ -5,22 +5,23 @@
         <div class="page-head">
             <h2 style="display:inline-block;">Trabajador</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
+            <button class="btn btn-default right" onclick="ejemplo()">Ejemplo</button>
         </div>
         <div class="cl-mcont">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <div class="tab-container">
                         <ul class="nav nav-tabs">
-                            <li><a href="#tp1" data-toggle="tab">Listado</a></li>
-                            <li class="active"><a href="#tp2" data-toggle="tab">Registrar</a></li>
+                            <li class="active"><a href="#tp1" data-toggle="tab">Listado</a></li>
+                            <li><a href="#tp2" data-toggle="tab">Registrar</a></li>
                             <li><a href="#tp3" data-toggle="tab">Importar</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div id="tp1" class="tab-pane cont">
+                            <div id="tp1" class="tab-pane active cont">
                                 <table class='table table-bordered dataTable no-footer' id="tblListado">
                                     <thead>
                                     <tr>
-                                        <th>Nro Documento</th>
+                                        <th>Nro Doc.</th>
                                         <th>Ap. Paterno</th>
                                         <th>Ap. Materno</th>
                                         <th>Nombres</th>
@@ -28,7 +29,7 @@
                                         <th>Grado Prof.</th>
                                         <th>Especialidad</th>
                                         <th>Celular</th>
-                                        <th>Acción</th>
+                                        <th style="width:76px;">Acción</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -36,7 +37,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="tp2" class="tab-pane active cont">
+                            <div id="tp2" class="tab-pane cont">
                                 <div class="container" style="margin-top:-35px;">
                                     <form id="frmTrabajador" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">

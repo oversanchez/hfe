@@ -62,6 +62,8 @@
                                 <li><a href="#">Registrar</a></li>
                                 <li><a href="#">Estadisticas </a></li>
                                 <li><a href="#">Pre-matricula </a></li>
+                                <li class="dropdown-header"><i class="fa fa-gear"></i>Procesos</li>
+                                <li><a href="/mantenimientos/anio_lectivo">Asistencia</a></li>
                                 <li class="dropdown-header"><i class="fa fa-legal"></i>Personas</li>
                                 <li><a href="/mantenimientos/alumno">Alumnos</a></li>
                                 <li><a href="/mantenimientos/trabajador">Trabajadores</a></li>
@@ -70,8 +72,6 @@
                         </li>
                         <li class="col-sm-6 no-padding">
                             <ul>
-                                <li class="dropdown-header"><i class="fa fa-gear"></i>Procesos</li>
-                                <li><a href="/mantenimientos/anio_lectivo">Asistencia</a></li>
                                 <li class="dropdown-header"><i class="fa fa-book"></i>Config. Académica</li>
                                 <li><a href="/mantenimientos/anio_lectivo">Años Lectivos</a></li>
                                 <li><a href="/mantenimientos/periodo">Periodos</a></li>
@@ -178,7 +178,7 @@
     <!--Sidebar sub-item function-->
     @yield('content')
 
-    <div id="msg_error"></div>
+    <div id="msg_error" style='display:none;'></div>
 </div>
 
 {!! HTML::script('lib/jquery/jquery.min.js') !!}
@@ -238,7 +238,7 @@
 
     function mostrar_error(html){
         var pag = $("#msg_error");
-        pag.append(request.responseText);
+        pag.append(html);
         var errores = $(pag).find('.exception_message');
         var errors_title = [];
         var errors_detail = [];
@@ -246,9 +246,12 @@
             errors_title.push($(value).html().split("<br>")[0]);
             errors_detail.push($(value).html().split("<br>")[1]);
         });
+        errors_title = $.unique(errors_title);
         $.each(errors_title,function(index,value){
             notificacion('Error', value, 'warning');
         });
+        pag.html("");
+        return errors_title;
     }
 
 </script>
