@@ -35,10 +35,8 @@ class Persona_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $persona = \App\Persona::where('numero_documento', $request->input('numero_documento'))->firstOrFail();
-        if($persona == null){
-            $persona = new \App\Persona();
-        }
+        $persona = new \App\Persona();
+
         $persona->nombres = $request->input('nombres');
         $persona->apellido_paterno = $request->input('apellido_paterno');
         $persona->apellido_materno = $request->input('apellido_materno');
@@ -68,6 +66,8 @@ class Persona_Controller extends Controller
             $persona = \App\Persona::find($id);
             $persona->usuario;
             return $persona;
+        }else if($id == "*"){
+            return \App\Persona::all();
         }
     }
 
@@ -75,7 +75,7 @@ class Persona_Controller extends Controller
     {
         $numero_documento = Input::get('numero_documento');
         if (is_numeric($numero_documento)) {
-            $persona = \App\Persona::find($numero_documento);
+            $persona = \App\Persona::where('numero_documento',$numero_documento)->get();
             return $persona;
         }
     }

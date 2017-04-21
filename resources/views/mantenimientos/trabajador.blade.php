@@ -5,7 +5,6 @@
         <div class="page-head">
             <h2 style="display:inline-block;">Trabajador</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
-            <button class="btn btn-default right" onclick="ejemplo()">Ejemplo</button>
         </div>
         <div class="cl-mcont">
             <div class="row">
@@ -41,24 +40,44 @@
                                 <div class="container">
                                     <form id="frmTrabajador" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
-                                        <input type="hidden" id="hddPersona_Id" value="">
                                         <div class="row">
-                                            <label class="col-sm-3">Categoria</label>
-                                            <div class="col-sm-9">
+                                            <label class="col-sm-2">Persona</label>
+                                            <div class="col-sm-6">
+                                                <select id="cmbPersona" required="" style='width:100%;'>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <!-- Split button -->
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info">Opciones</button>
+                                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <span class="caret"></span>
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#" onclick='agregarPersona("cmbPersona")'>Agregar</a></li>
+                                                        <li><a href="#" onclick='editarPersona("cmbPersona")'>Editar</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-sm-2">Categoria</label>
+                                            <div class="col-sm-10">
                                                 <select class="form-control" id="cmbCategoria_Trabajador" required="">
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label class="col-sm-3">Grado Profesional</label>
-                                            <div class="col-sm-9">
+                                            <label class="col-sm-2">Grado Profesional</label>
+                                            <div class="col-sm-10">
                                                 <select class="form-control" id="cmbGrado_Profesional" required="">
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label class="col-sm-3">Especialidad</label>
-                                            <div class="col-sm-6">
+                                            <label class="col-sm-2">Especialidad</label>
+                                            <div class="col-sm-7">
                                                 <select class="form-control" id="cmbEspecialidad" required="">
                                                 </select>
                                             </div>
@@ -105,20 +124,10 @@
             listarEspecialidades();
             listarCategorias_Trabajador();
             listarGrados_Profesionales();
+            listarPersonas('cmbPersona');
+            $("#frmPersona").parsley();
         });
-        function ejemplo(){
-            $("#txtNombres").val("OLIVER");
-            $("#txtApPat").val("SANCHEZ");
-            $("#txtApMat").val("ASCORBE");
-            $("#txtNroDoc").val('46041769');
-            $("#txtEmail").val("oliver.sanchez.a@gmail.com");
-            $("#txtFechaNac").val("26/07/1989");
-            $("#txtDireccion").val("AV. AUGUSTO B. LEGUIA 1396");
-            $("#txtTelf_Movil").val("968644416");
-            $("#cmbGrado_Profesional").val("1");
-            $("#cmbEspecialidad").val("1");
-            $("#cmbCategoria_Trabajador").val("1");
-        }
+
         function guardar(){
             var accion = $("#hddCodigo").val() == "" ? true : false;
             if($("#frmTrabajador").parsley().validate()){
@@ -132,17 +141,7 @@
 
         function obtenerDatos(){
             var info = [{"_token": "{{ csrf_token() }}",
-                "nombres": $("#txtNombres").val(),
-                "apellido_paterno": $("#txtApPat").val(),
-                "apellido_materno": $("#txtApMat").val(),
-                "numero_documento": $("#txtNroDoc").val(),
-                "tipo_documento": $("#cmbTipoDoc").val(),
-                "fecha_nacimiento": $("#txtFechaNac").val(),
-                "sexo": $("#cmbSexo").val(),
-                "direccion": $("#txtDireccion").val(),
-                "email": $("#txtEmail").val(),
-                "telf_movil": $("#txtTelf_Movil").val(),
-                "telf_fijo": $("#txtTelf_Fijo").val(),
+                "persona_id": $("#cmbPersona").val(),
                 "grado_profesional_id": parseInt($("#cmbGrado_Profesional").val()),
                 "especialidad_id": parseInt($("#cmbEspecialidad").val()),
                 "categoria_trabajador_id": parseInt($("#cmbCategoria_Trabajador").val()),
@@ -231,17 +230,7 @@
                 },
                 success: function (data) {
                     $("#hddCodigo").val(id);
-                    $("#txtNombres").val(data['persona']['nombres']);
-                    $("#txtApPat").val(data['persona']['apellido_paterno']);
-                    $("#txtApMat").val(data['persona']['apellido_materno']);
-                    $("#txtNroDoc").val(data['persona']['numero_documento']);
-                    $("#cmbTipoDoc").val(data['persona']['tipo_documento']);
-                    $("#txtFechaNac").val(data['persona']['fecha_nacimiento']);
-                    $("#cmbSexo").val(data['persona']['sexo']);
-                    $("#txtDireccion").val(data['persona']['direccion']);
-                    $("#txtEmail").val(data['persona']['email']);
-                    $("#txtTelf_Movil").val(data['persona']['telf_movil']);
-                    $("#txtTelf_fijo").val(data['persona']['telf_fijo']);
+                    $("#cmbPersona").val(data["persona_id"]);
                     $("#cmbGrado_Profesional").val(data['grado_profesional_id']);
                     $("#cmbEspecialidad").val(data['especialidad_id']);
                     $("#cmbCategoria_Trabajador").val(data['categoria_trabajador_id']);
@@ -261,17 +250,7 @@
 
         function cancelar(){
             $("#hddCodigo").val("");
-            $("#txtNombres").val("");
-            $("#txtApPat").val("");
-            $("#txtApMat").val("");
-            $("#txtNroDoc").val("");
-            $("#cmbTipoDoc").val("DN");
-            $("#txtFechaNac").val("");
-            $("#cmbSexo").val("M");
-            $("#txtDireccion").val("");
-            $("#txtEmail").val("");
-            $("#txtTelf_Movil").val("");
-            $("#txtTelf_fijo").val("");
+            $("#cmbPersona").val("");
             $("#cmbGrado_Profesional").val("");
             $("#cmbEspecialidad").val("");
             $("#cmbCategoria_Trabajador").val("");
@@ -381,6 +360,7 @@
                 }
             });
         }
+
     </script>
 @endsection
 

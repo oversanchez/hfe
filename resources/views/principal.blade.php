@@ -24,6 +24,7 @@
     {!! HTML::style('lib/jquery.icheck/skins/square/blue.css') !!}
     {!! HTML::style('lib/jquery.gritter/css/jquery.gritter.css') !!}
     {!! HTML::style('lib/jquery.niftymodals/css/component.css') !!}
+    {!! HTML::style('lib/jquery.select2/select2.css') !!}
     {!! HTML::style('css/style.css') !!}
 
 </head>
@@ -95,8 +96,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right user-nav">
                 <li class="dropdown profile_menu">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img alt="Avatar"
-                                                                                    src="assets/img/avatar2.jpg"><span>Jeff Hanneman</span><b
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img class="img-circle" style='width: 25px;' alt="Avatar" src="http://i1184.photobucket.com/albums/z337/pocaspenas/gato_shrek.jpg"><span>Oliver Sánchez</span><b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">My Account</a></li>
@@ -116,23 +116,7 @@
                                 <div class="content">
                                     <ul>
                                         <li>
-                                            <a href="#"><img src="assets/img/avatar2.jpg" alt="avatar"><span
-                                                        class="date pull-right">13 Sept.</span><span
-                                                        class="name">Daniel</span> I'm following you, and I want your
-                                                money!</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="assets/img/avatar_50.jpg" alt="avatar"><span
-                                                        class="date pull-right">20 Oct.</span><span
-                                                        class="name">Adam</span> is now following you</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="assets/img/avatar4_50.jpg" alt="avatar"><span
-                                                        class="date pull-right">2 Nov.</span><span
-                                                        class="name">Michael</span> is now following you</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="assets/img/avatar3_50.jpg" alt="avatar"><span
+                                            <a href="#"><img class="img-circle" style='width: 37px;' src="http://i1184.photobucket.com/albums/z337/pocaspenas/gato_shrek.jpg" alt="avatar"><span
                                                         class="date pull-right">2 Nov.</span><span
                                                         class="name">Lucy</span> is now following you</a>
                                         </li>
@@ -204,6 +188,8 @@
 {!! HTML::script('lib/jquery.parsley/dist/parsley.min.js') !!}
 {!! HTML::script('lib/jquery.parsley/src/extra/dateiso.js') !!}
 {!! HTML::script('lib/jquery.niftymodals/js/jquery.modalEffects.js') !!}
+{!! HTML::script('lib/jquery.select2/select2.min.js') !!}
+
 
 @yield('scripts')
 <script>

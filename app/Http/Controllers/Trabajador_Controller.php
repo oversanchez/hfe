@@ -35,15 +35,9 @@ class Trabajador_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $controlador = new \App\Http\Controllers\Persona_Controller();
-        $persona = $controlador->store($request);
+        $trabajador = new \App\Trabajador();
 
-        $trabajador = \App\Trabajador::where('persona_id', $persona->id)->firstOrFail();
-        if($trabajador == null){
-            $trabajador = new \App\Trabajador();
-        }
-
-        $trabajador->persona_id = $persona->id;
+        $trabajador->persona_id = $request->input('persona_id');
         $trabajador->grado_profesional_id= $request->input('grado_profesional_id');
         $trabajador->especialidad_id= $request->input('especialidad_id');
         $trabajador->categoria_trabajador_id= $request->input('categoria_trabajador_id');
@@ -103,9 +97,7 @@ class Trabajador_Controller extends Controller
     {
         $trabajador = \App\Trabajador::find($id);
 
-        $controlador = new \App\Http\Controllers\Persona_Controller();
-        $controlador->update($request,$trabajador->persona_id);
-
+        $trabajador->persona_id = $request->input('persona_id');
         $trabajador->grado_profesional_id= $request->input('grado_profesional_id');
         $trabajador->especialidad_id= $request->input('especialidad_id');
         $trabajador->categoria_trabajador_id= $request->input('categoria_trabajador_id');
