@@ -17,7 +17,7 @@ class CreacionTablaSeccion extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('numero');
-            $table->integer('nro_carpetas');
+            $table->integer('vacantes');
             $table->boolean('activo');
             $table->enum('turno',['M','T','N']);
             $table->enum('tipo_calificacion',['L','V']);

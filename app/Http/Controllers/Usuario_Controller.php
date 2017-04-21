@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Grado_Controller extends Controller
+class Usuario_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class Grado_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/grado');
+        //
     }
 
     /**
@@ -34,13 +34,7 @@ class Grado_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $grado = new \App\Grado();
-        $grado->nivel_id = $request->input('nivel_id');
-        $grado->grado_anterior_id = $request->input('grado_anterior_id');
-        $grado->nombre = $request->input('nombre');
-        $grado->numero= $request->input('numero');
-        $grado->activo = $request->input('activo');
-        $grado->save();
+        //
     }
 
     /**
@@ -51,23 +45,7 @@ class Grado_Controller extends Controller
      */
     public function show($id)
     {
-        if (is_numeric($id)) {
-            return \App\Grado::find($id);
-        } else if($id == "*"){
-            return \App\Grado::all();
-        }
-    }
-
-    public function listar()
-    {
-        $grados =  \App\Grado::all();
-        foreach ($grados as $grado){
-            $grado->nivel;
-            $grado->grado_anterior;
-            if($grado->grado_anterior_id !== null)
-                $grado->grado_anterior->nivel;
-        }
-        return $grados;
+        //
     }
 
     /**
@@ -90,13 +68,7 @@ class Grado_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $grado = \App\Grado::find($id);
-        $grado->nivel_id = $request->input('nivel_id');
-        $grado->grado_anterior_id = $request->input('grado_anterior_id');
-        $grado->nombre = $request->input('nombre');
-        $grado->numero = $request->input('numero');
-        $grado->activo = $request->input('activo');
-        $grado->save();
+        //
     }
 
     /**
@@ -107,7 +79,6 @@ class Grado_Controller extends Controller
      */
     public function destroy($id)
     {
-        $grado = \App\Grado::find($id);
-        $grado->delete();
+        //
     }
 }

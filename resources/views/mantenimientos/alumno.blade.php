@@ -38,32 +38,101 @@
                                 </table>
                             </div>
                             <div id="tp2" class="tab-pane cont">
-                                <div class="container">
+                                <div class="container" style="margin-top:-35px;">
                                     <form id="frmTrabajador" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
-                                        <input type="hidden" id="hddPersona_Id" value="">
                                         <div class="row">
-                                            <label class="col-sm-3">Categoria</label>
-                                            <div class="col-sm-9">
-                                                <select class="form-control" id="cmbCategoria_Trabajador" required="">
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-3">Grado Profesional</label>
-                                            <div class="col-sm-9">
-                                                <select class="form-control" id="cmbGrado_Profesional" required="">
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-3">Especialidad</label>
                                             <div class="col-sm-6">
-                                                <select class="form-control" id="cmbEspecialidad" required="">
-                                                </select>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Categoria</label>
+                                                    <div class="col-sm-8">
+                                                        <select id="cmbCategoria_Trabajador" class="form-control" required="">
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Tipo Doc.</label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control" id="cmbTipoDoc" requerid="">
+                                                            <option value="DN">DNI</option>
+                                                            <option value="CE">CARNET EXTRANJERÍA</option>
+                                                            <option value="PA">PASAPORTE</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="col-sm-2">Nro Doc.</label>
+                                                    <div class="col-sm-3">
+                                                        <input id="txtNroDoc" class="form-control" type="text" data-parsley-trigger="change" data-parsley-length="[8,15]" data-parsley-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Apellidos</label>
+                                                    <div class="col-sm-4">
+                                                        <input id="txtApPat" class="form-control" type="text" maxlength="50" data-parsley-trigger="change" data-parsley-length="[1,50]" data-parsley-required="true">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input id="txtApMat" class="form-control" type="text" maxlength="50">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Nombres</label>
+                                                    <div class="col-sm-8">
+                                                        <input id="txtNombres" class="form-control" type="text" maxlength="50" data-parsley-trigger="change" data-parsley-length="[2,50]" data-parsley-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Sexo</label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control" id="cmbSexo" requerid="">
+                                                            <option value="M">MASCULINO</option>
+                                                            <option value="F">FEMENINO</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="col-sm-2">Fecha Nac.</label>
+                                                    <div class="col-sm-3">
+                                                        <input id="txtFechaNac" class="form-control date datetime" data-min-view="2" data-date-format="dd/mm/yyyy" type="text" maxlength="10" data-parsley-trigger="change" data-parsley-required="true">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <label class="col-sm-3">
-                                                <input id="chkActivo" class="icheck" type="checkbox" checked>Activo</label>
+                                            <div class="col-sm-6" style="margin-left:-10px;">
+                                                <div class="row">
+                                                    <label class="col-sm-3">Dirección</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="txtDireccion" class="form-control" type="text" maxlength="100" data-parsley-trigger="change"  data-parsley-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3">Email</label>
+                                                    <div class="col-sm-9">
+                                                        <input class="form-control" type="email" id="txtEmail" placeholder="oliver.sanchez@gmail.com" data-parsley-trigger="change"  data-parsley-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3">Telefonos</label>
+                                                    <div class="col-sm-5">
+                                                        <input class="form-control" type="text" id="txtTelf_Movil" placeholder="Ejem. 987644413" data-parsley-trigger="change"  data-parsley-required="true">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input class="form-control" type="text" id="txtTelf_Fijo" placeholder="Ejem. 074234212">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3">Grado Profesional</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="form-control" id="cmbGrado_Profesional" required="">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-3">Especialidad</label>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" id="cmbEspecialidad" required="">
+                                                        </select>
+                                                    </div>
+                                                    <label class="col-sm-3">
+                                                        <input id="chkActivo" class="icheck" type="checkbox" checked>Activo</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -87,8 +156,6 @@
             </div>
         </div>
     </div>
-    @include('form_persona')
-
 @endsection
 
 @section('scripts')

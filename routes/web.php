@@ -36,9 +36,15 @@ Route::group(['prefix'=>'mantenimientos'], function () {
 
     Route::resource('grado_profesional','\App\Http\Controllers\Grado_Profesional_Controller');
 
+    Route::resource('colegio_procedencia','\App\Http\Controllers\Colegio_Procedencia_Controller');
+
     Route::get('trabajador/listar', ['uses' => 'Trabajador_Controller@listar', 'as' => 'trabajador.listar']);
 
     Route::resource('trabajador','\App\Http\Controllers\Trabajador_Controller');
+
+    Route::get('persona/buscar_numero_documento', ['uses' => 'Persona_Controller@buscar_numero_documento', 'as' => 'trabajador.buscar_numero_documento']);
+
+    Route::resource('persona','\App\Http\Controllers\Persona_Controller');
 
     //Route::get('periodo_academico/listar','\App\Http\Controllers\Periodo_Academico_Controller@listar');
 

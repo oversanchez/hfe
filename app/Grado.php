@@ -14,12 +14,12 @@ class Grado extends Model
         return $this->belongsTo('App\Nivel');
     }
 
-    public function grado_anteriors(){
-        return $this->hasOne('App\Grado');
-    }
-
     public function grado_anterior(){
         return $this->belongsTo('App\Grado');
+    }
+
+    public function grado_anteriors(){
+        return $this->hasOne('App\Grado');
     }
 
     public function seccions(){

@@ -188,7 +188,7 @@
               mod.css({'perspective':'none'});
               
               //3D Blur Bug Fix
-              if(mod.height() % 2 != 0){mod.css({'height':modal.height() + 1});}
+              if(mod.height() % 2 != 0){mod.css({'height':mod.height() + 1});}
 
             }, 500 ); 
             

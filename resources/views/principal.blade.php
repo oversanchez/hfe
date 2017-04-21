@@ -23,6 +23,7 @@
     {!! HTML::style('lib/bootstrap.daterangepicker/daterangepicker-bs3.css') !!}
     {!! HTML::style('lib/jquery.icheck/skins/square/blue.css') !!}
     {!! HTML::style('lib/jquery.gritter/css/jquery.gritter.css') !!}
+    {!! HTML::style('lib/jquery.niftymodals/css/component.css') !!}
     {!! HTML::style('css/style.css') !!}
 
 </head>
@@ -88,6 +89,7 @@
                         <li><a href="/mantenimientos/categoria_trabajador">Categoria de Trabajador</a></li>
                         <li><a href="/mantenimientos/grado_profesional">Grados Profesionales</a></li>
                         <li><a href="/mantenimientos/especialidad">Especialidades</a></li>
+                        <li><a href="/mantenimientos/colegio_procedencia">Colegios de Procedencia</a></li>
                     </ul>
                 </li>
             </ul>
@@ -182,11 +184,11 @@
 </div>
 
 {!! HTML::script('lib/jquery/jquery.min.js') !!}
+{!! HTML::script('lib/bootstrap/dist/js/bootstrap.min.js') !!}
 {!! HTML::script('lib/jquery.nanoscroller/javascripts/jquery.nanoscroller.js') !!}
 {!! HTML::script('js/cleanzone.js') !!}
 {!! HTML::script('lib/jquery.gritter/js/jquery.gritter.js') !!}
 
-{!! HTML::script('lib/bootstrap/dist/js/bootstrap.min.js') !!}
 {!! HTML::script('lib/jquery.datatables/js/jquery.dataTables.min.js') !!}
 {!! HTML::script('lib/jquery.datatables/plugins/bootstrap/3/dataTables.bootstrap.js') !!}
 {!! HTML::script('lib/jquery.select2/select2.min.js') !!}
@@ -201,6 +203,7 @@
 {!! HTML::script('lib/bootstrap.slider/js/bootstrap-slider.js') !!}
 {!! HTML::script('lib/jquery.parsley/dist/parsley.min.js') !!}
 {!! HTML::script('lib/jquery.parsley/src/extra/dateiso.js') !!}
+{!! HTML::script('lib/jquery.niftymodals/js/jquery.modalEffects.js') !!}
 
 @yield('scripts')
 <script>

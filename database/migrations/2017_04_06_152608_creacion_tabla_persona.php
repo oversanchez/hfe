@@ -24,8 +24,11 @@ class CreacionTablaPersona extends Migration
             $table->enum('sexo',['M','F']);
             $table->string('direccion');
             $table->string('email')->unique();
-            $table->string('telf_movil');
+            $table->string('telf_movil')->nullable();
             $table->string('telf_fijo')->nullable();
+
+            $table->integer('usuario_id')->unsigned()->nullable();
+            $table->foreign('usuario_id')->references('id')->on('usuario');
 
             $table->timestamps();
         });

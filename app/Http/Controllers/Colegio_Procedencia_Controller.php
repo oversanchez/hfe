@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Grado_Controller extends Controller
+class Colegio_Procedencia_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class Grado_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/grado');
+        return view('mantenimientos/colegio_procedencia');
     }
 
     /**
@@ -34,13 +34,9 @@ class Grado_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $grado = new \App\Grado();
-        $grado->nivel_id = $request->input('nivel_id');
-        $grado->grado_anterior_id = $request->input('grado_anterior_id');
-        $grado->nombre = $request->input('nombre');
-        $grado->numero= $request->input('numero');
-        $grado->activo = $request->input('activo');
-        $grado->save();
+        $colegio_procedencia = new \App\Colegio_Procedencia();
+        $colegio_procedencia->nombre = $request->input('nombre');
+        $colegio_procedencia->save();
     }
 
     /**
@@ -52,28 +48,17 @@ class Grado_Controller extends Controller
     public function show($id)
     {
         if (is_numeric($id)) {
-            return \App\Grado::find($id);
+            return \App\Colegio_Procedencia::find($id);
         } else if($id == "*"){
-            return \App\Grado::all();
+            return \App\Colegio_Procedencia::all();
         }
-    }
 
-    public function listar()
-    {
-        $grados =  \App\Grado::all();
-        foreach ($grados as $grado){
-            $grado->nivel;
-            $grado->grado_anterior;
-            if($grado->grado_anterior_id !== null)
-                $grado->grado_anterior->nivel;
-        }
-        return $grados;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -84,30 +69,26 @@ class Grado_Controller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $grado = \App\Grado::find($id);
-        $grado->nivel_id = $request->input('nivel_id');
-        $grado->grado_anterior_id = $request->input('grado_anterior_id');
-        $grado->nombre = $request->input('nombre');
-        $grado->numero = $request->input('numero');
-        $grado->activo = $request->input('activo');
-        $grado->save();
+        $colegio_procedencia = \App\Colegio_Procedencia::find($id);
+        $colegio_procedencia->nombre = $request->input('nombre');
+        $colegio_procedencia->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $grado = \App\Grado::find($id);
-        $grado->delete();
+        $colegio_procedencia = \App\Colegio_Procedencia::find($id);
+        $colegio_procedencia->delete();
     }
 }
