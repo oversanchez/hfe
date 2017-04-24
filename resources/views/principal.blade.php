@@ -91,6 +91,7 @@
                         <li><a href="/mantenimientos/grado_profesional">Grados Profesionales</a></li>
                         <li><a href="/mantenimientos/especialidad">Especialidades</a></li>
                         <li><a href="/mantenimientos/colegio_procedencia">Colegios de Procedencia</a></li>
+                        <li><a href="/mantenimientos/parentesco">Parentesco</a></li>
                     </ul>
                 </li>
             </ul>

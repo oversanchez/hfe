@@ -3,31 +3,28 @@
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
-            <h2 style="display:inline-block;">Trabajador</h2>
+            <h2 style="display:inline-block;">Familias</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
+            <button class="btn btn-link pull-right" style="margin-top:5px;font-size: 16px;" onclick='agregarPersona("#",["cmbPadre","cmbMadre"])'> Registrar persona</button>
         </div>
         <div class="cl-mcont">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <div class="tab-container">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tp1" data-toggle="tab">Listado</a></li>
-                            <li><a href="#tp2" data-toggle="tab">Registrar</a></li>
+                            <li><a href="#tp1" data-toggle="tab">Listado</a></li>
+                            <li class="active"><a href="#tp2" data-toggle="tab">Registrar</a></li>
                             <li><a href="#tp3" data-toggle="tab">Importar</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div id="tp1" class="tab-pane active cont">
+                            <div id="tp1" class="tab-pane cont">
                                 <table class='table table-bordered dataTable no-footer' id="tblListado">
                                     <thead>
                                     <tr>
-                                        <th>Nro Doc.</th>
-                                        <th>Ap. Paterno</th>
-                                        <th>Ap. Materno</th>
-                                        <th>Nombres</th>
-                                        <th>Categ.</th>
-                                        <th>Grado Prof.</th>
-                                        <th>Especialidad</th>
-                                        <th>Celular</th>
+                                        <th>Familia</th>
+                                        <th>Padre</th>
+                                        <th>Madre</th>
+                                        <th>Apoderado</th>
                                         <th style="width:76px;">Acción</th>
                                     </tr>
                                     </thead>
@@ -36,60 +33,59 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="tp2" class="tab-pane cont">
+                            <div id="tp2" class="tab-pane active cont">
                                 <div class="container">
-                                    <form id="frmTrabajador" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                    <form id="frmFamilia" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
-                                            <label class="col-sm-2">Selecciona una persona</label>
-                                            <div class="col-sm-6">
-                                                <select id="cmbPersona" required="" style='width:100%;'>
+                                            <label class="col-sm-1">Padre</label>
+                                            <div class="col-sm-4">
+                                                <select id="cmbPadre" required="" style='width:100%;'>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-3">
-                                                <!-- Split button -->
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-info">Opciones</button>
-                                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <span class="caret"></span>
-                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#" onclick='agregarPersona("cmbPersona",null)'>Agregar</a></li>
-                                                        <li><a href="#" onclick='editarPersona("cmbPersona",null)'>Editar</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-2">Categoria</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control" id="cmbCategoria_Trabajador" required="">
+                                            <label class="col-sm-1">Madre</label>
+                                            <div class="col-sm-4">
+                                                <select id="cmbMadre" required="" style='width:100%;'>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-2">Grado Profesional</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control" id="cmbGrado_Profesional" required="">
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-2">Especialidad</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control" id="cmbEspecialidad" required="">
-                                                </select>
-                                            </div>
-                                            <label class="col-sm-3">
-                                                <input id="chkActivo" class="icheck" type="checkbox" checked>Activo</label>
+                                            <label class="col-sm-2">
+                                                <input id="chkPadres_Conviven" class="icheck" type="checkbox" checked>Viven juntos
+                                            </label>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button id="btnGuardar" class="btn btn-primary" onclick="guardar()">Registrar</button>
-                                        <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
+                                        <button class="btn btn-default"> Agregar miembro</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <form id="frmMiembro" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                        <input type="hidden" id="hddCodigo" value="">
+
+                                        <div class="row">
+                                            <div class="col-sm-12" style="margin-top: -45px;">
+                                                <table class='table table-bordered dataTable no-footer'  id="tblMiembros">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Parentesco</th>
+                                                        <th>Apellido Paterno</th>
+                                                        <th>Apellido Materno</th>
+                                                        <th>Nombres</th>
+                                                        <th>Numero Documento</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button id="btnGuardar" class="btn btn-primary" onclick="guardar()">Registrar familia</button>
                                     </div>
                                 </div>
                             </div>
@@ -124,9 +120,12 @@
             listarEspecialidades();
             listarCategorias_Trabajador();
             listarGrados_Profesionales();
-            $("#cmbPersona").select2();
-            listarPersonas('cmbPersona');
+            $("#cmbPadre").select2();
+            $("#cmbMadre").select2();
+            listarPersonas('cmbPadre');
+            listarPersonas('cmbMadre');
             $("#frmPersona").parsley();
+            $("#tblMiembros").DataTable({"bPaginate":false,"bAutoWidth":false,"bFilter":false});
         });
 
         function guardar(){

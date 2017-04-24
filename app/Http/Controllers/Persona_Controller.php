@@ -71,6 +71,7 @@ class Persona_Controller extends Controller
         }
     }
 
+    
     public function buscar_numero_documento()
     {
         $numero_documento = Input::get('numero_documento');

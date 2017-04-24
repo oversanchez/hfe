@@ -17,7 +17,7 @@ class CreacionTablaTrabajador extends Migration
             $table->increments('id');
             $table->boolean('activo');
 
-            $table->integer('persona_id')->unsigned();
+            $table->integer('persona_id')->unsigned()->unique();
             $table->foreign('persona_id')->references('id')->on('persona')->onDelete('cascade');
 
             $table->integer('categoria_trabajador_id')->unsigned();

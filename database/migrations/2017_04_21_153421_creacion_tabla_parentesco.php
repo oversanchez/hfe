@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaAlumno extends Migration
+class CreacionTablaParentesco extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreacionTablaAlumno extends Migration
      */
     public function up()
     {
-        Schema::create('alumno', function (Blueprint $table) {
+        Schema::create('parentesco', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo_educando');
-            $table->boolean('activo');
-
-            $table->integer('persona_id')->unsigned();
-            $table->foreign('persona_id')->references('id')->on('persona')->onDelete('cascade');
-
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreacionTablaAlumno extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alumno');
+        Schema::dropIfExists('parentesco');
     }
 }

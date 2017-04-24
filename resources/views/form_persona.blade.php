@@ -83,7 +83,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button onclick='cancelarPersona()' type="button" data-dismiss="modal" class="btn btn-default btn-flat md-close">Cancelar</button>
+            <button onclick='cancelarPersona()' type="button" data-dismiss="modal" class="btn btn-default btn-flat ">Limpiar</button>
             <button id="btnPersona_Registrar" onclick='guardarPersona()' type="button" data-dismiss="modal" class="btn btn-primary btn-flat">Registrar</button>
         </div>
     </div>
@@ -93,6 +93,8 @@
 <script>
 
     var receptor_id = "";
+    var receptor_persona_id = "";
+    var controls_id = [];
 
     function ejemplo(){
         $("#txtPersona_Nombres").val("OLIVER");
@@ -126,8 +128,10 @@
         $("#btnPersona_Registrar").prop('disabled',true);
         $("#txtPersona_Numero_Documento").select();
     }
-    function agregarPersona(id){
+    function agregarPersona(id,controles){
+        receptor_persona_id = "";
         receptor_id = id;
+        controls_id = controles;
         $("#modPersona").niftyModal('show');
         cancelarPersona();
     }
@@ -166,10 +170,18 @@
                     $("#loading").show();
                 },
                 success: function (data) {
+                    receptor_persona_id = data["id"];
                     notificacion('Registro', 'Datos registrados correctamente', 'primary');
+                    if(receptor_id != "#")
+                        listarPersonas(receptor_id);
+                    if(controls_id != null){
+                        $.each(controls_id,function(index,value){
+                            listarPersonas(value);
+                        });
+                    }
                     cancelarPersona();
                     $("#modPersona").niftyModal("hide");
-                    listarPersonas(receptor_id);
+
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);
@@ -192,10 +204,14 @@
                 var opciones = "<option value=''>---</option>";
                 $("#"+id).empty();
                 $.each(data,function( index, value ) {
-                    opciones += "<option value='"+value["id"]+"'>"+value["apellido_paterno"]+' '+value["apellido_materno"]+' '+value["nombres"]+' ('+value["numero_documento"]+")</option>";
+                    var color = value["sexo"]=="M" ? "black" : "red";
+                    opciones += "<option style='color:"+color+";' value='"+value["id"]+"'>"+value["apellido_paterno"]+' '+value["apellido_materno"]+' '+value["nombres"]+' ('+value["numero_documento"]+")</option>";
                 });
                 $("#"+id).append(opciones);
-                $("#"+id).select2();
+                if(receptor_id != "#")
+                    $("#"+id).val(receptor_persona_id).change();
+                else
+                    $("#"+id).val("").change();
             },
             error: function (request, status, error) {
                 console.log(request.responseText);

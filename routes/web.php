@@ -34,6 +34,8 @@ Route::group(['prefix'=>'mantenimientos'], function () {
 
     Route::resource('categoria_trabajador','\App\Http\Controllers\Categoria_Trabajador_Controller');
 
+    Route::resource('parentesco','\App\Http\Controllers\Parentesco_Controller');
+
     Route::resource('grado_profesional','\App\Http\Controllers\Grado_Profesional_Controller');
 
     Route::resource('colegio_procedencia','\App\Http\Controllers\Colegio_Procedencia_Controller');
@@ -45,6 +47,10 @@ Route::group(['prefix'=>'mantenimientos'], function () {
     Route::get('persona/buscar_numero_documento', ['uses' => 'Persona_Controller@buscar_numero_documento', 'as' => 'trabajador.buscar_numero_documento']);
 
     Route::resource('persona','\App\Http\Controllers\Persona_Controller');
+
+    Route::resource('miembro_familia','\App\Http\Controllers\Miembro_Familia_Controller');
+    
+    Route::resource('familia','\App\Http\Controllers\Familia_Controller');
 
     //Route::get('periodo_academico/listar','\App\Http\Controllers\Periodo_Academico_Controller@listar');
 
