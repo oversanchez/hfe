@@ -66,13 +66,13 @@
                     <div class="row">
                         <label class="col-sm-2">Email</label>
                         <div class="col-sm-9">
-                            <input class="form-control" type="email" id="txtPersona_Email" placeholder="oliver.sanchez@gmail.com" data-parsley-trigger="change"  data-parsley-required="true">
+                            <input class="form-control" type="email" id="txtPersona_Email" placeholder="oliver.sanchez@gmail.com">
                         </div>
                     </div>
                     <div class="row">
                         <label class="col-sm-2">Telefonos</label>
                         <div class="col-sm-5">
-                            <input class="form-control" type="text" id="txtPersona_Telf_Movil" placeholder="Ejem. 987644413" data-parsley-trigger="change"  data-parsley-required="true">
+                            <input class="form-control" type="text" id="txtPersona_Telf_Movil" placeholder="Ejem. 987644413">
                         </div>
                         <div class="col-sm-4">
                             <input class="form-control" type="text" id="txtPersona_Telf_Fijo" placeholder="Ejem. 074234212">
@@ -92,25 +92,9 @@
 
 <script>
 
-    var receptor_id = "";
-    var receptor_persona_id = "";
-    var controls_id = [];
+    var callable = null;
 
-    function ejemplo(){
-        $("#txtPersona_Nombres").val("OLIVER");
-        $("#txtPersona_ApPat").val("SANCHEZ");
-        $("#txtPersona_ApMat").val("ASCORBE");
-        $("#txtPersona_Numero_Documento").val('4604176');
-        $("#txtPersona_Email").val("oliver.sanchez.a@gmail.com");
-        $("#txtPersona_FechaNac").val("26/07/1989");
-        $("#txtPersona_Direccion").val("AV. AUGUSTO B. LEGUIA 1396");
-        $("#txtPersona_Telf_Movil").val("968644416");
-        //$("#cmbGrado_Profesional").val("1");
-        //$("#cmbEspecialidad").val("1");
-        //$("#cmbCategoria_Trabajador").val("1");
-    }
-
-    function cancelarPersona(){
+        function cancelarPersona(){
         $("#hddPersona_Id").val("");
         $("#txtPersona_Nombres").val("");
         $("#txtPersona_ApPat").val("");
@@ -126,14 +110,58 @@
         $('#dvPersona :input').attr('disabled', true);
         $("#txtPersona_Numero_Documento").prop('disabled', false);
         $("#btnPersona_Registrar").prop('disabled',true);
+        $("#btnPersona_Registrar").text('Registrar');
         $("#txtPersona_Numero_Documento").select();
     }
     function agregarPersona(id,controles){
         receptor_persona_id = "";
         receptor_id = id;
         controls_id = controles;
+        $("#modPersona .modal-header h3").html("Registrar");
         $("#modPersona").niftyModal('show');
         cancelarPersona();
+    }
+
+    function editarPersona(id_Control){
+        var id_Persona = $("#"+id_Control).val();
+        receptor_persona_id = "";
+        receptor_id = id_Control;
+        controls_id = "#";
+        $("#modPersona .modal-header h3").html("Editar");
+        $("#modPersona").niftyModal('show');
+        $.ajax({
+            url: "/mantenimientos/persona/" + id_Persona,
+            type: "GET",
+            beforeSend: function () {
+                $("#loading").show();
+            },
+            success: function (data) {
+                $("#hddPersona_Id").val(id_Persona);
+                $("#txtPersona_Nombres").val(data["nombres"]);
+                $("#txtPersona_ApPat").val(data["apellido_paterno"]);
+                $("#txtPersona_ApMat").val(data["apellido_materno"]);
+                $("#txtPersona_Numero_Documento").val(data["numero_documento"]);
+                $("#cmbPersona_TipoDoc").val(data["tipo_documento"]);
+                $("#txtPersona_Email").val(data["email"]);
+                $("#txtPersona_FechaNac").val(data["fecha_nacimiento"]);
+                $("#txtPersona_Direccion").val(data["direccion"]);
+                $("#txtPersona_Telf_Movil").val(data["telf_movil"]);
+                $("#txtPersona_Telf_Fijo").val(data["telf_fijo"]);
+                $("#cmbPersona_Sexo").val(data["sexo"]);
+
+                $("#txtPersona_Numero_Documento").prop('disabled', true);
+                $('#dvPersona :input').attr('disabled', false);
+                $("#btnPersona_Registrar").prop('disabled',false);
+                $("#btnPersona_Registrar").text('Modificar');
+                $("#txtPersona_ApPat").select();
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText);
+            },
+            complete: function () {
+                $("#loading").hide();
+            }
+        });
     }
 
     function obtenerDatosPersona(){
@@ -156,6 +184,8 @@
         if($("#frmPersona").parsley().validate()){
             if (accion)
                 registrarPersona()
+            else
+                modificarPersona()
         }
         $(".parsley-errors-list").html("");
     }
@@ -193,6 +223,34 @@
         }
     }
 
+    function modificarPersona() {
+        var persona_id = $("#hddPersona_Id").val();
+        if (confirm("¿Deseas continuar la modificación?")) {
+            var info = obtenerDatosPersona();
+            $.ajax({
+                url: "/mantenimientos/persona/" + persona_id,
+                type: "PUT",
+                data: info,
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                success: function (data) {
+                    notificacion('Actualización', 'Datos actualizados correctamente', 'success');
+                    if(receptor_id != "#")
+                        listarPersonas(receptor_id);
+                    cancelarPersona();
+                    $("#modPersona").niftyModal('hide');
+                },
+                error: function (request, status, error) {
+                    mostrar_error(request.responseText);
+                },
+                complete: function () {
+                    $("#loading").hide();
+                }
+            });
+        }
+    }
+
     function listarPersonas(id) {
         $.ajax({
             url: "/mantenimientos/persona/*",
@@ -214,7 +272,7 @@
                     $("#"+id).val("").change();
             },
             error: function (request, status, error) {
-                console.log(request.responseText);
+                mostrar_error(request.responseText);
             },
             complete: function () {
                 $("#loading").hide();

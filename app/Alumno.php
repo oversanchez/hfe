@@ -8,14 +8,14 @@ class Alumno extends Model
 {
     protected $table = "alumno";
 
-    protected $fillable = ['codigo_educando','activo','persona_id','colegio_procedencia_id'];
-
-    public function persona(){
-        return $this->belongsTo('App\Persona');
-    }
+    protected $fillable = ['nombres','apellido_paterno','apellido_materno','numero_documento','tipo_documento','fecha_nacimiento','sexo','direccion','telf_fijo','codigo_educando','url_foto','codigo_recaudacion','activo','padres_juntos','colegio_procedencia_id','usuario_id'];
 
     public function colegio_procedencia(){
         return $this->belongsTo('App\Colegio_Procedencia');
+    }
+
+    public function usuario(){
+        return $this->belongsTo('App\Usuario');
     }
 
 }

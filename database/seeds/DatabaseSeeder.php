@@ -14,9 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->call(Categoria_Trabajador_Seeder::class);
         $this->call(Grado_Profesional_Seeder::class);
         $this->call(Especialidad_Seeder::class);
-        $this->call(Persona_Seeder::class);
+        //$this->call(Persona_Seeder::class);
         $this->call(Parentesco_Seeder::class);
         $this->call(Colegio_Procedencia_Seeder::class);
+        $this->call(Nivel_Educativo_Seeder::class);
         // $this->call(UsersTableSeeder::class);
     }
 }

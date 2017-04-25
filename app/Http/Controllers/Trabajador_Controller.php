@@ -37,7 +37,18 @@ class Trabajador_Controller extends Controller
     {
         $trabajador = new \App\Trabajador();
 
-        $trabajador->persona_id = $request->input('persona_id');
+        $trabajador->nombres = $request->input('nombres');
+        $trabajador->apellido_paterno = $request->input('apellido_paterno');
+        $trabajador->apellido_materno = $request->input('apellido_materno');
+        $trabajador->numero_documento= $request->input('numero_documento');
+        $trabajador->tipo_documento= $request->input('tipo_documento');
+        $trabajador->fecha_nacimiento= $request->input('fecha_nacimiento');
+        $trabajador->sexo= $request->input('sexo');
+        $trabajador->direccion= $request->input('direccion');
+        $trabajador->email= $request->input('email');
+        $trabajador->telf_movil= $request->input('telf_movil');
+        $trabajador->telf_fijo= $request->input('telf_fijo');
+
         $trabajador->grado_profesional_id= $request->input('grado_profesional_id');
         $trabajador->especialidad_id= $request->input('especialidad_id');
         $trabajador->categoria_trabajador_id= $request->input('categoria_trabajador_id');
@@ -55,7 +66,6 @@ class Trabajador_Controller extends Controller
     {
         if (is_numeric($id)) {
             $trabajador = \App\Trabajador::find($id);
-            $trabajador->persona;
             $trabajador->grado_profesional;
             $trabajador->categoria_trabajador;
             $trabajador->especialidad;
@@ -67,7 +77,6 @@ class Trabajador_Controller extends Controller
     {
         $trabajadores =  \App\Trabajador::all();
         foreach ($trabajadores as $trabajador){
-            $trabajador->persona;
             $trabajador->grado_profesional;
             $trabajador->categoria_trabajador;
             $trabajador->especialidad;
@@ -97,7 +106,18 @@ class Trabajador_Controller extends Controller
     {
         $trabajador = \App\Trabajador::find($id);
 
-        $trabajador->persona_id = $request->input('persona_id');
+        $trabajador->nombres = $request->input('nombres');
+        $trabajador->apellido_paterno = $request->input('apellido_paterno');
+        $trabajador->apellido_materno = $request->input('apellido_materno');
+        $trabajador->numero_documento= $request->input('numero_documento');
+        $trabajador->tipo_documento= $request->input('tipo_documento');
+        $trabajador->fecha_nacimiento= $request->input('fecha_nacimiento');
+        $trabajador->sexo= $request->input('sexo');
+        $trabajador->direccion= $request->input('direccion');
+        $trabajador->email= $request->input('email');
+        $trabajador->telf_movil= $request->input('telf_movil');
+        $trabajador->telf_fijo= $request->input('telf_fijo');
+
         $trabajador->grado_profesional_id= $request->input('grado_profesional_id');
         $trabajador->especialidad_id= $request->input('especialidad_id');
         $trabajador->categoria_trabajador_id= $request->input('categoria_trabajador_id');

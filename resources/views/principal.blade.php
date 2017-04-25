@@ -69,7 +69,6 @@
                                 <li class="dropdown-header"><i class="fa fa-legal"></i>Personas</li>
                                 <li><a href="/mantenimientos/alumno">Alumnos</a></li>
                                 <li><a href="/mantenimientos/trabajador">Trabajadores</a></li>
-                                <li><a href="/mantenimientos/familia">Familias</a></li>
                             </ul>
                         </li>
                         <li class="col-sm-6 no-padding">

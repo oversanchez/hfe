@@ -71,7 +71,7 @@ class Persona_Controller extends Controller
         }
     }
 
-    
+
     public function buscar_numero_documento()
     {
         $numero_documento = Input::get('numero_documento');
@@ -81,6 +81,15 @@ class Persona_Controller extends Controller
         }
     }
 
+    public function listar_no_alumnos()
+    {
+        return \App\Persona::where('alumno',false)->get();
+    }
+
+    public function listar_no_trabajadores()
+    {
+        return \App\Persona::where('trabajador',false)->get();
+    }
     /**
      * Show the form for editing the specified resource.
      *

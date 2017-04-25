@@ -15,14 +15,27 @@ class CreacionTablaAlumno extends Migration
     {
         Schema::create('alumno', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo_educando');
+            $table->string('nombres');
+            $table->string('apellido_paterno');
+            $table->string('apellido_materno');
+            $table->string('numero_documento',15)->unique();
+            $table->enum('tipo_documento',['DN','CE','PA']);
+            $table->date('fecha_nacimiento');
+            $table->enum('sexo',['M','F']);
+            $table->string('direccion');
+            $table->string('telf_fijo');
+
+            $table->string('codigo_educando')->nullable();
+            $table->string('codigo_recaudacion')->nullable();
+            $table->string('url_foto')->nullable();
+            $table->boolean('padres_juntos');
             $table->boolean('activo');
 
-            $table->integer('persona_id')->unsigned();
-            $table->foreign('persona_id')->references('id')->on('persona')->onDelete('cascade');
+            $table->integer('colegio_procedencia_id')->unsigned();
+            $table->foreign('colegio_procedencia_id')->references('id')->on('colegio_procedencia');
 
-            $table->integer('familia_id')->unsigned();
-            $table->foreign('familia_id')->references('id')->on('familia');
+            $table->integer('usuario_id')->unsigned()->nullable()->unique();
+            $table->foreign('usuario_id')->references('id')->on('usuario');
 
             $table->timestamps();
         });

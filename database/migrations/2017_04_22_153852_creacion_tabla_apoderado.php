@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaTrabajador extends Migration
+class CreacionTablaApoderado extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreacionTablaTrabajador extends Migration
      */
     public function up()
     {
-        Schema::create('trabajador', function (Blueprint $table) {
+        Schema::create('apoderado', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombres');
             $table->string('apellido_paterno');
@@ -27,20 +27,26 @@ class CreacionTablaTrabajador extends Migration
             $table->string('telf_movil')->nullable();
             $table->string('telf_fijo')->nullable();
 
+            $table->boolean('apoderado');
+            $table->boolean('vive_educando');
+            $table->enum('estado_civil',['SO','CA','VI','DI']);
+            $table->string('ocupacion');
+            $table->string('lugar_trabajo');
+
             $table->boolean('activo');
-            
-            $table->integer('categoria_trabajador_id')->unsigned();
-            $table->foreign('categoria_trabajador_id')->references('id')->on('categoria_trabajador');
+
+            $table->integer('alumno_id')->unsigned();
+            $table->foreign('alumno_id')->references('id')->on('alumno');
+
+            $table->integer('parentesco_id')->unsigned();
+            $table->foreign('parentesco_id')->references('id')->on('parentesco');
+
+            $table->integer('nivel_educativo_id')->unsigned();
+            $table->foreign('nivel_educativo_id')->references('id')->on('nivel_educativo');
 
             $table->integer('grado_profesional_id')->unsigned();
             $table->foreign('grado_profesional_id')->references('id')->on('grado_profesional');
-            
-            $table->integer('especialidad_id')->unsigned();
-            $table->foreign('especialidad_id')->references('id')->on('especialidad');
 
-            $table->integer('usuario_id')->unsigned()->nullable()->unique();
-            $table->foreign('usuario_id')->references('id')->on('usuario');
-            
             $table->timestamps();
         });
     }
@@ -52,6 +58,6 @@ class CreacionTablaTrabajador extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trabajador');
+        Schema::dropIfExists('apoderado');
     }
 }

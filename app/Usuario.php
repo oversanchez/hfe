@@ -8,9 +8,13 @@ class Usuario extends Model
 {
     protected $table = "usuario";
 
-    protected $fillable = ['alias','clave','activo','persona_id'];
+    protected $fillable = ['alias','clave','activo'];
 
-    public function persona(){
-        return $this->belongsTo('App\Persona');
+    public function alumnos(){
+        return $this->hasOne('App\Alumno');
     }
+    public function trabajadors(){
+        return $this->hasOne('App\Alumno');
+    }
+
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaFamilia extends Migration
+class CreacionTablaNivelEducativo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreacionTablaFamilia extends Migration
      */
     public function up()
     {
-        Schema::create('familia', function (Blueprint $table) {
+        Schema::create('nivel_educativo', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('padres_conviven');
+            $table->string('codigo');
+            $table->string('descripcion');
+            $table->string('abreviatura');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreacionTablaFamilia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('familia');
+        Schema::dropIfExists('nivel_educativo');
     }
 }

@@ -5,6 +5,7 @@
         <div class="page-head">
             <h2 style="display:inline-block;">Trabajador</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
+            <button class="btn btn-link pull-right" style="margin-top:5px;font-size: 16px;" onclick='agregarPersona("#",["cmbPersona"])'> Agregar persona</button>
         </div>
         <div class="cl-mcont">
             <div class="row">
@@ -47,18 +48,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-3">
-                                                <!-- Split button -->
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-info">Opciones</button>
-                                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <span class="caret"></span>
-                                                        <span class="sr-only">Toggle Dropdown</span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#" onclick='agregarPersona("cmbPersona",null)'>Agregar</a></li>
-                                                        <li><a href="#" onclick='editarPersona("cmbPersona",null)'>Editar</a></li>
-                                                    </ul>
-                                                </div>
+                                                <a href="#" onclick="editarPersona('cmbPersona')" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -125,9 +115,34 @@
             listarCategorias_Trabajador();
             listarGrados_Profesionales();
             $("#cmbPersona").select2();
-            listarPersonas('cmbPersona');
+            listarPersonas_No_Trabajadores('cmbPersona');
             $("#frmPersona").parsley();
         });
+
+        function listarPersonas_No_Trabajadores(id) {
+            $.ajax({
+                url: "/mantenimientos/persona/listar_no_trabajadores",
+                type: "GET",
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                success: function (data) {
+                    var opciones = "<option value=''>---</option>";
+                    $("#"+id).empty();
+                    $.each(data,function( index, value ) {
+                        var color = value["sexo"]=="M" ? "black" : "red";
+                        opciones += "<option style='color:"+color+";' value='"+value["id"]+"'>"+value["apellido_paterno"]+' '+value["apellido_materno"]+' '+value["nombres"]+' ('+value["numero_documento"]+")</option>";
+                    });
+                    $("#"+id).append(opciones);
+                },
+                error: function (request, status, error) {
+                    mostrar_error(request.responseText);
+                },
+                complete: function () {
+                    $("#loading").hide();
+                }
+            });
+        }
 
         function guardar(){
             var accion = $("#hddCodigo").val() == "" ? true : false;
@@ -260,6 +275,7 @@
             $('#frmTrabajador').parsley().reset();
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
+            listarPersonas_No_Trabajadores('cmbPersona');
             listar();
         }
 

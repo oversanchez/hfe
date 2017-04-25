@@ -34,27 +34,23 @@ class Alumno_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $persona = \App\Persona()::where('numero_documento', $request->input('numero_documento'))->get();
-        if($persona->id == null)
-            $persona = new \App\Persona();
-
-        $persona->nombres = $request->input('nombres');
-        $persona->apellido_paterno = $request->input('apellido_paterno');
-        $persona->apellido_materno = $request->input('apellido_materno');
-        $persona->numero_documento= $request->input('numero_documento');
-        $persona->tipo_documento= $request->input('tipo_documento');
-        $persona->fecha_nacimiento= $request->input('fecha_nacimiento');
-        $persona->sexo= $request->input('sexo');
-        $persona->direccion= $request->input('direccion');
-        $persona->email= $request->input('email');
-        $persona->telf_movil= $request->input('telf_movil');
-        $persona->telf_fijo= $request->input('telf_fijo');
-
-        $persona->save();
-
         $alumno = new \App\Alumno();
-        $alumno->persona_id = $persona->id;
+
+        $alumno->nombres = $request->input('nombres');
+        $alumno->apellido_paterno = $request->input('apellido_paterno');
+        $alumno->apellido_materno = $request->input('apellido_materno');
+        $alumno->numero_documento= $request->input('numero_documento');
+        $alumno->tipo_documento= $request->input('tipo_documento');
+        $alumno->fecha_nacimiento= $request->input('fecha_nacimiento');
+        $alumno->sexo= $request->input('sexo');
+        $alumno->direccion = $request->input('direccion');
+        $alumno->email= $request->input('email');
+        $alumno->telf_fijo= $request->input('telf_fijo');
+
         $alumno->colegio_procedencia_id= $request->input('colegio_procedencia_id');
+        $alumno->codigo_educando= $request->input('codigo_educando');
+        $alumno->codigo_recaudacion= $request->input('codigo_recaudacion');
+        $alumno->padres_juntos= $request->input('padres_juntos');
         $alumno->activo= $request->input('activo');
         $alumno->save();
     }
@@ -69,7 +65,6 @@ class Alumno_Controller extends Controller
     {
         if (is_numeric($id)) {
             $alumno = \App\Alumno::find($id);
-            $alumno->persona;
             $alumno->colegio_procedencia;
             return $alumno;
         }
@@ -79,7 +74,6 @@ class Alumno_Controller extends Controller
     {
         $alumnos =  \App\Alumno::all();
         foreach ($alumnos as $alumno){
-            $alumno->persona;
             $alumno->colegio_procedencia;
         }
         return $alumnos;
@@ -106,23 +100,22 @@ class Alumno_Controller extends Controller
     public function update(Request $request, $id)
     {
         $alumno = \App\Alumno::find($id);
-        $persona = \App\Persona::find($alumno->persona_id);
 
-        $persona->nombres = $request->input('nombres');
-        $persona->apellido_paterno = $request->input('apellido_paterno');
-        $persona->apellido_materno = $request->input('apellido_materno');
-        $persona->numero_documento= $request->input('numero_documento');
-        $persona->tipo_documento= $request->input('tipo_documento');
-        $persona->fecha_nacimiento= $request->input('fecha_nacimiento');
-        $persona->sexo= $request->input('sexo');
-        $persona->direccion= $request->input('direccion');
-        $persona->email= $request->input('email');
-        $persona->telf_movil= $request->input('telf_movil');
-        $persona->telf_fijo= $request->input('telf_fijo');
+        $alumno->nombres = $request->input('nombres');
+        $alumno->apellido_paterno = $request->input('apellido_paterno');
+        $alumno->apellido_materno = $request->input('apellido_materno');
+        $alumno->numero_documento= $request->input('numero_documento');
+        $alumno->tipo_documento= $request->input('tipo_documento');
+        $alumno->fecha_nacimiento= $request->input('fecha_nacimiento');
+        $alumno->sexo= $request->input('sexo');
+        $alumno->direccion = $request->input('direccion');
+        $alumno->email= $request->input('email');
+        $alumno->telf_fijo= $request->input('telf_fijo');
 
-        $persona->save();
-
+        $alumno->colegio_procedencia_id= $request->input('colegio_procedencia_id');
         $alumno->codigo_educando= $request->input('codigo_educando');
+        $alumno->codigo_recaudacion= $request->input('codigo_recaudacion');
+        $alumno->padres_juntos= $request->input('padres_juntos');
         $alumno->activo= $request->input('activo');
         $alumno->save();
     }

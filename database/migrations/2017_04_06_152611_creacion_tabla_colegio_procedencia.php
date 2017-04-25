@@ -15,6 +15,7 @@ class CreacionTablaColegioProcedencia extends Migration
     {
         Schema::create('colegio_procedencia', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('codigo')->nullable();
             $table->string('nombre');
             $table->timestamps();
         });

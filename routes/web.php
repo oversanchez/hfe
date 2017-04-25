@@ -44,13 +44,19 @@ Route::group(['prefix'=>'mantenimientos'], function () {
 
     Route::resource('trabajador','\App\Http\Controllers\Trabajador_Controller');
 
-    Route::get('persona/buscar_numero_documento', ['uses' => 'Persona_Controller@buscar_numero_documento', 'as' => 'trabajador.buscar_numero_documento']);
+    Route::get('persona/buscar_numero_documento', ['uses' => 'Persona_Controller@buscar_numero_documento', 'as' => 'persona.buscar_numero_documento']);
+
+    Route::get('persona/listar_no_alumnos', ['uses' => 'Persona_Controller@listar_no_alumnos', 'as' => 'persona.listar_no_alumnos']);
+
+    Route::get('persona/listar_no_trabajadores', ['uses' => 'Persona_Controller@listar_no_trabajadores', 'as' => 'persona.listar_no_trabajadores']);
 
     Route::resource('persona','\App\Http\Controllers\Persona_Controller');
 
-    Route::resource('miembro_familia','\App\Http\Controllers\Miembro_Familia_Controller');
-    
-    Route::resource('familia','\App\Http\Controllers\Familia_Controller');
+    Route::resource('apoderado','\App\Http\Controllers\Apoderado_Controller');
+
+    Route::get('alumno/listar', ['uses' => 'Alumno_Controller@listar', 'as' => 'alumno.listar']);
+
+    Route::resource('alumno','\App\Http\Controllers\Alumno_Controller');
 
     //Route::get('periodo_academico/listar','\App\Http\Controllers\Periodo_Academico_Controller@listar');
 

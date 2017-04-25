@@ -12,8 +12,8 @@ class Colegio_Procedencia_Seeder extends Seeder
     public function run()
     {
         DB::table('colegio_procedencia')->insert([
-            ['nombre' => "I.E. SAN JOSE"],
-            ['nombre' => "I.E. COSOME"],
+            ['nombre' => "I.E. SAN JOSE",'codigo'=>''],
+            ['nombre' => "I.E. COSOME",'codigo'=>''],
         ]);
     }
 }
