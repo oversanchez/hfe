@@ -17,14 +17,14 @@ class CreacionTablaApoderado extends Migration
             $table->increments('id');
             $table->string('nombres');
             $table->string('apellido_paterno');
-            $table->string('apellido_materno');
-            $table->string('numero_documento',15)->unique();
+            $table->string('apellido_materno')->nullable();
+            $table->string('numero_documento',15);
             $table->enum('tipo_documento',['DN','CE','PA']);
             $table->date('fecha_nacimiento');
             $table->enum('sexo',['M','F']);
             $table->string('direccion');
-            $table->string('email')->unique()->nullable();
-            $table->string('telf_movil')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telf_movil');
             $table->string('telf_fijo')->nullable();
 
             $table->boolean('apoderado');
@@ -43,9 +43,6 @@ class CreacionTablaApoderado extends Migration
 
             $table->integer('nivel_educativo_id')->unsigned();
             $table->foreign('nivel_educativo_id')->references('id')->on('nivel_educativo');
-
-            $table->integer('grado_profesional_id')->unsigned();
-            $table->foreign('grado_profesional_id')->references('id')->on('grado_profesional');
 
             $table->timestamps();
         });

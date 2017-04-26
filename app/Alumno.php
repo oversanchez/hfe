@@ -18,4 +18,8 @@ class Alumno extends Model
         return $this->belongsTo('App\Usuario');
     }
 
+    public function apoderados(){
+        return $this->hasMany('App\Apoderado');
+    }
+
 }

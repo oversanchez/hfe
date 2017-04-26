@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class Trabajador_Controller extends Controller
 {
@@ -49,7 +49,7 @@ class Trabajador_Controller extends Controller
         $trabajador->telf_movil= $request->input('telf_movil');
         $trabajador->telf_fijo= $request->input('telf_fijo');
 
-        $trabajador->grado_profesional_id= $request->input('grado_profesional_id');
+        $trabajador->nivel_educativo_id= $request->input('nivel_educativo_id');
         $trabajador->especialidad_id= $request->input('especialidad_id');
         $trabajador->categoria_trabajador_id= $request->input('categoria_trabajador_id');
         $trabajador->activo= $request->input('activo');
@@ -66,7 +66,7 @@ class Trabajador_Controller extends Controller
     {
         if (is_numeric($id)) {
             $trabajador = \App\Trabajador::find($id);
-            $trabajador->grado_profesional;
+            $trabajador->nivel_educativo;
             $trabajador->categoria_trabajador;
             $trabajador->especialidad;
             return $trabajador;
@@ -77,11 +77,19 @@ class Trabajador_Controller extends Controller
     {
         $trabajadores =  \App\Trabajador::all();
         foreach ($trabajadores as $trabajador){
-            $trabajador->grado_profesional;
+            $trabajador->nivel_educativo;
             $trabajador->categoria_trabajador;
             $trabajador->especialidad;
         }
         return $trabajadores;
+    }
+
+    public function buscar_numero_documento()
+    {
+        $numero_documento = Input::get('numero_documento');
+        if (is_numeric($numero_documento)) {
+            return \App\Trabajador::where('numero_documento',$numero_documento)->get();
+        }
     }
 
     /**
@@ -118,7 +126,7 @@ class Trabajador_Controller extends Controller
         $trabajador->telf_movil= $request->input('telf_movil');
         $trabajador->telf_fijo= $request->input('telf_fijo');
 
-        $trabajador->grado_profesional_id= $request->input('grado_profesional_id');
+        $trabajador->nivel_educativo_id= $request->input('nivel_educativo_id');
         $trabajador->especialidad_id= $request->input('especialidad_id');
         $trabajador->categoria_trabajador_id= $request->input('categoria_trabajador_id');
         $trabajador->activo= $request->input('activo');

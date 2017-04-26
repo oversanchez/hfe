@@ -27,6 +27,7 @@
     {!! HTML::style('lib/jquery.select2/select2.css') !!}
     {!! HTML::style('css/style.css') !!}
 
+    @yield('css')
 </head>
 
 <body>
@@ -68,6 +69,7 @@
                                 <li><a href="/mantenimientos/anio_lectivo">Asistencia</a></li>
                                 <li class="dropdown-header"><i class="fa fa-legal"></i>Personas</li>
                                 <li><a href="/mantenimientos/alumno">Alumnos</a></li>
+                                <li><a href="/mantenimientos/apoderado">Apoderados</a></li>
                                 <li><a href="/mantenimientos/trabajador">Trabajadores</a></li>
                             </ul>
                         </li>
@@ -87,7 +89,7 @@
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/mantenimientos/categoria_trabajador">Categoria de Trabajador</a></li>
-                        <li><a href="/mantenimientos/grado_profesional">Grados Profesionales</a></li>
+                        <li><a href="/mantenimientos/nivel_educativo">Niveles Educativos</a></li>
                         <li><a href="/mantenimientos/especialidad">Especialidades</a></li>
                         <li><a href="/mantenimientos/colegio_procedencia">Colegios de Procedencia</a></li>
                         <li><a href="/mantenimientos/parentesco">Parentesco</a></li>

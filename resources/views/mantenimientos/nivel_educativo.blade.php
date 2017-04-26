@@ -3,7 +3,7 @@
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
-            <h2 style="display:inline-block;">Grado Profesional</h2>
+            <h2 style="display:inline-block;">Nivel Educativo</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
         </div>
         <div class="cl-mcont">
@@ -19,7 +19,8 @@
                                 <table class='table table-bordered dataTable no-footer' id="tblListado">
                                     <thead>
                                     <tr>
-                                        <th>Nombre</th>
+                                        <th>Codigo</th>
+                                        <th>Descripcion</th>
                                         <th>Abreviatura</th>
                                         <th>Acción</th>
                                     </tr>
@@ -31,19 +32,29 @@
                             </div>
                             <div id="tp2" class="tab-pane cont">
                                 <div class="container">
-                                    <form id="frmGrado_Profesional" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                    <form id="frmNivel_Educativo" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
-                                            <label for="txtNombre" class="col-md-1 control-label">Nombre</label>
+                                            <label for="txtAbreviatura" class="col-md-1 control-label">Codigo</label>
                                             <div class="col-md-5">
-                                                <input id="txtNombre" type="text" placeholder="Ejem. BACHILLER,LICENCIADO,MAGISTER,DOCTOR" class="form-control"
+                                                <input id="txtCodigo" type="text" placeholder="Ejem. 01,02" class="form-control"
+                                                       data-parsley-trigger="change" data-parsley-required="true">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="txtDescripcion" class="col-md-1 control-label">Descripcion</label>
+                                            <div class="col-md-5">
+                                                <input id="txtDescripcion" type="text" placeholder="Ejem. BACHILLER,LICENCIADO,MAGISTER,DOCTOR" class="form-control"
                                                        data-parsley-trigger="change" data-parsley-required="true"></div>
-                                            <label for="txtAbreviatura" class="col-md-2 control-label">Abreviatura</label>
-                                            <div class="col-md-3">
+                                        </div>
+                                        <div class="row">
+                                            <label for="txtAbreviatura" class="col-md-1 control-label">Abreviatura</label>
+                                            <div class="col-md-5">
                                                 <input id="txtAbreviatura" type="text" placeholder="Ejem. ING,DOC,LIC" class="form-control"
                                                        data-parsley-trigger="change" data-parsley-required="true">
                                             </div>
                                         </div>
+
                                     </form>
                                 </div>
                                 <div class="row">
@@ -52,11 +63,6 @@
                                         <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="tp3" class="tab-pane cont">
-                                <h2>Typography</h2>
-                                <p>This is just an example of content writen by <b>Jeff Hanneman</b>, as you can see it
-                                    is a clean design with large</p>
                             </div>
                         </div>
                     </div>
@@ -75,13 +81,13 @@
             App.init();
             App.formElements();
             t = $("#tblListado").DataTable();
-            $("#frmGrado_Profesional").parsley();
+            $("#frmNivel_Educativo").parsley();
             listar();
         });
 
         function guardar(){
             var accion = $("#hddCodigo").val() == "" ? true : false;
-            if($("#frmGrado_Profesional").parsley().validate()){
+            if($("#frmNivel_Educativo").parsley().validate()){
                 if (accion)
                     registrar()
                 else
@@ -92,7 +98,8 @@
 
         function obtenerDatos(){
             var info = [{"_token": "{{ csrf_token() }}",
-                "nombre": $("#txtNombre").val(),
+                "codigo": $("#txtCodigo").val(),
+                "descripcion": $("#txtDescripcion").val(),
                 "abreviatura": $("#txtAbreviatura").val()}][0];
             return info;
         }
@@ -101,7 +108,7 @@
             if (confirm("¿Deseas continuar el registro?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/mantenimientos/grado_profesional",
+                    url: "/mantenimientos/nivel_educativo",
                     type: "POST",
                     data: info,
                     beforeSend: function () {
@@ -112,7 +119,7 @@
                         cancelar();
                     },
                     error: function (request, status, error) {
-                        console.log(request.responseText);
+                        mostrar_error(request.responseText);
                     },
                     complete: function () {
                         $("#loading").hide();
@@ -125,7 +132,7 @@
             if (confirm("¿Deseas continuar la modificación?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/mantenimientos/grado_profesional/" + $("#hddCodigo").val(),
+                    url: "/mantenimientos/nivel_educativo/" + $("#hddCodigo").val(),
                     type: "PUT",
                     data: info,
                     beforeSend: function () {
@@ -136,7 +143,7 @@
                         cancelar();
                     },
                     error: function (request, status, error) {
-                        console.log(request.responseText);
+                        mostrar_error(request.responseText);
                     },
                     complete: function () {
                         $("#loading").hide();
@@ -149,7 +156,7 @@
             if (confirm("¿Deseas eliminar el elemento?")) {
                 var info = [{"_token": "{{ csrf_token() }}"}][0];
                 $.ajax({
-                    url: "/mantenimientos/grado_profesional/" + id,
+                    url: "/mantenimientos/nivel_educativo/" + id,
                     type: "DELETE",
                     data: info,
                     beforeSend: function () {
@@ -160,7 +167,7 @@
                         cancelar();
                     },
                     error: function (request, status, error) {
-                        console.log(request.responseText);
+                        mostrar_error(request.responseText);
                     },
                     complete: function () {
                         $("#loading").hide();
@@ -171,21 +178,22 @@
 
         function editar(id) {
             $.ajax({
-                url: "/mantenimientos/grado_profesional/" + id,
+                url: "/mantenimientos/nivel_educativo/" + id,
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
                 },
                 success: function (data) {
                     $("#hddCodigo").val(id);
-                    $("#txtNombre").val(data["nombre"]);
+                    $("#txtCodigo").val(data["codigo"]);
+                    $("#txtDescripcion").val(data["descripcion"]);
                     $("#txtAbreviatura").val(data["abreviatura"]);
                     $("#btnGuardar").text("Guardar");
                     $('a[href="#tp2"]').click();
-                    $('a[href="#tp2"]').text("Modificando : "+data["nombre"]);
+                    $('a[href="#tp2"]').text("Modificando : "+data["descripcion"]);
                 },
                 error: function (request, status, error) {
-                    console.log(request.responseText);
+                    mostrar_error(request.responseText);
                 },
                 complete: function () {
                     $("#loading").hide();
@@ -195,10 +203,11 @@
 
         function cancelar(){
             $("#hddCodigo").val("");
-            $("#txtNombre").val("");
+            $("#txtCodigo").val("");
+            $("#txtDescripcion").val("");
             $("#txtAbreviatura").val("");
             $("#btnGuardar").text("Registrar");
-            $('#frmGrado_Profesional').parsley().reset();
+            $('#frmNivel_Educativo').parsley().reset();
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();
@@ -206,7 +215,7 @@
 
         function listar() {
             $.ajax({
-                url: "/mantenimientos/grado_profesional/*",
+                url: "/mantenimientos/nivel_educativo/*",
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
@@ -214,12 +223,12 @@
                 success: function (data) {
                     t.clear().draw();
                     $.each(data,function( index, value ) {
-                        t.row.add([value['nombre'],value['abreviatura']
+                        t.row.add([value['codigo'],value['descripcion'],value['abreviatura']
                             ,grupo_opciones(value['id'])]).draw(false);
                     });
                 },
                 error: function (request, status, error) {
-                    console.log(request.responseText);
+                    mostrar_error(request.responseText);
                 },
                 complete: function () {
                     $("#loading").hide();

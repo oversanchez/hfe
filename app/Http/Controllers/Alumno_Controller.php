@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class Alumno_Controller extends Controller
 {
@@ -44,7 +45,6 @@ class Alumno_Controller extends Controller
         $alumno->fecha_nacimiento= $request->input('fecha_nacimiento');
         $alumno->sexo= $request->input('sexo');
         $alumno->direccion = $request->input('direccion');
-        $alumno->email= $request->input('email');
         $alumno->telf_fijo= $request->input('telf_fijo');
 
         $alumno->colegio_procedencia_id= $request->input('colegio_procedencia_id');
@@ -79,6 +79,13 @@ class Alumno_Controller extends Controller
         return $alumnos;
     }
 
+    public function buscar_numero_documento()
+    {
+        $numero_documento = Input::get('numero_documento');
+        if (is_numeric($numero_documento)) {
+            return \App\Alumno::where('numero_documento',$numero_documento)->get();
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -109,7 +116,6 @@ class Alumno_Controller extends Controller
         $alumno->fecha_nacimiento= $request->input('fecha_nacimiento');
         $alumno->sexo= $request->input('sexo');
         $alumno->direccion = $request->input('direccion');
-        $alumno->email= $request->input('email');
         $alumno->telf_fijo= $request->input('telf_fijo');
 
         $alumno->colegio_procedencia_id= $request->input('colegio_procedencia_id');

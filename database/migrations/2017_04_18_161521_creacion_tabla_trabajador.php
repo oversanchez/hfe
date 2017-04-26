@@ -17,14 +17,14 @@ class CreacionTablaTrabajador extends Migration
             $table->increments('id');
             $table->string('nombres');
             $table->string('apellido_paterno');
-            $table->string('apellido_materno');
+            $table->string('apellido_materno')->nullable();
             $table->string('numero_documento',15)->unique();
             $table->enum('tipo_documento',['DN','CE','PA']);
             $table->date('fecha_nacimiento');
             $table->enum('sexo',['M','F']);
             $table->string('direccion');
-            $table->string('email')->unique()->nullable();
-            $table->string('telf_movil')->nullable();
+            $table->string('email')->unique();
+            $table->string('telf_movil');
             $table->string('telf_fijo')->nullable();
 
             $table->boolean('activo');
@@ -32,8 +32,8 @@ class CreacionTablaTrabajador extends Migration
             $table->integer('categoria_trabajador_id')->unsigned();
             $table->foreign('categoria_trabajador_id')->references('id')->on('categoria_trabajador');
 
-            $table->integer('grado_profesional_id')->unsigned();
-            $table->foreign('grado_profesional_id')->references('id')->on('grado_profesional');
+            $table->integer('nivel_educativo_id')->unsigned();
+            $table->foreign('nivel_educativo_id')->references('id')->on('nivel_educativo');
             
             $table->integer('especialidad_id')->unsigned();
             $table->foreign('especialidad_id')->references('id')->on('especialidad');

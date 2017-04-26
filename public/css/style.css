@@ -277,7 +277,8 @@ pre {
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #fff
+    color: #fff;
+    font-size:14px;
 }
 
 .navbar-default .navbar-nav > li.button {
@@ -616,8 +617,8 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 }
 
 .dropdown-menu > li > a, .dropdown-menu li > a {
-    font-size: 12px;
-    padding: 3px 20px;
+    font-size: 13px;
+    padding: 4px 20px;
     clear: both;
     color: #333;
     display: block;
@@ -630,7 +631,8 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
     color: #2083d6;
     margin-top: 6px;
     padding-left: 11px;
-    cursor: pointer
+    cursor: pointer;
+    font-size:13px;
 }
 
 .dropdown-header i {
@@ -655,7 +657,7 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 }
 
 .col-menu-2 > li > ul > li a {
-    padding-left: 32px
+    padding-left: 32px;
 }
 
 .col-menu-2 > li > ul {
@@ -6336,8 +6338,8 @@ ul.timeline li > .date {
 
 .parsley-errors-list {
     height: 0px;
-    margin-top: 4px;
-    padding: 0
+    margin-top: 1px;
+    padding: 0;
 }
 
 .parsley-errors-list li {
@@ -6726,8 +6728,8 @@ form.dropzone .note {
 
     .not-nav {
         text-align: center;
-        background: #218ae1;
-        border-top: 1px solid #2082d5;
+        background: #d4be12;
+        border-top: 1px solid #d4be12;
         margin: 0
     }
 

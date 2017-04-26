@@ -10,7 +10,7 @@ class Parentesco extends Model
 
     protected $fillable = ['nombre'];
 
-    public function miembro_familias(){
-        return $this->hasMany('App\Miembro_Familia');
+    public function apoderados(){
+        return $this->hasMany('App\Apoderado');
     }
 }

@@ -1,22 +1,29 @@
 @extends('principal')
 
+@section('css')
+    <style>
+        #frmAlumno .row{
+            margin-top:4px;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
             <h2 style="display:inline-block;">Alumnos</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
-            <button class="btn btn-link pull-right" style="margin-top:5px;font-size: 16px;" onclick='agregarPersona("#",["cmbPadre","cmbMadre"])'> Agregar alumno</button>
         </div>
         <div class="cl-mcont">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <div class="tab-container">
                         <ul class="nav nav-tabs">
-                            <li><a href="#tp1" data-toggle="tab">Listado</a></li>
-                            <li class="active"><a href="#tp2" data-toggle="tab">Registrar</a></li>
+                            <li class="active"><a href="#tp1" data-toggle="tab">Listado</a></li>
+                            <li><a href="#tp2" data-toggle="tab">Registrar</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div id="tp1" class="tab-pane cont">
+                            <div id="tp1" class="tab-pane active cont">
                                 <table class='table table-bordered dataTable no-footer' id="tblListado">
                                     <thead>
                                     <tr>
@@ -25,7 +32,6 @@
                                         <th>Ap. Materno</th>
                                         <th>Nombres</th>
                                         <th>Colegio Proc.</th>
-                                        <th>Apoderado</th>
                                         <th style="width:76px;">Acción</th>
                                     </tr>
                                     </thead>
@@ -34,43 +40,119 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="tp2" class="tab-pane active cont">
+                            <div id="tp2" class="tab-pane cont">
                                 <div class="container">
                                     <form id="frmAlumno" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
-                                            <label class="col-sm-2">Alumno</label>
                                             <div class="col-sm-6">
-                                                <select id="cmbPersona" required="" style='width:100%;'>
-                                                </select>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Tipo Doc.</label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control" id="cmbPersona_TipoDoc" requerid="">
+                                                            <option value="DN">DNI</option>
+                                                            <option value="CE">CARNET EXTRANJERÍA</option>
+                                                            <option value="PA">PASAPORTE</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="col-sm-1" style="width: 58px;padding: 5px 0px;">Nro
+                                                        Doc.</label>
+                                                    <div class="col-sm-3">
+                                                        <input onchange="buscar_numero_documento(this)"
+                                                               id="txtPersona_Numero_Documento" class="form-control" type="text"
+                                                               data-parsley-trigger="change" data-parsley-length="[8,15]"
+                                                               data-parsley-required="true">
+                                                    </div>
+                                                    <div class="col-sm-2" style="padding: 6px 0px;">
+                                                        <label id="persona_mensaje">Teclea ⏎ ENTER </label>
+                                                        <div id="persona_loading" style="display:none;">
+                                                            <i class="fa fa-spinner fa-spin"></i> <label>Validando</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Apellidos</label>
+                                                    <div class="col-sm-4">
+                                                        <input id="txtPersona_ApPat" class="form-control" type="text"
+                                                               maxlength="50" data-parsley-trigger="change"
+                                                               data-parsley-length="[1,50]" data-parsley-required="true">
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input id="txtPersona_ApMat" class="form-control" type="text"
+                                                               maxlength="50">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Nombres</label>
+                                                    <div class="col-sm-8">
+                                                        <input id="txtPersona_Nombres" class="form-control" type="text"
+                                                               maxlength="50" data-parsley-trigger="change"
+                                                               data-parsley-length="[2,50]" data-parsley-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Sexo</label>
+                                                    <div class="col-sm-3">
+                                                        <select class="form-control" id="cmbPersona_Sexo" requerid="">
+                                                            <option value="M">MASCULINO</option>
+                                                            <option value="F">FEMENINO</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="col-sm-2">Fecha Nac.</label>
+                                                    <div class="col-sm-3">
+                                                        <input id="txtPersona_FechaNac" class="form-control date datetime"
+                                                               data-min-view="2" data-date-format="dd/mm/yyyy" type="text"
+                                                               maxlength="10" data-parsley-trigger="change"
+                                                               data-parsley-required="true">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Dirección</label>
+                                                    <div class="col-sm-9">
+                                                        <input id="txtPersona_Direccion" class="form-control" type="text"
+                                                               maxlength="100" data-parsley-trigger="change"
+                                                               data-parsley-required="true">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <a href="#" onclick="editarPersona('cmbPersona')" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-2">Codigo Educando</label>
-                                            <div class="col-sm-2">
-                                                <input type="text" id="txtCodigo_Educando" class="form-control">
-                                            </div>
-                                            <label class="col-sm-2">Codigo Recaudación</label>
-                                            <div class="col-sm-2">
-                                                <input type="text" id="txtCodigo_Recaudacion" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-2">Colegio Procedencia</label>
                                             <div class="col-sm-6">
-                                                <select id="cmbColegio_Procedencia" required="" style='width:100%;'>
-                                                </select>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Codigo Educando</label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" id="txtCodigo_Educando" class="form-control">
+                                                    </div>
+                                                    <label class="col-sm-3">Codigo Recaudación</label>
+                                                    <div class="col-sm-3">
+                                                        <input type="text" id="txtCodigo_Recaudacion" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Colegio Proc.</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" id="cmbColegio_Procedencia" required="" style='width:100%;'>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label class="col-sm-2">Telef. fijo</label>
+                                                    <div class="col-sm-3">
+                                                        <input class="form-control" type="text" id="txtPersona_Telf_Fijo"
+                                                               placeholder="Ejem. 254478" data-parsley-trigger="change"
+                                                               data-parsley-length="[6,8]" data-parsley-required="true">
+                                                    </div>
+                                                    <label class="col-sm-4">
+                                                        <input id="chkPadres_Conviven" class="icheck" type="checkbox" checked>Padres viven juntos
+                                                    </label>
+                                                    <label class="col-sm-2">
+                                                        <input id="chkActivo" class="icheck" type="checkbox" checked> Activo
+                                                    </label>
+                                                </div>
                                             </div>
+
+
                                         </div>
-                                        <div class="row">
-                                            <label class="col-sm-2">
-                                                <input id="chkPadres_Conviven" class="icheck" type="checkbox" checked>Padres viven juntos
-                                            </label>
-                                            <label class="col-sm-2">
-                                                <input id="chkActivo" class="icheck" type="checkbox" checked> Activo
-                                            </label>
-                                        </div>
+
+
                                     </form>
                                 </div>
                                 <div class="row">
@@ -85,7 +167,6 @@
             </div>
         </div>
     </div>
-    @include('form_persona')
 
 @endsection
 
@@ -100,12 +181,8 @@
             t = $("#tblListado").DataTable();
             $("#frmAlumno").parsley();
             listar();
-            $("#cmbPersona").select2();
-            $("#cmbColegio_Procedencia").select2();
             listarColegio_Procedencia();
-            listarPersonas_No_Alumnos('cmbPersona');
             $("#frmAlumno").parsley();
-            $("#tblMiembros").DataTable({"bPaginate":false,"bAutoWidth":false,"bFilter":false});
         });
 
         function guardar(){
@@ -121,7 +198,16 @@
 
         function obtenerDatos(){
             var info = [{"_token": "{{ csrf_token() }}",
-                "persona_id": $("#cmbPersona").val(),
+                "nombres": $("#txtPersona_Nombres").val(),
+                "apellido_paterno": $("#txtPersona_ApPat").val(),
+                "apellido_materno": $("#txtPersona_ApMat").val(),
+                "tipo_documento": $("#cmbPersona_TipoDoc").val(),
+                "numero_documento": $("#txtPersona_Numero_Documento").val(),
+                "sexo": $("#cmbPersona_Sexo").val(),
+                "fecha_nacimiento": $("#txtPersona_FechaNac").val(),
+                "direccion": $("#txtPersona_Direccion").val(),
+                "telf_fijo": $("#txtPersona_Telf_Fijo").val(),
+
                 "codigo_educando": $("#txtCodigo_Educando").val(),
                 "codigo_recaudacion": $("#txtCodigo_Recaudacion").val(),
                 "colegio_procedencia_id": parseInt($("#cmbColegio_Procedencia").val()),
@@ -169,7 +255,7 @@
                         cancelar();
                     },
                     error: function (request, status, error) {
-                        console.log(request.responseText);
+                        mostrar_error(request.responseText);
                     },
                     complete: function () {
                         $("#loading").hide();
@@ -193,7 +279,7 @@
                         cancelar();
                     },
                     error: function (request, status, error) {
-                        console.log(request.responseText);
+                        mostrar_error(request.responseText);
                     },
                     complete: function () {
                         $("#loading").hide();
@@ -204,24 +290,36 @@
 
         function editar(id) {
             $.ajax({
-                url: "/mantenimientos/trabajador/" + id,
+                url: "/mantenimientos/alumno/" + id,
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
                 },
                 success: function (data) {
                     $("#hddCodigo").val(id);
-                    $("#cmbPersona").select2("val", data["persona_id"]);
-                    $("#cmbGrado_Profesional").val(data['grado_profesional_id']);
-                    $("#cmbEspecialidad").val(data['especialidad_id']);
-                    $("#cmbCategoria_Trabajador").val(data['categoria_trabajador_id']);
+
+                    $("#txtPersona_Nombres").val(data["nombres"]);
+                    $("#txtPersona_ApPat").val(data["apellido_paterno"]);
+                    $("#txtPersona_ApMat").val(data["apellido_materno"]);
+                    $("#txtPersona_Numero_Documento").val(data["numero_documento"]);
+                    $("#cmbPersona_TipoDoc").val(data["tipo_documento"]);
+                    $("#txtPersona_FechaNac").val(data["fecha_nacimiento"]);
+                    $("#txtPersona_Direccion").val(data["direccion"]);
+                    $("#txtPersona_Telf_Fijo").val(data["telf_fijo"]);
+                    $("#cmbPersona_Sexo").val(data["sexo"]);
+
+                    $("#txtCodigo_Recaudacion").val(data["codigo_recaudacion"]);
+                    $("#txtCodigo_Educando").val(data["codigo_educando"]);
+                    $("#cmbColegio_Procedencia").val(data['colegio_procedencia_id']);
+                    $("#chkPadres_Conviven").iCheck(data['padres_juntos'] == true ? "check" : "uncheck");
                     $("#chkActivo").iCheck(data['activo'] == true ? "check" : "uncheck");
                     $("#btnGuardar").text("Guardar");
+                    $("#txtPersona_Numero_Documento").prop('disabled',true);
                     $('a[href="#tp2"]').click();
-                    $('a[href="#tp2"]').text("Modificando : "+data["persona"]["apellido_paterno"]+' '+data["persona"]['apellido_paterno']+' '+data["persona"]["nombres"]);
+                    $('a[href="#tp2"]').text("Modificando : "+data["apellido_paterno"]+' '+data['apellido_paterno']+' '+data["nombres"]);
                 },
                 error: function (request, status, error) {
-                    console.log(request.responseText);
+                    mostrar_error(request.responseText);
                 },
                 complete: function () {
                     $("#loading").hide();
@@ -231,40 +329,24 @@
 
         function cancelar(){
             $("#hddCodigo").val("");
-            $("#cmbPersona").val("").change();
+            $("#txtPersona_Nombres").val("");
+            $("#txtPersona_ApPat").val("");
+            $("#txtPersona_ApMat").val("");
+            $("#txtPersona_Numero_Documento").val("");
+            $("#txtPersona_FechaNac").val("");
+            $("#txtPersona_Direccion").val("");
+            $("#txtPersona_Telf_Fijo").val("");
+            $("#cmbPersona_Sexo").val("M");
+            $("#cmbPersona_TipoDoc").val("DN");
+
             $("#chkActivo").iCheck("check");
             $("#chkPadres_Conviven").iCheck("check");
             $("#btnGuardar").text("Registrar");
             $('#frmAlumno').parsley().reset();
-            listarPersonas_No_Alumnos('cmbPersona');
+            $("#txtPersona_Numero_Documento").prop('disabled',false);
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();
-        }
-
-        function listarPersonas_No_Alumnos(id) {
-            $.ajax({
-                url: "/mantenimientos/persona/listar_no_alumnos",
-                type: "GET",
-                beforeSend: function () {
-                    $("#loading").show();
-                },
-                success: function (data) {
-                    var opciones = "<option value=''>---</option>";
-                    $("#"+id).empty();
-                    $.each(data,function( index, value ) {
-                        var color = value["sexo"]=="M" ? "black" : "red";
-                        opciones += "<option style='color:"+color+";' value='"+value["id"]+"'>"+value["apellido_paterno"]+' '+value["apellido_materno"]+' '+value["nombres"]+' ('+value["numero_documento"]+")</option>";
-                    });
-                    $("#"+id).append(opciones);
-                },
-                error: function (request, status, error) {
-                    console.log(request.responseText);
-                },
-                complete: function () {
-                    $("#loading").hide();
-                }
-            });
         }
 
         function listar() {
@@ -277,12 +359,11 @@
                 success: function (data) {
                     t.clear().draw();
                     $.each(data,function( index, value ) {
-                        var nodo = t.row.add([value['persona']['numero_documento'],
-                            value['persona']['apellido_paterno'],
-                            value['persona']['apellido_materno'],
-                            value['persona']['nombres'],
+                        var nodo = t.row.add([value['numero_documento'],
+                            value['apellido_paterno'],
+                            value['apellido_materno'],
+                            value['nombres'],
                             value['colegio_procedencia']['nombre'],
-                            'apoderado',
                             grupo_opciones(value['id'])]).draw(false).node();
                         if(value["activo"]==false)
                             $(nodo).addClass('danger');
@@ -296,6 +377,36 @@
                     $("#loading").hide();
                 }
             });
+        }
+
+        function buscar_numero_documento(obj) {
+            var numero_documento = $(obj).val();
+            if(numero_documento.length >=8){
+                $.ajax({
+                    url: "/mantenimientos/alumno/buscar_numero_documento",
+                    type: "GET",
+                    data: {"numero_documento": numero_documento},
+                    beforeSend: function () {
+                        $("#persona_mensaje").hide();
+                        $("#persona_loading").show();
+                    },
+                    success: function (data) {
+                        if(data.length > 0){
+                            notificacion('Validacion','DNI ya registrado','warning');
+                            $("#txtPersona_Numero_Documento").val("");
+                        }else{
+                            notificacion('Validacion','DNI válido','info');
+                        }
+                    },
+                    error: function (request, status, error) {
+                        mostrar_error(request.responseText);
+                    },
+                    complete: function () {
+                        $("#persona_loading").hide();
+                        $("#persona_mensaje").show();
+                    }
+                });
+            }
         }
 
         function listarColegio_Procedencia() {
@@ -313,7 +424,7 @@
                     $("#cmbColegio_Procedencia").append(opciones);
                 },
                 error: function (request, status, error) {
-                    console.log(request.responseText);
+                    mostrar_error(request.responseText);
                 },
                 complete: function () {
                     $("#loading").hide();

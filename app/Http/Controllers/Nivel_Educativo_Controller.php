@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Grado_Profesional_Controller extends Controller
+class Nivel_Educativo_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class Grado_Profesional_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/grado_profesional');
+        return view('mantenimientos/nivel_educativo');
     }
 
     /**
@@ -34,10 +34,11 @@ class Grado_Profesional_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $grado_profesional = new \App\Grado_Profesional();
-        $grado_profesional->nombre = $request->input('nombre');
-        $grado_profesional->abreviatura = $request->input('abreviatura');
-        $grado_profesional->save();
+        $nivel_educativo = new \App\Nivel_Educativo();
+        $nivel_educativo->codigo = $request->input('codigo');
+        $nivel_educativo->descripcion = $request->input('descripcion');
+        $nivel_educativo->abreviatura = $request->input('abreviatura');
+        $nivel_educativo->save();
     }
 
     /**
@@ -49,9 +50,9 @@ class Grado_Profesional_Controller extends Controller
     public function show($id)
     {
         if (is_numeric($id)) {
-            return \App\Grado_Profesional::find($id);
+            return \App\Nivel_Educativo::find($id);
         } else if($id == "*"){
-            return \App\Grado_Profesional::all();
+            return \App\Nivel_Educativo::all();
         }
 
     }
@@ -76,10 +77,11 @@ class Grado_Profesional_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $grado_profesional = \App\Grado_Profesional::find($id);
-        $grado_profesional->nombre = $request->input('nombre');
-        $grado_profesional->abreviatura = $request->input('abreviatura');
-        $grado_profesional->save();
+        $nivel_educativo = \App\Nivel_Educativo::find($id);
+        $nivel_educativo->codigo = $request->input('codigo');
+        $nivel_educativo->descripcion = $request->input('descripcion');
+        $nivel_educativo->abreviatura = $request->input('abreviatura');
+        $nivel_educativo->save();
     }
 
     /**
@@ -90,7 +92,7 @@ class Grado_Profesional_Controller extends Controller
      */
     public function destroy($id)
     {
-        $grado_profesional = \App\Grado_Profesional::find($id);
-        $grado_profesional->delete();
+        $nivel_educativo = \App\Nivel_Educativo::find($id);
+        $nivel_educativo->delete();
     }
 }
