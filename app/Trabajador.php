@@ -22,5 +22,8 @@ class Trabajador extends Model
     public function usuario(){
         return $this->belongsTo('App\Usuario');
     }
+    public function seccions(){
+        return $this->hasMany('App\Seccion');
+    }
 
 }

@@ -67,6 +67,8 @@ class Alumno_Controller extends Controller
             $alumno = \App\Alumno::find($id);
             $alumno->colegio_procedencia;
             return $alumno;
+        }else if($id == "*"){
+            return \App\Alumno::where('activo',true)->select('id','apellido_paterno', 'apellido_materno','nombres')->get();
         }
     }
 

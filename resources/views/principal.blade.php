@@ -27,6 +27,12 @@
     {!! HTML::style('lib/jquery.select2/select2.css') !!}
     {!! HTML::style('css/style.css') !!}
 
+    <style>
+        .table tbody tr:hover{
+            background: rgba(96, 125, 139, 0.18);
+            cursor:pointer;
+        }
+    </style>
     @yield('css')
 </head>
 

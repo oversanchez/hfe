@@ -16,5 +16,8 @@ class Seccion extends Model
     public function anio_lectivo(){
         return $this->belongsTo('App\Anio_Lectivo');
     }
+    public function trabajador(){
+        return $this->belongsTo('App\Trabajador');
+    }
     
 }

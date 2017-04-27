@@ -2480,7 +2480,7 @@ table.information > tbody > tr > td {
 }
 
 .table > tbody > tr > td {
-    padding: 7px 8px;
+    padding: 1px 8px;
     line-height: inherit
 }
 

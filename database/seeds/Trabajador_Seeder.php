@@ -11,6 +11,6 @@ class Trabajador_Seeder extends Seeder
      */
     public function run()
     {
-        factory(App\Trabajador::class, 40)->create();
+        factory(App\Trabajador::class, 30)->create();
     }
 }

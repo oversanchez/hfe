@@ -13,7 +13,7 @@
         <div class="page-head">
             <h2 style="display:inline-block;">Apoderados</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
-            <select onchange="listar()" id="cmbAlumno" style="width: 400px;margin-top: -10px;margin-left: 15px;font-style: italic;">
+            <select onchange="listar()" id="cmbAlumno" style="width: 400px;margin-top: -10px;margin-left: 25px;margin-top: -18px;font-style: italic;">
             </select>
         </div>
         <div class="cl-mcont">
@@ -444,7 +444,7 @@
 
         function listarAlumnos() {
             $.ajax({
-                url: "/mantenimientos/alumno/listar",
+                url: "/mantenimientos/alumno/*",
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();

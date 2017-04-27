@@ -15,8 +15,7 @@ class CreacionTablaSeccion extends Migration
     {
         Schema::create('seccion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->integer('numero');
+            $table->string('letra');
             $table->integer('vacantes');
             $table->boolean('activo');
             $table->enum('turno',['M','T','N']);

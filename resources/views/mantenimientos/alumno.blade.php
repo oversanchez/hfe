@@ -158,6 +158,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button id="btnGuardar" class="btn btn-primary" onclick="guardar()">Registrar alumno</button>
+                                        <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
@@ -183,6 +184,7 @@
             listar();
             listarColegio_Procedencia();
             $("#frmAlumno").parsley();
+            cancelar();
         });
 
         function guardar(){
@@ -336,7 +338,7 @@
             $("#txtPersona_FechaNac").val("");
             $("#txtPersona_Direccion").val("");
             $("#txtPersona_Telf_Fijo").val("");
-            $("#cmbPersona_Sexo").val("M");
+            $("#cmbPersona_Sexo").val("F");
             $("#cmbPersona_TipoDoc").val("DN");
 
             $("#chkActivo").iCheck("check");

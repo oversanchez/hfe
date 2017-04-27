@@ -56,10 +56,12 @@ Route::group(['prefix'=>'mantenimientos'], function () {
 
     Route::resource('alumno','\App\Http\Controllers\Alumno_Controller');
 
-    //Route::get('periodo_academico/listar','\App\Http\Controllers\Periodo_Academico_Controller@listar');
+    Route::get('seccion/listar', ['uses' => 'Seccion_Controller@listar', 'as' => 'seccion.listar']);
 
-
+    Route::resource('seccion','\App\Http\Controllers\Seccion_Controller');
 
 });
+
+Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
 
 
