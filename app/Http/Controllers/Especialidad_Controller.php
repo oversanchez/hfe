@@ -13,7 +13,7 @@ class Especialidad_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/especialidad');
+        return view('intranet/mantenimientos/especialidad');
     }
 
     /**

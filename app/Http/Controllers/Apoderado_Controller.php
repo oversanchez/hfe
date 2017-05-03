@@ -14,7 +14,7 @@ class Apoderado_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/apoderado');
+        return view('intranet/mantenimientos/apoderado');
     }
 
     /**

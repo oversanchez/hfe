@@ -14,7 +14,7 @@ class Periodo_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/periodo');
+        return view('intranet/mantenimientos/periodo');
     }
 
     /**

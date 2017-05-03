@@ -13,7 +13,7 @@ class Colegio_Procedencia_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/colegio_procedencia');
+        return view('intranet/mantenimientos/colegio_procedencia');
     }
 
     /**

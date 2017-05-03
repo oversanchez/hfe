@@ -13,7 +13,7 @@ class Nivel_Educativo_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/nivel_educativo');
+        return view('intranet/mantenimientos/nivel_educativo');
     }
 
     /**

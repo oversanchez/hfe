@@ -14,7 +14,7 @@ class Alumno_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/alumno');
+        return view('intranet/mantenimientos/alumno');
     }
 
     /**
@@ -74,7 +74,7 @@ class Alumno_Controller extends Controller
 
     public function listar()
     {
-        $alumnos =  \App\Alumno::all();
+        $alumnos =  \App\Alumno::orderBy('apellido_paterno', 'ASC')->orderBy('apellido_materno', 'ASC')->orderBy('nombres', 'ASC')->get();
         foreach ($alumnos as $alumno){
             $alumno->colegio_procedencia;
         }

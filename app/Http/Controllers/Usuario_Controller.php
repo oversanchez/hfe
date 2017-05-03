@@ -13,7 +13,7 @@ class Usuario_Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('intranet/mantenimientos/usuario');
     }
 
     /**
@@ -34,7 +34,11 @@ class Usuario_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new \App\Usuario();
+        $usuario->alias = $request->input('alias');
+        $usuario->clave = Bcrypt($request->input('clave'));
+        $usuario->tipo = $request->input('tipo');
+        $usuario->activo = $request->input('activo');
     }
 
     /**
@@ -45,7 +49,11 @@ class Usuario_Controller extends Controller
      */
     public function show($id)
     {
-        //
+        if (is_numeric($id)) {
+            return \App\Usuario::find($id);
+        } else if($id == "*"){
+            return \App\Usuario::all();
+        }
     }
 
     /**
@@ -68,7 +76,11 @@ class Usuario_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = \App\Usuario::find($id);
+        $usuario->alias = $request->input('alias');
+        $usuario->clave = $request->bcrypt(input('clave'));
+        $usuario->tipo = $request->input('tipo');
+        $usuario->activo = $request->input('activo');
     }
 
     /**
@@ -79,6 +91,7 @@ class Usuario_Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = \App\Usuario::find($id);
+        $usuario->delete();
     }
 }

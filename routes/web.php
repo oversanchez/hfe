@@ -12,11 +12,19 @@
 */
 use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('login');
+Route::get('/intranet/', function () {
+    return view('intranet/login');
 });
 
-Route::group(['prefix'=>'mantenimientos'], function () {
+Route::get('/', function () {
+    return view('website/principal');
+});
+
+Route::get('/website/', function () {
+    return view('website/principal');
+});
+
+Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::resource('anio_lectivo','\App\Http\Controllers\Anio_Lectivo_Controller');
 
@@ -60,6 +68,21 @@ Route::group(['prefix'=>'mantenimientos'], function () {
 
     Route::resource('seccion','\App\Http\Controllers\Seccion_Controller');
 
+    Route::resource('usuario','\App\Http\Controllers\Usuario_Controller');
+
+});
+
+Route::group(['prefix'=>'intranet/website'], function () {
+
+    Route::resource('enlace_rapido','\App\Http\Controllers\Enlace_Rapido_Controller');
+
+    Route::resource('noticia','\App\Http\Controllers\Noticia_Controller');
+
+    Route::resource('evento','\App\Http\Controllers\Evento_Controller');
+
+    Route::resource('comunicado','\App\Http\Controllers\Comunicado_Controller');
+
+    //Route::get('periodo/listar', ['uses' => 'Periodo_Controller@listar', 'as' => 'periodo.listar']);
 });
 
 Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);

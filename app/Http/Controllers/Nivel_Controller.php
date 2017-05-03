@@ -13,7 +13,7 @@ class Nivel_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/nivel');
+        return view('intranet/mantenimientos/nivel');
     }
 
     /**

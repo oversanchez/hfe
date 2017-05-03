@@ -13,7 +13,7 @@ class Anio_Lectivo_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/anio_lectivo');
+        return view('intranet/mantenimientos/anio_lectivo');
     }
 
     /**

@@ -13,7 +13,7 @@ class Categoria_Trabajador_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/categoria_trabajador');
+        return view('intranet/mantenimientos/categoria_trabajador');
     }
 
     /**

@@ -13,7 +13,7 @@ class Grado_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/grado');
+        return view('intranet/mantenimientos/grado');
     }
 
     /**

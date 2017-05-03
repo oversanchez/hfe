@@ -14,7 +14,7 @@ class Trabajador_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/trabajador');
+        return view('intranet/mantenimientos/trabajador');
     }
 
     /**
@@ -75,7 +75,7 @@ class Trabajador_Controller extends Controller
 
     public function listar()
     {
-        $trabajadores =  \App\Trabajador::all();
+        $trabajadores =  \App\Trabajador::orderBy('apellido_paterno', 'ASC')->orderBy('apellido_materno', 'ASC')->orderBy('nombres', 'ASC')->get();
         foreach ($trabajadores as $trabajador){
             $trabajador->nivel_educativo;
             $trabajador->categoria_trabajador;

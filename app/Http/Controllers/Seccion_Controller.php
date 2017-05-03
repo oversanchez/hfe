@@ -15,7 +15,7 @@ class Seccion_Controller extends Controller
      */
     public function index()
     {
-        return view('mantenimientos/seccion');
+        return view('intranet/mantenimientos/seccion');
     }
 
     /**
@@ -36,7 +36,17 @@ class Seccion_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $seccion = new \App\Seccion();
+        $seccion->anio_lectivo_id = $request->input('anio_lectivo_id');
+        $seccion->grado_id = $request->input('grado_id');
+        $seccion->trabajador_id = $request->input('trabajador_id');
+        $seccion->letra= $request->input('letra');
+        $seccion->turno= $request->input('turno');
+        $seccion->tipo_calificacion= $request->input('tipo_calificacion');
+        $seccion->vacantes= $request->input('vacantes');
+        $seccion->activo= $request->input('activo');
+
+        $seccion->save();
     }
 
     /**
@@ -47,7 +57,11 @@ class Seccion_Controller extends Controller
      */
     public function show($id)
     {
-        //
+        if (is_numeric($id)) {
+            return \App\Seccion::find($id);
+        } else if($id == "*"){
+            return \App\Seccion::all();
+        }
     }
 
     public function listar()
@@ -85,7 +99,15 @@ class Seccion_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $seccion = \App\Seccion::find($id);
+        $seccion->grado_id = $request->input('grado_id');
+        $seccion->trabajador_id = $request->input('trabajador_id');
+        $seccion->letra= $request->input('letra');
+        $seccion->tipo_calificacion= $request->input('tipo_calificacion');
+        $seccion->vacantes= $request->input('vacantes');
+        $seccion->activo= $request->input('activo');
+
+        $seccion->save();
     }
 
     /**
@@ -96,6 +118,7 @@ class Seccion_Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $seccion = \App\Seccion::find($id);
+        $seccion->delete();
     }
 }

@@ -14,7 +14,7 @@ class Persona_Controller extends Controller
      */
     public function index()
     {
-        //return view('mantenimientos/persona');
+        //return view('intranet/mantenimientos/persona');
     }
 
     /**

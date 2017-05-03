@@ -15,6 +15,7 @@ class Sms_Controller extends Controller
         $number = '968644416';
         $message = 'hola';
 
+        $smsGateway->
         $result = $smsGateway->sendMessageToNumber($number, $message, $deviceID);
     }
 
