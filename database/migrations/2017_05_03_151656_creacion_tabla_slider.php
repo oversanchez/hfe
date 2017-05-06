@@ -16,12 +16,12 @@ class CreacionTablaSlider extends Migration
         Schema::create('slider', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('orden');
-            $table->string('foto');
-            $table->string('nombre')->nullable();
+            $table->string('nombre');
             $table->string('descripcion')->nullable();
-            $table->string('url')->nullable();
-            $table->string('nombre_boton')->nullable();
-            $table->boolean('publico')->default(true);
+            $table->string('url_foto');
+            $table->string('url_vinculo')->default('#')->nullable();
+            $table->string('nombre_vinculo')->nullable();
+            $table->boolean('publico');
             $table->timestamps();
         });
     }

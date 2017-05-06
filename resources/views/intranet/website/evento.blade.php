@@ -3,7 +3,7 @@
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
-            <h2 style="display:inline-block;">Noticias</h2>
+            <h2 style="display:inline-block;">Eventos</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
         </div>
         <div class="cl-mcont">
@@ -19,7 +19,7 @@
                                 <table class='table table-bordered dataTable no-footer' id="tblListado">
                                     <thead>
                                     <tr>
-                                        <th style='width:90px;'>Fecha Pub.</th>
+                                        <th style='width:90px;'>Fecha</th>
                                         <th>Nombre</th>
                                         <th>Acción</th>
                                     </tr>
@@ -31,14 +31,14 @@
                             </div>
                             <div id="tp2" class="tab-pane cont">
                                 <div class="container">
-                                    <form id="frmNoticia" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                    <form id="frmEvento" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
                                             <label class="col-md-1" for="txtNombre">Nombre</label>
-                                            <div class="col-md-4"><input type="text" class="form-control" id="txtNombre" placeholder="Nombre del noticia" data-parsley-trigger="change" data-parsley-required="true"></div>
-                                            <label class="col-md-1" for="txtUrl_Foto">Url Foto</label>
+                                            <div class="col-md-4"><input type="text" class="form-control" id="txtNombre" placeholder="Nombre del evento" data-parsley-trigger="change" data-parsley-required="true"></div>
+                                            <label class="col-md-1" for="txtHora">Hora</label>
                                             <div class="col-md-3">
-                                                <input type="text" class="form-control" id="txtUrl_Foto" placeholder="Url de Miniatura" data-parsley-trigger="change" data-parsley-required="true">
+                                                <input type="text" class="form-control" id="txtHora" placeholder="Hora" data-parsley-trigger="change" data-parsley-required="true">
                                             </div>
                                             <label class="col-md-1" for="txtFecha">Fecha</label>
                                             <div class="col-md-2">
@@ -50,7 +50,9 @@
                                         </div>
                                         <div class="row">
                                             <label class="col-md-1" for="txtDescripcion">Descripcion</label>
-                                            <div class="col-md-11"><input type="text" class="form-control" id="txtDescripcion" placeholder="Descripcion del noticia" data-parsley-trigger="change" data-parsley-required="true"></div>
+                                            <div class="col-md-6"><input type="text" class="form-control" id="txtDescripcion" placeholder="Descripcion del evento" data-parsley-trigger="change" data-parsley-required="true"></div>
+                                            <label class="col-md-1" for="txtLugar">Lugar</label>
+                                            <div class="col-md-4"><input type="text" class="form-control" id="txtLugar" placeholder="Lugar del evento" data-parsley-trigger="change" data-parsley-required="true"></div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -88,14 +90,14 @@
             App.init();
             App.formElements();
             t = $("#tblListado").DataTable();
-            $("#frmNoticia").parsley();
+            $("#frmEvento").parsley();
             $("#dvContenido").summernote({height: 200});
             listar();
         });
 
         function guardar(){
             var accion = $("#hddCodigo").val() == "" ? true : false;
-            if($("#frmNoticia").parsley().validate()){
+            if($("#frmEvento").parsley().validate()){
                 if (accion)
                     registrar()
                 else
@@ -109,7 +111,8 @@
                 "nombre": $("#txtNombre").val(),
                 "descripcion": $("#txtDescripcion").val(),
                 "contenido": $("#dvContenido").summernote('code'),
-                "url_foto": $("#txtUrl_Foto").val(),
+                "lugar": $("#txtLugar").val(),
+                "hora": $("#txtHora").val(),
                 "fecha": $("#txtFecha").val(),
                 "publico": $("#chkPublico").is(":checked")}][0];
             return info;
@@ -119,7 +122,7 @@
             if (confirm("¿Deseas continuar el registro?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/website/noticia",
+                    url: "/intranet/website/evento",
                     type: "POST",
                     data: info,
                     beforeSend: function () {
@@ -143,7 +146,7 @@
             if (confirm("¿Deseas continuar la modificación?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/website/noticia/" + $("#hddCodigo").val(),
+                    url: "/intranet/website/evento/" + $("#hddCodigo").val(),
                     type: "PUT",
                     data: info,
                     beforeSend: function () {
@@ -167,7 +170,7 @@
             if (confirm("¿Deseas eliminar el elemento?")) {
                 var info = [{"_token": "{{ csrf_token() }}"}][0];
                 $.ajax({
-                    url: "/intranet/website/noticia/" + id,
+                    url: "/intranet/website/evento/" + id,
                     type: "DELETE",
                     data: info,
                     beforeSend: function () {
@@ -189,7 +192,7 @@
 
         function editar(id) {
             $.ajax({
-                url: "/intranet/website/noticia/" + id,
+                url: "/intranet/website/evento/" + id,
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
@@ -200,7 +203,8 @@
                     $("#txtDescripcion").val(data["descripcion"]);
                     $("#dvContenido").summernote('code',data["contenido"]);
                     $("#txtFecha").val(data["fecha"]);
-                    $("#txtUrl_Foto").val(data["url_foto"]);
+                    $("#txtLugar").val(data["lugar"]);
+                    $("#txtHora").val(data["hora"]);
                     $("#chkPublico").iCheck(data['publico'] == true ? "check" : "uncheck");
                     $("#btnGuardar").text("Guardar");
                     $('a[href="#tp2"]').click();
@@ -221,11 +225,12 @@
             $("#txtDescripcion").val("");
             $("#dvContenido").summernote('reset');
             $("#txtFecha").val("");
-            $("#txtUrl_Foto").val("");
+            $("#txtLugar").val("");
+            $("#txtHora").val("");
             $("#chkPublico").iCheck("check");
 
             $("#btnGuardar").text("Registrar");
-            $('#frmNoticia').parsley().reset();
+            $('#frmEvento').parsley().reset();
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();
@@ -233,7 +238,7 @@
 
         function listar() {
             $.ajax({
-                url: "/intranet/website/noticia/*",
+                url: "/intranet/website/evento/*",
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,16 +12,17 @@
     {!! HTML::style('royal/fonts/font-awesome/css/font-awesome.min.css') !!}
     {!! HTML::style('royal/css/plugins/flexslider.css') !!}
     {!! HTML::style('royal/css/plugins/fullcalendar.min.css') !!}
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,600italic,400italic,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,600italic,400italic,700' rel='stylesheet'
+          type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
-    {!! HTML::style('royal/options/optionswitch.css') !!}
-    {!! HTML::style('royal/css/plugins/animate.css') !!}
-    {!! HTML::style('royal/css/plugins/magnific-popup.css') !!}
-    {!! HTML::style('royal/css/style.css') !!}
-    {!! HTML::style('royal/css/colors/default.css') !!}
-    {!! HTML::style('royal/') !!}
-    {!! HTML::style('royal/') !!}
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+{!! HTML::style('royal/options/optionswitch.css') !!}
+{!! HTML::style('royal/css/plugins/animate.css') !!}
+{!! HTML::style('royal/css/plugins/magnific-popup.css') !!}
+{!! HTML::style('royal/css/style.css') !!}
+{!! HTML::style('royal/css/colors/default.css') !!}
+{!! HTML::style('royal/') !!}
+{!! HTML::style('royal/') !!}
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -29,71 +30,26 @@
     <![endif]-->
 </head>
 
-<body>
-<!--=== option Switcher ===-->
-<i class="option-switcher-btn fa fa-gear hidden-xs"></i>
-<div class="option-switcher animated fadeInRight">
-    <div class="option-swticher-header">
-        <div class="option-switcher-heading">Template Options</div>
-        <div class="theme-close"><i class="fa fa-close"></i></div>
-    </div>
-    <div class="option-swticher-body">
-        <!-- Theme Colors -->
-        <ul class="list-unstyled">
-            <li class="theme-default theme-active" data-color="default" data-logo="default-logo"></li>
-            <li class="theme-grayGreen" data-color="gray-green" data-logo="grayGreen"></li>
-            <li class="theme-blueOrange" data-color="blue-orange" data-logo="blueOrange"></li>
-            <li class="theme-grayBlue last" data-color="gray-blue" data-logo="grayBlue"></li>
-        </ul>
-        <!-- Layout Styles -->
-        <div class="row no-col-space layoutStyle">
-            <div class="col-xs-6">
-                <a href="javascript:void(0);" class="btn-u  btn-block active-switcher-btn wide-layout-btn">Wide</a>
-            </div>
-            <div class="col-xs-6">
-                <a href="javascript:void(0);" class="btn-u btn-block boxed-layout-btn">Boxed</a>
-            </div>
-        </div>
-        <!-- Header Styles -->
-        <div class="row no-col-space headerStyle">
-            <div class="col-xs-6">
-                <a href="javascript:void(0);" class="btn-u btn-block active-switcher-btn fixed-header-btn">Fixed Top</a>
-            </div>
-            <div class="col-xs-6">
-                <a href="javascript:void(0);" class="btn-u  btn-block static-header-btn">Static Top</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!--/option-switcher-->
+<body class="bodyColor container">
 <div class="main_wrapper">
     <div class="topbar clearfix">
         <div class="container">
-            <ul class="topbar-left">
-                <li class="phoneNo"><i class="fa fa-phone"></i>0123 45678910</li>
-                <li class="email-id hidden-xs hidden-sm"><i class="fa fa-envelope"></i>
-                    <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
-                </li>
-            </ul>
             <ul class="topbar-right">
-                <li class="hidden-xs"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li class="hidden-xs"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li class="hidden-xs"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li class="hidden-xs"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                <li class="hidden-xs"><a href="#"><i class="fa fa-rss"></i></a></li>
                 <li class="dropdown top-search list-inline">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
                         <i class="fa fa-search"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <form action="http://themes.iamabdus.com/royal/1.2/courses.html" method="post">
-                            <input type="text" placeholder="Course Name" id="exampleInputEmail1" class="form-control">
-                            <button class="btn btn-default commonBtn" type="submit">Search</button>
+                            <input type="text" placeholder="Dime que buscas" id="txtBuscar" class="form-control">
+                            <button class="btn btn-default commonBtn" type="submit">Buscar</button>
                         </form>
                     </ul>
                 </li>
                 <li class="dropdown language">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
                         <i class="fa fa-globe"></i>EN
                         <i class="fa fa-caret-down"></i>
                     </a>
@@ -107,6 +63,12 @@
                     </ul>
                 </li>
             </ul>
+            <ul class="topbar-right" style="margin-right: 150px;">
+                <li class="phoneNo hidden-xs hidden-sm"><i class="fa fa-phone"></i>0123 45678910</li>
+                <li class="email-id hidden-xs hidden-sm"><i class="fa fa-envelope"></i>
+                    <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="header clearfix">
@@ -117,23 +79,26 @@
                         <div class="header_inner">
                             <!-- Brand and toggle get grouped for better mobile display -->
                             <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#main-nav" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand logo clearfix" href="index.html"><img src="img/logo.png" alt="" class="img-responsive" /></a>
+                                <a class="navbar-brand logo clearfix" href="index.html"><img src="royal/img/logo.png" alt=""
+                                                                                             class="img-responsive"/></a>
                             </div>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="main-nav">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="active"><a href="index.html">Home</a></li>
                                     <li class="dropdown list-inline">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">Courses</a>
                                         <ul class="dropdown-menu">
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses Grid View</a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false">Courses Grid View</a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="course-grid-3col.html">3 Columns</a></li>
                                                     <li><a href="course-grid-4col.html">4 Columns</a></li>
@@ -142,7 +107,8 @@
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses List View</a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false">Courses List View</a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="course-right-sidebar.html">Sidebar Right</a></li>
                                                     <li><a href="course-left-sidebar.html">Sidebar Left</a></li>
@@ -150,15 +116,18 @@
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Single Course</a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false">Single Course</a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="single-course-right-sidebar.html">Sidebar Right</a></li>
+                                                    <li><a href="single-course-right-sidebar.html">Sidebar Right</a>
+                                                    </li>
                                                     <li><a href="single-course-left-sidebar.html">Sidebar Left</a></li>
                                                     <li><a href="single-course-fullwidth.html">Fullwidth</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Buy Course</a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false">Buy Course</a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="buying-steps.html">Payment</a></li>
                                                     <li><a href="buying-confirmation.html">Confirmation </a></li>
@@ -167,25 +136,29 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PAGES</a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">PAGES</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="about.html">About College</a></li>
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Photo Gallery</a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false">Photo Gallery</a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="photo-gallery3col.html">Gallery 3 Columns</a></li>
                                                     <li><a href="photo-gallery4col.html">Gallery 4 Columns</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apply Now</a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false">Apply Now</a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="buying-steps.html">Apply For Addmission</a></li>
                                                     <li><a href="buying-confirmation.html">Confirmation</a></li>
                                                 </ul>
                                             </li>
                                             <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prices Table</a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false">Prices Table</a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="price-table-3col.html">Prices 3 column</a></li>
                                                     <li><a href="price-table-4col.html">Prices 4 column</a></li>
@@ -201,16 +174,20 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BLOG</a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">BLOG</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="blog-right-sidebar.html">Blog Sidebar Right</a></li>
                                             <li><a href="blog-left-sidebar.html">Blog Sidebar Left</a></li>
-                                            <li><a href="single-post-right-sidebar.html">Single Post Sidebar Right</a></li>
-                                            <li><a href="single-post-left-sidebar.html">Single Post Sidebar Left</a></li>
+                                            <li><a href="single-post-right-sidebar.html">Single Post Sidebar Right</a>
+                                            </li>
+                                            <li><a href="single-post-left-sidebar.html">Single Post Sidebar Left</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">Events</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="events-3col.html">Events 3 Columns</a></li>
                                             <li><a href="events-right-sidebar.html">Events Sidebar Right</a></li>
@@ -231,181 +208,99 @@
         </nav>
         <!-- navbar -->
     </div>
-    <div class="banner carousel slide" id="recommended-item-carousel" data-ride="carousel">
-        <div class="slides carousel-inner">
-            <div class="item active">
-                <img src="img/home/slider/slider_image_1.jpg" alt="" />
-                <div class="banner_caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="caption_inner animated fadeInUp">
-                                    <h1>Welcome To Royal College</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.</p>
-                                    <a target="_blank" href="https://goo.gl/0doAl6">Buy Now</a>
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="banner carousel slide" id="recommended-item-carousel" data-ride="carousel">
+                <div class="slides carousel-inner">
+                @foreach($sliders as $key => $slider)
+                    <?php
+                        $active = "";
+                        if($key == 0)
+                            $active = " active";
+                    ?>
+                    <div class="item {{$active}}">
+                        <img src="{{ $slider->url_foto }}" alt=""/>
+                        <div class="banner_caption">
+                            <div class="container" style="max-width: 700px;">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="caption_inner animated fadeInUp">
+                                            <h3 style="padding: 3px 0px 5px 10px;color:white;display:inline;">{{ $slider->nombre }}</h3>
+                                            @if ($slider->descripcion != "")
+                                                <p>{{$slider->descripcion}}</p>
+                                            @endif
+                                            @if ($slider->url_vinculo !== "" && $slider->url_vinculo !== "#")
+                                                <a style='display:inline;float:right;' target='_blank'
+                                                   href='{{$slider->url_vinculo}}'>{{$slider->nombre_vinculo}}</a>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
-                                <!--end caption_inner-->
+                                <!--end row-->
                             </div>
-                        </div>
-                        <!--end row-->
+                            <!--end container-->
+                        </div>  <!--end banner_caption-->
                     </div>
-                    <!--end container-->
+                @endforeach
                 </div>
-                <!--end banner_caption-->
-            </div>
-            <div class="item">
-                <img src="img/home/slider/slider_image_2.jpg" alt="" />
-                <div class="banner_caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="caption_inner animated fadeInUp">
-                                    <h1>Admission going on</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.</p>
-                                    <a target="_blank" href="https://goo.gl/0doAl6">Buy Now</a>
-                                </div>
-                                <!--end caption_inner-->
-                            </div>
-                        </div>
-                        <!--end row-->
-                    </div>
-                    <!--end container-->
-                </div>
-                <!--end banner_caption-->
-            </div>
-            <div class="item">
-                <img src="img/home/slider/slider_image_3.jpg" alt="" />
-                <div class="banner_caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="caption_inner animated fadeInUp">
-                                    <h1>Arrange a tour to our college</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.</p>
-                                    <a target="_blank" href="https://goo.gl/0doAl6">Buy Now</a>
-                                </div>
-                                <!--end caption_inner-->
-                            </div>
-                        </div>
-                        <!--end row-->
-                    </div>
-                    <!--end container-->
-                </div>
-                <!--end banner_caption-->
-            </div>
-            <div class="item">
-                <img src="img/home/slider/slider_image_4.jpg" alt="" />
-                <div class="banner_caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="caption_inner animated fadeInUp">
-                                    <h1>Find your dream course</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.</p>
-                                    <a target="_blank" href="https://goo.gl/0doAl6">Buy Now</a>
-                                </div>
-                                <!--end caption_inner-->
-                            </div>
-                        </div>
-                        <!--end row-->
-                    </div>
-                    <!--end container-->
-                </div>
-                <!--end banner_caption-->
+                <a class="left recommended-item-control" href="#recommended-item-carousel"
+                   data-slide="prev">
+                    <img src="royal/img/home/slider/prev.png">
+                </a>
+                <a class="right recommended-item-control" href="#recommended-item-carousel"
+                   data-slide="next">
+                    <img src="royal/img/home/slider/next.png">
+                </a>
             </div>
         </div>
-        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-            <img src="img/home/slider/prev.png">
-        </a>
-        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-            <img src="img/home/slider/next.png">
-        </a>
-    </div>
-    <!--end banner-->
-    <div class="aboutArea">
-        <div class="container">
-            <div class="row clearfix">
-                <div class="col-xs-12">
-                    <div class="aboutTitle">
-                        <h2>Our Popular Courses</h2>
+        <div class="col-sm-5">
+            <div class="tab-container" style="margin:10px 0px 0px 0px;">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#comunicados" aria-controls="comunicados" role="tab" data-toggle="tab"><i class="fa fa-volume-up"></i> Comunicados</a></li>
+                    <li role="presentation"><a href="#cartas" aria-controls="cartas" role="tab" data-toggle="tab"><i class="fa fa-file"></i> Documentos</a></li>
+                    <li role="presentation"><a href="#descargas" aria-controls="descargas" role="tab" data-toggle="tab"><i class="fa fa-download"></i> Descargas</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content" style="background: white;height:192px;padding:10px;border:solid thin lightgray;">
+                    <div role="tabpanel" class="tab-pane active" id="comunicados" style="width:100%;height:225px;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;background:url('royal/img/comunicados.png') no-repeat right" >
+                        <ul>
+                            <li><h5>Comunicado 1</h5></li>
+                            <li><h5>Comunicado 2</h5></li>
+                            <li><h5>Comunicado 3</h5></li>
+                        </ul>
                     </div>
-                    <!-- aboutTitle -->
-                </div>
-                <!-- col-sm-3 col-xs-12 -->
-            </div>
-            <!-- row clearfix -->
-            <div class="about_inner clearfix">
-                <div class="row">
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="aboutImage">
-                            <a href="single-course-right-sidebar.html">
-                                <img src="img/home/learn/learn_1.jpg" alt="" class="img-responsive" />
-                                <div class="overlay">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis.</p>
-                                </div>
-                                <span class="captionLink">English Literature<span></span></span>
-                            </a>
-                        </div>
-                        <!-- aboutImage -->
+                    <div role="tabpanel" class="tab-pane" id="cartas" style="width:100%;height:225px;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;background:url('royal/img/documentos2.png') no-repeat right" >
+                        sdkfldkasdasd
                     </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="aboutImage">
-                            <a href="single-course-right-sidebar.html">
-                                <img src="img/home/learn/learn_2.jpg" alt="" class="img-responsive" />
-                                <div class="overlay">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis.</p>
-                                </div>
-                                <span class="captionLink">Business Administration<span></span></span>
-                            </a>
-                        </div>
-                        <!-- aboutImage -->
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="aboutImage">
-                            <a href="single-course-right-sidebar.html">
-                                <img src="img/home/learn/learn_3.jpg" alt="" class="img-responsive" />
-                                <div class="overlay">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis.</p>
-                                </div>
-                                <span class="captionLink">Computer Science<span></span></span>
-                            </a>
-                        </div>
-                        <!-- aboutImage -->
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="aboutImage">
-                            <a href="single-course-right-sidebar.html">
-                                <img src="img/home/learn/learn_4.jpg" alt="" class="img-responsive" />
-                                <div class="overlay">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis.</p>
-                                </div>
-                                <span class="captionLink">Mathematics<span></span></span>
-                            </a>
-                        </div>
-                        <!-- aboutImage -->
+                    <div role="tabpanel" class="tab-pane" id="descargas" style="width:100%;height:225px;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;background:url('royal/img/download.png') no-repeat right">
+                        ...
                     </div>
                 </div>
-                <!-- row -->
             </div>
-            <!-- about_inner -->
+
         </div>
-        <!-- container -->
     </div>
-    <!-- aboutArea -->
     <div class="mainContent clearfix">
         <div class="container">
             <div class="row clearfix">
-                <div class="col-sm-8 col-xs-12">
+                <div class="col-sm-4 col-xs-12">
                     <div class="videoNine clearfix">
                         <div class="videoArea clearfix">
-                            <h3>Welcome To Royal College</h3>
+                            <h3>Bienvenidos a "Nuestra Señora del Rosario"</h3>
                             <div class="row">
-                                <div class="col-lg-8 col-md-7 col-xs-12 videoLeft">
-                                    <img src="img/home/video_image.jpg" data-video="https://www.youtube.com/embed/oOMcZoeEK0A?autoplay=1">
+                                <div class="col-lg-12 col-md-12 col-xs-12 videoLeft">
+                                    <img src="royal/img/home/video_image.jpg"
+                                         data-video="https://www.youtube.com/embed/oOMcZoeEK0A?autoplay=1">
                                 </div>
+                            </div>
+                            <div class="row">
                                 <!-- videoLeft -->
-                                <div class="col-lg-4 col-md-5 col-xs-12 videoRight">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus. Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.</p>
+                                <div class="col-lg-12 col-md-12 col-xs-12 videoRight">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur
+                                        ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat.
+                                        Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.
+                                        Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu
+                                        vitae, mattis sollicitudin lectus.</p>
                                     <a href="about.html" class="btn btn-block learnBtn">Learn More</a>
                                 </div>
                                 <!-- videoRight -->
@@ -413,119 +308,75 @@
                             <!-- row -->
                         </div>
                         <!-- videoArea -->
-                        <div class="related_post_sec single_post">
-                            <h3>Recent News</h3>
-                            <ul>
+                    </div>
+                    <!--videoNine-->
+                </div>
+                <div class="col-sm-5 col-xs-12" style="border: 1px solid #DCE4EA;border-top: 3px solid #d4be12;">
+                    <div class="related_post_sec single_post">
+                        <h3 style="margin: 5px 0px 0px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/noticias2.png" style="height: 35px;margin-top: -6px;padding-right: 13px;">Noticias</h3>
+                        <ul>
+                            @foreach($noticias as $key => $noticia)
                                 <li>
                                         <span class="rel_thumb">
-                      <a href="single-post-right-sidebar.html"><img src="img/news/related_thumb_01.png" alt=""></a>
-                    </span>
+                                                <a href="noticias/id={{$noticia->id}}"><img src="{{$noticia->url_foto}}"
+                                                                                            alt=""></a>
+                                        </span>
                                     <!--end rel_thumb-->
                                     <div class="rel_right">
-                                        <h4><a href="single-post-right-sidebar.html">Lorem Ipsum dolar simt Amet simply dummy Text Lorem Ipsum dolar</a></h4>
+                                        <h4><a href="noticias/id={{$noticia->id}}">{{$noticia->nombre}}</a></h4>
                                         <div class="meta">
                                             <span class="author">Posted in: <a href="#">Update</a></span>
                                             <span class="date">on: <a href="#">January 24, 2015</a></span>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                                        <p>{{str_limit($noticia->descripcion,170)}}</p>
                                     </div>
                                     <!--end rel right-->
                                 </li>
-                                <li>
-                                        <span class="rel_thumb">
-                      <a href="single-post-right-sidebar.html"><img src="img/news/related_thumb_02.jpg" alt=""></a>
-                    </span>
-                                    <!--end rel_thumb-->
-                                    <div class="rel_right">
-                                        <h4><a href="single-post-right-sidebar.html">Lorem Ipsum dolar simt Amet simply dummy Text Lorem Ipsum dolar</a></h4>
-                                        <div class="meta">
-                                            <span class="author">Posted in: <a href="#">Exam</a></span>
-                                            <span class="date">on: <a href="#">January 24, 2015</a></span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation...</p>
-                                    </div>
-                                    <!--end rel right-->
-                                </li>
-                            </ul>
-                        </div>
-                        <!--related_post_sec-->
+                            @endforeach
+                        </ul>
                     </div>
-                    <!--videoNine-->
                 </div>
                 <!-- col-sm-8 col-xs-12 -->
-                <div class="col-sm-4 col-xs-12">
+                <div class="col-sm-3 col-xs-12">
                     <div class="formArea clearfix">
                         <div class="formTitle">
-                            <h3>Find a Course</h3>
-                            <p>Offered in small class sizes with great emphasis on the demands of the specification and exam technique.</p>
+                            <img src="royal/img/hay_tarea.png">
+                            <h5>Selecciona tu sección</h5>
                         </div>
                         <!-- formTitle -->
                         <form action="#" method="post">
                             <div class="selectBox clearfix">
-                                <select name="guiest_id1" id="guiest_id1">
-                                    <option value="0">Location</option>
-                                    <option value="1">Location_1</option>
-                                    <option value="2">Location_2</option>
-                                    <option value="3">Location_3</option>
+                                <select class="form-control" style="width: 90%;display: inline-block;">
+                                    <option value="0">SECUNDARIA - 1A</option>
+                                    <option value="1">SECUNDARIA - 2A</option>
+                                    <option value="2">SECUNDARIA - 2B</option>
                                 </select>
+                                <button type="submit" class="btn btn-default commonBtn"><i class="fa fa-search"></i></button>
                             </div>
-                            <!-- selectBox -->
-                            <div class="selectBox clearfix">
-                                <select name="guiest_id2" id="guiest_id2">
-                                    <option value="0">Level</option>
-                                    <option value="1">Level_1</option>
-                                    <option value="2">Level_2</option>
-                                    <option value="3">Level_3</option>
-                                </select>
-                            </div>
-                            <!-- selectBox -->
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Course Name">
-                            </div>
-                            <button type="submit" class="btn btn-default btn-block commonBtn">Search</button>
                         </form>
                     </div>
                     <!-- formArea -->
                     <div class="list_block related_post_sec">
                         <div class="upcoming_events">
-                            <h3>Upcoming Events</h3>
+                            <h3 style="margin:-10px 0px 5px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/eventos2.png" style="height: 35px;margin-top: -6px;padding-right: 13px;">Eventos</h3>
                             <ul>
-                                <li class="related_post_sec single_post">
+                                @foreach($eventos as $evento)
+                                    <li class="related_post_sec single_post">
                                         <span class="date-wrapper">
-                      <span class="date"><span>24</span>January</span>
+                                        <span class="date"><span>24</span>January</span>
                                         </span>
-                                    <div class="rel_right">
-                                        <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
-                                        <div class="meta">
-                                            <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
-                                            <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
+                                        <div class="rel_right">
+                                            <h4><a href="single-events.html">Offered in small class sizes with great
+                                                    emphasis...</a></h4>
+                                            <div class="meta">
+                                                    <span class="place"><i
+                                                                class="fa fa-map-marker"></i>Main Campus</span>
+                                                    <span class="event-time"><i
+                                                                class="fa fa-clock-o"></i>11.00 pm</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="related_post_sec single_post">
-                                        <span class="date-wrapper">
-                      <span class="date"><span>24</span>January</span>
-                                        </span>
-                                    <div class="rel_right">
-                                        <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
-                                        <div class="meta">
-                                            <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
-                                            <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="related_post_sec single_post">
-                                        <span class="date-wrapper">
-                      <span class="date"><span>24</span>January</span>
-                                        </span>
-                                    <div class="rel_right">
-                                        <h4><a href="single-events.html">Offered in small class sizes with great emphasis...</a></h4>
-                                        <div class="meta">
-                                            <span class="place"><i class="fa fa-map-marker"></i>Main Campus</span>
-                                            <span class="event-time"><i class="fa fa-clock-o"></i>11.00 pm</span>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endforeach
                             </ul>
                             <a href="events-3col.html" class="btn btn-default btn-block commonBtn">More Events</a>
                         </div>
@@ -533,68 +384,9 @@
                     <!-- end list_block -->
                 </div>
                 <!-- col-sm-4 col-xs-12 -->
+
             </div>
             <!-- row clearfix -->
-        </div>
-        <!-- container -->
-    </div>
-    <!-- mainContent -->
-    <div class="count clearfix wow fadeIn" data-wow-delay="100ms">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6 col-sm-3">
-                    <div class="text-center">
-                        <div class="icon"><i class="fa fa-group"></i></div>
-                        <div class="counter">
-                            <span class="timer">8298</span>
-                        </div>
-                        <div class="seperator-small"></div>
-                        <p>Students</p>
-                    </div>
-                </div>
-                <!-- col-sm-3 -->
-                <div class="col-xs-6 col-sm-3">
-                    <div class="text-center">
-                        <div class="icon"><i class="fa fa-book"></i></div>
-                        <div class="counter">
-                            <span class="timer">142</span>
-                        </div>
-                        <div class="seperator-small"></div>
-                        <p>Courses</p>
-                    </div>
-                </div>
-                <!-- col-sm-3 -->
-                <div class="col-xs-6 col-sm-3">
-                    <div class="text-center">
-                        <div class="icon"><i class="fa fa-male"></i></div>
-                        <div class="counter">
-                            <span class="timer">1047</span>
-                        </div>
-                        <div class="seperator-small"></div>
-                        <p>Stuffs</p>
-                    </div>
-                </div>
-                <!-- col-sm-3 -->
-                <div class="col-xs-6 col-sm-3">
-                    <div class="text-center">
-                        <div class="icon"><i class="fa fa-map-marker"></i></div>
-                        <div class="counter">
-                            <span class="timer">10</span>
-                        </div>
-                        <div class="seperator-small"></div>
-                        <p>Locations</p>
-                    </div>
-                </div>
-                <!-- col-sm-3 -->
-            </div>
-            <!-- row -->
-            <div class="count-bottom text-center">
-                <h1>Do you like this template?</h1>
-                <p>nec congue consequat risus, nec volutpat enim tempus id. Proin et sapien eget diam ullamcorper consectetur. Sed blandit imperdiet mauris. Mauris eleifend faucib</p>
-                <p>ipsum quis varius. Quisque pharetra leo erat, non eleifend nibh interdum quis.</p>
-                <a target="_blank" href="https://goo.gl/0doAl6" class="btn btn-default commonBtn">Buy now</a>
-            </div>
-            <!-- row -->
         </div>
         <!-- container -->
     </div>
@@ -605,7 +397,9 @@
                 <div class="col-xs-12 col-sm-6">
                     <div class="testimonial">
                         <div class="carousal_content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris</p>
                         </div>
                         <div class="carousal_bottom">
                             <div class="thumb">
@@ -624,10 +418,18 @@
                     <div class="features">
                         <h3>Why Choose Us?</h3>
                         <ul>
-                            <li><i class="fa fa-check-circle-o"></i>It’s a complete solution for your college website</li>
-                            <li><i class="fa fa-check-circle-o"></i>PSD file included to help you customize the design better</li>
-                            <li><i class="fa fa-check-circle-o"></i>SASS file included for unlimited hasel free style customization</li>
-                            <li><i class="fa fa-check-circle-o"></i>Theme option switcher for live cusomization preview</li>
+                            <li><i class="fa fa-check-circle-o"></i>It’s a complete solution for your college
+                                website
+                            </li>
+                            <li><i class="fa fa-check-circle-o"></i>PSD file included to help you customize the
+                                design better
+                            </li>
+                            <li><i class="fa fa-check-circle-o"></i>SASS file included for unlimited hasel free
+                                style customization
+                            </li>
+                            <li><i class="fa fa-check-circle-o"></i>Theme option switcher for live cusomization
+                                preview
+                            </li>
                             <li><i class="fa fa-check-circle-o"></i>24/7 Support</li>
                         </ul>
                     </div>
@@ -644,40 +446,40 @@
             <div class="brand-slider flexslider">
                 <ul class="slides">
                     <li>
-                        <a href="#"><img src="img/home/brand1.png" /></a>
+                        <a href="#"><img src="img/home/brand1.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand2.png" /></a>
+                        <a href="#"><img src="img/home/brand2.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand3.png" /></a>
+                        <a href="#"><img src="img/home/brand3.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand4.png" /></a>
+                        <a href="#"><img src="img/home/brand4.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand5.png" /></a>
+                        <a href="#"><img src="img/home/brand5.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand1.png" /></a>
+                        <a href="#"><img src="img/home/brand1.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand2.png" /></a>
+                        <a href="#"><img src="img/home/brand2.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand3.png" /></a>
+                        <a href="#"><img src="img/home/brand3.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand4.png" /></a>
+                        <a href="#"><img src="img/home/brand4.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand5.png" /></a>
+                        <a href="#"><img src="img/home/brand5.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand1.png" /></a>
+                        <a href="#"><img src="img/home/brand1.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand2.png" /></a>
+                        <a href="#"><img src="img/home/brand2.png"/></a>
                     </li>
                 </ul>
             </div>
@@ -713,7 +515,8 @@
                             <br> 1727 Lombard St.
                             <br> San Francisco
                         </address>
-                        <a href="contact-us.html"><span class="place"><i class="fa fa-map-marker"></i>Main Campus</span></a>
+                        <a href="contact-us.html"><span class="place"><i
+                                        class="fa fa-map-marker"></i>Main Campus</span></a>
                     </div>
                 </div>
                 <!-- col-sm-3 col-xs-6 -->
@@ -747,7 +550,8 @@
         <div class="container">
             <div class="row clearfix">
                 <div class="col-sm-6 col-xs-12 copyRight">
-                    <p>© 2016 Copyright Royal College Bootstrap Template by <a href="http://www.iamabdus.com/">Abdus</a></p>
+                    <p>© 2016 Copyright Royal College Bootstrap Template by <a
+                                href="http://www.iamabdus.com/">Abdus</a></p>
                 </div>
                 <!-- col-sm-6 col-xs-12 -->
                 <div class="col-sm-6 col-xs-12 privacy_policy">

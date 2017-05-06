@@ -15,6 +15,13 @@ class CreacionTablaEvento extends Migration
     {
         Schema::create('evento', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->text('descripcion');
+            $table->date('fecha');
+            $table->string('lugar');
+            $table->string('hora');
+            $table->text('contenido')->nullable();
+            $table->boolean('publico');
             $table->timestamps();
         });
     }

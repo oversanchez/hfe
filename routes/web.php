@@ -16,13 +16,9 @@ Route::get('/intranet/', function () {
     return view('intranet/login');
 });
 
-Route::get('/', function () {
-    return view('website/principal');
-});
+Route::resource('/','\App\Http\Controllers\Website_Controller');
 
-Route::get('/website/', function () {
-    return view('website/principal');
-});
+Route::resource('/website/','\App\Http\Controllers\Website_Controller');
 
 Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
@@ -82,9 +78,13 @@ Route::group(['prefix'=>'intranet/website'], function () {
 
     Route::resource('comunicado','\App\Http\Controllers\Comunicado_Controller');
 
+    Route::resource('slider','\App\Http\Controllers\Slider_Controller');
+
     //Route::get('periodo/listar', ['uses' => 'Periodo_Controller@listar', 'as' => 'periodo.listar']);
 });
 
 Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
+
+
 
 

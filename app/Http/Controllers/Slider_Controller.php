@@ -13,7 +13,7 @@ class Slider_Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('website/slider');
     }
 
     /**
@@ -34,7 +34,15 @@ class Slider_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $slider = new \App\Slider();
+        $slider->orden= $request->input('orden');
+        $slider->nombre = $request->input('nombre');
+        $slider->descripcion = $request->input('descripcion');
+        $slider->url_foto = $request->input('url_foto');
+        $slider->url_vinculo = $request->input('url_vinculo');
+        $slider->nombre_vinculo = $request->input('nombre_vinculo');
+        $slider->publico= $request->input('publico');
+        $slider->save();
     }
 
     /**
@@ -45,13 +53,18 @@ class Slider_Controller extends Controller
      */
     public function show($id)
     {
-        //
+        if (is_numeric($id)) {
+            return \App\Slider::find($id);
+        } else if($id == "*"){
+            return \App\Slider::all();
+        }
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,23 +75,32 @@ class Slider_Controller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $slider = \App\Slider::find($id);
+        $slider->orden= $request->input('orden');
+        $slider->nombre = $request->input('nombre');
+        $slider->descripcion = $request->input('descripcion');
+        $slider->url_foto = $request->input('url_foto');
+        $slider->url_vinculo = $request->input('url_vinculo');
+        $slider->nombre_vinculo = $request->input('nombre_vinculo');
+        $slider->publico= $request->input('publico');
+        $slider->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $slider = \App\Slider::find($id);
+        $slider->delete();
     }
 }

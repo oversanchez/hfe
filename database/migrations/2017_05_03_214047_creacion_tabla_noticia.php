@@ -16,8 +16,8 @@ class CreacionTablaNoticia extends Migration
         Schema::create('noticia', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('descripcion');
-            $table->string('contenido');
+            $table->text('descripcion');
+            $table->text('contenido')->nullable();
             $table->date('fecha');
             $table->string('url_foto');
             $table->boolean('publico');

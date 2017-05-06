@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(Alumno_Seeder::class);
         $this->call(Trabajador_Seeder::class);
         $this->call(Academico_2017_Seeder::class);
+        $this->call(Website_Seeder::class);
         // $this->call(UsersTableSeeder::class);
     }
 }

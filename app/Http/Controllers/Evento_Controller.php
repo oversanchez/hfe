@@ -13,7 +13,7 @@ class Evento_Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('intranet/website/evento');
     }
 
     /**
@@ -34,7 +34,15 @@ class Evento_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $evento = new \App\Evento();
+        $evento->nombre = $request->input('nombre');
+        $evento->descripcion = $request->input('descripcion');
+        $evento->fecha = $request->input('fecha');
+        $evento->lugar = $request->input('lugar');
+        $evento->hora = $request->input('hora');
+        $evento->contenido = $request->input('contenido');
+        $evento->publico= $request->input('publico');
+        $evento->save();
     }
 
     /**
@@ -45,13 +53,18 @@ class Evento_Controller extends Controller
      */
     public function show($id)
     {
-        //
+        if (is_numeric($id)) {
+            return \App\Evento::find($id);
+        } else if($id == "*"){
+            return \App\Evento::all();
+        }
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,23 +75,32 @@ class Evento_Controller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $evento = \App\Evento::find($id);
+        $evento->nombre = $request->input('nombre');
+        $evento->descripcion = $request->input('descripcion');
+        $evento->fecha = $request->input('fecha');
+        $evento->lugar = $request->input('lugar');
+        $evento->hora = $request->input('hora');
+        $evento->contenido = $request->input('contenido');
+        $evento->publico= $request->input('publico');
+        $evento->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $evento = \App\Evento::find($id);
+        $evento->delete();
     }
 }
