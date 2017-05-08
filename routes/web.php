@@ -80,6 +80,10 @@ Route::group(['prefix'=>'intranet/website'], function () {
 
     Route::resource('slider','\App\Http\Controllers\Slider_Controller');
 
+    Route::get('opcion_menu/listar', ['uses' => 'Opcion_Menu_Controller@listar', 'as' => 'opcion_menu.listar']);
+
+    Route::resource('opcion_menu','\App\Http\Controllers\Opcion_Menu_Controller');
+
     //Route::get('periodo/listar', ['uses' => 'Periodo_Controller@listar', 'as' => 'periodo.listar']);
 });
 

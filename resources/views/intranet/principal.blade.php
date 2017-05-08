@@ -46,23 +46,7 @@
             <a href="#" class="navbar-brand" style="width: 300px;"><span>"Nuestra Señora del Rosario"</span></a></div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Inicio</a></li>
-                <li><a href="#about">About</a></li>
-                <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Contact <b
-                                class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="dropdown-submenu"><a href="#">Sub menu</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                <li><a href="#">Inicio</a></li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Académico <b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu col-menu-2">
@@ -111,7 +95,6 @@
                         <li><a href="/intranet/website/noticia">Noticias</a></li>
                         <li><a href="/intranet/website/evento">Eventos</a></li>
                         <li><a href="/intranet/website/enlace_rapido">Enlaces rápidos</a></li>
-                        <li><a href="/intranet/website/video">Videos</a></li>
                         <li><a href="/intranet/website/slider">Sliders</a></li>
                         <li><a href="/intranet/website/opcion_menu">Opciones del menú</a></li>
                         <li class="dropdown-submenu"><a href="#">Sub menu</a>

@@ -1238,7 +1238,7 @@ body.bodyColor.container {
 }
 
 .mainContent {
-    padding: 17px 0 65px 0;
+    padding: 17px 0 0 0;
     background-color: #fff;
     float: left;
     margin-top: 10px;
@@ -2220,7 +2220,7 @@ body.bodyColor.container {
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
     position: relative;
-    margin: 0 0 36px;
+    margin: 0 0 20px;
 }
 
 .carousal_content p {
@@ -2233,12 +2233,12 @@ body.bodyColor.container {
 
 .carousal_content::after {
     width: 26px;
-    height: 27px;
+    height: 31px;
     position: absolute;
     content: " ";
     background: url(../img/about/bottom_arrow.png) no-repeat center center;
-    bottom: -27px;
-    left: 30px;
+    bottom: -23px;
+    left: 46px;
 }
 
 .carousal_bottom .thumb {
@@ -2610,9 +2610,9 @@ body.bodyColor.container {
 
 .formArea, .getArea {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 1px solid #DCE4EA;
-    padding: 15px 12px 25px;
+    padding: 15px 12px 7px;
     border-top: 3px solid #d4be12;
 }
 
@@ -3032,7 +3032,7 @@ body.bodyColor.container {
 }
 
 .upcoming_events .related_post_sec.single_post .rel_right {
-    padding-left: 90px;
+    padding-left: 80px;
     float: left;
 }
 
@@ -3044,7 +3044,7 @@ body.bodyColor.container {
 
 .upcoming_events li.related_post_sec.single_post {
     float: none;
-    margin-bottom: 18px;
+    margin-bottom: 5px;
 }
 
 .upcoming_events .meta, .single-event .meta {

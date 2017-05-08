@@ -20,7 +20,7 @@
 {!! HTML::style('royal/css/plugins/magnific-popup.css') !!}
 {!! HTML::style('royal/css/style.css') !!}
 {!! HTML::style('royal/css/colors/default.css') !!}
-{!! HTML::style('royal/') !!}
+{!! HTML::style('royal/css/plugins/nanoscroller.css') !!}
 {!! HTML::style('royal/') !!}
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -262,18 +262,26 @@
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content" style="background: white;height:192px;padding:10px;border:solid thin lightgray;">
-                    <div role="tabpanel" class="tab-pane active" id="comunicados" style="width:100%;height:225px;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;background:url('royal/img/comunicados.png') no-repeat right" >
+                    <div role="tabpanel" class="tab-pane active" id="comunicados" style="width:100%;height:178px;background:url('royal/img/comunicado_transparente.png') no-repeat right" >
                         <ul>
-                            <li><h5>Comunicado 1</h5></li>
-                            <li><h5>Comunicado 2</h5></li>
-                            <li><h5>Comunicado 3</h5></li>
+                            @foreach($comunicados as $key => $comunicado)
+                                <li><a href="{{$comunicado->url}}" target="_BLANK" style="color:{{$comunicado->color}}"><i class="fa fa-bell-o"></i> {{$comunicado->nombre}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="cartas" style="width:100%;height:225px;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;background:url('royal/img/documentos2.png') no-repeat right" >
-                        sdkfldkasdasd
+                    <div role="tabpanel" class="tab-pane" id="cartas" style="width:100%;height:178px;background:url('royal/img/documentos_transparente.png') no-repeat right" >
+                        <ul>
+                        @foreach($documentos as $key => $documento)
+                            <li><a href="{{$documento->url}}" target="_BLANK" style="color:{{$documento->color}}"><i class="fa fa-file-archive-o"></i> {{$documento->nombre}}</a></li>
+                        @endforeach
+                        </ul>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="descargas" style="width:100%;height:225px;filter:alpha(opacity=25);-moz-opacity:.25;opacity:.25;background:url('royal/img/download.png') no-repeat right">
-                        ...
+                    <div role="tabpanel" class="tab-pane" id="descargas" style="width:100%;height:178px;background:url('royal/img/download_transparente.png') no-repeat right">
+                        <ul>
+                        @foreach($descargas as $key => $descarga)
+                            <li><a href="{{$descarga->url}}" target="_BLANK" style="color:{{$descarga->color}}"><i class="fa fa-download"></i> {{$descarga->nombre}}</a></li>
+                        @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -282,58 +290,60 @@
     </div>
     <div class="mainContent clearfix">
         <div class="container">
-            <div class="row clearfix">
-                <div class="col-sm-4 col-xs-12">
-                    <div class="videoNine clearfix">
-                        <div class="videoArea clearfix">
-                            <h3>Bienvenidos a "Nuestra Señora del Rosario"</h3>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-xs-12 videoLeft">
-                                    <img src="royal/img/home/video_image.jpg"
-                                         data-video="https://www.youtube.com/embed/oOMcZoeEK0A?autoplay=1">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <!-- videoLeft -->
-                                <div class="col-lg-12 col-md-12 col-xs-12 videoRight">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur
-                                        ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat.
-                                        Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.
-                                        Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu
-                                        vitae, mattis sollicitudin lectus.</p>
-                                    <a href="about.html" class="btn btn-block learnBtn">Learn More</a>
-                                </div>
-                                <!-- videoRight -->
-                            </div>
-                            <!-- row -->
+            <div class="row clearfix" style="padding-bottom: 10px;">
+                <div class="col-sm-4 col-xs-12" >
+                    <div style="border: 1px solid #DCE4EA;border-top: 3px solid #0060b1;padding:0px 10px 10px 10px;    ">
+                        <div class="related_post_sec single_post">
+                            <h3 style="margin: 5px 0px 0px 0px;height: 33px;background-color: #0060b1;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/school.png" style="height: 35px;margin-top: -10px;padding-right: 13px;">Bienvenida</h3>
                         </div>
-                        <!-- videoArea -->
+                        <div class="row" style="padding-top: 10px;">
+                            <div class="col-lg-12 col-md-12 col-xs-12 videoLeft">
+                                <img src="royal/img/home/video_image.jpg"
+                                     data-video="https://www.youtube.com/embed/oOMcZoeEK0A?autoplay=1">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- videoLeft -->
+                            <div class="col-lg-12 col-md-12 col-xs-12 videoRight">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur
+                                    ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat.
+                                    Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.
+                                    Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu
+                                    vitae, mattis sollicitudin lectus.</p>
+                                <a href="about.html" class="btn btn-block learnBtn">Learn More</a>
+                            </div>
+                            <!-- videoRight -->
+                        </div>
                     </div>
-                    <!--videoNine-->
+
                 </div>
-                <div class="col-sm-5 col-xs-12" style="border: 1px solid #DCE4EA;border-top: 3px solid #d4be12;">
-                    <div class="related_post_sec single_post">
+                <div class="col-sm-5 col-xs-12" style="border: 1px solid #DCE4EA;border-top: 3px solid #d4be12;height: 477px;">
+                    <div class="related_post_sec single_post" style="height: 420px;">
                         <h3 style="margin: 5px 0px 0px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/noticias2.png" style="height: 35px;margin-top: -6px;padding-right: 13px;">Noticias</h3>
-                        <ul>
-                            @foreach($noticias as $key => $noticia)
-                                <li>
+                        <div id="noticias" class="nano">
+                            <div class="overthrow nano-content">
+                                <ul>
+                                    @foreach($noticias as $key => $noticia)
+                                        <li>
                                         <span class="rel_thumb">
                                                 <a href="noticias/id={{$noticia->id}}"><img src="{{$noticia->url_foto}}"
                                                                                             alt=""></a>
                                         </span>
-                                    <!--end rel_thumb-->
-                                    <div class="rel_right">
-                                        <h4><a href="noticias/id={{$noticia->id}}">{{$noticia->nombre}}</a></h4>
-                                        <div class="meta">
-                                            <span class="author">Posted in: <a href="#">Update</a></span>
-                                            <span class="date">on: <a href="#">January 24, 2015</a></span>
-                                        </div>
-                                        <p>{{str_limit($noticia->descripcion,170)}}</p>
-                                    </div>
-                                    <!--end rel right-->
-                                </li>
-                            @endforeach
-                        </ul>
+                                            <!--end rel_thumb-->
+                                            <div class="rel_right">
+                                                <h4><a href="noticias/id={{$noticia->id}}">{{$noticia->nombre}}</a></h4>
+                                                <div class="meta">
+                                                    <span class="author">Posted in: <a href="#">Update</a></span>
+                                                    <span class="date">on: <a href="#">January 24, 2015</a></span>
+                                                </div>
+                                                <p>{{str_limit($noticia->descripcion,170)}}</p>
+                                            </div>
+                                            <!--end rel right-->
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- col-sm-8 col-xs-12 -->
@@ -345,40 +355,40 @@
                         </div>
                         <!-- formTitle -->
                         <form action="#" method="post">
-                            <div class="selectBox clearfix">
-                                <select class="form-control" style="width: 90%;display: inline-block;">
+                            <div class="selectBox clearfix" style="margin-bottom: 0px;">
+                                <select class="form-control" style="width: 83%;display: inline-block;">
                                     <option value="0">SECUNDARIA - 1A</option>
                                     <option value="1">SECUNDARIA - 2A</option>
                                     <option value="2">SECUNDARIA - 2B</option>
                                 </select>
-                                <button type="submit" class="btn btn-default commonBtn"><i class="fa fa-search"></i></button>
+                                <button type="submit" class="btn btn-default commonBtn" style="width: 15%;margin-top: -4px;"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
                     </div>
                     <!-- formArea -->
-                    <div class="list_block related_post_sec">
-                        <div class="upcoming_events">
-                            <h3 style="margin:-10px 0px 5px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/eventos2.png" style="height: 35px;margin-top: -6px;padding-right: 13px;">Eventos</h3>
-                            <ul>
-                                @foreach($eventos as $evento)
-                                    <li class="related_post_sec single_post">
+                    <div class="list_block related_post_sec" style="height: 283px;margin: 0 0 5px;padding:15px 5px 5px 5px;">
+                        <div class="upcoming_events" style="height: 221px;">
+                            <h3 style="margin:-10px 0px 5px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/eventos4.png" style="height: 30px;margin-top: -4px;padding-right: 13px;">Eventos</h3>
+                            <div id="eventos" class="nano">
+                                <div class="overthrow nano-content">
+                                    <ul>
+                                        @foreach($eventos as $evento)
+                                            <li class="related_post_sec single_post">
                                         <span class="date-wrapper">
-                                        <span class="date"><span>24</span>January</span>
+                                        <span class="date"><span>{{date("d", strtotime($evento->fecha))}}</span>{{date("M", strtotime($evento->fecha))}}</span>
                                         </span>
-                                        <div class="rel_right">
-                                            <h4><a href="single-events.html">Offered in small class sizes with great
-                                                    emphasis...</a></h4>
-                                            <div class="meta">
-                                                    <span class="place"><i
-                                                                class="fa fa-map-marker"></i>Main Campus</span>
-                                                    <span class="event-time"><i
-                                                                class="fa fa-clock-o"></i>11.00 pm</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                            <a href="events-3col.html" class="btn btn-default btn-block commonBtn">More Events</a>
+                                                <div class="rel_right">
+                                                    <h4><a href="eventos/{{base64_encode(Hash::make($evento->id))}}">{{$evento->nombre}}</a></h4>
+                                                    <div class="meta">
+                                                        <span class="place"><i class="fa fa-map-marker"></i>{{$evento->lugar}}</span>
+                                                        <span class="event-time"><i class="fa fa-clock-o"></i>{{$evento->hora}}</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- end list_block -->
@@ -403,7 +413,7 @@
                         </div>
                         <div class="carousal_bottom">
                             <div class="thumb">
-                                <img src="img/about/SARA-LISBON_Art-Student.jpg" alt="" draggable="false">
+                                <img src="royal/img/about/SARA-LISBON_Art-Student.jpg" alt="" draggable="false">
                             </div>
                             <div class="thumb_title">
                                 <span class="author_name">Sara Lisbon</span>
@@ -416,7 +426,7 @@
                 <!-- col-xs-12 -->
                 <div class="col-xs-12 col-sm-6">
                     <div class="features">
-                        <h3>Why Choose Us?</h3>
+                        <h3>¿Por qué nosotros?</h3>
                         <ul>
                             <li><i class="fa fa-check-circle-o"></i>It’s a complete solution for your college
                                 website
@@ -430,7 +440,6 @@
                             <li><i class="fa fa-check-circle-o"></i>Theme option switcher for live cusomization
                                 preview
                             </li>
-                            <li><i class="fa fa-check-circle-o"></i>24/7 Support</li>
                         </ul>
                     </div>
                 </div>
@@ -446,40 +455,40 @@
             <div class="brand-slider flexslider">
                 <ul class="slides">
                     <li>
-                        <a href="#"><img src="img/home/brand1.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand1.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand2.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand2.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand3.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand3.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand4.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand4.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand5.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand5.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand1.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand1.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand2.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand2.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand3.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand3.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand4.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand4.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand5.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand5.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand1.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand1.png"/></a>
                     </li>
                     <li>
-                        <a href="#"><img src="img/home/brand2.png"/></a>
+                        <a href="#"><img src="royal/img/home/brand2.png"/></a>
                     </li>
                 </ul>
             </div>
@@ -578,7 +587,16 @@
 {!! HTML::script('royal/js/plugins/navbar.js') !!}
 {!! HTML::script('royal/js/plugins/moment.min.js') !!}
 {!! HTML::script('royal/js/plugins/fullcalendar.min.js') !!}
+{!! HTML::script('royal/js/plugins/jquery.nanoscroller.js') !!}
+{!! HTML::script('royal/js/plugins/overthrow.min.js') !!}
 {!! HTML::script('royal/options/optionswitcher.js') !!}
 {!! HTML::script('royal/js/custom.js') !!}
+
+<script>
+    $(document).on('ready',function(){
+        $(".nano").nanoScroller();
+    });
+</script>
 </body>
 </html>
+

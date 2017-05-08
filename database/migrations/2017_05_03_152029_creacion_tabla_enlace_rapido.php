@@ -17,6 +17,7 @@ class CreacionTablaEnlaceRapido extends Migration
             $table->increments('id');
             $table->integer('orden');
             $table->string('nombre');
+            $table->enum('categoria',['CO','DO','DE']);
             $table->string('url');
             $table->string('color');
             $table->boolean('publico')->default(true);

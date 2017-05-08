@@ -3,7 +3,7 @@
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
-            <h2 style="display:inline-block;">Enlaces Rápidos : Comunicados, Documentos y Descargas</h2>
+            <h2 style="display:inline-block;">Sliders</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
         </div>
         <div class="cl-mcont">
@@ -20,8 +20,8 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 79px">Orden</th>
-                                        <th style="width: 79px">Categoría</th>
                                         <th>Nombre</th>
+                                        <th>Url Foto</th>
                                         <th style="width: 100px">Acción</th>
                                     </tr>
                                     </thead>
@@ -32,48 +32,34 @@
                             </div>
                             <div id="tp2" class="tab-pane cont">
                                 <div class="container">
-                                    <form id="frmEnlace_Rapido" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                    <form id="frmSlider" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
+                                            <label for="txtOrden" class="col-md-1 control-label">Orden</label>
+                                            <div class="col-md-1">
+                                                <input id="txtOrden" type="text" class="form-control"
+                                                       data-parsley-trigger="change" data-parsley-required="true"></div>
                                             <label for="txtNombre" class="col-md-1 control-label">Nombre</label>
                                             <div class="col-md-5">
                                                 <input id="txtNombre" type="text" class="form-control"
                                                        data-parsley-trigger="change" data-parsley-required="true"></div>
                                         </div>
                                         <div class="row">
-                                            <label for="cmbCategoria" class="col-md-1 control-label">Categoría</label>
+                                            <label for="txtUrl_Foto" class="col-md-1 control-label">Url Foto</label>
                                             <div class="col-md-5">
-                                                <select id="cmbCategoria" class="form-control" required="">
-                                                    <option value="">---</option>
-                                                    <option value="CO">COMUNICADO</option>
-                                                    <option value="DO">DOCUMENTO</option>
-                                                    <option value="DE">DESCARGA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="txtUrl" class="col-md-1 control-label">Url</label>
-                                            <div class="col-md-5">
-                                                <input id="txtUrl" type="text" class="form-control"
+                                                <input id="txtUrl_Foto" type="text" class="form-control"
                                                        data-parsley-trigger="change" data-parsley-required="true"></div>
                                         </div>
                                         <div class="row">
-                                            <label for="txtOrden" class="col-md-1 control-label">Orden</label>
-                                            <div class="col-md-1">
-                                                <input id="txtOrden" type="text" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true">
-                                            </div>
-                                            <label for="cmbColor" class="col-md-1 control-label">Color</label>
-                                            <div class="col-md-3">
-                                                <select class="form-control" id="cmbColor">
-                                                    <option value="">DEFAULT</option>
-                                                    <option value="black">NEGRO</option>
-                                                    <option value="blue">AZUL</option>
-                                                    <option value="red">ROJO</option>
-                                                    <option value="green">VERDE</option>
-                                                    <option value="chocolate">CHOCOLATE</option>
-                                                </select>
-                                            </div>
+                                            <label for="txtUrl_Vinculo" class="col-md-1 control-label">Url Vinculo</label>
+                                            <div class="col-md-5">
+                                                <input id="txtUrl_Vinculo" type="text" class="form-control" placeholder="https://www.google.com.pe"
+                                                       data-parsley-trigger="change" data-parsley-required="true"></div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="txtNombre_Vinculo" class="col-md-1 control-label">Nombre Vinculo</label>
+                                            <div class="col-md-5">
+                                                <input id="txtNombre_Vinculo" type="text" class="form-control"></div>
                                         </div>
                                         <div class="row">
                                             <label class="col-sm-2">
@@ -106,13 +92,13 @@
             App.init();
             App.formElements();
             t = $("#tblListado").DataTable();
-            $("#frmEnlace_Rapido").parsley();
+            $("#frmSlider").parsley();
             listar();
         });
 
         function guardar(){
             var accion = $("#hddCodigo").val() == "" ? true : false;
-            if($("#frmEnlace_Rapido").parsley().validate()){
+            if($("#frmSlider").parsley().validate()){
                 if (accion)
                     registrar()
                 else
@@ -125,9 +111,9 @@
             var info = [{"_token": "{{ csrf_token() }}",
                 "orden": parseInt($("#txtOrden").val()),
                 "nombre": $("#txtNombre").val(),
-                "categoria": $("#cmbCategoria").val(),
-                "url": $("#txtUrl").val(),
-                "color": $("#cmbColor").val(),
+                "url_foto": $("#txtUrl_Foto").val(),
+                "url_vinculo": $("#txtUrl_Vinculo").val(),
+                "nombre_vinculo": $("#txtNombre_Vinculo").val(),
                 "publico": $("#chkPublico").is(":checked")}][0];
             return info;
         }
@@ -136,7 +122,7 @@
             if (confirm("¿Deseas continuar el registro?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido",
+                    url: "/intranet/website/slider",
                     type: "POST",
                     data: info,
                     beforeSend: function () {
@@ -160,7 +146,7 @@
             if (confirm("¿Deseas continuar la modificación?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido/" + $("#hddCodigo").val(),
+                    url: "/intranet/website/slider/" + $("#hddCodigo").val(),
                     type: "PUT",
                     data: info,
                     beforeSend: function () {
@@ -184,7 +170,7 @@
             if (confirm("¿Deseas eliminar el elemento?")) {
                 var info = [{"_token": "{{ csrf_token() }}"}][0];
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido/" + id,
+                    url: "/intranet/website/slider/" + id,
                     type: "DELETE",
                     data: info,
                     beforeSend: function () {
@@ -206,7 +192,7 @@
 
         function editar(id) {
             $.ajax({
-                url: "/intranet/website/enlace_rapido/" + id,
+                url: "/intranet/website/slider/" + id,
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
@@ -215,9 +201,9 @@
                     $("#hddCodigo").val(id);
                     $("#txtOrden").val(data["orden"]);
                     $("#txtNombre").val(data["nombre"]);
-                    $("#cmbCategoria").val(data["categoria"]);
-                    $("#txtUrl").val(data["url"]);
-                    $("#cmbColor").val(data["color"]);
+                    $("#txtUrl_Foto").val(data["url_foto"]);
+                    $("#txtUrl_Vinculo").val(data["url_vinculo"]);
+                    $("#txtNombre_Vinculo").val(data["nombre_vinculo"]);
                     $("#chkPublico").iCheck(data['publico'] == true ? "check" : "uncheck");
                     $("#btnGuardar").text("Guardar");
                     $('a[href="#tp2"]').click();
@@ -236,13 +222,13 @@
             $("#hddCodigo").val("");
             $("#txtOrden").val(0);
             $("#txtNombre").val("");
-            $("#cmbCategoria").val("");
-            $("#txtUrl").val("#");
-            $("#cmbColor").val("");
+            $("#txtUrl_Foto").val("#");
+            $("#txtUrl_Vinculo").val("#");
+            $("#txtNombre_Vinculo").val("");
             $("#chkPublico").iCheck("check");
 
             $("#btnGuardar").text("Registrar");
-            $('#frmEnlace_Rapido').parsley().reset();
+            $('#frmSlider').parsley().reset();
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();
@@ -250,7 +236,7 @@
 
         function listar() {
             $.ajax({
-                url: "/intranet/website/enlace_rapido/*",
+                url: "/intranet/website/slider/*",
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
@@ -258,8 +244,8 @@
                 success: function (data) {
                     t.clear().draw();
                     $.each(data,function( index, value ) {
-                        var nodo = t.row.add([value['orden'],value['categoria'],
-                            value['nombre'],
+                        var nodo = t.row.add([value['orden'],value['nombre'],
+                            value['url_foto'],
                             grupo_opciones(value['id'])]).draw(false).node();
                         if(value["publico"]==false)
                             $(nodo).addClass('danger');
@@ -276,4 +262,5 @@
         }
     </script>
 @endsection
+
 

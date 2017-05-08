@@ -15,6 +15,14 @@ class CreacionTablaOpcionMenu extends Migration
     {
         Schema::create('opcion_menu', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('orden');
+            $table->string('nombre');
+            $table->string('url');
+
+            $table->integer('opcion_superior_id')->unsigned()->nullable();
+            $table->foreign('opcion_superior_id')->references('id')->on('opcion_menu');
+            $table->boolean('publico');
+
             $table->timestamps();
         });
     }

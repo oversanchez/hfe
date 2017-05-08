@@ -3,7 +3,7 @@
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
-            <h2 style="display:inline-block;">Enlaces Rápidos : Comunicados, Documentos y Descargas</h2>
+            <h2 style="display:inline-block;">Menu de Página web </h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
         </div>
         <div class="cl-mcont">
@@ -19,10 +19,11 @@
                                 <table class='table table-bordered dataTable no-footer' id="tblListado">
                                     <thead>
                                     <tr>
-                                        <th style="width: 79px">Orden</th>
-                                        <th style="width: 79px">Categoría</th>
+                                        <th>Orden</th>
                                         <th>Nombre</th>
-                                        <th style="width: 100px">Acción</th>
+                                        <th>Opcion Superior</th>
+                                        <th>Url</th>
+                                        <th>Acción</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -32,52 +33,31 @@
                             </div>
                             <div id="tp2" class="tab-pane cont">
                                 <div class="container">
-                                    <form id="frmEnlace_Rapido" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                    <form id="frmOpcion_Menu" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
+                                            <label for="txtOrden" class="col-md-1 control-label">Orden</label>
+                                            <div class="col-md-1">
+                                                <input id="txtOrden" type="text" placeholder="Inicio" class="form-control"
+                                                       data-parsley-trigger="change" data-parsley-required="true">
+                                            </div>
                                             <label for="txtNombre" class="col-md-1 control-label">Nombre</label>
-                                            <div class="col-md-5">
-                                                <input id="txtNombre" type="text" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true"></div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="cmbCategoria" class="col-md-1 control-label">Categoría</label>
-                                            <div class="col-md-5">
-                                                <select id="cmbCategoria" class="form-control" required="">
-                                                    <option value="">---</option>
-                                                    <option value="CO">COMUNICADO</option>
-                                                    <option value="DO">DOCUMENTO</option>
-                                                    <option value="DE">DESCARGA</option>
+                                            <div class="col-md-4">
+                                                <input id="txtNombre" type="text" placeholder="Inicio" class="form-control"
+                                                       data-parsley-trigger="change" data-parsley-required="true">
+                                            </div>
+                                            <label for="cmbOpcion_Superior" class="col-md-2 control-label">Opción Superior</label>
+                                            <div class="col-md-4">
+                                                <select id="cmbOpcion_Superior" class="form-control">
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <label for="txtUrl" class="col-md-1 control-label">Url</label>
-                                            <div class="col-md-5">
-                                                <input id="txtUrl" type="text" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true"></div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="txtOrden" class="col-md-1 control-label">Orden</label>
-                                            <div class="col-md-1">
-                                                <input id="txtOrden" type="text" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true">
-                                            </div>
-                                            <label for="cmbColor" class="col-md-1 control-label">Color</label>
-                                            <div class="col-md-3">
-                                                <select class="form-control" id="cmbColor">
-                                                    <option value="">DEFAULT</option>
-                                                    <option value="black">NEGRO</option>
-                                                    <option value="blue">AZUL</option>
-                                                    <option value="red">ROJO</option>
-                                                    <option value="green">VERDE</option>
-                                                    <option value="chocolate">CHOCOLATE</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label class="col-sm-2">
-                                                <input id="chkPublico" class="icheck" type="checkbox" checked> Público
+                                            <div class="col-md-4"><input class="form-control" id="txtUrl" type="text" placeholder="/pagina/e423123123"
+                                                                         data-parsley-trigger="change" data-parsley-required="true"></div>
+                                            <label for="chkPublico" class="col-sm-2 control-label">Público
+                                                <input id="chkPublico" class="icheck" type="checkbox" >
                                             </label>
                                         </div>
                                     </form>
@@ -88,6 +68,11 @@
                                         <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
                                     </div>
                                 </div>
+                            </div>
+                            <div id="tp3" class="tab-pane cont">
+                                <h2>Typography</h2>
+                                <p>This is just an example of content writen by <b>Jeff Hanneman</b>, as you can see it
+                                    is a clean design with large</p>
                             </div>
                         </div>
                     </div>
@@ -101,33 +86,32 @@
     <script type="text/javascript">
 
         var t;
+
         $(document).ready(function () {
             //initialize the javascript
             App.init();
             App.formElements();
             t = $("#tblListado").DataTable();
-            $("#frmEnlace_Rapido").parsley();
+            $("#frmOpcion_Menu").parsley();
             listar();
         });
 
         function guardar(){
             var accion = $("#hddCodigo").val() == "" ? true : false;
-            if($("#frmEnlace_Rapido").parsley().validate()){
+            if($("#frmOpcion_Menu").parsley().validate()){
                 if (accion)
                     registrar()
                 else
                     modificar()
             }
-
         }
 
         function obtenerDatos(){
             var info = [{"_token": "{{ csrf_token() }}",
-                "orden": parseInt($("#txtOrden").val()),
+                "orden": $("#txtOrden").val(),
                 "nombre": $("#txtNombre").val(),
-                "categoria": $("#cmbCategoria").val(),
                 "url": $("#txtUrl").val(),
-                "color": $("#cmbColor").val(),
+                "opcion_superior_id": $("#cmbOpcion_Superior").val() !== "" ? parseInt($("#cmbOpcion_Superior").val()) : null,
                 "publico": $("#chkPublico").is(":checked")}][0];
             return info;
         }
@@ -136,7 +120,7 @@
             if (confirm("¿Deseas continuar el registro?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido",
+                    url: "/intranet/website/opcion_menu",
                     type: "POST",
                     data: info,
                     beforeSend: function () {
@@ -160,7 +144,7 @@
             if (confirm("¿Deseas continuar la modificación?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido/" + $("#hddCodigo").val(),
+                    url: "/intranet/website/opcion_menu/" + $("#hddCodigo").val(),
                     type: "PUT",
                     data: info,
                     beforeSend: function () {
@@ -184,7 +168,7 @@
             if (confirm("¿Deseas eliminar el elemento?")) {
                 var info = [{"_token": "{{ csrf_token() }}"}][0];
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido/" + id,
+                    url: "/intranet/website/opcion_menu/" + id,
                     type: "DELETE",
                     data: info,
                     beforeSend: function () {
@@ -206,7 +190,7 @@
 
         function editar(id) {
             $.ajax({
-                url: "/intranet/website/enlace_rapido/" + id,
+                url: "/intranet/website/opcion_menu/" + id,
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
@@ -215,10 +199,9 @@
                     $("#hddCodigo").val(id);
                     $("#txtOrden").val(data["orden"]);
                     $("#txtNombre").val(data["nombre"]);
-                    $("#cmbCategoria").val(data["categoria"]);
                     $("#txtUrl").val(data["url"]);
-                    $("#cmbColor").val(data["color"]);
-                    $("#chkPublico").iCheck(data['publico'] == true ? "check" : "uncheck");
+                    $("#cmbOpcion_Superior").val(data["opcion_superior_id"]);
+                    $("#chkPublico").iCheck(data["publico"] == true ? "check" : "uncheck" );
                     $("#btnGuardar").text("Guardar");
                     $('a[href="#tp2"]').click();
                     $('a[href="#tp2"]').text("Modificando : "+data["nombre"]);
@@ -234,37 +217,42 @@
 
         function cancelar(){
             $("#hddCodigo").val("");
-            $("#txtOrden").val(0);
+            $("#txtOrden").val("");
             $("#txtNombre").val("");
-            $("#cmbCategoria").val("");
-            $("#txtUrl").val("#");
-            $("#cmbColor").val("");
-            $("#chkPublico").iCheck("check");
-
+            $("#txtUrl").val("");
+            $("#cmbOpcion_Superior").val("");
+            $("#chkPublico").iCheck("uncheck");
             $("#btnGuardar").text("Registrar");
-            $('#frmEnlace_Rapido').parsley().reset();
+            $('#frmOpcion_Menu').parsley().reset();
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();
         }
 
         function listar() {
+            var info = [{"_token": "{{ csrf_token() }}"}][0];
             $.ajax({
-                url: "/intranet/website/enlace_rapido/*",
+                url: "/intranet/website/opcion_menu/listar",
                 type: "GET",
+                data: info,
                 beforeSend: function () {
                     $("#loading").show();
                 },
                 success: function (data) {
                     t.clear().draw();
+                    var opcion_superior = $("#cmbOpcion_Superior");
+                    opcion_superior.empty();
+                    opcion_superior.append("<option value=''>---</option>");
                     $.each(data,function( index, value ) {
-                        var nodo = t.row.add([value['orden'],value['categoria'],
-                            value['nombre'],
+                        //Combo de Opciones Superiores
+                        opcion_superior.append("<option value='"+value["id"]+"'>"+value["nombre"]+"</option>");
+                        //Tabla de datos
+                        var nodo = t.row.add([value['orden'],value['nombre'],value["opcion_superior"] == null ? '' : "/"+value["opcion_superior"]["nombre"],
+                            value["url"],
                             grupo_opciones(value['id'])]).draw(false).node();
                         if(value["publico"]==false)
                             $(nodo).addClass('danger');
                     });
-                    $("#tblListado th").eq(0).click();
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);
@@ -274,6 +262,7 @@
                 }
             });
         }
+
     </script>
 @endsection
 

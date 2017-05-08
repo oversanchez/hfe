@@ -13,10 +13,13 @@ class Website_Controller extends Controller
      */
     public function index()
     {
-        $sliders = \App\Slider::all();
-        $eventos = \App\Evento::all();
-        $noticias = \App\Noticia::take(3)->orderBy('fecha', 'desc')->get();
-        return view('website/principal',['sliders'=>$sliders,'eventos' => $eventos,'noticias'=>$noticias]);
+        $sliders = \App\Slider::where('publico',true)->orderBy('orden','asc')->get();
+        $eventos = \App\Evento::where('publico',true)->orderBy('fecha', 'asc')->get();
+        $noticias = \App\Noticia::where('publico',true)->orderBy('fecha', 'desc')->get();
+        $comunicados = \App\Enlace_Rapido::where('publico',true)->where('categoria','CO')->orderBy('orden','asc')->get();
+        $documentos = \App\Enlace_Rapido::where('publico',true)->where('categoria','DO')->orderBy('orden','asc')->get();
+        $descargas = \App\Enlace_Rapido::where('publico',true)->where('categoria','DE')->orderBy('orden','asc')->get();
+        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias]);
     }
 
     /**

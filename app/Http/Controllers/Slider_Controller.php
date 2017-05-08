@@ -13,7 +13,7 @@ class Slider_Controller extends Controller
      */
     public function index()
     {
-        return view('website/slider');
+        return view('intranet/website/slider');
     }
 
     /**

@@ -17,7 +17,6 @@ class CreacionTablaSlider extends Migration
             $table->increments('id');
             $table->integer('orden');
             $table->string('nombre');
-            $table->string('descripcion')->nullable();
             $table->string('url_foto');
             $table->string('url_vinculo')->default('#')->nullable();
             $table->string('nombre_vinculo')->nullable();

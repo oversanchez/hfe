@@ -13,7 +13,7 @@ class Opcion_Menu_Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('intranet/website/opcion_menu');
     }
 
     /**
@@ -34,7 +34,13 @@ class Opcion_Menu_Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $opcion_menu = new \App\Opcion_Menu();
+        $opcion_menu->orden = $request->input('orden');
+        $opcion_menu->opcion_superior_id = $request->input('opcion_superior_id');
+        $opcion_menu->nombre = $request->input('nombre');
+        $opcion_menu->url = $request->input('url');
+        $opcion_menu->publico = $request->input('publico');
+        $opcion_menu->save();
     }
 
     /**
@@ -45,7 +51,21 @@ class Opcion_Menu_Controller extends Controller
      */
     public function show($id)
     {
-        //
+        if (is_numeric($id)) {
+            return \App\Opcion_Menu::find($id);
+        } else if($id == "*"){
+            return \App\Opcion_Menu::all();
+        }
+    }
+
+    public function listar()
+    {
+        $opcion_menus =  \App\Opcion_Menu::all();
+        foreach ($opcion_menus as $opcion_menu){
+            if($opcion_menu->opcion_superior_id !== null)
+                $opcion_menu->opcion_superior;
+        }
+        return $opcion_menus;
     }
 
     /**
@@ -68,7 +88,13 @@ class Opcion_Menu_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $opcion_menu = \App\Opcion_Menu::find($id);
+        $opcion_menu->orden = $request->input('orden');
+        $opcion_menu->opcion_superior_id = $request->input('opcion_superior_id');
+        $opcion_menu->nombre = $request->input('nombre');
+        $opcion_menu->url = $request->input('url');
+        $opcion_menu->publico = $request->input('publico');
+        $opcion_menu->save();
     }
 
     /**
@@ -79,6 +105,7 @@ class Opcion_Menu_Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $opcion_menu = \App\Opcion_Menu::find($id);
+        $opcion_menu->delete();
     }
 }

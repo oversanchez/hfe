@@ -127,14 +127,13 @@
                     data: info,
                     beforeSend: function () {
                         $("#loading").show();
-                        console.log(info);
                     },
                     success: function (data) {
                         notificacion('Registro', 'Datos registrados correctamente', 'primary');
                         cancelar();
                     },
                     error: function (request, status, error) {
-                        console.log(request.responseText);
+                        mostrar_error(request.responseText);
                     },
                     complete: function () {
                         $("#loading").hide();
@@ -158,7 +157,7 @@
                         cancelar();
                     },
                     error: function (request, status, error) {
-                        console.log(request.responseText);
+                        mostrar_error(request.responseText);
                     },
                     complete: function () {
                         $("#loading").hide();
@@ -171,7 +170,7 @@
             if (confirm("¿Deseas eliminar el elemento?")) {
                 var info = [{"_token": "{{ csrf_token() }}"}][0];
                 $.ajax({
-                    url: "/intranet/mantenimientos/nivel/" + id,
+                    url: "/intranet/mantenimientos/grado/" + id,
                     type: "DELETE",
                     data: info,
                     beforeSend: function () {
@@ -182,7 +181,7 @@
                         cancelar();
                     },
                     error: function (request, status, error) {
-                        console.log(request.responseText);
+                        mostrar_error(request.responseText);
                     },
                     complete: function () {
                         $("#loading").hide();
@@ -210,7 +209,7 @@
                     $('a[href="#tp2"]').text("Modificando : "+data["nombre"]);
                 },
                 error: function (request, status, error) {
-                    console.log(request.responseText);
+                    mostrar_error(request.responseText);
                 },
                 complete: function () {
                     $("#loading").hide();
@@ -256,7 +255,7 @@
                     });
                 },
                 error: function (request, status, error) {
-                    console.log(request.responseText);
+                    mostrar_error(request.responseText);
                 },
                 complete: function () {
                     $("#loading").hide();
@@ -279,7 +278,7 @@
                     $("#cmbNivel").append(opciones);
                 },
                 error: function (request, status, error) {
-                    console.log(request.responseText);
+                    mostrar_error(request.responseText);
                 },
                 complete: function () {
                     $("#loading").hide();

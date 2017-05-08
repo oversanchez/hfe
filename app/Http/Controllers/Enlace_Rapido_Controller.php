@@ -36,6 +36,7 @@ class Enlace_Rapido_Controller extends Controller
         $enlace_rapido = new \App\Enlace_Rapido();
         $enlace_rapido->orden= $request->input('orden');
         $enlace_rapido->nombre = $request->input('nombre');
+        $enlace_rapido->categoria = $request->input('categoria');
         $enlace_rapido->url = $request->input('url');
         $enlace_rapido->color= $request->input('color');
         $enlace_rapido->publico= $request->input('publico');
@@ -81,6 +82,7 @@ class Enlace_Rapido_Controller extends Controller
         $enlace_rapido = \App\Enlace_Rapido::find($id);
         $enlace_rapido->orden= $request->input('orden');
         $enlace_rapido->nombre = $request->input('nombre');
+        $enlace_rapido->categoria = $request->input('categoria');
         $enlace_rapido->url = $request->input('url');
         $enlace_rapido->color= $request->input('color');
         $enlace_rapido->publico= $request->input('publico');
