@@ -36,29 +36,38 @@
                                     <form id="frmOpcion_Menu" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
+                                            <label for="txtNombre" class="col-md-1 control-label">Nombre</label>
+                                            <div class="col-md-5">
+                                                <input id="txtNombre" type="text" placeholder="Inicio" class="form-control"
+                                                       data-parsley-trigger="change" data-parsley-required="true">
+                                            </div>
+                                            <label for="chkPublico" class="col-sm-2 control-label">Público
+                                                <input id="chkPublico" class="icheck" type="checkbox" >
+                                            </label>
+                                        </div>
+                                        <div class="row">
+                                            <label for="cmbOpcion_Superior" class="col-md-1 control-label">Opción Superior</label>
+                                            <div class="col-md-4">
+                                                <select id="cmbOpcion_Superior" class="form-control">
+                                                </select>
+                                            </div>
                                             <label for="txtOrden" class="col-md-1 control-label">Orden</label>
                                             <div class="col-md-1">
                                                 <input id="txtOrden" type="text" placeholder="Inicio" class="form-control"
                                                        data-parsley-trigger="change" data-parsley-required="true">
                                             </div>
-                                            <label for="txtNombre" class="col-md-1 control-label">Nombre</label>
-                                            <div class="col-md-4">
-                                                <input id="txtNombre" type="text" placeholder="Inicio" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true">
-                                            </div>
-                                            <label for="cmbOpcion_Superior" class="col-md-2 control-label">Opción Superior</label>
-                                            <div class="col-md-4">
-                                                <select id="cmbOpcion_Superior" class="form-control">
-                                                </select>
-                                            </div>
                                         </div>
                                         <div class="row">
                                             <label for="txtUrl" class="col-md-1 control-label">Url</label>
-                                            <div class="col-md-4"><input class="form-control" id="txtUrl" type="text" placeholder="/pagina/e423123123"
+                                            <div class="col-md-3"><input class="form-control" id="txtUrl" type="text" placeholder="/pagina/e423123123"
                                                                          data-parsley-trigger="change" data-parsley-required="true"></div>
-                                            <label for="chkPublico" class="col-sm-2 control-label">Público
-                                                <input id="chkPublico" class="icheck" type="checkbox" >
-                                            </label>
+                                            <label for="cmbTipo" class="col-md-1 control-label">Tipo</label>
+                                            <div class="col-md-2">
+                                                <select class="form-control" id="cmbTipo" required="">
+                                                    <option value="L">LITERAL</option>
+                                                    <option value="B">BOTON</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -110,6 +119,7 @@
             var info = [{"_token": "{{ csrf_token() }}",
                 "orden": $("#txtOrden").val(),
                 "nombre": $("#txtNombre").val(),
+                "tipo": $("#cmbTipo").val(),
                 "url": $("#txtUrl").val(),
                 "opcion_superior_id": $("#cmbOpcion_Superior").val() !== "" ? parseInt($("#cmbOpcion_Superior").val()) : null,
                 "publico": $("#chkPublico").is(":checked")}][0];
@@ -199,6 +209,7 @@
                     $("#hddCodigo").val(id);
                     $("#txtOrden").val(data["orden"]);
                     $("#txtNombre").val(data["nombre"]);
+                    $("#cmbTipo").val(data["tipo"]);
                     $("#txtUrl").val(data["url"]);
                     $("#cmbOpcion_Superior").val(data["opcion_superior_id"]);
                     $("#chkPublico").iCheck(data["publico"] == true ? "check" : "uncheck" );
@@ -219,6 +230,7 @@
             $("#hddCodigo").val("");
             $("#txtOrden").val("");
             $("#txtNombre").val("");
+            $("#cmbTipo").val("L");
             $("#txtUrl").val("");
             $("#cmbOpcion_Superior").val("");
             $("#chkPublico").iCheck("uncheck");
@@ -253,6 +265,7 @@
                         if(value["publico"]==false)
                             $(nodo).addClass('danger');
                     });
+                    $("#tblListado th").eq(2).click();
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);

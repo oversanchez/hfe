@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class Website_Controller extends Controller
@@ -13,13 +14,16 @@ class Website_Controller extends Controller
      */
     public function index()
     {
+        $opciones = \App\Opcion_Menu::where('publico',true)->orderBy('orden','asc')->get();
         $sliders = \App\Slider::where('publico',true)->orderBy('orden','asc')->get();
         $eventos = \App\Evento::where('publico',true)->orderBy('fecha', 'asc')->get();
         $noticias = \App\Noticia::where('publico',true)->orderBy('fecha', 'desc')->get();
+
         $comunicados = \App\Enlace_Rapido::where('publico',true)->where('categoria','CO')->orderBy('orden','asc')->get();
         $documentos = \App\Enlace_Rapido::where('publico',true)->where('categoria','DO')->orderBy('orden','asc')->get();
         $descargas = \App\Enlace_Rapido::where('publico',true)->where('categoria','DE')->orderBy('orden','asc')->get();
-        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias]);
+
+        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias,'opciones'=>$opciones]);
     }
 
     /**

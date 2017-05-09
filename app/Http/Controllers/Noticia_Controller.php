@@ -15,6 +15,14 @@ class Noticia_Controller extends Controller
     {
         return view('intranet/website/noticia');
     }
+    
+    public function ver_noticia($id)
+    {
+        $opciones = \App\Opcion_Menu::where('publico',true)->orderBy('orden','asc')->get();
+        $noticia = \App\Noticia::find($id);
+        return view('website/noticias',['noticia'=>$noticia,'opciones'=>$opciones]);
+    }
+        
 
     /**
      * Show the form for creating a new resource.

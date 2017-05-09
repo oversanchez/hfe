@@ -16,6 +16,13 @@ class Evento_Controller extends Controller
         return view('intranet/website/evento');
     }
 
+    public function ver_evento($id)
+    {
+        $opciones = \App\Opcion_Menu::where('publico',true)->orderBy('orden','asc')->get();
+        $evento = \App\Evento::find($id);
+        return view('website/eventos',['evento'=>$evento,'opciones'=>$opciones]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

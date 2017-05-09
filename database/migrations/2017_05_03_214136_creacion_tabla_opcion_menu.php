@@ -18,7 +18,8 @@ class CreacionTablaOpcionMenu extends Migration
             $table->integer('orden');
             $table->string('nombre');
             $table->string('url');
-
+            $table->integer('nro_opciones')->default(0);
+            $table->enum('tipo',['L','B'])->default('L'); //LINK | BUTTON
             $table->integer('opcion_superior_id')->unsigned()->nullable();
             $table->foreign('opcion_superior_id')->references('id')->on('opcion_menu');
             $table->boolean('publico');

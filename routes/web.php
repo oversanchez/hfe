@@ -18,7 +18,9 @@ Route::get('/intranet/', function () {
 
 Route::resource('/','\App\Http\Controllers\Website_Controller');
 
-Route::resource('/website/','\App\Http\Controllers\Website_Controller');
+Route::get('/noticias/{id}/ver', ['uses' => 'Noticia_Controller@ver_noticia', 'as' => 'noticia.ver_noticia']);
+
+Route::get('/eventos/{id}/ver', ['uses' => 'Evento_Controller@ver_evento', 'as' => 'evento.ver_evento']);
 
 Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
