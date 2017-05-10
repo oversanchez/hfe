@@ -58,21 +58,21 @@
                     <div role="tabpanel" class="tab-pane active" id="comunicados" style="width:100%;height:178px;background:url('royal/img/comunicado_transparente.png') no-repeat right" >
                         <ul>
                             @foreach($comunicados as $key => $comunicado)
-                                <li><a href="{{$comunicado->url}}" target="_BLANK" style="color:{{$comunicado->color}}"><i class="fa fa-bell-o"></i> {{$comunicado->nombre}}</a></li>
+                                <li><a href="{{$comunicado->url}}" style="color:{{$comunicado->color}}"><i class="fa fa-bell-o"></i> {{$comunicado->nombre}}</a></li>
                             @endforeach
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="cartas" style="width:100%;height:178px;background:url('royal/img/documentos_transparente.png') no-repeat right" >
                         <ul>
                             @foreach($documentos as $key => $documento)
-                                <li><a href="{{$documento->url}}" target="_BLANK" style="color:{{$documento->color}}"><i class="fa fa-file-archive-o"></i> {{$documento->nombre}}</a></li>
+                                <li><a href="{{$documento->url}}"  style="color:{{$documento->color}}"><i class="fa fa-file-archive-o"></i> {{$documento->nombre}}</a></li>
                             @endforeach
                         </ul>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="descargas" style="width:100%;height:178px;background:url('royal/img/download_transparente.png') no-repeat right">
                         <ul>
                             @foreach($descargas as $key => $descarga)
-                                <li><a href="{{$descarga->url}}" target="_BLANK" style="color:{{$descarga->color}}"><i class="fa fa-download"></i> {{$descarga->nombre}}</a></li>
+                                <li><a href="{{$descarga->url}}"  style="color:{{$descarga->color}}"><i class="fa fa-download"></i> {{$descarga->nombre}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -119,12 +119,12 @@
                                     @foreach($noticias as $key => $noticia)
                                         <li>
                                         <span class="rel_thumb">
-                                                <a href="noticias/{{$noticia->id}}/ver" target="_blank"><img src="{{$noticia->url_foto}}"
+                                                <a href="noticias/{{$noticia->id}}/ver" ><img src="{{$noticia->url_foto}}"
                                                                                             alt=""></a>
                                         </span>
                                             <!--end rel_thumb-->
                                             <div class="rel_right">
-                                                <h4><a href="noticias/{{$noticia->id}}/ver" target="_blank">{{$noticia->nombre}}</a></h4>
+                                                <h4><a href="noticias/{{$noticia->id}}/ver">{{$noticia->nombre}}</a></h4>
                                                 <div class="meta">
                                                     <span class="author">Posted in: <a href="#">Update</a></span>
                                                     <span class="date">on: <a href="#">January 24, 2015</a></span>
@@ -158,7 +158,7 @@
                             </div>
                         </form>
                     </div>
-                    <img class="img-responsive" src="royal/img/playstore2.png">
+                    <img class="img-responsive" src="royal/img/playstore2.png" style="cursor:pointer;">
                     <!-- formArea -->
                     <div class="list_block related_post_sec" style="height: 283px;margin: 10px 0 5px;padding:15px 5px 5px 5px;">
                         <div class="upcoming_events" style="height: 221px;">
@@ -168,11 +168,11 @@
                                     <ul>
                                         @foreach($eventos as $evento)
                                             <li class="related_post_sec single_post">
-                                        <span class="date-wrapper">
-                                        <span class="date"><span>{{date("d", strtotime($evento->fecha))}}</span>{{date("M", strtotime($evento->fecha))}}</span>
-                                        </span>
+                                                <span class="date-wrapper">
+                                                <span class="date"><span>{{date("d", strtotime($evento->fecha))}}</span>{{date("M", strtotime($evento->fecha))}}</span>
+                                                </span>
                                                 <div class="rel_right">
-                                                    <h4><a href="eventos/{{base64_encode(Hash::make($evento->id))}}">{{$evento->nombre}}</a></h4>
+                                                    <h4><a href="/eventos/{{$evento->id}}/ver">{{$evento->nombre}}</a></h4>
                                                     <div class="meta">
                                                         <span class="place"><i class="fa fa-map-marker"></i>{{$evento->lugar}}</span>
                                                         <span class="event-time"><i class="fa fa-clock-o"></i>{{$evento->hora}}</span>

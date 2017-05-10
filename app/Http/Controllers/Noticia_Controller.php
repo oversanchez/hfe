@@ -19,8 +19,9 @@ class Noticia_Controller extends Controller
     public function ver_noticia($id)
     {
         $opciones = \App\Opcion_Menu::where('publico',true)->orderBy('orden','asc')->get();
+        $noticias = \App\Noticia::take(6)->where('publico',true)->where('id','<>',$id)->orderBy('fecha', 'desc')->get();
         $noticia = \App\Noticia::find($id);
-        return view('website/noticias',['noticia'=>$noticia,'opciones'=>$opciones]);
+        return view('website/noticias',['noticia'=>$noticia,'opciones'=>$opciones,'noticias'=>$noticias]);
     }
         
 

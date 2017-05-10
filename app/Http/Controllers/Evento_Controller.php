@@ -19,8 +19,9 @@ class Evento_Controller extends Controller
     public function ver_evento($id)
     {
         $opciones = \App\Opcion_Menu::where('publico',true)->orderBy('orden','asc')->get();
+        $noticias = \App\Noticia::take(6)->where('publico',true)->where('id','<>',$id)->orderBy('fecha', 'desc')->get();
         $evento = \App\Evento::find($id);
-        return view('website/eventos',['evento'=>$evento,'opciones'=>$opciones]);
+        return view('website/eventos',['evento'=>$evento,'opciones'=>$opciones,'noticias'=>$noticias]);
     }
 
     /**
