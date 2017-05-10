@@ -12,8 +12,10 @@ class Website_Seeder extends Seeder
     public function run()
     {
         DB::table('slider')->insert([
-            ["orden" => 1,"url_vinculo"=>"www.google.com","nombre_vinculo"=>"Aqui","nombre" => "aaaa","url_foto"=> "http://themes.iamabdus.com/royal/1.3/img/home/slider/slider_image_1.jpg","publico"=> true],
-            ["orden" => 2,"url_vinculo"=>"#","nombre_vinculo"=>"","nombre" => "bbbb","url_foto"=> "http://themes.iamabdus.com/royal/1.3/img/home/slider/slider_image_2.jpg","publico"=> true],
+            ["orden" => 1,"url_vinculo"=>"#","nombre_vinculo"=>"","nombre" => "Entrada Principal","url_foto"=> "/royal/img/rosario/slider1.jpg","publico"=> true],
+            ["orden" => 2,"url_vinculo"=>"#","nombre_vinculo"=>"","nombre" => "Formación General","url_foto"=> "/royal/img/rosario/slider2.jpg","publico"=> true],
+            ["orden" => 3,"url_vinculo"=>"#","nombre_vinculo"=>"","nombre" => "Cerca de Dios","url_foto"=> "/royal/img/rosario/slider3.jpg","publico"=> true],
+            ["orden" => 4,"url_vinculo"=>"#","nombre_vinculo"=>"","nombre" => "Pabellón","url_foto"=> "/royal/img/rosario/slider4.jpg","publico"=> true],
         ]);
 
         DB::table('noticia')->insert([
@@ -41,7 +43,7 @@ class Website_Seeder extends Seeder
         ]);
 
         DB::table('opcion_menu')->insert([
-            ["orden"=>1,"nombre" => "BIENVENIDA","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
+            ["orden"=>1,"nombre" => "INICIO","url"=>"/","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
             ["orden"=>2,"nombre" => "FILOSOFÍA INSTITUCIONAL","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>5],
             ["orden"=>3,"nombre" => "PASTORAL","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
             ["orden"=>4,"nombre" => "INFRAESTRUCTURA","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],

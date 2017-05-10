@@ -56,25 +56,19 @@
                 <!-- Tab panes -->
                 <div class="tab-content" style="background: white;height:192px;padding:10px;border:solid thin lightgray;">
                     <div role="tabpanel" class="tab-pane active" id="comunicados" style="width:100%;height:178px;background:url('royal/img/comunicado_transparente.png') no-repeat right" >
-                        <ul>
-                            @foreach($comunicados as $key => $comunicado)
-                                <li><a href="{{$comunicado->url}}" style="color:{{$comunicado->color}}"><i class="fa fa-bell-o"></i> {{$comunicado->nombre}}</a></li>
-                            @endforeach
-                        </ul>
+                        @foreach($comunicados as $key => $comunicado)
+                            <div class="row"><div class="col-sm-12"><a href="{{$comunicado->url}}" style="color:{{$comunicado->color}}"><i class="fa fa-bell-o"></i> {{$comunicado->nombre}}</a></div></div>
+                        @endforeach
                     </div>
                     <div role="tabpanel" class="tab-pane" id="cartas" style="width:100%;height:178px;background:url('royal/img/documentos_transparente.png') no-repeat right" >
-                        <ul>
-                            @foreach($documentos as $key => $documento)
-                                <li><a href="{{$documento->url}}"  style="color:{{$documento->color}}"><i class="fa fa-file-archive-o"></i> {{$documento->nombre}}</a></li>
-                            @endforeach
-                        </ul>
+                        @foreach($documentos as $key => $documento)
+                            <div class="row"><div class="col-sm-12"><a href="{{$documento->url}}"  style="color:{{$documento->color}}"><i class="fa fa-file-archive-o"></i> {{$documento->nombre}}</a></div></div>
+                        @endforeach
                     </div>
                     <div role="tabpanel" class="tab-pane" id="descargas" style="width:100%;height:178px;background:url('royal/img/download_transparente.png') no-repeat right">
-                        <ul>
-                            @foreach($descargas as $key => $descarga)
-                                <li><a href="{{$descarga->url}}"  style="color:{{$descarga->color}}"><i class="fa fa-download"></i> {{$descarga->nombre}}</a></li>
-                            @endforeach
-                        </ul>
+                        @foreach($descargas as $key => $descarga)
+                            <div class="row"><div class="col-sm-12"><a href="{{$descarga->url}}"  style="color:{{$descarga->color}}"><i class="fa fa-download"></i> {{$descarga->nombre}}</a></div></div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -85,51 +79,53 @@
         <div class="container">
             <div class="row clearfix" style="padding-bottom: 10px;">
                 <div class="col-sm-4 col-xs-12" >
-                    <div style="border: 1px solid #DCE4EA;border-top: 3px solid #0060b1;padding:0px 10px 10px 10px;    ">
-                        <div class="related_post_sec single_post">
-                            <h3 style="margin: 5px 0px 0px 0px;height: 33px;background-color: #0060b1;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/school.png" style="height: 35px;margin-top: -10px;padding-right: 13px;">Bienvenida</h3>
-                        </div>
-                        <div class="row" style="padding-top: 10px;">
-                            <div class="col-lg-12 col-md-12 col-xs-12 videoLeft">
-                                <iframe src="https://player.vimeo.com/video/216732031?title=0&byline=0&portrait=0" height="200" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div style="border: 1px solid #DCE4EA;border-top: 3px solid #0060b1;padding:0px 10px 10px 10px;    ">
+                                <div class="related_post_sec single_post">
+                                    <h3 style="margin: 5px 0px 0px 0px;height: 33px;background-color: #0060b1;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/school.png" style="height: 35px;margin-top: -10px;padding-right: 13px;">Bienvenida</h3>
+                                </div>
+                                <div class="row" style="padding-top: 10px;">
+                                    <div class="col-lg-12 col-md-12 col-xs-12 videoLeft">
+                                        <iframe src="https://player.vimeo.com/video/216732031?title=0&byline=0&portrait=0" height="200" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- videoLeft -->
+                                    <div class="col-lg-12 col-md-12 col-xs-12 videoRight">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur
+                                            ante volutpat sem aliquam lobortis..</p>
+                                        <a href="about.html" class="btn btn-block learnBtn">Learn More</a>
+                                    </div>
+                                    <!-- videoRight -->
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <!-- videoLeft -->
-                            <div class="col-lg-12 col-md-12 col-xs-12 videoRight">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur
-                                    ante volutpat sem aliquam lobortis. Mauris porta fermentum volutpat.
-                                    Praesent est sapien, tincidunt vel arcu vitae, mattis sollicitudin lectus.
-                                    Mauris porta fermentum volutpat. Praesent est sapien, tincidunt vel arcu
-                                    vitae, mattis sollicitudin lectus.</p>
-                                <a href="about.html" class="btn btn-block learnBtn">Learn More</a>
-                            </div>
-                            <!-- videoRight -->
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-5 col-xs-12" style="border: 1px solid #DCE4EA;border-top: 3px solid #d4be12;height: 477px;">
-                    <div class="related_post_sec single_post" style="height: 420px;">
-                        <h3 style="margin: 5px 0px 0px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/noticias2.png" style="height: 35px;margin-top: -6px;padding-right: 13px;">Noticias</h3>
+                <div class="col-sm-5 col-xs-12">
+                    <div class="related_post_sec single_post" style="border: 1px solid #DCE4EA;border-top: 3px solid #d4be12;height: 500px;padding-bottom: 60px;padding-right: 4px;">
+                        <h3 style="margin: 5px 10px 0px 10px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: auto;padding: 4px 0px 0px 10px;"><img src="royal/img/noticias2.png" style="height: 35px;margin-top: -6px;padding-right: 13px;">Noticias</h3>
                         <div id="noticias" class="nano">
                             <div class="overthrow nano-content">
                                 <ul>
                                     @foreach($noticias as $key => $noticia)
-                                        <li>
+                                        <li title="{{$noticia->nombre}}">
                                         <span class="rel_thumb">
                                                 <a href="noticias/{{$noticia->id}}/ver" ><img src="{{$noticia->url_foto}}"
-                                                                                            alt=""></a>
+                                                                                              alt=""></a>
                                         </span>
                                             <!--end rel_thumb-->
                                             <div class="rel_right">
-                                                <h4><a href="noticias/{{$noticia->id}}/ver">{{$noticia->nombre}}</a></h4>
+                                                <h4><a href="noticias/{{$noticia->id}}/ver">{{str_limit($noticia->nombre,37)}}</a></h4>
                                                 <div class="meta">
-                                                    <span class="author">Posted in: <a href="#">Update</a></span>
-                                                    <span class="date">on: <a href="#">January 24, 2015</a></span>
+                                                    <span class="date">Fecha: <a href="#">{{$noticia->fecha}}</a></span>
                                                 </div>
-                                                <p>{{str_limit($noticia->descripcion,170)}}</p>
+                                                <p>{{str_limit($noticia->descripcion,140)}}</p>
                                             </div>
                                             <!--end rel right-->
                                         </li>
@@ -160,14 +156,14 @@
                     </div>
                     <img class="img-responsive" src="royal/img/playstore2.png" style="cursor:pointer;">
                     <!-- formArea -->
-                    <div class="list_block related_post_sec" style="height: 283px;margin: 10px 0 5px;padding:15px 5px 5px 5px;">
-                        <div class="upcoming_events" style="height: 221px;">
+                    <div class="list_block related_post_sec" style="height: 303px;margin: 10px 0 5px;padding:15px 5px 5px 5px;">
+                        <div class="upcoming_events" style="height: 241px;">
                             <h3 style="margin:-10px 0px 5px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/eventos4.png" style="height: 30px;margin-top: -4px;padding-right: 13px;">Eventos</h3>
                             <div id="eventos" class="nano">
                                 <div class="overthrow nano-content">
                                     <ul>
                                         @foreach($eventos as $evento)
-                                            <li class="related_post_sec single_post">
+                                            <li class="related_post_sec single_post" title="{{$evento->nombre}}">
                                                 <span class="date-wrapper">
                                                 <span class="date"><span>{{date("d", strtotime($evento->fecha))}}</span>{{date("M", strtotime($evento->fecha))}}</span>
                                                 </span>

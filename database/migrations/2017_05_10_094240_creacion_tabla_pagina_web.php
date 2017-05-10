@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaEnlaceRapido extends Migration
+class CreacionTablaPaginaWeb extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreacionTablaEnlaceRapido extends Migration
      */
     public function up()
     {
-        Schema::create('enlace_rapido', function (Blueprint $table) {
+        Schema::create('pagina_web', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('orden');
             $table->string('nombre');
-            $table->enum('categoria',['CO','DO','DE']);
-            $table->string('url');
-            $table->string('color')->nullable();
-            $table->boolean('publico')->default(true);
+            $table->text('contenido')->nullable();
+            $table->boolean('publico');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreacionTablaEnlaceRapido extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enlace_rapido');
+        Schema::dropIfExists('pagina_web');
     }
 }

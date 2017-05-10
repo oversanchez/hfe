@@ -3,7 +3,7 @@
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
-            <h2 style="display:inline-block;">Enlaces Rápidos : Comunicados, Documentos y Descargas</h2>
+            <h2 style="display:inline-block;">Creación de Contenido Web</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
         </div>
         <div class="cl-mcont">
@@ -19,11 +19,9 @@
                                 <table class='table table-bordered dataTable no-footer' id="tblListado">
                                     <thead>
                                     <tr>
-                                        <th style="width: 79px">Orden</th>
-                                        <th style="width: 79px">Categoría</th>
                                         <th>Nombre</th>
-                                        <th>Url</th>
-                                        <th style="width: 100px">Acción</th>
+                                        <th style="width: 300px;">Url</th>
+                                        <th style="width: 100px;">Acción</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -33,47 +31,15 @@
                             </div>
                             <div id="tp2" class="tab-pane cont">
                                 <div class="container">
-                                    <form id="frmEnlace_Rapido" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                    <form id="frmPagina_Web" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
-                                            <label for="txtNombre" class="col-md-1 control-label">Nombre</label>
-                                            <div class="col-md-5">
-                                                <input id="txtNombre" type="text" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true"></div>
+                                            <label class="col-md-1" for="txtNombre">Nombre</label>
+                                            <div class="col-md-4"><input type="text" class="form-control" id="txtNombre" placeholder="Nombre de la página" data-parsley-trigger="change" data-parsley-required="true"></div>
                                         </div>
                                         <div class="row">
-                                            <label for="cmbCategoria" class="col-md-1 control-label">Categoría</label>
-                                            <div class="col-md-5">
-                                                <select id="cmbCategoria" class="form-control" required="">
-                                                    <option value="">---</option>
-                                                    <option value="CO">COMUNICADO</option>
-                                                    <option value="DO">DOCUMENTO</option>
-                                                    <option value="DE">DESCARGA</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="txtUrl" class="col-md-1 control-label">Url</label>
-                                            <div class="col-md-5">
-                                                <input id="txtUrl" type="text" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true"></div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="txtOrden" class="col-md-1 control-label">Orden</label>
-                                            <div class="col-md-1">
-                                                <input id="txtOrden" type="text" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true">
-                                            </div>
-                                            <label for="cmbColor" class="col-md-1 control-label">Color</label>
-                                            <div class="col-md-3">
-                                                <select class="form-control" id="cmbColor">
-                                                    <option value="">DEFAULT</option>
-                                                    <option value="black">NEGRO</option>
-                                                    <option value="blue">AZUL</option>
-                                                    <option value="red">ROJO</option>
-                                                    <option value="green">VERDE</option>
-                                                    <option value="chocolate">CHOCOLATE</option>
-                                                </select>
+                                            <div class="col-sm-12">
+                                                <div id="dvContenido" ></div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -107,13 +73,14 @@
             App.init();
             App.formElements();
             t = $("#tblListado").DataTable();
-            $("#frmEnlace_Rapido").parsley();
+            $("#frmPagina_Web").parsley();
+            $("#dvContenido").summernote({height: 200});
             listar();
         });
 
         function guardar(){
             var accion = $("#hddCodigo").val() == "" ? true : false;
-            if($("#frmEnlace_Rapido").parsley().validate()){
+            if($("#frmPagina_Web").parsley().validate()){
                 if (accion)
                     registrar()
                 else
@@ -124,11 +91,8 @@
 
         function obtenerDatos(){
             var info = [{"_token": "{{ csrf_token() }}",
-                "orden": parseInt($("#txtOrden").val()),
                 "nombre": $("#txtNombre").val(),
-                "categoria": $("#cmbCategoria").val(),
-                "url": $("#txtUrl").val(),
-                "color": $("#cmbColor").val(),
+                "contenido": $("#dvContenido").summernote('code'),
                 "publico": $("#chkPublico").is(":checked")}][0];
             return info;
         }
@@ -137,7 +101,7 @@
             if (confirm("¿Deseas continuar el registro?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido",
+                    url: "/intranet/website/pagina_web",
                     type: "POST",
                     data: info,
                     beforeSend: function () {
@@ -161,7 +125,7 @@
             if (confirm("¿Deseas continuar la modificación?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido/" + $("#hddCodigo").val(),
+                    url: "/intranet/website/pagina_web/" + $("#hddCodigo").val(),
                     type: "PUT",
                     data: info,
                     beforeSend: function () {
@@ -185,7 +149,7 @@
             if (confirm("¿Deseas eliminar el elemento?")) {
                 var info = [{"_token": "{{ csrf_token() }}"}][0];
                 $.ajax({
-                    url: "/intranet/website/enlace_rapido/" + id,
+                    url: "/intranet/website/pagina_web/" + id,
                     type: "DELETE",
                     data: info,
                     beforeSend: function () {
@@ -207,18 +171,15 @@
 
         function editar(id) {
             $.ajax({
-                url: "/intranet/website/enlace_rapido/" + id,
+                url: "/intranet/website/pagina_web/" + id,
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
                 },
                 success: function (data) {
                     $("#hddCodigo").val(id);
-                    $("#txtOrden").val(data["orden"]);
                     $("#txtNombre").val(data["nombre"]);
-                    $("#cmbCategoria").val(data["categoria"]);
-                    $("#txtUrl").val(data["url"]);
-                    $("#cmbColor").val(data["color"]);
+                    $("#dvContenido").summernote('code',data["contenido"]);
                     $("#chkPublico").iCheck(data['publico'] == true ? "check" : "uncheck");
                     $("#btnGuardar").text("Guardar");
                     $('a[href="#tp2"]').click();
@@ -235,15 +196,12 @@
 
         function cancelar(){
             $("#hddCodigo").val("");
-            $("#txtOrden").val(0);
             $("#txtNombre").val("");
-            $("#cmbCategoria").val("");
-            $("#txtUrl").val("#");
-            $("#cmbColor").val("");
+            $("#dvContenido").summernote('reset');
             $("#chkPublico").iCheck("check");
 
             $("#btnGuardar").text("Registrar");
-            $('#frmEnlace_Rapido').parsley().reset();
+            $('#frmPagina_Web').parsley().reset();
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();
@@ -251,7 +209,7 @@
 
         function listar() {
             $.ajax({
-                url: "/intranet/website/enlace_rapido/*",
+                url: "/intranet/website/pagina_web/*",
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
@@ -259,13 +217,12 @@
                 success: function (data) {
                     t.clear().draw();
                     $.each(data,function( index, value ) {
-                        var nodo = t.row.add([value['orden'],value['categoria'],
-                            value['nombre'],value['url'],
+                        var nodo = t.row.add([
+                            value['nombre'],"<input readonly=true style='width: 100%;color:blue;font-weight: 600;' type='text' value='/paginas/"+value['id']+"/ver'>",
                             grupo_opciones(value['id'])]).draw(false).node();
                         if(value["publico"]==false)
                             $(nodo).addClass('danger');
                     });
-                    $("#tblListado th").eq(0).click();
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);

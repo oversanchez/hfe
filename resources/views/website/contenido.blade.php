@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Royal College Responsive Template</title>
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>I.E. Nuestra Señora del Rosario</title>
+    <link rel="icon" type="image/png" href="royal/img/favicon.png">
     {!! HTML::style('royal/css/bootstrap/bootstrap.min.css') !!}
     {!! HTML::style('royal/css/plugins/select_option1.css') !!}
     {!! HTML::style('royal/fonts/font-awesome/css/font-awesome.min.css') !!}

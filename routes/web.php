@@ -22,6 +22,8 @@ Route::get('/noticias/{id}/ver', ['uses' => 'Noticia_Controller@ver_noticia', 'a
 
 Route::get('/eventos/{id}/ver', ['uses' => 'Evento_Controller@ver_evento', 'as' => 'evento.ver_evento']);
 
+Route::get('/paginas/{id}/ver', ['uses' => 'Pagina_Web_Controller@ver_pagina', 'as' => 'pagina_web.ver_pagina']);
+
 Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::resource('anio_lectivo','\App\Http\Controllers\Anio_Lectivo_Controller');
@@ -86,10 +88,16 @@ Route::group(['prefix'=>'intranet/website'], function () {
 
     Route::resource('opcion_menu','\App\Http\Controllers\Opcion_Menu_Controller');
 
+    Route::resource('pagina_web','\App\Http\Controllers\Pagina_Web_Controller');
+
     //Route::get('periodo/listar', ['uses' => 'Periodo_Controller@listar', 'as' => 'periodo.listar']);
 });
 
 Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
+
+Route::get('resizeImage', 'ImageController@resizeImage');
+
+Route::post('resizeImagePost',['as'=>'resizeImagePost','uses'=>'ImageController@resizeImagePost']);
 
 
 

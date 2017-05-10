@@ -2663,7 +2663,7 @@ body.bodyColor.container {
 
 .single_post.related_post_sec ul li {
     //padding: 0 0 0px;
-    margin: 0 0 5px;
+    margin: 0 0 5px 10px;
     float: left;
     display: block;
     padding: 10px 5px 10px 5px;
@@ -3045,6 +3045,10 @@ body.bodyColor.container {
 .upcoming_events li.related_post_sec.single_post {
     float: none;
     margin-bottom: 5px;
+}
+
+.upcoming_events li.related_post_sec.single_post:hover {
+    cursor:pointer;
 }
 
 .upcoming_events .meta, .single-event .meta {
