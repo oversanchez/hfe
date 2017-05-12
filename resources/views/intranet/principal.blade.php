@@ -25,6 +25,9 @@
     {!! HTML::style('cleanzone/lib/jquery.gritter/css/jquery.gritter.css') !!}
     {!! HTML::style('cleanzone/lib/jquery.niftymodals/css/component.css') !!}
     {!! HTML::style('cleanzone/lib/jquery.select2/select2.css') !!}
+    {!! HTML::style('cleanzone/lib/dropzone/dist/dropzone.css') !!}
+    {!! HTML::style('cleanzone/lib/jquery.magnific-popup/magnific-popup.css') !!}
+
     {!! HTML::style('cleanzone/css/style.css') !!}
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 
@@ -98,6 +101,7 @@
                         <li><a href="/intranet/website/slider">Sliders</a></li>
                         <li><a href="/intranet/website/opcion_menu">Opciones del menú</a></li>
                         <li><a href="/intranet/website/pagina_web">Páginas Web</a></li>
+                        <li><a href="/intranet/website/album">Galería de Fotos</a></li>
                     </ul>
                 </li>
             </ul>
@@ -196,6 +200,10 @@
 {!! HTML::script('cleanzone/lib/jquery.parsley/src/extra/dateiso.js') !!}
 {!! HTML::script('cleanzone/lib/jquery.niftymodals/js/jquery.modalEffects.js') !!}
 {!! HTML::script('cleanzone/lib/jquery.select2/select2.min.js') !!}
+{!! HTML::script('cleanzone/lib/dropzone/dist/dropzone.js') !!}
+{!! HTML::script('cleanzone/lib/masonry/masonry.pkgd.min.js') !!}
+{!! HTML::script('cleanzone/lib/jquery.magnific-popup/jquery.magnific-popup.min.js') !!}
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
 
 

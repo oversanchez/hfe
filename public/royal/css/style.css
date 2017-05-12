@@ -2685,7 +2685,9 @@ body.bodyColor.container {
 }
 
 .single_post.related_post_sec h4 a:hover {
-    color: black;
+    color: blue;
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 .single_post.related_post_sec .rel_thumb {
@@ -3130,6 +3132,9 @@ body.bodyColor.container {
     line-height: 24px;
     text-decoration: none;
     display: table-cell;
+}
+.upcoming_events h4 a:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 767px) {

@@ -90,14 +90,18 @@ Route::group(['prefix'=>'intranet/website'], function () {
 
     Route::resource('pagina_web','\App\Http\Controllers\Pagina_Web_Controller');
 
+    Route::resource('foto','\App\Http\Controllers\Foto_Controller');
+
+    Route::resource('album','\App\Http\Controllers\Album_Controller');
+
     //Route::get('periodo/listar', ['uses' => 'Periodo_Controller@listar', 'as' => 'periodo.listar']);
 });
 
 Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
 
-Route::get('resizeImage', 'ImageController@resizeImage');
+//Route::resource('file', 'FileController');
 
-Route::post('resizeImagePost',['as'=>'resizeImagePost','uses'=>'ImageController@resizeImagePost']);
+
 
 
 

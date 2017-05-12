@@ -3,7 +3,7 @@
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
-            <h2 style="display:inline-block;">Sliders</h2>
+            <h2 style="display:inline-block;">Sliders (800 x 300)</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
         </div>
         <div class="cl-mcont">

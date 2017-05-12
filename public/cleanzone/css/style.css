@@ -1625,7 +1625,7 @@ body.texture {
 }
 
 .gallery-cont .item {
-    width: 25%;
+    width: 20%;
     margin-bottom: 20px;
     padding-right: 10px;
     padding-left: 10px
@@ -6563,7 +6563,7 @@ form.dropzone {
     background-clip: padding-box;
     border-style: dashed;
     border-color: #84c3f8;
-    padding: 54px
+    padding: 5px;
 }
 
 form.dropzone h2 {
