@@ -103,7 +103,6 @@ class Foto_Controller extends Controller
         $foto = \App\Foto::find($id);
         if(File::exists($foto->archivo))
             File::delete($foto->archivo);
-        
         $foto->delete();
     }
 }
