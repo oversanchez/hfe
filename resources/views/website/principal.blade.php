@@ -140,46 +140,18 @@
                                 <h3 style="text-transform: uppercase;margin: 5px 10px 0px 10px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: auto;padding: 4px 0px 0px 10px;"><img src="royal/img/photo.png" style="height: 41px;margin-top: -10px;padding-right: 6px;">FOTOS DESTACADAS<a href="#" style="display:inline;float:right;margin-top: 4px;margin-right: 10px;font-size:18px;"><i class="fa fa-photo"></i> Ver todas las fotos</a></h3>
                                 <div class="photo_gallery custom" style="padding: 10px 10px 0px 10px;">
                                     <ul class="gallery popup-gallery">
-                                        <li>
-                                            <a href="/royal/img/campus/1.jpg" title="Photo 9">
-                                                <img src="/royal/img/campus/1.jpg" alt="">
-                                                <div class="overlay">
+                                        @foreach($fotos as $key => $foto)
+                                            <li style="text-align: center;">
+                                                <a href="{{$foto->archivo}}" title="{{$foto->nombre}}">
+                                                    <img style="height: 120px;width: auto;" src="{{$foto->archivo}}" alt="{{$foto->nombre}}">
+                                                    <div class="overlay">
                                               <span class="zoom">
                                                 <i class="fa fa-search"></i>
                                               </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/royal/img/campus/1.jpg" title="Photo 9">
-                                                <img src="/royal/img/campus/1.jpg" alt="">
-                                                <div class="overlay">
-                                              <span class="zoom">
-                                                <i class="fa fa-search"></i>
-                                              </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/royal/img/campus/1.jpg" title="Photo 9">
-                                                <img src="/royal/img/campus/1.jpg" alt="">
-                                                <div class="overlay">
-                                              <span class="zoom">
-                                                <i class="fa fa-search"></i>
-                                              </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/royal/img/campus/1.jpg" title="Photo 9">
-                                                <img src="/royal/img/campus/1.jpg" alt="">
-                                                <div class="overlay">
-                                              <span class="zoom">
-                                                <i class="fa fa-search"></i>
-                                              </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>

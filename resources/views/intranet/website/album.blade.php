@@ -8,19 +8,20 @@
             <select onchange="listarFotos()" class="input-lg" id="cmbAlbum"
                     style="width: 500px;margin-left: 20px;"></select>
             <button class="btn btn-default" onclick="editarAlbum()"><i class="fa fa-edit"></i></button>
+            <button class="btn btn-default" onclick="refrescarFotos()"><i class="fa fa-refresh"></i></button>
         </div>
         <div class="cl-mcont">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <div class="tab-container">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tp1" data-toggle="tab">Todas las fotos</a></li>
-                            <li><a href="#tp2" data-toggle="tab">Subir fotos</a></li>
+                            <li class="active"><a style="font-size:22px;" href="#tp1" data-toggle="tab">Todas las fotos</a></li>
+                            <li><a href="#tp2" style="font-size:22px;" data-toggle="tab">Subir fotos</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
-                        <div id="tp1" class="tab-pane active cont" style="height: auto;background: lightgray;position: relative;">
-                            <div id="dvGaleria" class="gallery-cont" style="height: auto;position: relative;">
+                        <div id="tp1" class="tab-pane active cont">
+                            <div id="dvGaleria" class="gallery-cont">
                             </div>
                         </div>
                         <div id="tp2" class="tab-pane cont">
@@ -31,13 +32,10 @@
                                         <div class="dz-message"><h2>Suelta tus fotos aquí o Haz click para buscar</h2>
                                         </div>
                                         <div class="dropzone-previews">
-
                                         </div>
-
-
                                         {!! Form::close() !!}
                                         <button style="margin-top:10px;float: right;" type="submit" class="btn btn-link " id="submit"><h3><i style="font-size:28px;" class="fa fa-upload"></i> Subir Fotos</h3></button>
-                                        <a style="margin-top:10px;" class="btn btn-link" style="float:right;margin-top:-10px;" style="display: inline-block;" href="#" onclick="limpiarBandeja()"><h3><i style="font-size:28px;" class="fa fa-ban"></i> Limpiar bandeja de subida</h3></a>
+                                        <a class="btn btn-link" style="margin-top:10px;display: inline-block;" href="#" onclick="limpiarBandeja()"><h3><i style="font-size:28px;" class="fa fa-ban"></i> Limpiar bandeja de subida</h3></a>
                                     </div>
                                 </div>
                             </div>
@@ -88,6 +86,17 @@
                 </div>
             </div>
         </div>
+        <div id="modFoto" class="md-modal colored-header primary md-effect-10" style="perspective: none;">
+            <div class="md-content">
+                <div class="modal-header"><h3>Foto </h3>
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                </div>
+                <div class="modal-body form">
+                    <input id="txtDescripcion" type="text" class="form-control">
+                    <input id="txtArchivo" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
         <div class="md-overlay"></div>
     </div>
 @endsection
@@ -96,13 +105,14 @@
     <script type="text/javascript">
 
         var t;
+
         $(document).ready(function () {
             //initialize the javascript
             App.init();
             App.formElements();
             listarAlbum();
-            App.pageGallery();
             $("#frmAlbum").parsley();
+            $('.gallery-cont').masonry();
 
             Dropzone.options.myDropzone = {
                 autoProcessQueue: false,
@@ -130,7 +140,6 @@
 
                     this.on("complete", function(file) {
                         //myDropzone.removeFile(file);
-                        listarFotos();
                     });
 
                     this.on("success",
@@ -308,12 +317,18 @@
             }
         }
 
+        function refrescarFotos(){
+            $('a[href="#tp1"]').click();
+            listarFotos();
+        }
         function listarFotos() {
             var album_id =  $("#cmbAlbum").val();
             $("#hddAlbum_Id").val(album_id);
-            if(album_id != ""){
-                var info = [{"_token": "{{ csrf_token() }}",
-                    "album_id": parseInt(album_id)}][0];
+            if(album_id != "") {
+                var info = [{
+                    "_token": "{{ csrf_token() }}",
+                    "album_id": parseInt(album_id)
+                }][0];
                 $.ajax({
                     url: "/intranet/website/foto/listar",
                     type: "GET",
@@ -322,33 +337,39 @@
                         $("#loading").show();
                     },
                     success: function (data) {
-                        var imagenes="";
-                        $.each(data,function( index, value ) {
-                            imagenes += '<div class="item" style="position: absolute; left: 0px; top: 0px;">';
+                        var $container = $('.gallery-cont');
+
+                        $container.masonry('destroy');
+
+                        var imagenes = "";
+                        $.each(data, function (index, value) {
+                            imagenes += '<div class="item">';
                             imagenes += '   <div class="photo">';
                             imagenes += '        <div class="head">';
-                            imagenes += '            <span class="pull-right"><i class="fa fa-heart"></i></span>';
-                            imagenes += '            <h4>'+value["nombre"]+'</h4>';
+                            imagenes += '            <span class="pull-right" ><i foto_id='+value["id"]+' style="cursor:pointer;color:'+(value["favorito"] == true ? "red" : "" )+'" favorito='+value["favorito"]+' nombre="'+value["nombre"]+'" onclick="me_gusta(this)" title="Me gusta" class="fa fa-heart"></i></span>';
+                            imagenes += '            <h4 title="'+value["nombre"]+'">' + value["nombre"].substr(0,18) + '</h4>';
                             imagenes += '        </div>';
                             imagenes += '        <div class="img">';
-                            imagenes += '           <img src="'+value["archivo"]+'">';
+                            imagenes += '           <img  src="' + value["archivo"] + '">';
                             imagenes += '           <div class="over">';
                             imagenes += '               <div class="func">';
-                            imagenes += '                   <a href="#"><i class="fa fa-link"></i></a>';
-                            imagenes += '                   <a href="'+value["archivo"]+'" class="image-zoom"><i class="fa fa-search"></i></a>';
+                            imagenes += '                   <a href="#" nombre="'+value["nombre"]+'" archivo="'+value["archivo"]+'" onclick="ver_link(this)"><i class="fa fa-link"></i></a>';
+                            imagenes += '                   <a href="' + value["archivo"] + '" class="image-zoom"><i class="fa fa-search"></i></a>';
                             imagenes += '               </div>';
                             imagenes += '           </div>';
                             imagenes += '       </div>';
                             imagenes += '   </div>';
                             imagenes += '</div>';
                         });
-                        $("#dvGaleria").html(imagenes);
-                        var elem = document.querySelector('.gallery-cont');
-                        var msnry = new Masonry( elem, {
-                            // options
-                            itemSelector: '.item',
-                            columnWidth: 50
+
+                        $container.html(imagenes);
+
+                        $container.masonry();
+
+                        $('img').on('load',function() {
+                            $(".gallery-cont").masonry();
                         });
+
                         $(".image-zoom").magnificPopup({
                             type: "image",
                             mainClass: "mfp-with-zoom",
@@ -367,126 +388,37 @@
                         $("#loading").hide();
                     }
                 });
+            }else{
+                $(".gallery-cont").html("");
             }
-
-
-        }
-        function guardar() {
-            var accion = $("#hddCodigo").val() == "" ? true : false;
-            if ($("#frmEvento").parsley().validate()) {
-                if (accion)
-                    registrar()
-                else
-                    modificar()
-            }
-
         }
 
-        function obtenerDatos() {
+        function obtenerDatosFoto(obj) {
             var info = [{
                 "_token": "{{ csrf_token() }}",
-                "nombre": $("#txtNombre").val(),
-                "descripcion": $("#txtDescripcion").val(),
-                "contenido": $("#dvContenido").summernote('code'),
-                "lugar": $("#txtLugar").val(),
-                "hora": $("#txtHora").val(),
-                "fecha": $("#txtFecha").val(),
-                "publico": $("#chkPublico").is(":checked")
+                "foto_id": obj.attr("foto_id"),
+                "nombre": obj.attr("nombre"),
+                "favorito" : !JSON.parse(obj.attr("favorito"))
             }][0];
             return info;
         }
 
-        function registrar() {
-            if (confirm("¿Deseas continuar el registro?")) {
-                var info = obtenerDatos();
-                $.ajax({
-                    url: "/intranet/website/evento",
-                    type: "POST",
-                    data: info,
-                    beforeSend: function () {
-                        $("#loading").show();
-                    },
-                    success: function (data) {
-                        notificacion('Registro', 'Datos registrados correctamente', 'primary');
-                        cancelar();
-                    },
-                    error: function (request, status, error) {
-                        mostrar_error(request.responseText);
-                    },
-                    complete: function () {
-                        $("#loading").hide();
-                    }
-                });
-            }
-        }
-
-        function modificar() {
-            if (confirm("¿Deseas continuar la modificación?")) {
-                var info = obtenerDatos();
-                $.ajax({
-                    url: "/intranet/website/evento/" + $("#hddCodigo").val(),
-                    type: "PUT",
-                    data: info,
-                    beforeSend: function () {
-                        $("#loading").show();
-                    },
-                    success: function (data) {
-                        notificacion('Actualización', 'Datos actualizados correctamente', 'success');
-                        cancelar();
-                    },
-                    error: function (request, status, error) {
-                        mostrar_error(request.responseText);
-                    },
-                    complete: function () {
-                        $("#loading").hide();
-                    }
-                });
-            }
-        }
-
-        function eliminar(id) {
-            if (confirm("¿Deseas eliminar el elemento?")) {
-                var info = [{"_token": "{{ csrf_token() }}"}][0];
-                $.ajax({
-                    url: "/intranet/website/evento/" + id,
-                    type: "DELETE",
-                    data: info,
-                    beforeSend: function () {
-                        $("#loading").show();
-                    },
-                    success: function (data) {
-                        notificacion('Eliminación', 'Datos actualizados correctamente', 'warning');
-                        cancelar();
-                    },
-                    error: function (request, status, error) {
-                        mostrar_error(request.responseText);
-                    },
-                    complete: function () {
-                        $("#loading").hide();
-                    }
-                });
-            }
-        }
-
-        function editar(id) {
+        function me_gusta(obj) {
+            var info = obtenerDatosFoto($(obj));
             $.ajax({
-                url: "/intranet/website/evento/" + id,
-                type: "GET",
+                url: "/intranet/website/foto/" + info["foto_id"],
+                type: "PUT",
+                data: info,
                 beforeSend: function () {
                     $("#loading").show();
                 },
                 success: function (data) {
-                    $("#hddCodigo").val(id);
-                    $("#txtNombre").val(data["nombre"]);
-                    $("#txtDescripcion").val(data["descripcion"]);
-                    $("#dvContenido").summernote('code', data["contenido"]);
-                    $("#txtFecha").val(data["fecha"]);
-                    $("#txtLugar").val(data["lugar"]);
-                    $("#txtHora").val(data["hora"]);
-                    $("#chkPublico").iCheck(data['publico'] == true ? "check" : "uncheck");
-                    $("#btnGuardar").text("Guardar");
-                    $('a[href="#tp2"]').click();
-                    $('a[href="#tp2"]').text("Modificando : " + data["nombre"]);
+                    notificacion('Actualización', 'Datos actualizados correctamente', 'success');
+                    if(info["favorito"])
+                        $(obj).css('color','red');
+                    else
+                        $(obj).css('color','lightgray');
+                    $(obj).attr("favorito",info["favorito"]);
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);
@@ -497,48 +429,12 @@
             });
         }
 
-        function cancelar() {
-            $("#hddCodigo").val("");
-            $("#txtNombre").val("");
-            $("#txtDescripcion").val("");
-            $("#dvContenido").summernote('reset');
-            $("#txtFecha").val("");
-            $("#txtLugar").val("");
-            $("#txtHora").val("");
-            $("#chkPublico").iCheck("check");
-
-            $("#btnGuardar").text("Registrar");
-            $('#frmEvento').parsley().reset();
-            $('a[href="#tp1"]').click();
-            $('a[href="#tp2"]').text("Registrar");
-            listar();
+        function ver_link(obj){
+            $("#txtDescripcion").val($(obj).attr("nombre"));
+            $("#txtArchivo").val($(obj).attr("archivo")).select();
+            $("#modFoto").niftyModal('show');
         }
 
-        function listar() {
-            $.ajax({
-                url: "/intranet/website/evento/*",
-                type: "GET",
-                beforeSend: function () {
-                    $("#loading").show();
-                },
-                success: function (data) {
-                    t.clear().draw();
-                    $.each(data, function (index, value) {
-                        var nodo = t.row.add([
-                            value['fecha'], value['nombre'],
-                            grupo_opciones(value['id'])]).draw(false).node();
-                        if (value["publico"] == false)
-                            $(nodo).addClass('danger');
-                    });
-                },
-                error: function (request, status, error) {
-                    mostrar_error(request.responseText);
-                },
-                complete: function () {
-                    $("#loading").hide();
-                }
-            });
-        }
     </script>
 @endsection
 

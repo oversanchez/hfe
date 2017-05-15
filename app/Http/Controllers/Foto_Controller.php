@@ -46,7 +46,6 @@ class Foto_Controller extends Controller
             $foto->extension = $fileExtension;
 
             $foto->album_id = $album_id;
-            $foto->publico = true;
             $foto->save();
 
             $file->move($path,$archivo);
@@ -67,7 +66,7 @@ class Foto_Controller extends Controller
 
     public function listar()
     {
-        return \App\Foto::where('album_id',Input::get('album_id'))->get();
+        return \App\Foto::where('album_id',Input::get('album_id'))->orderBy('id','desc')->get();
     }
 
     /**
@@ -94,6 +93,7 @@ class Foto_Controller extends Controller
     {
         $foto = \App\Foto::find($id);
         $foto->nombre = $request->input('nombre');
+        $foto->favorito = $request->input('favorito');
         $foto->save();
     }
 

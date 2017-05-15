@@ -37,7 +37,6 @@ class Slider_Controller extends Controller
         $slider = new \App\Slider();
         $slider->orden= $request->input('orden');
         $slider->nombre = $request->input('nombre');
-        $slider->descripcion = $request->input('descripcion');
         $slider->url_foto = $request->input('url_foto');
         $slider->url_vinculo = $request->input('url_vinculo');
         $slider->nombre_vinculo = $request->input('nombre_vinculo');
@@ -84,7 +83,6 @@ class Slider_Controller extends Controller
         $slider = \App\Slider::find($id);
         $slider->orden= $request->input('orden');
         $slider->nombre = $request->input('nombre');
-        $slider->descripcion = $request->input('descripcion');
         $slider->url_foto = $request->input('url_foto');
         $slider->url_vinculo = $request->input('url_vinculo');
         $slider->nombre_vinculo = $request->input('nombre_vinculo');

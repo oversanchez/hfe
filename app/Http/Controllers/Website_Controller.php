@@ -23,7 +23,9 @@ class Website_Controller extends Controller
         $documentos = \App\Enlace_Rapido::where('publico',true)->where('categoria','DO')->orderBy('orden','asc')->get();
         $descargas = \App\Enlace_Rapido::where('publico',true)->where('categoria','DE')->orderBy('orden','asc')->get();
 
-        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias,'opciones'=>$opciones]);
+        $fotos = \App\Foto::take(4)->where('favorito',true)->orderBy('id','desc')->get();
+
+        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias,'fotos'=>$fotos,'opciones'=>$opciones]);
     }
 
     /**

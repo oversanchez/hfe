@@ -18,8 +18,8 @@ class CreacionTablaFoto extends Migration
             $table->string('nombre');
             $table->string('extension');
             $table->string('archivo');
-            $table->boolean('publico');
-
+            $table->boolean('favorito')->default(false);
+            
             $table->integer('album_id')->unsigned();
             $table->foreign('album_id')->references('id')->on('album')->onDelete('cascade');;
             
