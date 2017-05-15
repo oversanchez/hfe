@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use Image;
 
@@ -41,7 +42,7 @@ class Foto_Controller extends Controller
 
             $foto = new \App\Foto();
             $foto->nombre = $fileName;
-            $foto->archivo = "/royal/img/".$album_id."/".$archivo;
+            $foto->archivo = "/royal/img/galeria/".$album_id."/".$archivo;
             $foto->extension = $fileExtension;
 
             $foto->album_id = $album_id;
@@ -61,7 +62,12 @@ class Foto_Controller extends Controller
      */
     function show($id)
     {
-        //
+
+    }
+
+    public function listar()
+    {
+        return \App\Foto::where('album_id',Input::get('album_id'))->get();
     }
 
     /**

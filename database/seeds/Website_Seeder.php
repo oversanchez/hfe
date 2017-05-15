@@ -59,13 +59,6 @@ class Website_Seeder extends Seeder
             ["orden"=>1,"nombre" => "Sub Opcion 1","url"=>"#","opcion_superior_id"=>7,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
         ]);
 
-        DB::table('album')->insert([
-            ["nombre" => "DIA DEL TRABAJO","fecha"=>"01/05/2017","publico"=>true],
-            ["nombre" => "DIA DE LA MADRE","fecha"=>"14/05/2017","publico"=>true]
-        ]);
-
-        
-
 
     }
 }

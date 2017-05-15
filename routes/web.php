@@ -90,6 +90,8 @@ Route::group(['prefix'=>'intranet/website'], function () {
 
     Route::resource('pagina_web','\App\Http\Controllers\Pagina_Web_Controller');
 
+    Route::get('foto/listar', ['uses' => 'Foto_Controller@listar', 'as' => 'foto.listar']);
+
     Route::resource('foto','\App\Http\Controllers\Foto_Controller');
 
     Route::resource('album','\App\Http\Controllers\Album_Controller');

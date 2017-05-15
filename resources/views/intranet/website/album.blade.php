@@ -19,26 +19,8 @@
                         </ul>
                     </div>
                     <div class="tab-content">
-                        <div id="tp1" class="tab-pane active cont">
-                            <div class="gallery-cont">
-                                <div class="item">
-                                    <div class="photo">
-                                        <div class="head">
-                                            <span class="pull-right"><i class="fa fa-heart"></i></span>
-                                            <h4>Ocean</h4>
-                                        </div>
-                                        <div class="img">
-                                            <img src="/cleanzone/img/gallery/img1.jpg">
-                                            <div class="over">
-                                                <div class="func">
-                                                    <a href="#"><i class="fa fa-link"></i></a>
-                                                    <a href="/cleanzone/img/gallery/img1.jpg" class="image-zoom"><i
-                                                                class="fa fa-search"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div id="tp1" class="tab-pane active cont" style="height: auto;background: lightgray;position: relative;">
+                            <div id="dvGaleria" class="gallery-cont" style="height: auto;position: relative;">
                             </div>
                         </div>
                         <div id="tp2" class="tab-pane cont">
@@ -148,6 +130,7 @@
 
                     this.on("complete", function(file) {
                         //myDropzone.removeFile(file);
+                        listarFotos();
                     });
 
                     this.on("success",
@@ -326,7 +309,67 @@
         }
 
         function listarFotos() {
-            $("#hddAlbum_Id").val($("#cmbAlbum").val());
+            var album_id =  $("#cmbAlbum").val();
+            $("#hddAlbum_Id").val(album_id);
+            if(album_id != ""){
+                var info = [{"_token": "{{ csrf_token() }}",
+                    "album_id": parseInt(album_id)}][0];
+                $.ajax({
+                    url: "/intranet/website/foto/listar",
+                    type: "GET",
+                    data: info,
+                    beforeSend: function () {
+                        $("#loading").show();
+                    },
+                    success: function (data) {
+                        var imagenes="";
+                        $.each(data,function( index, value ) {
+                            imagenes += '<div class="item" style="position: absolute; left: 0px; top: 0px;">';
+                            imagenes += '   <div class="photo">';
+                            imagenes += '        <div class="head">';
+                            imagenes += '            <span class="pull-right"><i class="fa fa-heart"></i></span>';
+                            imagenes += '            <h4>'+value["nombre"]+'</h4>';
+                            imagenes += '        </div>';
+                            imagenes += '        <div class="img">';
+                            imagenes += '           <img src="'+value["archivo"]+'">';
+                            imagenes += '           <div class="over">';
+                            imagenes += '               <div class="func">';
+                            imagenes += '                   <a href="#"><i class="fa fa-link"></i></a>';
+                            imagenes += '                   <a href="'+value["archivo"]+'" class="image-zoom"><i class="fa fa-search"></i></a>';
+                            imagenes += '               </div>';
+                            imagenes += '           </div>';
+                            imagenes += '       </div>';
+                            imagenes += '   </div>';
+                            imagenes += '</div>';
+                        });
+                        $("#dvGaleria").html(imagenes);
+                        var elem = document.querySelector('.gallery-cont');
+                        var msnry = new Masonry( elem, {
+                            // options
+                            itemSelector: '.item',
+                            columnWidth: 50
+                        });
+                        $(".image-zoom").magnificPopup({
+                            type: "image",
+                            mainClass: "mfp-with-zoom",
+                            zoom: {
+                                enabled: !0, duration: 300, easing: "ease-in-out", opener: function (a) {
+                                    var b = $(a).parents("div.img");
+                                    return b
+                                }
+                            }
+                        });
+                    },
+                    error: function (request, status, error) {
+                        mostrar_error(request.responseText);
+                    },
+                    complete: function () {
+                        $("#loading").hide();
+                    }
+                });
+            }
+
+
         }
         function guardar() {
             var accion = $("#hddCodigo").val() == "" ? true : false;
