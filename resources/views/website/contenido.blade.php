@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>I.E. Nuestra Señora del Rosario</title>
-    <link rel="icon" type="image/png" href="royal/img/favicon.png">
+    <link rel="icon" type="image/ico" href="/royal/img/favicon.ico">
     {!! HTML::style('royal/css/bootstrap/bootstrap.min.css') !!}
     {!! HTML::style('royal/css/plugins/select_option1.css') !!}
     {!! HTML::style('royal/fonts/font-awesome/css/font-awesome.min.css') !!}
@@ -15,12 +15,14 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,600italic,400italic,700' rel='stylesheet'
           type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
-{!! HTML::style('royal/options/optionswitch.css') !!}
-{!! HTML::style('royal/css/plugins/animate.css') !!}
-{!! HTML::style('royal/css/plugins/magnific-popup.css') !!}
-{!! HTML::style('royal/css/style.css') !!}
-{!! HTML::style('royal/css/colors/default.css') !!}
-{!! HTML::style('royal/css/plugins/nanoscroller.css') !!}
+    {!! HTML::style('royal/options/optionswitch.css') !!}
+    {!! HTML::style('royal/css/plugins/animate.css') !!}
+    {!! HTML::style('royal/css/plugins/magnific-popup.css') !!}
+    {!! HTML::style('royal/css/style.css') !!}
+    {!! HTML::style('royal/css/colors/default.css') !!}
+    {!! HTML::style('royal/css/plugins/nanoscroller.css') !!}
+
+    @yield('styles')
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,8 +31,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
-<body class="bodyColor container">
+<body class="bodyColor container" style="background-image: url('/royal/img/patterns/003.png');background-repeat: repeat;background-attachment: fixed;background-position: center;">
 <div class="main_wrapper">
     <div class="topbar clearfix">
         <div class="container">
@@ -64,9 +65,9 @@
                 </li>
             </ul>
             <ul class="topbar-right" style="margin-right: 150px;">
-                <li class="phoneNo hidden-xs hidden-sm"><i class="fa fa-phone"></i>0123 45678910</li>
+                <li class="phoneNo hidden-xs hidden-sm"><i class="fa fa-phone"></i>{{$institucion->telefonos}}</li>
                 <li class="email-id hidden-xs hidden-sm"><i class="fa fa-envelope"></i>
-                    <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+                    <a href="#">{{$institucion->correo}}</a>
                 </li>
             </ul>
         </div>
@@ -146,55 +147,27 @@
     <div class="menuFooter clearfix">
         <div class="container">
             <div class="row clearfix">
-                <div class="col-sm-3 col-xs-6">
+                <div class="col-sm-3 col-xs-12">
                     <ul class="menuLink clearfix">
-                        <li><a href="about.html">About Royal College</a></li>
-                        <li><a href="campus.html">About Campus</a></li>
-                        <li><a href="stuff.html">Staff Members</a></li>
-                        <li><a href="about.html">Why Choose Us?</a></li>
+                        @foreach($opciones_footer as $key => $opcion_footer)
+                            @if($opcion_footer->footer == false)
+                                <li><a href="{{$opcion_footer->url}}">{{$opcion_footer->nombre}}</a></li>
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
                 <!-- col-sm-3 col-xs-6 -->
-                <div class="col-sm-3 col-xs-6 borderLeft clearfix">
-                    <ul class="menuLink clearfix">
-                        <li><a href="course-fullwidth.html">All Courses</a></li>
-                        <li><a href="buying-steps.html">Admission</a></li>
-                        <li><a href="photo-gallery3col.html">Photo Gallery</a></li>
-                        <li><a href="international_students.html">International Students</a></li>
-                    </ul>
-                </div>
-                <!-- col-sm-3 col-xs-6 -->
-                <div class="col-sm-3 col-xs-6 borderLeft clearfix">
+                <div class="col-sm-3 col-xs-12 borderLeft clearfix">
                     <div class="footer-address">
-                        <h5>Location:</h5>
-                        <address>
-                            Royal College
-                            <br> 1727 Lombard St.
-                            <br> San Francisco
-                        </address>
-                        <a href="contact-us.html"><span class="place"><i
-                                        class="fa fa-map-marker"></i>Main Campus</span></a>
+                        <h5><i class="fa fa-phone"></i> Telefonos:</h5>
+                        <h4 style="margin-left:15px;">{{$institucion->telefonos}}</h4><br>
+                        <h5><i class="fa fa-map-marker"></i> Dirección:</h5>
+                        <h4 style="margin-left:15px;">{{$institucion->direccion}}<br>{{$institucion->ciudad}}</h4>
                     </div>
                 </div>
                 <!-- col-sm-3 col-xs-6 -->
-                <div class="col-sm-3 col-xs-6 borderLeft clearfix">
-                    <div class="socialArea clearfix">
-                        <h5>Find us on:</h5>
-                        <ul class="list-inline ">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- social -->
-                    <div class="contactNo clearfix">
-                        <h5>Call us on:</h5>
-                        <h3>012-3434-456768</h3>
-                    </div>
-                    <!-- contactNo -->
+                <div class="col-sm-6 col-xs-12 borderLeft clearfix">
+                    {!!$institucion->link_mapa!!}
                 </div>
                 <!-- col-sm-3 col-xs-6 -->
             </div>
@@ -207,13 +180,15 @@
         <div class="container">
             <div class="row clearfix">
                 <div class="col-sm-6 col-xs-12 copyRight">
-                    <p>© 2016 Copyright Royal College Bootstrap Template by <a
-                                href="http://www.iamabdus.com/">Abdus</a></p>
+                    <p>© 2018 Desarrollado por <a href="http://www.google.com/">Biosis</a></p>
                 </div>
                 <!-- col-sm-6 col-xs-12 -->
                 <div class="col-sm-6 col-xs-12 privacy_policy">
-                    <a href="contact-us.html">Contact us</a>
-                    <a href="privacy-policy.html">Privacy Policy</a>
+                    @foreach($opciones_footer as $key => $opcion_footer)
+                        @if($opcion_footer->footer == true)
+                            <a href="{{$opcion_footer->url}}">{{$opcion_footer->nombre}}</a>
+                        @endif
+                    @endforeach
                 </div>
                 <!-- col-sm-6 col-xs-12 -->
             </div>
@@ -240,11 +215,15 @@
 {!! HTML::script('royal/options/optionswitcher.js') !!}
 {!! HTML::script('royal/js/custom.js') !!}
 
+@yield('scripts')
+
 <script>
     $(document).on('ready',function(){
         $(".nano").nanoScroller();
-    });
+        });
+
 </script>
+
 </body>
 </html>
 

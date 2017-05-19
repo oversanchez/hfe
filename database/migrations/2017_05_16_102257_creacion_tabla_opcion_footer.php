@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaAlbum extends Migration
+class CreacionTablaOpcionFooter extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreacionTablaAlbum extends Migration
      */
     public function up()
     {
-        Schema::create('album', function (Blueprint $table) {
+        Schema::create('opcion_footer', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->date('fecha');
+            $table->string("nombre");
+            $table->string("url");
+            $table->boolean('footer');
             $table->boolean('publico')->default(true);
-            $table->integer('nro_fotos')->default(0);
             $table->timestamps();
         });
     }
@@ -30,7 +30,7 @@ class CreacionTablaAlbum extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('album');
+        Schema::dropIfExists('opcion_footer');
     }
 }
 

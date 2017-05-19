@@ -346,7 +346,7 @@
                             imagenes += '<div class="item">';
                             imagenes += '   <div class="photo">';
                             imagenes += '        <div class="head">';
-                            imagenes += '            <span class="pull-right" ><i foto_id='+value["id"]+' style="cursor:pointer;color:'+(value["favorito"] == true ? "red" : "" )+'" favorito='+value["favorito"]+' nombre="'+value["nombre"]+'" onclick="me_gusta(this)" title="Me gusta" class="fa fa-heart"></i></span>';
+                            imagenes += '            <span class="pull-right" ><i style="margin-right: 5px;color:black;cursor:pointer;" class="fa fa-trash-o" foto_id='+value["id"]+' onclick="eliminarFoto(this)"></i><i foto_id='+value["id"]+' style="cursor:pointer;color:'+(value["favorito"] == true ? "red" : "" )+'" favorito='+value["favorito"]+' nombre="'+value["nombre"]+'" onclick="me_gusta(this)" title="Me gusta" class="fa fa-heart"></i></span>';
                             imagenes += '            <h4 title="'+value["nombre"]+'">' + value["nombre"].substr(0,18) + '</h4>';
                             imagenes += '        </div>';
                             imagenes += '        <div class="img">';
@@ -435,6 +435,31 @@
             $("#modFoto").niftyModal('show');
         }
 
+        function eliminarFoto(obj){
+            var id = parseInt($(obj).attr("foto_id"));
+            if (confirm("¿Deseas eliminar el elemento?")) {
+                var info = [{"_token": "{{ csrf_token() }}"}][0];
+                $.ajax({
+                    url: "/intranet/website/foto/" + id,
+                    type: "DELETE",
+                    data: info,
+                    beforeSend: function () {
+                        $("#loading").show();
+                    },
+                    success: function (data) {
+                        notificacion('Eliminación', 'Datos actualizados correctamente', 'warning');
+                        $(obj).closest(".item").remove();
+                        $(".gallery-cont").masonry();
+                    },
+                    error: function (request, status, error) {
+                        mostrar_error(request.responseText);
+                    },
+                    complete: function () {
+                        $("#loading").hide();
+                    }
+                });
+            }
+        }
     </script>
 @endsection
 

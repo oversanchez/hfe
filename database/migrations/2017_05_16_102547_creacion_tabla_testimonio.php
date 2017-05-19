@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaAlbum extends Migration
+class CreacionTablaTestimonio extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreacionTablaAlbum extends Migration
      */
     public function up()
     {
-        Schema::create('album', function (Blueprint $table) {
+        Schema::create('testimonio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->date('fecha');
+            $table->string('nombres');
+            $table->string('url_foto');
+            $table->string('empresa');
+            $table->string('ocupacion');
+            $table->text('descripcion');
             $table->boolean('publico')->default(true);
-            $table->integer('nro_fotos')->default(0);
             $table->timestamps();
         });
     }
@@ -30,7 +32,6 @@ class CreacionTablaAlbum extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('album');
+        Schema::dropIfExists('testimonio');
     }
 }
-

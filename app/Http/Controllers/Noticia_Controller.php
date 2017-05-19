@@ -21,7 +21,10 @@ class Noticia_Controller extends Controller
         $opciones = \App\Opcion_Menu::where('publico',true)->orderBy('orden','asc')->get();
         $noticias = \App\Noticia::take(6)->where('publico',true)->where('id','<>',$id)->orderBy('fecha', 'desc')->get();
         $noticia = \App\Noticia::find($id);
-        return view('website/noticias',['noticia'=>$noticia,'opciones'=>$opciones,'noticias'=>$noticias]);
+        $opciones_footer = \App\Opcion_Footer::where('publico',true)->orderBy('id', 'desc')->get();
+        $institucion = \App\Institucion::take(1)->get()[0];
+        
+        return view('website/noticias',['noticia'=>$noticia,'opciones'=>$opciones,'noticias'=>$noticias,'institucion'=>$institucion,"opciones_footer"=>$opciones_footer]);
     }
         
 

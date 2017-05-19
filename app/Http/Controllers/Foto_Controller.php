@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use Image;
+use File;
 
 class Foto_Controller extends Controller
 {
@@ -49,6 +50,10 @@ class Foto_Controller extends Controller
             $foto->save();
 
             $file->move($path,$archivo);
+
+            $album = \App\Album::find($album_id);
+            $album->nro_fotos += 1;
+            $album->save();
         }
     }
 
@@ -107,8 +112,13 @@ class Foto_Controller extends Controller
     function destroy($id)
     {
         $foto = \App\Foto::find($id);
-        if(File::exists($foto->archivo))
-            File::delete($foto->archivo);
+        $archivo = public_path().$foto->archivo;
+        $album = \App\Album::find($foto->album_id);
+        if(File::exists($archivo))
+            File::delete($archivo);
+
         $foto->delete();
+        $album->nro_fotos += -1;
+        $album->save();
     }
 }

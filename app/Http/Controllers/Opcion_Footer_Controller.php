@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use File;
 
-class Album_Controller extends Controller
+class Opcion_Footer_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,19 +13,8 @@ class Album_Controller extends Controller
      */
     public function index()
     {
-        return view('intranet/website/album');
+        return view('intranet/website/opcion_footer');
     }
-
-    public function ver_galeria()
-    {
-        $opciones = \App\Opcion_Menu::where('publico',true)->orderBy('orden','asc')->get();
-        $albums = \App\Album::where('publico',true)->orderBy('fecha', 'desc')->get();
-        $opciones_footer = \App\Opcion_Footer::where('publico',true)->orderBy('id', 'desc')->get();
-        $institucion = \App\Institucion::take(1)->get()[0];
-
-        return view('website/galeria',['opciones'=>$opciones,'institucion'=>$institucion,"albums"=>$albums,"opciones_footer"=>$opciones_footer]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -45,14 +33,12 @@ class Album_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $album = new \App\Album();
-        $album->nombre = $request->input('nombre');
-        $album->fecha = $request->input('fecha');
-        $album->publico = $request->input('publico');
-        $album->save();
-
-        $path = public_path().'/royal/img/galeria/' . $album->id;
-        File::makeDirectory($path, $mode = 0777, true, true);
+        $opcion_footer = new \App\Opcion_Footer();
+        $opcion_footer->nombre = $request->input('nombre');
+        $opcion_footer->url= $request->input('url');
+        $opcion_footer->footer= $request->input('footer');
+        $opcion_footer->publico= $request->input('publico');
+        $opcion_footer->save();
     }
 
     /**
@@ -64,9 +50,9 @@ class Album_Controller extends Controller
     public function show($id)
     {
         if (is_numeric($id)) {
-            return \App\Album::find($id);
+            return \App\Opcion_Footer::find($id);
         } else if($id == "*"){
-            return \App\Album::all();
+            return \App\Opcion_Footer::all();
         }
 
     }
@@ -91,11 +77,12 @@ class Album_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $album = \App\Album::find($id);
-        $album->nombre = $request->input('nombre');
-        $album->fecha = $request->input('fecha');
-        $album->publico = $request->input('publico');
-        $album->save();
+        $opcion_footer = \App\Opcion_Footer::find($id);
+        $opcion_footer->nombre = $request->input('nombre');
+        $opcion_footer->url= $request->input('url');
+        $opcion_footer->footer= $request->input('footer');
+        $opcion_footer->publico= $request->input('publico');
+        $opcion_footer->save();
     }
 
     /**
@@ -106,11 +93,7 @@ class Album_Controller extends Controller
      */
     public function destroy($id)
     {
-        $album = \App\Album::find($id);
-        $album_id = $album->id;
-        $album->delete();
-
-        $path = public_path().'/royal/img/galeria/' . $album->id;
-        File::deleteDirectory($path);
+        $opcion_footer = \App\Opcion_Footer::find($id);
+        $opcion_footer->delete();
     }
 }

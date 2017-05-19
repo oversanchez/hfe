@@ -18,14 +18,18 @@ class Website_Controller extends Controller
         $sliders = \App\Slider::where('publico',true)->orderBy('orden','asc')->get();
         $eventos = \App\Evento::where('publico',true)->orderBy('fecha', 'asc')->get();
         $noticias = \App\Noticia::where('publico',true)->orderBy('fecha', 'desc')->get();
+        $testimonios = \App\Testimonio::where('publico',true)->orderBy('id', 'desc')->get();
+        $opciones_footer = \App\Opcion_Footer::where('publico',true)->orderBy('id', 'desc')->get();
 
         $comunicados = \App\Enlace_Rapido::where('publico',true)->where('categoria','CO')->orderBy('orden','asc')->get();
         $documentos = \App\Enlace_Rapido::where('publico',true)->where('categoria','DO')->orderBy('orden','asc')->get();
         $descargas = \App\Enlace_Rapido::where('publico',true)->where('categoria','DE')->orderBy('orden','asc')->get();
 
         $fotos = \App\Foto::take(4)->where('favorito',true)->orderBy('id','desc')->get();
+        $emergentes = \App\Emergente::where('publico',true)->orderBy('fecha', 'desc')->get();
+        $institucion = \App\Institucion::take(1)->get()[0];
 
-        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias,'fotos'=>$fotos,'opciones'=>$opciones]);
+        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias,'testimonios'=>$testimonios,'opciones_footer'=>$opciones_footer,'fotos'=>$fotos,'emergentes'=>$emergentes,'institucion'=>$institucion,'opciones'=>$opciones]);
     }
 
     /**

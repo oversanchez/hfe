@@ -94,14 +94,17 @@
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Website <b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/intranet/website/inicio">Inicio</a></li>
-                        <li><a href="/intranet/website/noticia">Noticias</a></li>
-                        <li><a href="/intranet/website/evento">Eventos</a></li>
-                        <li><a href="/intranet/website/enlace_rapido">Enlaces rápidos (Comunicados,Documentos,Descargas)</a></li>
-                        <li><a href="/intranet/website/slider">Sliders</a></li>
-                        <li><a href="/intranet/website/opcion_menu">Opciones del menú</a></li>
-                        <li><a href="/intranet/website/pagina_web">Páginas Web</a></li>
-                        <li><a href="/intranet/website/album">Galería de Fotos</a></li>
+                        <li><a href="/intranet/website/institucion">Inicio</a></li>
+                        <li><a href="/intranet/website/slider"><i class="fa fa-picture-o"></i> Sliders</a></li>
+                        <li><a href="/intranet/website/noticia"><i class="fa fa-file-o"></i> Noticias</a></li>
+                        <li><a href="/intranet/website/evento"><i class="fa fa-calendar"></i> Eventos</a></li>
+                        <li><a href="/intranet/website/enlace_rapido"><i class="fa fa-link"></i> Enlaces rápidos (Comunicados,Documentos,Descargas)</a></li>
+                        <li><a href="/intranet/website/pagina_web"><i class="fa fa-globe"></i> Páginas Web</a></li>
+                        <li><a href="/intranet/website/emergente"><i class="fa fa-globe"></i> Emergentes</a></li>
+                        <li><a href="/intranet/website/testimonio"><i class="fa fa-comment"></i> Testimonios</a></li>
+                        <li><a href="/intranet/website/opcion_menu"><i class="fa fa-bars"></i> Head Opciones</a></li>
+                        <li><a href="/intranet/website/opcion_footer"><i class="fa fa-bars"></i> Footer Opciones</a></li>
+                        <li><a href="/intranet/website/album"><i class="fa fa-camera"></i> Galería de Fotos</a></li>
                     </ul>
                 </li>
             </ul>

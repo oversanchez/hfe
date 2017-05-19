@@ -55,17 +55,17 @@
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content" style="background: white;height:192px;padding:10px;border:solid thin lightgray;">
-                    <div role="tabpanel" class="tab-pane active" id="comunicados" style="width:100%;height:178px;background:url('royal/img/comunicado_transparente.png') no-repeat right" >
+                    <div role="tabpanel" class="tab-pane active" id="comunicados" style="width:100%;height:178px;background:url('/royal/img/comunicado_transparente.png') no-repeat right" >
                         @foreach($comunicados as $key => $comunicado)
                             <div class="row"><div class="col-sm-12"><a href="{{$comunicado->url}}" style="color:{{$comunicado->color}}"><i class="fa fa-bell-o"></i> {{$comunicado->nombre}}</a></div></div>
                         @endforeach
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="cartas" style="width:100%;height:178px;background:url('royal/img/documentos_transparente.png') no-repeat right" >
+                    <div role="tabpanel" class="tab-pane" id="cartas" style="width:100%;height:178px;background:url('/royal/img/documentos_transparente.png') no-repeat right" >
                         @foreach($documentos as $key => $documento)
                             <div class="row"><div class="col-sm-12"><a href="{{$documento->url}}"  style="color:{{$documento->color}}"><i class="fa fa-file-archive-o"></i> {{$documento->nombre}}</a></div></div>
                         @endforeach
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="descargas" style="width:100%;height:178px;background:url('royal/img/download_transparente.png') no-repeat right">
+                    <div role="tabpanel" class="tab-pane" id="descargas" style="width:100%;height:178px;background:url('/royal/img/download_transparente.png') no-repeat right">
                         @foreach($descargas as $key => $descarga)
                             <div class="row"><div class="col-sm-12"><a href="{{$descarga->url}}"  style="color:{{$descarga->color}}"><i class="fa fa-download"></i> {{$descarga->nombre}}</a></div></div>
                         @endforeach
@@ -95,9 +95,8 @@
                                         <div class="row">
                                             <!-- videoLeft -->
                                             <div class="col-lg-12 col-md-12 col-xs-12 videoRight">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur
-                                                    ante volutpat sem aliquam lobortis..</p>
-                                                <a href="about.html" class="btn btn-block learnBtn">Learn More</a>
+                                                <p>{{$institucion->bienvenida_texto}}</p>
+                                                <a href="{{$institucion->bienvenida_url}}" class="btn btn-block learnBtn">Leer más</a>
                                             </div>
                                             <!-- videoRight -->
                                         </div>
@@ -137,7 +136,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div style="border: 1px solid #DCE4EA;border-top: 3px solid #d4be12;height: 192px;padding-bottom: 60px;padding-right: 4px;margin-top: 10px;">
-                                <h3 style="text-transform: uppercase;margin: 5px 10px 0px 10px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: auto;padding: 4px 0px 0px 10px;"><img src="royal/img/photo.png" style="height: 41px;margin-top: -10px;padding-right: 6px;">FOTOS DESTACADAS<a href="#" style="display:inline;float:right;margin-top: 4px;margin-right: 10px;font-size:18px;"><i class="fa fa-photo"></i> Ver todas las fotos</a></h3>
+                                <h3 style="text-transform: uppercase;margin: 5px 10px 0px 10px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: auto;padding: 4px 0px 0px 10px;"><img src="/royal/img/photo.png" style="height: 41px;margin-top: -10px;padding-right: 6px;">FOTOS DESTACADAS<a href="galeria" style="color:white;display:inline;float:right;margin-top: 2px;margin-right: 10px;font-size:20px;"><img src="/royal/img/galeria.png" style="height: 35px;margin-top: -7px;"> IR A GALERÍA</a></h3>
                                 <div class="photo_gallery custom" style="padding: 10px 10px 0px 10px;">
                                     <ul class="gallery popup-gallery">
                                         @foreach($fotos as $key => $foto)
@@ -162,7 +161,7 @@
                 <div class="col-sm-3 col-xs-12">
                     <div class="formArea clearfix">
                         <div class="formTitle">
-                            <img src="royal/img/hay_tarea.png">
+                            <img src="/royal/img/hay_tarea.png">
                             <h5>Selecciona tu sección</h5>
                         </div>
                         <!-- formTitle -->
@@ -177,11 +176,11 @@
                             </div>
                         </form>
                     </div>
-                    <img class="img-responsive" src="royal/img/playstore.png" style="cursor:pointer;">
+                    <img class="img-responsive" src="/royal/img/playstore.png" style="cursor:pointer;">
                     <!-- formArea -->
                     <div class="list_block related_post_sec" style="height: 314px;margin: 10px 0 5px;padding:15px 5px 5px 5px;">
                         <div class="upcoming_events" style="height: 241px;">
-                            <h3 style="margin:-10px 0px 5px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="royal/img/eventos4.png" style="height: 30px;margin-top: -4px;padding-right: 13px;">Eventos</h3>
+                            <h3 style="margin:-10px 0px 5px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="/royal/img/eventos4.png" style="height: 30px;margin-top: -4px;padding-right: 13px;">Eventos</h3>
                             <div id="eventos" class="nano">
                                 <div class="overthrow nano-content">
                                     <ul>
@@ -207,7 +206,6 @@
                     <!-- end list_block -->
                 </div>
                 <!-- col-sm-4 col-xs-12 -->
-
             </div>
             <!-- row clearfix -->
         </div>
@@ -218,22 +216,40 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                    <div class="testimonial">
-                        <div class="carousal_content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris</p>
-                        </div>
-                        <div class="carousal_bottom">
-                            <div class="thumb">
-                                <img src="royal/img/about/SARA-LISBON_Art-Student.jpg" alt="" draggable="false">
-                            </div>
-                            <div class="thumb_title">
-                                <span class="author_name">Sara Lisbon</span>
-                                <span class="author_designation">Student<a href="#"> English Literature</a></span>
-                            </div>
-                        </div>
-                    </div>
+                    <section class="testimonials" style="padding:0px 10px 0px 10px;">
+                        <h3>TESTIMONIOS</h3>
+                        <div class="carousel-controls">
+                            <a class="prev" href="#testimonials-carousel" data-slide="prev"><i class="fa fa-caret-left"></i></a>
+                            <a class="next" href="#testimonials-carousel" data-slide="next"><i class="fa fa-caret-right"></i></a>
+                        </div><!--//carousel-controls-->
+                        <div class="section-content" style="margin-top:20px;">
+                            <div id="testimonials-carousel" class="testimonials-carousel carousel slide">
+                                <div class="carousel-inner">
+                                    @foreach($testimonios as $key => $testimonio)
+                                        <?php
+                                        $active = "";
+                                        if($key == 0)
+                                            $active = " active";
+                                        ?>
+                                        <div class="item {{$active}}">
+                                            <div class="row">
+                                                <div class="col-md-9 col-xs-9">
+                                                    <blockquote class="quote" style="padding:10px 0px 10px 15px;text-align: justify;">
+                                                        <p><i class="fa fa-quote-left"></i>{{str_limit($testimonio->descripcion,260)}}</p>
+                                                    </blockquote>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3">
+                                                    <img style="height: 115px;margin-bottom: 2px;" class="img-circle" src="{{$testimonio->url_foto}}" alt="">
+                                                    <p style="text-align: center;"><span class="name">{{$testimonio->nombres}}</span>
+                                                        <br><span style="color:blue;font-weight: 800;" class="title">{{$testimonio->empresa}}</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div><!--//carousel-inner-->
+                            </div><!--//testimonials-carousel-->
+                        </div><!--//section-content-->
+                    </section>
                     <!-- testimonial -->
                 </div>
                 <!-- col-xs-12 -->
@@ -241,18 +257,10 @@
                     <div class="features">
                         <h3>¿Por qué nosotros?</h3>
                         <ul>
-                            <li><i class="fa fa-check-circle-o"></i>It’s a complete solution for your college
-                                website
-                            </li>
-                            <li><i class="fa fa-check-circle-o"></i>PSD file included to help you customize the
-                                design better
-                            </li>
-                            <li><i class="fa fa-check-circle-o"></i>SASS file included for unlimited hasel free
-                                style customization
-                            </li>
-                            <li><i class="fa fa-check-circle-o"></i>Theme option switcher for live cusomization
-                                preview
-                            </li>
+                            <li><i class="fa fa-check-circle-o"></i>{{$institucion->porque_nosotros_1}}</li>
+                            <li><i class="fa fa-check-circle-o"></i>{{$institucion->porque_nosotros_2}}</li>
+                            <li><i class="fa fa-check-circle-o"></i>{{$institucion->porque_nosotros_3}}</li>
+                            <li><i class="fa fa-check-circle-o"></i>{{$institucion->porque_nosotros_4}}</li>
                         </ul>
                     </div>
                 </div>
@@ -263,49 +271,64 @@
         <!-- container -->
     </div>
     <!-- testimonial-section -->
-    <div class="brand-section clearfix">
-        <div class="container">
-            <div class="brand-slider flexslider">
-                <ul class="slides">
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand1.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand2.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand3.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand4.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand5.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand1.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand2.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand3.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand4.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand5.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand1.png"/></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="royal/img/home/brand2.png"/></a>
-                    </li>
-                </ul>
+@endsection
+
+@section('scripts')
+
+
+    @foreach($emergentes as $key => $emergente)
+        <!-- Modal -->
+        <?php
+            $tipo = $emergente->tipo == "L" ? "modal-lg" : "";
+        ?>
+        <div class="modal fade" id="myModal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog {{$tipo}}" role="document">
+                @if($emergente->tipo!=="I")
+                    <div class="modal-content" style="padding:0px;margin-top: {{10*$key}}%;margin-left: {{4*$key}}%">
+                @else
+                    <div class="modal-content" style="margin-top: {{10*$key}}%;margin-left: {{4*$key}}%">
+                @endif
+
+                @if($emergente->tipo!=="I")
+                    <div class="modal-header" style="border-bottom:none;text-align: center;padding-top: 12px;padding-bottom: 4px;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: fixed;top: 0;right: 0;margin-top: -20px;margin-right: -20px;opacity: initial;">
+                            <img src="/royal/img/close_red.png" style="float:right;width: 40px;"/>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel" style="margin-left: 37px;">{{$emergente->nombre}}</h4>
+                    </div>
+                @endif
+                @if($emergente->tipo=="I")
+                    <div class="modal-body" style="padding: 0px;">
+                @else
+                    <div class="modal-body" style="padding-top: 5px;">
+                @endif
+                @if($emergente->tipo=="I")
+                    <a href="{{$emergente->url}}"><img onclick="" src="{!! $emergente->url_foto !!}" style="max-height: 590px;width: 100%;"></a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: fixed;top: 0;right: 0;margin-top: -20px;margin-right: -20px;opacity: initial;">
+                        <img src="/royal/img/close_red.png" style="float:right;width: 40px;"/>
+                    </button>
+                @else
+                    <div class="formArea" style="background:url('/royal/img/logo_transparente.png') no-repeat center;min-height: 250px;">
+                        {!! $emergente->contenido !!}
+                    </div>
+                    @if($emergente->url != "" && $emergente->url != "#")
+                        <div style="text-align: center;">
+                            <a href="{{$emergente->url}}" class="btn btn-danger">Ver más</a>
+                        </div>
+                    @endif
+                @endif
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    @endforeach
+
+    <script>
+        $(document).on('ready',function(){
+            @foreach($emergentes as $key => $emergente)
+                $("#myModal{{$key}}").modal('show');
+            @endforeach
+        });
+    </script>
 @endsection
 

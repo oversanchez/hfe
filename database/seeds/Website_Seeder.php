@@ -59,6 +59,30 @@ class Website_Seeder extends Seeder
             ["orden"=>1,"nombre" => "Sub Opcion 1","url"=>"#","opcion_superior_id"=>7,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
         ]);
 
+        DB::table('testimonio')->insert([
+            ["nombres" => "Milagros Takayama","url_foto"=>"http://aplicaciones004.jne.gob.pe/PADRON/13/01/01/083940/16787889.jpg","ocupacion" => "Congresista","empresa" => "Congreso","descripcion"=>"I’m very happy interdum eget ipsum. Nunc pulvinar ut nulla eget sollicitudin. In hac habitasse platea dictumst. Integer mattis varius ipsum, posuere posuere est porta vel. Integer metus ligula, blandit ut fermentum a, rhoncus in ligula. Duis luctus.. Integer metus ligula, blandit ut fermentum a, rhoncus in ligula. Duis luctus."],
+            ["nombres" => "Oliver Sánchez","url_foto"=>"http://www.stm.edu.pe/2016/assets/images/tics/oliver%20sanchez.jpg","ocupacion" => "Analista Programador","empresa" => "Biosis","descripcion"=>"I’m very happy interdum eget ipsum. Nunc pulvinar ut nulla eget sollicitudin. In hac habitasse platea dictumst. Integer mattis varius ipsum, posuere posuere est porta vel. Integer metus ligula, blandit ut fermentum a, rhoncus in ligula. Duis luctus.. Integer metus ligula, blandit ut fermentum a, rhoncus in ligula. Duis luctus."],
+        ]);
+
+        DB::table('opcion_footer')->insert([
+            ["nombre" => "Contáctanos","url"=>"#","footer"=>true],
+            ["nombre" => "Políticas de Privacidad","url"=>"#","footer"=>true],
+            ["nombre" => "Acerca de nuestro colegio","url"=>"#","footer"=>false],
+            ["nombre" => "Nuestros Profesores","url"=>"#","footer"=>false],
+            ["nombre" => "Por qué elegirnos","url"=>"#","footer"=>false],
+        ]);
+
+        DB::table('emergente')->insert([
+            ["nombre" => "Emergente 3","tipo"=>"I","fecha"=>"18/05/2017","contenido"=>"","url_foto"=>"https://scontent.flim1-1.fna.fbcdn.net/v/t1.0-9/16114665_131603514012370_2029188717186072621_n.jpg?oh=eb705ba496e99f17e3a6ec9eacf4ee10&oe=59C19379","url"=>"#","publico"=>true],
+            ["nombre" => "Emergente 2","tipo"=>"P","fecha"=>"18/05/2017","contenido"=>"Informacion relacionada","url_foto"=>"#","url"=>"#","publico"=>true],
+            ["nombre" => "Emergente 1","tipo"=>"L","fecha"=>"18/05/2017","contenido"=>"Informacion relacionada","url_foto"=>"#","url"=>"#","publico"=>true],
+        ]);
+
+
+        DB::table('institucion')->insert([
+            ["telefonos" => "956748752","direccion"=>"Av. Manuel Gutierrez 123","correo"=>"ierosario@gmail.com","ciudad"=>"Chiclayo","bienvenida_texto"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur ante volutpat sem aliquam lobortis..","bienvenida_url"=>"#","link_mapa"=>'<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2801.4840647288756!2d-79.83833504933094!3d-6.782417475892645!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x904cef2e004abf9d%3A0x9156a7ec54a399e4!2sI.E.+Nuestra+Se%C3%B1ora+del+Rosario!5e0!3m2!1ses-419!2ses!4v1494949452387" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>'],
+        ]);
+
 
     }
 }

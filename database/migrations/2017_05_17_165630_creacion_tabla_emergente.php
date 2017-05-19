@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaAlbum extends Migration
+class CreacionTablaEmergente extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreacionTablaAlbum extends Migration
      */
     public function up()
     {
-        Schema::create('album', function (Blueprint $table) {
+        Schema::create('emergente', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->date('fecha');
-            $table->boolean('publico')->default(true);
-            $table->integer('nro_fotos')->default(0);
+            $table->string('fecha');
+            $table->text('contenido')->nullable();
+            $table->string('url');
+            $table->string('url_foto')->default("#");
+            $table->enum('tipo',["L","P","I"]);
+            $table->boolean('publico');
             $table->timestamps();
         });
     }
@@ -30,7 +33,6 @@ class CreacionTablaAlbum extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('album');
+        Schema::dropIfExists('emergente');
     }
 }
-

@@ -24,6 +24,10 @@ Route::get('/eventos/{id}/ver', ['uses' => 'Evento_Controller@ver_evento', 'as' 
 
 Route::get('/paginas/{id}/ver', ['uses' => 'Pagina_Web_Controller@ver_pagina', 'as' => 'pagina_web.ver_pagina']);
 
+Route::get('/galeria', ['uses' => 'Album_Controller@ver_galeria', 'as' => 'album.ver_galeria']);
+
+Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
+
 Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::resource('anio_lectivo','\App\Http\Controllers\Anio_Lectivo_Controller');
@@ -96,10 +100,18 @@ Route::group(['prefix'=>'intranet/website'], function () {
 
     Route::resource('album','\App\Http\Controllers\Album_Controller');
 
+    Route::resource('testimonio','\App\Http\Controllers\Testimonio_Controller');
+
+    Route::resource('opcion_footer','\App\Http\Controllers\Opcion_Footer_Controller');
+
+    Route::resource('institucion','\App\Http\Controllers\Institucion_Controller');
+
+    Route::resource('emergente','\App\Http\Controllers\Emergente_Controller');
+
     //Route::get('periodo/listar', ['uses' => 'Periodo_Controller@listar', 'as' => 'periodo.listar']);
 });
 
-Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
+
 
 //Route::resource('file', 'FileController');
 
