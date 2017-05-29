@@ -45,10 +45,9 @@ class Website_Seeder extends Seeder
         DB::table('opcion_menu')->insert([
             ["orden"=>1,"nombre" => "INICIO","url"=>"/","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
             ["orden"=>2,"nombre" => "FILOSOFÍA INSTITUCIONAL","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>5],
-            ["orden"=>3,"nombre" => "PASTORAL","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
-            ["orden"=>4,"nombre" => "INFRAESTRUCTURA","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
-            ["orden"=>5,"nombre" => "ÁREA DE FORMACIÓN","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
-            ["orden"=>6,"nombre" => "ACTUALIDAD","url"=>"#","opcion_superior_id"=>null,"tipo"=>"B","publico"=>true,"nro_opciones"=>0],
+            ["orden"=>3,"nombre" => "INFRAESTRUCTURA","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
+            ["orden"=>4,"nombre" => "ÁREA DE FORMACIÓN","url"=>"#","opcion_superior_id"=>null,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],
+            ["orden"=>5,"nombre" => "ACTUALIDAD","url"=>"#","opcion_superior_id"=>null,"tipo"=>"B","publico"=>true,"nro_opciones"=>0],
 
             ["orden"=>1,"nombre" => "Reseña Histórica","url"=>"#","opcion_superior_id"=>2,"tipo"=>"L","publico"=>true,"nro_opciones"=>1],
             ["orden"=>2,"nombre" => "Misión y Visión","url"=>"#","opcion_superior_id"=>2,"tipo"=>"L","publico"=>true,"nro_opciones"=>0],

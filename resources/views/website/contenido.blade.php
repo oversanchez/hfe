@@ -41,12 +41,6 @@
                        aria-expanded="false">
                         <i class="fa fa-search"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <form action="http://themes.iamabdus.com/royal/1.2/courses.html" method="post">
-                            <input type="text" placeholder="Dime que buscas" id="txtBuscar" class="form-control">
-                            <button class="btn btn-default commonBtn" type="submit">Buscar</button>
-                        </form>
-                    </ul>
                 </li>
                 <li class="dropdown language">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

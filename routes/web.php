@@ -72,6 +72,10 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::resource('seccion','\App\Http\Controllers\Seccion_Controller');
 
+    Route::get('familiar/listar', ['uses' => 'Familiar_Controller@listar', 'as' => 'familiar.listar']);
+
+    Route::resource('familiar','\App\Http\Controllers\Familiar_Controller');
+
     Route::resource('usuario','\App\Http\Controllers\Usuario_Controller');
 
 });

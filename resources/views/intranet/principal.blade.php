@@ -63,6 +63,7 @@
                                 <li><a href="/intranet/mantenimientos/anio_lectivo">Asistencia</a></li>
                                 <li class="dropdown-header"><i class="fa fa-legal"></i>Personas</li>
                                 <li><a href="/intranet/mantenimientos/alumno">Alumnos</a></li>
+                                <li><a href="/intranet/mantenimientos/familiar">Padres y Madres</a></li>
                                 <li><a href="/intranet/mantenimientos/apoderado">Apoderados</a></li>
                                 <li><a href="/intranet/mantenimientos/trabajador">Trabajadores</a></li>
                             </ul>
