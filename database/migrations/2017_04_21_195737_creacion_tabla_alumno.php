@@ -22,16 +22,16 @@ class CreacionTablaAlumno extends Migration
             $table->enum('tipo_documento',['DN','CE','PA']);
             $table->date('fecha_nacimiento');
             $table->enum('sexo',['M','F']);
-            $table->string('direccion');
-            $table->string('telf_fijo');
+            $table->string('direccion')->nullable();
+            $table->string('telf_fijo')->nullable();
 
             $table->string('codigo_educando')->nullable();
             $table->string('codigo_recaudacion')->nullable();
             $table->string('url_foto')->nullable();
-            $table->boolean('padres_juntos');
-            $table->boolean('activo');
+            $table->boolean('padres_juntos')->nullable();
+            $table->boolean('activo')->default(true);
 
-            $table->integer('colegio_procedencia_id')->unsigned();
+            $table->integer('colegio_procedencia_id')->unsigned()->nullable();
             $table->foreign('colegio_procedencia_id')->references('id')->on('colegio_procedencia');
 
             $table->integer('usuario_id')->unsigned()->nullable()->unique();

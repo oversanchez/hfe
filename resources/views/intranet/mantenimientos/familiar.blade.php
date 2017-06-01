@@ -29,9 +29,7 @@
                                     <tr>
                                         <th>Nro Doc.</th>
                                         <th style="width:5px;">G.</th>
-                                        <th>Ap. Paterno</th>
-                                        <th>Ap. Materno</th>
-                                        <th>Nombres</th>
+                                        <th>Nombre Completo</th>
                                         <th>Ocupacion</th>
                                         <th>Lugar Trab.</th>
                                         <th>Celular</th>
@@ -62,29 +60,14 @@
                                                     <label class="col-sm-1" style="width: 58px;padding: 5px 0px;">Nro
                                                         Doc.</label>
                                                     <div class="col-sm-4">
-                                                        <input id="txtPersona_Numero_Documento" class="form-control" type="text"
-                                                               data-parsley-trigger="change" data-parsley-length="[8,15]"
-                                                               data-parsley-required="true">
+                                                        <input id="txtPersona_Numero_Documento" class="form-control" type="text" data-parsley-trigger="change" data-parsley-length="[8,15]" data-parsley-required="true">
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <label class="col-sm-2">Apellidos</label>
-                                                    <div class="col-sm-4">
-                                                        <input id="txtPersona_ApPat" class="form-control" type="text"
-                                                               maxlength="50" data-parsley-trigger="change"
-                                                               data-parsley-length="[1,50]" data-parsley-required="true">
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input id="txtPersona_ApMat" class="form-control" type="text"
-                                                               maxlength="50">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <label class="col-sm-2">Nombres</label>
-                                                    <div class="col-sm-8">
-                                                        <input id="txtPersona_Nombres" class="form-control" type="text"
-                                                               maxlength="50" data-parsley-trigger="change"
-                                                               data-parsley-length="[2,50]" data-parsley-required="true">
+                                                    <label class="col-sm-2">Nombre Completo</label>
+                                                    <div class="col-sm-10">
+                                                        <input id="txtPersona_NombreCompleto" class="form-control" type="text"
+                                                               maxlength="200" data-parsley-trigger="change" data-parsley-length="[10,200]" data-parsley-required="true">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -99,32 +82,28 @@
                                                     <div class="col-sm-3">
                                                         <input id="txtPersona_FechaNac" class="form-control date datetime"
                                                                data-min-view="2" data-date-format="dd/mm/yyyy" type="text"
-                                                               maxlength="10" data-parsley-trigger="change"
-                                                               data-parsley-required="true">
+                                                               maxlength="10" >
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <label class="col-sm-2">Dirección</label>
                                                     <div class="col-sm-9">
                                                         <input id="txtPersona_Direccion" class="form-control" type="text"
-                                                               maxlength="100" data-parsley-trigger="change"
-                                                               data-parsley-required="true">
+                                                               maxlength="150" >
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <label class="col-sm-2">Email</label>
                                                     <div class="col-sm-9">
                                                         <input class="form-control" type="email" id="txtPersona_Email"
-                                                               placeholder="oliver.sanchez@gmail.com" data-parsley-trigger="change"
-                                                               data-parsley-length="[2,100]" data-parsley-required="true">
+                                                               placeholder="oliver.sanchez@gmail.com">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <label class="col-sm-2">Telefonos</label>
                                                     <div class="col-sm-5">
                                                         <input class="form-control" type="text" id="txtPersona_Telf_Movil"
-                                                               placeholder="Ejem. 987644413" data-parsley-trigger="change"
-                                                               data-parsley-length="[9,15]" data-parsley-required="true">
+                                                               placeholder="Ejem. 987644413">
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <input class="form-control" type="text" id="txtPersona_Telf_Fijo"
@@ -136,7 +115,7 @@
                                                 <div class="row">
                                                     <label class="col-sm-2">Estado Civil</label>
                                                     <div class="col-sm-4">
-                                                        <select class="form-control" id="cmbEstado_Civil" required="">
+                                                        <select class="form-control" id="cmbEstado_Civil">
                                                             <option value="">---</option>
                                                             <option value="SO">SOLTERO(A)</option>
                                                             <option value="CA">CASADO(A)</option>
@@ -148,24 +127,21 @@
                                                 <div class="row">
                                                     <label class="col-sm-2">Nivel Educativo</label>
                                                     <div class="col-sm-10">
-                                                        <select class="form-control" id="cmbNivel_Educativo" required="">
+                                                        <select class="form-control" id="cmbNivel_Educativo">
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <label class="col-sm-2">Ocupación</label>
                                                     <div class="col-sm-10">
-                                                        <input id="txtOcupacion" class="form-control" type="text"
-                                                               maxlength="70" data-parsley-trigger="change"
-                                                               data-parsley-length="[2,70]" data-parsley-required="true">
+                                                        <input id="txtOcupacion" class="form-control" type="text" maxlength="70" >
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <label class="col-sm-2">Lugar Trab.</label>
                                                     <div class="col-sm-10">
                                                         <input id="txtLugar_Trabajo" class="form-control" type="text"
-                                                               maxlength="100" data-parsley-trigger="change"
-                                                               data-parsley-length="[2,100]" data-parsley-required="true">
+                                                               maxlength="100" >
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -219,11 +195,10 @@
         }
 
         function obtenerDatos() {
+            var nivel_educativo_id = $("#cmbNivel_Educativo").val();
             var info = [{
                 "_token": "{{ csrf_token() }}",
-                "nombres": $("#txtPersona_Nombres").val(),
-                "apellido_paterno": $("#txtPersona_ApPat").val(),
-                "apellido_materno": $("#txtPersona_ApMat").val(),
+                "nombre_completo": $("#txtPersona_NombreCompleto").val(),
                 "tipo_documento": $("#cmbPersona_TipoDoc").val(),
                 "numero_documento": $("#txtPersona_Numero_Documento").val(),
                 "sexo": $("#cmbPersona_Sexo").val(),
@@ -233,7 +208,7 @@
                 "telf_fijo": $("#txtPersona_Telf_Fijo").val(),
                 "telf_movil": $("#txtPersona_Telf_Movil").val(),
 
-                "nivel_educativo_id": parseInt($("#cmbNivel_Educativo").val()),
+                "nivel_educativo_id": nivel_educativo_id!= "" ? parseInt(nivel_educativo_id) : "" ,
                 "estado_civil": $("#cmbEstado_Civil").val(),
                 "ocupacion": $("#txtOcupacion").val(),
                 "lugar_trabajo": $("#txtLugar_Trabajo").val(),
@@ -324,9 +299,7 @@
                 success: function (data) {
                     $("#hddCodigo").val(id);
 
-                    $("#txtPersona_Nombres").val(data["nombres"]);
-                    $("#txtPersona_ApPat").val(data["apellido_paterno"]);
-                    $("#txtPersona_ApMat").val(data["apellido_materno"]);
+                    $("#txtPersona_NombreCompleto").val(data["nombre_completo"]);
                     $("#txtPersona_Numero_Documento").val(data["numero_documento"]);
                     $("#cmbPersona_TipoDoc").val(data["tipo_documento"]);
                     $("#txtPersona_Email").val(data["email"]);
@@ -344,7 +317,7 @@
                     $("#chkActivo").iCheck(data['activo'] == true ? "check" : "uncheck");
                     $("#btnGuardar").text("Guardar");
                     $('a[href="#tp2"]').click();
-                    $('a[href="#tp2"]').text("Modificando : " + data["apellido_paterno"] + ' ' + data['apellido_materno'] + ' ' + data["nombres"]);
+                    $('a[href="#tp2"]').text("Modificando : " + data["nombre_completo"]);
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);
@@ -357,9 +330,7 @@
 
         function cancelar() {
             $("#hddCodigo").val("");
-            $("#txtPersona_Nombres").val("");
-            $("#txtPersona_ApPat").val("");
-            $("#txtPersona_ApMat").val("");
+            $("#txtPersona_NombreCompleto").val("");
             $("#txtPersona_Numero_Documento").val("");
             $("#txtPersona_Email").val("");
             $("#txtPersona_FechaNac").val("");
@@ -395,9 +366,7 @@
                         var sexo = value["sexo"]=="M" ? "<i style='color:blue;' class='fa fa-male'></i>" : "<i style='color:red;' class='fa fa-female'></i>";
                         var nodo = t.row.add([value['numero_documento'],
                             sexo,
-                            value['apellido_paterno'],
-                            value['apellido_materno'],
-                            value['nombres'],
+                            value['nombre_completo'],
                             value['ocupacion'],
                             value['lugar_trabajo'],
                             value['telf_movil'],

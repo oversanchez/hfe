@@ -15,25 +15,23 @@ class CreacionTablaFamiliar extends Migration
     {
         Schema::create('familiar', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombres');
-            $table->string('apellido_paterno');
-            $table->string('apellido_materno')->nullable();
-            $table->string('numero_documento',15)->unique();
-            $table->enum('tipo_documento',['DN','CE','PA']);
-            $table->date('fecha_nacimiento');
+            $table->string('nombre_completo');
+            $table->enum('tipo_documento',['DN','CE','PA'])->default('DN')->nullable();
+            $table->string('numero_documento',15)->unique()->nullable();
             $table->enum('sexo',['M','F']);
-            $table->string('direccion');
+            $table->date('fecha_nacimiento')->nullable();
+            $table->string('direccion')->nullable();
             $table->string('email')->nullable();
-            $table->string('telf_movil');
+            $table->string('telf_movil')->nullable();
             $table->string('telf_fijo')->nullable();
 
-            $table->enum('estado_civil',['SO','CA','VI','DI']);
-            $table->string('ocupacion');
-            $table->string('lugar_trabajo');
+            $table->enum('estado_civil',['SO','CA','VI','DI'])->nullable();
+            $table->string('ocupacion')->nullable();
+            $table->string('lugar_trabajo')->nullable();
 
-            $table->boolean('activo');
+            $table->boolean('activo')->default(true);
 
-            $table->integer('nivel_educativo_id')->unsigned();
+            $table->integer('nivel_educativo_id')->unsigned()->nullable();
             $table->foreign('nivel_educativo_id')->references('id')->on('nivel_educativo');
 
             $table->timestamps();

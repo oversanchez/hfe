@@ -80,6 +80,14 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
 });
 
+Route::group(['prefix'=>'intranet/procesos'], function () {
+
+    Route::get('control_reunion/listar', ['uses' => 'Control_Reunion_Controller@listar', 'as' => 'control_reunion.listar']);
+
+    Route::resource('control_reunion','\App\Http\Controllers\Control_Reunion_Controller');
+
+});
+
 Route::group(['prefix'=>'intranet/website'], function () {
 
     Route::resource('enlace_rapido','\App\Http\Controllers\Enlace_Rapido_Controller');

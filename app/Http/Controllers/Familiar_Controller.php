@@ -17,13 +17,11 @@ class Familiar_Controller extends Controller
     public function store(Request $request)
     {
         $familiar = new \App\Familiar();
-        $familiar->nombres = $request->input('nombres');
-        $familiar->apellido_paterno = $request->input('apellido_paterno');
-        $familiar->apellido_materno = $request->input('apellido_materno');
-        $familiar->numero_documento = $request->input('numero_documento');
+        $familiar->nombre_completo = $request->input('nombre_completo');
         $familiar->tipo_documento = $request->input('tipo_documento');
-        $familiar->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $familiar->numero_documento = $request->input('numero_documento');
         $familiar->sexo = $request->input('sexo');
+        $familiar->fecha_nacimiento = $request->input('fecha_nacimiento');
         $familiar->direccion = $request->input('direccion');
         $familiar->email = $request->input('email');
         $familiar->telf_movil = $request->input('telf_movil');
@@ -51,13 +49,11 @@ class Familiar_Controller extends Controller
     public function update(Request $request, $id)
     {
         $familiar = \App\Familiar::find($id);
-        $familiar->nombres = $request->input('nombres');
-        $familiar->apellido_paterno = $request->input('apellido_paterno');
-        $familiar->apellido_materno = $request->input('apellido_materno');
-        $familiar->numero_documento = $request->input('numero_documento');
+        $familiar->nombre_completo = $request->input('nombre_completo');
         $familiar->tipo_documento = $request->input('tipo_documento');
-        $familiar->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $familiar->numero_documento = $request->input('numero_documento');
         $familiar->sexo = $request->input('sexo');
+        $familiar->fecha_nacimiento = $request->input('fecha_nacimiento');
         $familiar->direccion = $request->input('direccion');
         $familiar->email = $request->input('email');
         $familiar->telf_movil = $request->input('telf_movil');
@@ -79,7 +75,7 @@ class Familiar_Controller extends Controller
     {
         $familiars =  \App\Familiar::all();
         foreach ($familiars as $familiar){
-            $familiar->nivel_educativo;
+
         }
         return $familiars;
     }
