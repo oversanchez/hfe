@@ -34,11 +34,13 @@ class Academico_2017_Seeder extends Seeder
             ['nombre'=>'SEXTO','numero'=>6,'activo'=>true,'grado_anterior_id'=>5,'nivel_id'=>1],
         ]);
 
+        /*
         DB::table('seccion')->insert([
             ['letra'=>'A','vacantes'=>30,'activo'=>true,'turno'=>'M','tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>null],
             ['letra'=>'B','vacantes'=>30,'activo'=>true,'turno'=>'M','tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>\App\Trabajador::all()->random()->id],
             ['letra'=>'B','vacantes'=>30,'activo'=>true,'turno'=>'T','tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>\App\Trabajador::all()->random()->id]
         ]);
+        */
 
     }
 }
