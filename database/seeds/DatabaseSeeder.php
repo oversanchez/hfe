@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(Nivel_Educativo_Seeder::class);
         //$this->call(Alumno_Seeder::class);
         //$this->call(Trabajador_Seeder::class);
-        
+
         $this->call(Academico_2017_Seeder::class);
-        $this->call(Website_Seeder::class);
+        //$this->call(Website_Seeder::class);
         $this->call(Familiar_Seeder::class);
         // $this->call(UsersTableSeeder::class);
     }
