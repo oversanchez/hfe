@@ -325,9 +325,12 @@
 
     <script>
         $(document).on('ready',function(){
-            @foreach($emergentes as $key => $emergente)
-                $("#myModal{{$key}}").modal('show');
-            @endforeach
+            setTimeout(function(){
+                @foreach($emergentes as $key => $emergente)
+                 $("#myModal{{$key}}").modal('show');
+                @endforeach
+            }, 1200);
+
         });
     </script>
 @endsection

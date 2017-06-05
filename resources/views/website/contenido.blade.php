@@ -31,8 +31,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="bodyColor container" style="background-image: url('/royal/img/patterns/003.png');background-repeat: repeat;background-attachment: fixed;background-position: center;">
-<div class="main_wrapper">
+<body class="bodyColor container" style="background-image: url('/royal/img/rosario.png');background-repeat: no-repeat;background-attachment: fixed;background-position: center;text-align: center;">
+<i id="load" class="fa fa-spinner fa-spin" style="margin-top: 42%;font-size:20px;"></i>
+<div class="main_wrapper" style="display:none;">
     <div class="topbar clearfix">
         <div class="container">
             <ul class="topbar-right">
@@ -213,11 +214,37 @@
 
 <script>
     $(document).on('ready',function(){
+        setTimeout(function(){
+            $("#load").remove();
+            $(".main_wrapper").show("slow");
+            $("body").css("background-image","url('/royal/img/patterns/003.png')");
+            $("body").css("background-repeat","repeat");
+            $("body").css("text-align","");
+            $("body").show();
+        }, 1000);
+
+        /*
+
+         $( "body" ).animate({
+         opacity: 0.25,
+         left: "+=50",
+         height: "toggle"
+         }, 2000, function() {
+         $("body").css("background-image","url('/royal/img/patterns/003.png')");
+         $("body").css("background-repeat","repeat");
+         $("body").css("opacity",0);
+         $("body").show();
+         });
+
+
+        */
+
         $(".nano").nanoScroller();
-        });
+    });
 
 </script>
 
 </body>
+
 </html>
 
