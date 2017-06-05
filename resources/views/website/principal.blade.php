@@ -330,7 +330,6 @@
                  $("#myModal{{$key}}").modal('show');
                 @endforeach
             }, 1200);
-
         });
     </script>
 @endsection
