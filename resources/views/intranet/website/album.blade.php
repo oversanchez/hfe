@@ -118,7 +118,7 @@
                 autoProcessQueue: false,
                 acceptedFiles: "image/jpeg,image/png,image/gif",
                 uploadMultiple: true,
-                maxFilezise: 1,
+                maxFilezise: 4,
                 maxFiles: 10,
 
                 init: function() {

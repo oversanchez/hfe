@@ -216,11 +216,12 @@
     $(document).on('ready',function(){
         setTimeout(function(){
             $("#load").remove();
-            $(".main_wrapper").show("slow");
-            $("body").css("background-image","url('/royal/img/patterns/003.png')");
-            $("body").css("background-repeat","repeat");
-            $("body").css("text-align","");
-            $("body").show();
+            $(".main_wrapper").show(1000,function(){
+                $("body").css("text-align","");
+                $("body").css("background-image","url('/royal/img/patterns/003.png')");
+                $("body").css("background-repeat","repeat");
+                $("body").show(200);
+            });
         }, 1000);
 
         /*

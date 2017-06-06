@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Image;
 use File;
 
+
 class Foto_Controller extends Controller
 {
     public function index()
@@ -50,6 +51,24 @@ class Foto_Controller extends Controller
             $foto->save();
 
             $file->move($path,$archivo);
+
+            //Resimensionar la imagen de ser pesada
+            $img = \Intervention\Image::make($archivo);
+            if($img->width() > $img->height()){
+                if($img->width() > 1024){
+                    $img->resize(1024, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save();
+                }
+            }else{
+                if($img->height() > 768){
+                    $img->resize(null, 768, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    $img->save();
+                }
+            }
 
             $album = \App\Album::find($album_id);
             $album->nro_fotos += 1;
