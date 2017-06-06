@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\library\SmsGateway;
+use App\Library\SmsGateway;
 
 class Sms_Controller extends Controller
 {

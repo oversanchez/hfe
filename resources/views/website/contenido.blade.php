@@ -31,9 +31,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="bodyColor container" style="background-image: url('/royal/img/rosario.png');background-repeat: no-repeat;background-attachment: fixed;background-position: center;text-align: center;">
-<i id="load" class="fa fa-spinner fa-spin" style="margin-top: 42%;font-size:20px;"></i>
-<div class="main_wrapper" style="display:none;">
+<body class="bodyColor container" style="background-image: url('/royal/img/patterns/003.png');background-repeat: repeat;background-attachment: fixed;background-position: center;text-align: center;overflow:hidden;">
+<div id="loading">
+    <img src="/royal/img/rosario.png" style="margin-top:3%;"></img><br>
+    <img src="/royal/img/load.gif" style="width: 70px;" ></img>
+</div>
+<div class="main_wrapper" style="visibility: hidden;">
     <div class="topbar clearfix">
         <div class="container">
             <ul class="topbar-right">
@@ -215,30 +218,15 @@
 <script>
     $(document).on('ready',function(){
         setTimeout(function(){
-            $("#load").remove();
+            $("#loading").remove();
+
             $(".main_wrapper").show(1000,function(){
+                $(".main_wrapper").css("visibility","visible");
                 $("body").css("text-align","");
-                $("body").css("background-image","url('/royal/img/patterns/003.png')");
-                $("body").css("background-repeat","repeat");
+                $("body").css("overflow","");
                 $("body").show(200);
             });
-        }, 1000);
-
-        /*
-
-         $( "body" ).animate({
-         opacity: 0.25,
-         left: "+=50",
-         height: "toggle"
-         }, 2000, function() {
-         $("body").css("background-image","url('/royal/img/patterns/003.png')");
-         $("body").css("background-repeat","repeat");
-         $("body").css("opacity",0);
-         $("body").show();
-         });
-
-
-        */
+        }, 2000);
 
         $(".nano").nanoScroller();
     });

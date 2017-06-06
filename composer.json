@@ -25,7 +25,9 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Library/smsGateway.php"
+            "app/Library/smsGateway.php",
+            "app/Library/classPhpPsdReader.php",
+            "app/Library/php_image_magician.php"
         ]
     },
     "autoload-dev": {

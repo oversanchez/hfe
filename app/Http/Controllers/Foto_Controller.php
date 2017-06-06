@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use Image;
 use File;
+use App\Library\imageLib;
 
 
 class Foto_Controller extends Controller
@@ -52,21 +53,19 @@ class Foto_Controller extends Controller
 
             $file->move($path,$archivo);
 
-            //Resimensionar la imagen de ser pesada
-            $img = \Intervention\Image::make($archivo);
-            if($img->width() > $img->height()){
-                if($img->width() > 1024){
-                    $img->resize(1024, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                    $img->save();
+            //Redimensionar la imagen de ser pesada
+            list($ancho, $alto) = getimagesize(public_path().$foto->archivo);
+
+            $img  = new imageLib(public_path().$foto->archivo);
+            if($ancho > $alto){
+                if($ancho > 800){
+                    $img-> resizeImage(800, 0,'landscape');
+                    $img->saveImage(public_path().$foto->archivo);
                 }
             }else{
-                if($img->height() > 768){
-                    $img->resize(null, 768, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                    $img->save();
+                if($alto > 600){
+                    $img-> resizeImage(0, 600,'portrait');
+                    $img->saveImage(public_path().$foto->archivo);
                 }
             }
 
@@ -141,3 +140,4 @@ class Foto_Controller extends Controller
         $album->save();
     }
 }
+

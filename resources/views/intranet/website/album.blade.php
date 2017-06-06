@@ -145,6 +145,10 @@
                     this.on("success",
                             myDropzone.processQueue.bind(myDropzone)
                     );
+
+                    this.on("error", function(response){
+                        mostrar_error(response.xhr.responseText);
+                    });
                 }
             };
         });

@@ -329,7 +329,7 @@
                 @foreach($emergentes as $key => $emergente)
                  $("#myModal{{$key}}").modal('show');
                 @endforeach
-            }, 1200);
+            }, 2000);
         });
     </script>
 @endsection
