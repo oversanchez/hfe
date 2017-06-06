@@ -56,14 +56,15 @@ class Foto_Controller extends Controller
             //Redimensionar la imagen de ser pesada
             list($ancho, $alto) = getimagesize(public_path().$foto->archivo);
 
-            $img  = new imageLib(public_path().$foto->archivo);
             if($ancho > $alto){
                 if($ancho > 800){
+                    $img  = new imageLib(public_path().$foto->archivo);
                     $img-> resizeImage(800, 0,'landscape');
                     $img->saveImage(public_path().$foto->archivo);
                 }
             }else{
                 if($alto > 600){
+                    $img  = new imageLib(public_path().$foto->archivo);
                     $img-> resizeImage(0, 600,'portrait');
                     $img->saveImage(public_path().$foto->archivo);
                 }
