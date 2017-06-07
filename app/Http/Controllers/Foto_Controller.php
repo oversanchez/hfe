@@ -36,11 +36,14 @@ class Foto_Controller extends Controller
     public function store(Request $request)
     {
         $album_id = $request->input('album_id');
+        $transparencia = $request->input('transparencia') == "true" ? true:false;
+
         $path = public_path() . '/royal/img/galeria/'.$album_id."/";
         $files = $request->file('file');
         foreach ($files as $file) {
             $fileName = $file->getClientOriginalName();
             $fileExtension = $file->getClientOriginalExtension();
+
             $archivo = time().$fileName;
 
             $foto = new \App\Foto();
@@ -53,19 +56,32 @@ class Foto_Controller extends Controller
 
             $file->move($path,$archivo);
 
-            //Redimensionar la imagen de ser pesada
-            list($ancho, $alto) = getimagesize(public_path().$foto->archivo);
+            if($fileExtension == "png"){
+                if($transparencia){
+                    $old_f = public_path().$foto->archivo;
+                    $new_f = str_replace(".png", ".jpg",$foto->archivo);
+                    $this->png2jpg($old_f,public_path().$new_f,100);
+                    if(File::exists($old_f))
+                        File::delete($old_f);
+                    $foto->archivo = $new_f;
+                    $foto->extension = "jpg";
+                    $foto->nombre = str_replace(".png", ".jpg",$foto->nombre);
+                    $foto->save();
+                }
+            }
 
+            list($ancho, $alto) = getimagesize(public_path().$foto->archivo);
+            //Redimensionar la imagen de ser pesada
             if($ancho > $alto){
-                if($ancho > 800){
+                if($ancho > 1024){
                     $img  = new imageLib(public_path().$foto->archivo);
-                    $img-> resizeImage(800, 0,'landscape');
+                    $img-> resizeImage(1024, 0,'landscape');
                     $img->saveImage(public_path().$foto->archivo);
                 }
             }else{
-                if($alto > 600){
+                if($alto > 768){
                     $img  = new imageLib(public_path().$foto->archivo);
-                    $img-> resizeImage(0, 600,'portrait');
+                    $img-> resizeImage(0, 768,'portrait');
                     $img->saveImage(public_path().$foto->archivo);
                 }
             }
@@ -74,6 +90,11 @@ class Foto_Controller extends Controller
             $album->nro_fotos += 1;
             $album->save();
         }
+    }
+    function png2jpg($originalFile, $outputFile, $quality) {
+        $image = imagecreatefrompng($originalFile);
+        imagejpeg($image, $outputFile, $quality);
+        imagedestroy($image);
     }
 
 

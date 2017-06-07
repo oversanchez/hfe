@@ -178,7 +178,7 @@
         <div class="container">
             <div class="row clearfix">
                 <div class="col-sm-6 col-xs-12 copyRight">
-                    <p>© 2018 Desarrollado por <a href="http://www.google.com/">Biosis</a></p>
+                    <p>© 2018 Derechos reservados <a href="http://www.google.com/">Biosis</a>  Developer : Oliver Sánchez</p>
                 </div>
                 <!-- col-sm-6 col-xs-12 -->
                 <div class="col-sm-6 col-xs-12 privacy_policy">
@@ -216,7 +216,16 @@
 @yield('scripts')
 
 <script>
+    window.onbeforeunload = function(event)
+    {
+        scrollTo(0,0);
+        alert(1);
+    };
+
+
     $(document).on('ready',function(){
+
+
         setTimeout(function(){
             $("#loading").remove();
 
@@ -229,6 +238,8 @@
         }, 2000);
 
         $(".nano").nanoScroller();
+
+
     });
 
 </script>

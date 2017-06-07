@@ -16,7 +16,7 @@ class Website_Controller extends Controller
     {
         $opciones = \App\Opcion_Menu::where('publico',true)->orderBy('orden','asc')->get();
         $sliders = \App\Slider::where('publico',true)->orderBy('orden','asc')->get();
-        $eventos = \App\Evento::where('publico',true)->orderBy('fecha', 'asc')->get();
+        $eventos = \App\Evento::where('publico',true)->orderBy('fecha', 'desc')->get();
         $noticias = \App\Noticia::where('publico',true)->orderBy('fecha', 'desc')->get();
         $testimonios = \App\Testimonio::where('publico',true)->orderBy('id', 'desc')->get();
         $opciones_footer = \App\Opcion_Footer::where('publico',true)->orderBy('id', 'desc')->get();

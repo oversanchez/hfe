@@ -9,6 +9,7 @@
                     style="width: 500px;margin-left: 20px;"></select>
             <button class="btn btn-default" onclick="editarAlbum()"><i class="fa fa-edit"></i></button>
             <button class="btn btn-default" onclick="refrescarFotos()"><i class="fa fa-refresh"></i></button>
+            <label class="input-lg pull-right"><input id="chkTransparencia" class="icheck" type="checkbox" checked> Convertir a formato (. JPG)</label>
         </div>
         <div class="cl-mcont">
             <div class="row">
@@ -133,6 +134,7 @@
 
                     this.on('sending', function(file, xhr, formData){
                         formData.append('album_id', $("#cmbAlbum").val());
+                        formData.append('transparencia',$("#chkTransparencia").is(":checked"));
                     });
                     this.on("addedfile", function(file) {
                         //notificacion('Registro', 'Imagen agregada', 'primary');
