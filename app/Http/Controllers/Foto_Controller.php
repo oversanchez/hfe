@@ -41,8 +41,8 @@ class Foto_Controller extends Controller
         $path = public_path() . '/royal/img/galeria/'.$album_id."/";
         $files = $request->file('file');
         foreach ($files as $file) {
-            $fileName = $file->getClientOriginalName();
-            $fileExtension = $file->getClientOriginalExtension();
+            $fileName = str_replace("ñ","n",str_replace(" ","_",mb_strtolower($file->getClientOriginalName(),'UTF-8')));
+            $fileExtension = strtolower($file->getClientOriginalExtension());
 
             $archivo = time().$fileName;
 
@@ -56,18 +56,16 @@ class Foto_Controller extends Controller
 
             $file->move($path,$archivo);
 
-            if($fileExtension == "png"){
-                if($transparencia){
-                    $old_f = public_path().$foto->archivo;
-                    $new_f = str_replace(".png", ".jpg",$foto->archivo);
-                    $this->png2jpg($old_f,public_path().$new_f,100);
-                    if(File::exists($old_f))
-                        File::delete($old_f);
-                    $foto->archivo = $new_f;
-                    $foto->extension = "jpg";
-                    $foto->nombre = str_replace(".png", ".jpg",$foto->nombre);
-                    $foto->save();
-                }
+            if($fileExtension == "png" && $transparencia){
+                $old_f = public_path().$foto->archivo;
+                $new_f = str_replace(".png", ".jpg",$foto->archivo);
+                $this->png2jpg($old_f,public_path().$new_f,100);
+                if(File::exists($old_f))
+                    File::delete($old_f);
+                $foto->archivo = $new_f;
+                $foto->extension = "jpg";
+                $foto->nombre = str_replace(".png", ".jpg",$foto->nombre);
+                $foto->save();
             }
 
             list($ancho, $alto) = getimagesize(public_path().$foto->archivo);
