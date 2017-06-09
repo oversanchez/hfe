@@ -19,10 +19,10 @@ class Website_Seeder extends Seeder
         ]);
 
         DB::table('noticia')->insert([
-            ["nombre" => "Trump visitará estos países en su primer viaje al exterior","fecha"=>"06/05/2017","descripcion"=>"El presidente de Estados Unidos iniciará su gira a fines de mayo. También asistirá a dos importantes cumbres","url_foto"=> "http://cde.3.elcomercio.pe/ima/0/1/6/7/9/1679737/base_image.jpg","publico"=> true],
-            ["nombre" => "Así es el misil intercontinental que probó EE.UU","fecha"=>"14/05/2017","descripcion"=>"El proyectil, capaz de llevar una ojiva nuclear, viajó unos 6.700 km sobre el Océano Pacífico y cayó en las Islas Marshall","url_foto"=> "https://cdnmundo2.img.sputniknews.com/images/105322/53/1053225389.jpg","publico"=> true],
-            ["nombre" => "¿Qué hará China si atacan a su socio Corea del Norte?","fecha"=>"02/05/2017","descripcion"=>"Estos dos países son tan cercanos como los labios y los dientes, dijo alguna vez el máximo dirigente chino Mao Tse tung","url_foto"=> "http://cde.3.elcomercio.pe/ima/0/1/6/7/9/1679795/base_image.jpg","publico"=> true],
-            ["nombre" => "Caso Odebrecht: correos revelan discrepancias por gasoducto","fecha"=>"08/05/2017","descripcion"=>"Comunicaciones a Castilla dan cuenta de frustrados intentos para que Odebrecht no quedara como único postor de gasoducto","url_foto"=> "http://cde.3.elcomercio.pe/ima/0/1/5/8/5/1585631/base_image.jpg","publico"=> true],
+            ["nombre" => "Trump visitará estos países en su primer viaje al exterior","fecha"=>"06/5/2017","descripcion"=>"El presidente de Estados Unidos iniciará su gira a fines de mayo. También asistirá a dos importantes cumbres","url_foto"=> "http://cde.3.elcomercio.pe/ima/0/1/6/7/9/1679737/base_image.jpg","publico"=> true],
+            ["nombre" => "Así es el misil intercontinental que probó EE.UU","fecha"=>"14/5/2017","descripcion"=>"El proyectil, capaz de llevar una ojiva nuclear, viajó unos 6.700 km sobre el Océano Pacífico y cayó en las Islas Marshall","url_foto"=> "https://cdnmundo2.img.sputniknews.com/images/105322/53/1053225389.jpg","publico"=> true],
+            ["nombre" => "¿Qué hará China si atacan a su socio Corea del Norte?","fecha"=>"02/5/2017","descripcion"=>"Estos dos países son tan cercanos como los labios y los dientes, dijo alguna vez el máximo dirigente chino Mao Tse tung","url_foto"=> "http://cde.3.elcomercio.pe/ima/0/1/6/7/9/1679795/base_image.jpg","publico"=> true],
+            ["nombre" => "Caso Odebrecht: correos revelan discrepancias por gasoducto","fecha"=>"08/5/2017","descripcion"=>"Comunicaciones a Castilla dan cuenta de frustrados intentos para que Odebrecht no quedara como único postor de gasoducto","url_foto"=> "http://cde.3.elcomercio.pe/ima/0/1/5/8/5/1585631/base_image.jpg","publico"=> true],
         ]);
 
         DB::table('evento')->insert([
