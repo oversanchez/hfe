@@ -85,8 +85,9 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand logo clearfix" href="index.html"><img src="/royal/img/logo.png" alt=""
-                                                                                             class="img-responsive"/></a>
+                                <a class="navbar-brand logo clearfix" href="index.html" style="width: auto;">
+                                    <img src="/royal/img/logo.png" alt="" class="img-responsive"/>
+                                </a>
                             </div>
                             <div class="collapse navbar-collapse" id="main-nav">
                                 <ul class="nav navbar-nav navbar-right">
@@ -178,7 +179,7 @@
         <div class="container">
             <div class="row clearfix">
                 <div class="col-sm-6 col-xs-12 copyRight">
-                    <p>© 2018 Derechos reservados <a href="http://www.google.com/">Biosis</a>  Developer : Oliver Sánchez</p>
+                    <p>© 2018 Derechos reservados <a href="http://www.google.com/">Biosis</a> - Developer : Oliver Sánchez</p>
                 </div>
                 <!-- col-sm-6 col-xs-12 -->
                 <div class="col-sm-6 col-xs-12 privacy_policy">
@@ -231,7 +232,7 @@
 
             $(".main_wrapper").show(1000,function(){
                 $(".main_wrapper").css("visibility","visible");
-                $("body").css("text-align","");
+                $("body").css("text-align","left");
                 $("body").css("overflow","");
                 $("body").show(200);
             });

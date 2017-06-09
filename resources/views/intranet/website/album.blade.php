@@ -352,7 +352,7 @@
                             imagenes += '<div class="item">';
                             imagenes += '   <div class="photo">';
                             imagenes += '        <div class="head">';
-                            imagenes += '            <span class="pull-right" ><i style="margin-right: 5px;color:black;cursor:pointer;font-size:20px;" class="fa fa-trash-o" foto_id='+value["id"]+' onclick="eliminarFoto(this)"></i><i foto_id='+value["id"]+' style="font-size:20px;cursor:pointer;color:'+(value["favorito"] == true ? "red" : "" )+'" favorito='+value["favorito"]+' nombre="'+value["nombre"]+'" onclick="me_gusta(this)" title="Me gusta" class="fa fa-heart"></i></span>';
+                            imagenes += '            <span class="pull-right" ><i foto_id='+value["id"]+' style="font-size:20px;cursor:pointer;color:'+(value["favorito"] == true ? "red" : "" )+'" favorito='+value["favorito"]+' nombre="'+value["nombre"]+'" onclick="me_gusta(this)" title="Me gusta" class="fa fa-heart"></i></span>';
                             imagenes += '            <h4 title="'+value["nombre"]+'">' + value["nombre"].substr(0,18) + '</h4>';
                             imagenes += '        </div>';
                             imagenes += '        <div class="img">';
@@ -360,6 +360,7 @@
                             imagenes += '           <div class="over">';
                             imagenes += '               <div class="func">';
                             imagenes += '                   <a href="#" nombre="'+value["nombre"]+'" archivo="'+value["archivo"]+'" onclick="ver_link(this)"><i class="fa fa-link"></i></a>';
+                            imagenes += '                   <a href="#" foto_id='+value["id"]+' onclick="eliminarFoto(this)"><i class="fa fa-trash-o"></i></a>';
                             imagenes += '                   <a href="' + value["archivo"] + '" class="image-zoom"><i class="fa fa-search"></i></a>';
                             imagenes += '               </div>';
                             imagenes += '           </div>';

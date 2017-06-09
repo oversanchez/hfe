@@ -26,10 +26,11 @@ class Website_Controller extends Controller
         $descargas = \App\Enlace_Rapido::where('publico',true)->where('categoria','DE')->orderBy('orden','asc')->get();
 
         $fotos = \App\Foto::take(4)->where('favorito',true)->orderBy('id','desc')->get();
+        $videos = \App\Video::take(3)->where('publico',true)->orderBy('fecha','desc')->get();
         $emergentes = \App\Emergente::where('publico',true)->orderBy('fecha', 'desc')->get();
         $institucion = \App\Institucion::take(1)->get()[0];
 
-        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias,'testimonios'=>$testimonios,'opciones_footer'=>$opciones_footer,'fotos'=>$fotos,'emergentes'=>$emergentes,'institucion'=>$institucion,'opciones'=>$opciones]);
+        return view('website/principal',['sliders'=>$sliders,'comunicados'=>$comunicados,'documentos'=>$documentos,'descargas'=>$descargas,'eventos' => $eventos,'noticias'=>$noticias,'testimonios'=>$testimonios,'opciones_footer'=>$opciones_footer,'fotos'=>$fotos,'videos'=>$videos,'emergentes'=>$emergentes,'institucion'=>$institucion,'opciones'=>$opciones]);
     }
 
     /**

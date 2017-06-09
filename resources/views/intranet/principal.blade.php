@@ -107,6 +107,7 @@
                         <li><a href="/intranet/website/opcion_menu"><i class="fa fa-bars"></i> Head Opciones</a></li>
                         <li><a href="/intranet/website/opcion_footer"><i class="fa fa-bars"></i> Footer Opciones</a></li>
                         <li><a href="/intranet/website/album"><i class="fa fa-camera"></i> Galería de Fotos</a></li>
+                        <li><a href="/intranet/website/video"><i class="fa fa-video-camera"></i> Galería de Videos</a></li>
                     </ul>
                 </li>
             </ul>
@@ -302,3 +303,4 @@
 </script>
 </body>
 </html>
+

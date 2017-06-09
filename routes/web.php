@@ -26,6 +26,8 @@ Route::get('/paginas/{id}/ver', ['uses' => 'Pagina_Web_Controller@ver_pagina', '
 
 Route::get('/galeria', ['uses' => 'Album_Controller@ver_galeria', 'as' => 'album.ver_galeria']);
 
+Route::get('/videos', ['uses' => 'Video_Controller@ver_videos', 'as' => 'album.ver_videos']);
+
 Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
 
 Route::group(['prefix'=>'intranet/mantenimientos'], function () {
@@ -96,6 +98,8 @@ Route::group(['prefix'=>'intranet/website'], function () {
 
     Route::resource('evento','\App\Http\Controllers\Evento_Controller');
 
+    Route::resource('video','\App\Http\Controllers\Video_Controller');
+
     Route::resource('comunicado','\App\Http\Controllers\Comunicado_Controller');
 
     Route::resource('slider','\App\Http\Controllers\Slider_Controller');
@@ -122,8 +126,6 @@ Route::group(['prefix'=>'intranet/website'], function () {
 
     //Route::get('periodo/listar', ['uses' => 'Periodo_Controller@listar', 'as' => 'periodo.listar']);
 });
-
-
 
 //Route::resource('file', 'FileController');
 

@@ -29,6 +29,12 @@ class Website_Seeder extends Seeder
             ["nombre" => "Día de la Madre 2017","fecha"=>"14/05/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El Día de la Madre o Día de las Madres es una festividad que se celebra en honor a las madres en todo el mundo, en diferentes fechas del año según el país","publico"=>true],
             ["nombre" => "Día de la Padre 2017","fecha"=>"18/06/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El día del Padre o día de los Padres es un día conmemorativo en el cual se celebra al padre dentro de la familia con la intención de reconocer la paternidad responsable y amorosa","publico"=>true],
             ["nombre" => "Día del Trabajo","fecha"=>"1/05/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El Primero de Mayo se celebra el Día del Trabajo en honor a todos los hombres y mujeres que con su labor diaria buscan un mejor futuro y hacer crecer a la sociedad.","publico"=>true],
+            ["nombre" => "Día de la Madre 2017","fecha"=>"14/05/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El Día de la Madre o Día de las Madres es una festividad que se celebra en honor a las madres en todo el mundo, en diferentes fechas del año según el país","publico"=>true],
+            ["nombre" => "Día de la Padre 2017","fecha"=>"18/06/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El día del Padre o día de los Padres es un día conmemorativo en el cual se celebra al padre dentro de la familia con la intención de reconocer la paternidad responsable y amorosa","publico"=>true],
+            ["nombre" => "Día del Trabajo","fecha"=>"1/05/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El Primero de Mayo se celebra el Día del Trabajo en honor a todos los hombres y mujeres que con su labor diaria buscan un mejor futuro y hacer crecer a la sociedad.","publico"=>true],
+            ["nombre" => "Día de la Madre 2017","fecha"=>"14/05/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El Día de la Madre o Día de las Madres es una festividad que se celebra en honor a las madres en todo el mundo, en diferentes fechas del año según el país","publico"=>true],
+            ["nombre" => "Día de la Padre 2017","fecha"=>"18/06/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El día del Padre o día de los Padres es un día conmemorativo en el cual se celebra al padre dentro de la familia con la intención de reconocer la paternidad responsable y amorosa","publico"=>true],
+            ["nombre" => "Día del Trabajo","fecha"=>"1/05/2017","hora"=>"9:00 a.m.","lugar"=>"Colegio Rosario","descripcion"=>"El Primero de Mayo se celebra el Día del Trabajo en honor a todos los hombres y mujeres que con su labor diaria buscan un mejor futuro y hacer crecer a la sociedad.","publico"=>true]
         ]);
 
         DB::table('enlace_rapido')->insert([
@@ -73,8 +79,15 @@ class Website_Seeder extends Seeder
 
         DB::table('emergente')->insert([
             ["nombre" => "Emergente 3","tipo"=>"I","fecha"=>"18/05/2017","contenido"=>"","url_foto"=>"https://scontent.flim1-1.fna.fbcdn.net/v/t1.0-9/16114665_131603514012370_2029188717186072621_n.jpg?oh=eb705ba496e99f17e3a6ec9eacf4ee10&oe=59C19379","url"=>"#","publico"=>true],
-            ["nombre" => "Emergente 2","tipo"=>"P","fecha"=>"18/05/2017","contenido"=>"Informacion relacionada","url_foto"=>"#","url"=>"#","publico"=>true],
-            ["nombre" => "Emergente 1","tipo"=>"L","fecha"=>"18/05/2017","contenido"=>"Informacion relacionada","url_foto"=>"#","url"=>"#","publico"=>true],
+            ["nombre" => "Emergente 2","tipo"=>"P","fecha"=>"18/05/2017","contenido"=>"Informacion relacionada","url_foto"=>"#","url"=>"#","publico"=>false],
+            ["nombre" => "Emergente 1","tipo"=>"L","fecha"=>"18/05/2017","contenido"=>"Informacion relacionada","url_foto"=>"#","url"=>"#","publico"=>false],
+        ]);
+
+        DB::table('video')->insert([
+            ["nombre" => "Bienvenida a Nuestra Señora del Rosario","fecha"=>"18/05/2017","frame"=>"<iframe src=\"https://player.vimeo.com/video/216732031?title=0&byline=0&portrait=0\" style='width: 100%;height: auto;' frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>","publico"=>true],
+            ["nombre" => "Bienvenida a Nuestra Señora del Rosario","fecha"=>"18/05/2017","frame"=>"<iframe src=\"https://player.vimeo.com/video/216732031?title=0&byline=0&portrait=0\" style='width: 100%;height: auto;' frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>","publico"=>true],
+            ["nombre" => "Bienvenida a Nuestra Señora del Rosario","fecha"=>"18/05/2017","frame"=>"<iframe src=\"https://player.vimeo.com/video/216732031?title=0&byline=0&portrait=0\" style='width: 100%;height: auto;' frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>","publico"=>true],
+            ["nombre" => "Bienvenida a Nuestra Señora del Rosario","fecha"=>"18/05/2017","frame"=>"<iframe src=\"https://player.vimeo.com/video/216732031?title=0&byline=0&portrait=0\" style='width: 100%;height: auto;' frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>","publico"=>true],
         ]);
 
 
