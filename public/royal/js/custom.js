@@ -4,8 +4,8 @@ jQuery(document).ready(function () {
 jQuery(document).ready(function ($) {
     if($(window).width() < 768){
         $(".logo img").attr('src',"/royal/img/logo2.png");
-        $(".logo img").css('width',"242px");
-        $(".logo img").css('margin',"0px");
+        $(".logo img").css('width',"306px");
+        $(".logo img").css('margin-top',"-17px");
     }
     var navbar = $('.navbar-main'), distance = navbar.offset().top, $window = $(window);
     $window.scroll(function () {
@@ -14,8 +14,8 @@ jQuery(document).ready(function ($) {
                 if($(".logo img").attr('src') !== "/royal/img/logo2.png" ){
                     $(".logo img").hide();
                     $(".logo img").attr('src',"/royal/img/logo2.png");
-                    $(".logo img").css('width',"273px");
-                    $(".logo img").css('margin-top',"-1px");
+                    $(".logo img").css('width',"323px");
+                    $(".logo img").css('margin-top',"-14px");
                     setTimeout(function(){$(".logo img").fadeIn("slow"); }, 500);
                 }
             }
