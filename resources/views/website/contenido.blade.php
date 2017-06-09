@@ -40,32 +40,15 @@
     <div class="topbar clearfix">
         <div class="container">
             <ul class="topbar-right">
-                <li class="dropdown top-search list-inline">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">
-                        <i class="fa fa-search"></i>
-                    </a>
+                <li class="email-id"><i class="fa fa-camera"></i>
+                    <a href="galeria"> Fotos</a>
                 </li>
-                <li class="dropdown language">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">
-                        <i class="fa fa-globe"></i>EN
-                        <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="active">
-                            <a href="#">English </a>
-                        </li>
-                        <li><a href="#">Spanish</a></li>
-                        <li><a href="#">Russian</a></li>
-                        <li><a href="#">German</a></li>
-                    </ul>
+                <li class="email-id">
+                    <a href="videos"><i class="fa fa-youtube-play"> </i> Videos</a>
                 </li>
-            </ul>
-            <ul class="topbar-right" style="margin-right: 150px;">
-                <li class="phoneNo hidden-xs hidden-sm"><i class="fa fa-phone"></i>{{$institucion->telefonos}}</li>
+                <li class="phoneNo"><i class="fa fa-phone"></i>{{$institucion->telefonos}}</li>
                 <li class="email-id hidden-xs hidden-sm"><i class="fa fa-envelope"></i>
-                    <a href="#">{{$institucion->correo}}</a>
+                    <a href="#"> {{$institucion->correo}}</a>
                 </li>
             </ul>
         </div>

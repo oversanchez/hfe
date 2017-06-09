@@ -49,9 +49,21 @@
         <div class="col-sm-5">
             <div class="tab-container" style="margin:10px 0px 0px 0px;">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#comunicados" aria-controls="comunicados" role="tab" data-toggle="tab"><i class="fa fa-volume-up"></i> Comunicados</a></li>
-                    <li role="presentation"><a href="#cartas" aria-controls="cartas" role="tab" data-toggle="tab"><i class="fa fa-file"></i> Documentos</a></li>
-                    <li role="presentation"><a href="#descargas" aria-controls="descargas" role="tab" data-toggle="tab"><i class="fa fa-download"></i> Descargas</a></li>
+                    <li title="Comunicados" role="presentation" class="active">
+                        <a href="#comunicados" aria-controls="comunicados" role="tab" data-toggle="tab"><i class="fa fa-volume-up"></i>
+                            <div class="hidden-xs" style="display: inline;"> Comunicados</div>
+                        </a>
+                    </li>
+                    <li title="Documentos" role="presentation">
+                        <a href="#cartas" aria-controls="cartas" role="tab" data-toggle="tab"><i class="fa fa-file"></i>
+                            <div class="hidden-xs" style="display: inline;"> Documentos</div>
+                        </a>
+                    </li>
+                    <li title="Descargas" role="presentation">
+                        <a href="#descargas" aria-controls="descargas" role="tab" data-toggle="tab"><i class="fa fa-download"></i>
+                            <div class="hidden-xs" style="display: inline;"> Descargas</div>
+                        </a>
+                    </li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content" style="background: white;height:192px;padding:10px;border:solid thin lightgray;">
@@ -161,14 +173,20 @@
                             <div style="border: 1px solid #DCE4EA;border-top: 3px solid #0060b1;height: 201px;padding-bottom: 60px;padding-right: 4px;margin-top: 10px;">
                                 <h3 style="text-transform: uppercase;margin: 5px 10px 0px 10px;height: 33px;background-color: #0060b1;color: white;font-size: 20px;width: auto;padding: 4px 0px 0px 10px;"><img src="/royal/img/video.png" style="height: 32px;margin-top: -10px;padding-right: 6px;">VIDEOS
                                     <a href="videos" style="color:white;display:inline;float:right;margin-top: 2px;margin-right: 10px;font-size:20px;"> VER TODO <img src="/royal/img/youtube_ico.png" style="height: 35px;margin-top: -7px;"></a></h3>
-                                <div class="photo_gallery custom" style="padding: 10px 10px 0px 10px;">
-                                    <ul class="gallery popup-gallery">
-                                        @foreach($videos as $key => $video)
-                                            <li style="text-align: center;width: 30%;">
-                                                {!! $video->frame !!}
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                <div class="photo_gallery custom" style="height: 150px;padding: 10px 10px 0px 10px;">
+                                    <div class="nano">
+                                        <div class="overthrow nano-content">
+                                            <ul class="gallery popup-gallery">
+                                                <div class="row">
+                                                    @foreach($videos as $key => $video)
+                                                        <div class="col-md-4 col-sm-12 col-xs-12">
+                                                            {!! $video->frame !!}
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +288,7 @@
                     <!-- testimonial -->
                 </div>
                 <!-- col-xs-12 -->
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12 col-sm-6 hidden-xs">
                     <div class="features">
                         <h3>¿Por qué nosotros?</h3>
                         <ul>
