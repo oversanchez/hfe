@@ -68,7 +68,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-brand logo clearfix" href="index.html" style="width: auto;">
+                                <a class="navbar-brand logo clearfix" href="#" style="width: auto;">
                                     <img src="/royal/img/logo.png" alt="" class="img-responsive"/>
                                 </a>
                             </div>
