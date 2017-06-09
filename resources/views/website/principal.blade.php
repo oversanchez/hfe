@@ -316,10 +316,10 @@
         <?php
             $tipo = $emergente->tipo == "L" ? "modal-lg" : "";
         ?>
-        <div class="modal fade" id="myModal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="myModal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="padding-right: 23px;">
             <div class="modal-dialog {{$tipo}}" role="document">
                 @if($emergente->tipo!=="I")
-                    <div class="modal-content" style="padding:0px;margin-top: {{10*$key}}%;margin-left: {{4*$key}}%">
+                    <div class="modal-content" style="padding:0px;margin-top: {{10*$key}}%;margin-left: {{6*$key}}%">
                 @else
                     <div class="modal-content" style="margin-top: {{10*$key}}%;margin-left: {{4*$key}}%">
                 @endif
