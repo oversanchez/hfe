@@ -4,8 +4,9 @@ jQuery(document).ready(function () {
 jQuery(document).ready(function ($) {
     if($(window).width() < 768){
         $(".logo img").attr('src',"/royal/img/logo2.png");
-        $(".logo img").css('width',"306px");
-        $(".logo img").css('margin-top',"-17px");
+        $(".logo img").css('width',"287px");
+        $(".logo img").css('margin-top',"-19px");
+        $(".logo img").css('margin-left',"-9px");
     }
     var navbar = $('.navbar-main'), distance = navbar.offset().top, $window = $(window);
     $window.scroll(function () {
