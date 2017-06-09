@@ -316,8 +316,8 @@
         <?php
             $tipo = $emergente->tipo == "L" ? "modal-lg" : "";
         ?>
-        <div class="modal fade" id="myModal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="padding-right: 23px;">
-            <div class="modal-dialog {{$tipo}}" role="document">
+        <div class="modal fade" id="myModal{{$key}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog {{$tipo}}" role="document" style="padding-right: 20px;">
                 @if($emergente->tipo!=="I")
                     <div class="modal-content" style="padding:0px;margin-top: {{10*$key}}%;margin-left: {{6*$key}}%">
                 @else
@@ -326,7 +326,7 @@
 
                 @if($emergente->tipo!=="I")
                     <div class="modal-header" style="border-bottom:none;text-align: center;padding-top: 12px;padding-bottom: 4px;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: fixed;top: 0;right: 0;margin-top: -20px;margin-right: -20px;opacity: initial;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: fixed;top: 0;margin-right: -20px;margin-top: -20px;opacity: initial;">
                             <img src="/royal/img/close_red.png" style="float:right;width: 40px;"/>
                         </button>
                         <h4 class="modal-title" id="myModalLabel" style="margin-left: 37px;">{{$emergente->nombre}}</h4>
@@ -339,7 +339,7 @@
                 @endif
                 @if($emergente->tipo=="I")
                     <a href="{{$emergente->url}}"><img onclick="" src="{!! $emergente->url_foto !!}" style="max-height: 590px;width: 100%;"></a>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: fixed;top: 0;right: 0;margin-top: -20px;margin-right: -20px;opacity: initial;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: fixed;top: 0;right: 0;margin-top: -20px;margin-right: 0px;opacity: initial;">
                         <img src="/royal/img/close_red.png" style="float:right;width: 40px;"/>
                     </button>
                 @else
