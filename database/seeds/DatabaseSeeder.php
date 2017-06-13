@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(Parentesco_Seeder::class);
         $this->call(Colegio_Procedencia_Seeder::class);
         $this->call(Nivel_Educativo_Seeder::class);
-        //$this->call(Alumno_Seeder::class);
-        //$this->call(Trabajador_Seeder::class);
+        $this->call(Alumno_Seeder::class);
+        $this->call(Trabajador_Seeder::class);
 
         $this->call(Academico_2017_Seeder::class);
         
