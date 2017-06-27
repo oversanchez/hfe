@@ -2,8 +2,12 @@
 
 @section('css')
     <style>
-        #frmAlumno .row{
-            margin-top:4px;
+        #frmAlumno .row {
+            margin-top: 4px;
+        }
+        .nav-tabs > li > a {
+            font-size:18px;
+            font-weight: 500;
         }
     </style>
 @endsection
@@ -12,44 +16,37 @@
     <div id="pcont" class="container-fluid">
         <div class="page-head">
             <h2 style="display:inline-block;">Alumnos</h2>
+            <select class="form-control input-lg" id="cmbAnio"
+                    style="width:140px;display:inline;font-size:20px;"></select>
+            <button class="btn btn-default" id="btnBuscar" onclick="buscarAlumno();"><i class="fa fa-search"></i> Buscar</button>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
+            <button class="btn btn-primary pull-right" id="btnNuevo" style="margin-top:8px;"><i class="fa fa-plus"></i> Nuevo</button>
+            <button class="btn btn-default pull-right" id="btnGuardarAlumno" style="margin-top:8px;"><i class="fa fa-plus"></i> Guardar</button>
         </div>
         <div class="cl-mcont">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <div class="tab-container">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tp1" data-toggle="tab">Listado</a></li>
-                            <li><a href="#tp2" data-toggle="tab">Registrar</a></li>
+                            <li class="active"><a href="#tp1" data-toggle="tab">Datos del Alumno</a></li>
+                            <li><a href="#tp2" data-toggle="tab">Padres y Apoderados</a></li>
+                            <li><a href="#tp3" data-toggle="tab">Hermanos</a></li>
+                            <li><a href="#tp4" data-toggle="tab">Usuarios y Clave</a></li>
+                            <li><a href="#tp5" data-toggle="tab">Estado de Cuenta</a></li>
                         </ul>
                         <div class="tab-content">
                             <div id="tp1" class="tab-pane active cont">
-                                <table class='table table-bordered dataTable no-footer' id="tblListado">
-                                    <thead>
-                                    <tr>
-                                        <th>Nro. Doc</th>
-                                        <th>Ap. Paterno</th>
-                                        <th>Ap. Materno</th>
-                                        <th>Nombres</th>
-                                        <th>Colegio Proc.</th>
-                                        <th style="width:76px;">Acción</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div id="tp2" class="tab-pane cont">
                                 <div class="container">
-                                    <form id="frmAlumno" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                    <form id="frmAlumno" method="post" data-parsley-validate=""
+                                          data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="row">
                                                     <label class="col-sm-2">Tipo Doc.</label>
                                                     <div class="col-sm-3">
-                                                        <select class="form-control" id="cmbPersona_TipoDoc" requerid="">
+                                                        <select class="form-control" id="cmbPersona_TipoDoc"
+                                                                requerid="">
                                                             <option value="DN">DNI</option>
                                                             <option value="CE">CARNET EXTRANJERÍA</option>
                                                             <option value="PA">PASAPORTE</option>
@@ -59,14 +56,17 @@
                                                         Doc.</label>
                                                     <div class="col-sm-3">
                                                         <input onchange="buscar_numero_documento(this)"
-                                                               id="txtPersona_Numero_Documento" class="form-control" type="text"
-                                                               data-parsley-trigger="change" data-parsley-length="[8,15]"
+                                                               id="txtPersona_Numero_Documento" class="form-control"
+                                                               type="text"
+                                                               data-parsley-trigger="change"
+                                                               data-parsley-length="[8,15]"
                                                                data-parsley-required="true">
                                                     </div>
                                                     <div class="col-sm-2" style="padding: 6px 0px;">
                                                         <label id="persona_mensaje">Teclea ⏎ ENTER </label>
                                                         <div id="persona_loading" style="display:none;">
-                                                            <i class="fa fa-spinner fa-spin"></i> <label>Validando</label>
+                                                            <i class="fa fa-spinner fa-spin"></i>
+                                                            <label>Validando</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -75,7 +75,8 @@
                                                     <div class="col-sm-4">
                                                         <input id="txtPersona_ApPat" class="form-control" type="text"
                                                                maxlength="50" data-parsley-trigger="change"
-                                                               data-parsley-length="[1,50]" data-parsley-required="true">
+                                                               data-parsley-length="[1,50]"
+                                                               data-parsley-required="true">
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <input id="txtPersona_ApMat" class="form-control" type="text"
@@ -87,7 +88,8 @@
                                                     <div class="col-sm-8">
                                                         <input id="txtPersona_Nombres" class="form-control" type="text"
                                                                maxlength="50" data-parsley-trigger="change"
-                                                               data-parsley-length="[2,50]" data-parsley-required="true">
+                                                               data-parsley-length="[2,50]"
+                                                               data-parsley-required="true">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -100,8 +102,10 @@
                                                     </div>
                                                     <label class="col-sm-2">Fecha Nac.</label>
                                                     <div class="col-sm-3">
-                                                        <input id="txtPersona_FechaNac" class="form-control date datetime"
-                                                               data-min-view="2" data-date-format="dd/mm/yyyy" type="text"
+                                                        <input id="txtPersona_FechaNac"
+                                                               class="form-control date datetime"
+                                                               data-min-view="2" data-date-format="dd/mm/yyyy"
+                                                               type="text"
                                                                maxlength="10" data-parsley-trigger="change"
                                                                data-parsley-required="true">
                                                     </div>
@@ -109,7 +113,8 @@
                                                 <div class="row">
                                                     <label class="col-sm-2">Dirección</label>
                                                     <div class="col-sm-9">
-                                                        <input id="txtPersona_Direccion" class="form-control" type="text"
+                                                        <input id="txtPersona_Direccion" class="form-control"
+                                                               type="text"
                                                                maxlength="100" data-parsley-trigger="change"
                                                                data-parsley-required="true">
                                                     </div>
@@ -123,28 +128,33 @@
                                                     </div>
                                                     <label class="col-sm-3">Codigo Recaudación</label>
                                                     <div class="col-sm-3">
-                                                        <input type="text" id="txtCodigo_Recaudacion" class="form-control">
+                                                        <input type="text" id="txtCodigo_Recaudacion"
+                                                               class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <label class="col-sm-2">Colegio Proc.</label>
                                                     <div class="col-sm-10">
-                                                        <select class="form-control" id="cmbColegio_Procedencia" required="" style='width:100%;'>
+                                                        <select class="form-control" id="cmbColegio_Procedencia"
+                                                                required="" style='width:100%;'>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <label class="col-sm-2">Telef. fijo</label>
                                                     <div class="col-sm-3">
-                                                        <input class="form-control" type="text" id="txtPersona_Telf_Fijo"
+                                                        <input class="form-control" type="text"
+                                                               id="txtPersona_Telf_Fijo"
                                                                placeholder="Ejem. 254478" data-parsley-trigger="change"
                                                                data-parsley-length="[6,8]" data-parsley-required="true">
                                                     </div>
                                                     <label class="col-sm-4">
-                                                        <input id="chkPadres_Conviven" class="icheck" type="checkbox" checked>Padres viven juntos
+                                                        <input id="chkPadres_Conviven" class="icheck" type="checkbox"
+                                                               checked>Padres viven juntos
                                                     </label>
                                                     <label class="col-sm-2">
-                                                        <input id="chkActivo" class="icheck" type="checkbox" checked> Activo
+                                                        <input id="chkActivo" class="icheck" type="checkbox" checked>
+                                                        Activo
                                                     </label>
                                                 </div>
                                             </div>
@@ -157,16 +167,63 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button id="btnGuardar" class="btn btn-primary" onclick="guardar()">Registrar alumno</button>
+                                        <button id="btnGuardar" class="btn btn-primary" onclick="guardar()">Registrar
+                                            alumno
+                                        </button>
                                         <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
                                     </div>
                                 </div>
+                            </div>
+                            <div id="tp2" class="tab-pane cont">
+
+                            </div>
+                            <div id="tp3" class="tab-pane cont">
+
+                            </div>
+                            <div id="tp4" class="tab-pane cont">
+
+                            </div>
+                            <div id="tp5" class="tab-pane cont">
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="frmBuscarAlumno" class="md-modal colored-header custom-width md-effect-9" style="perspective: 1300px;width:70%;">
+            <div class="md-content">
+                <div class="modal-header"><h3>Buscar Alumno </h3>
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close">×</button>
+                </div>
+                <div class="modal-body form">
+                    <div class="form-group" style="margin-top:0px;">
+                        <input type="text" placeholder="Escribes apellidos" class="form-control">
+                    </div>
+                    <table class='table table-bordered dataTable no-footer' id="tblListado" style="height: 270px;">
+                        <thead>
+                        <tr>
+                            <th>Nro. Doc</th>
+                            <th>Ap. Paterno</th>
+                            <th>Ap. Materno</th>
+                            <th>Nombres</th>
+                            <th>Colegio Proc.</th>
+                            <th style="width:76px;">Acción</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Cancel</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-primary btn-flat md-close">Proceed
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md-overlay"></div>
     </div>
 
 @endsection
@@ -179,27 +236,61 @@
             //initialize the javascript
             App.init();
             App.formElements();
-            t = $("#tblListado").DataTable();
+            //t = $("#tblListado").DataTable();
+            t = $("#tblListado").DataTable({"bPaginate": false, "bAutoWidth": false,"bFilter":false,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]]});
             $("#frmAlumno").parsley();
-            listar();
+            //listar();
             listarColegio_Procedencia();
+            listarAnios();
             $("#frmAlumno").parsley();
-            cancelar();
+            //cancelar();
         });
 
-        function guardar(){
+        function buscarAlumno(){
+            var anio = $("#cmbAnio").val();
+            if(anio != ""){
+                $("#frmBuscarAlumno").niftyModal('show');
+            }
+        }
+
+        function listarAnios() {
+            $.ajax({
+                url: "/intranet/mantenimientos/anio_lectivo/*",
+                type: "GET",
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                success: function (data) {
+                    var opciones = "<option value=''>------</option>";
+                    t.clear().draw();
+                    $.each(data, function (index, value) {
+                        opciones += "<option value='" + value["anio"] + "'>" + value["anio"] + "</option>";
+                    });
+                    $("#cmbAnio").append(opciones);
+                },
+                error: function (request, status, error) {
+                    mostrar_error(request.responseText);
+                },
+                complete: function () {
+                    $("#loading").hide();
+                }
+            });
+        }
+
+        function guardar() {
             var accion = $("#hddCodigo").val() == "" ? true : false;
-            if($("#frmAlumno").parsley().validate()){
+            if ($("#frmAlumno").parsley().validate()) {
                 if (accion)
                     registrar()
                 else
                     modificar()
             }
-
         }
 
-        function obtenerDatos(){
-            var info = [{"_token": "{{ csrf_token() }}",
+        function obtenerDatos() {
+            var info = [{
+                "_token": "{{ csrf_token() }}",
                 "nombres": $("#txtPersona_Nombres").val(),
                 "apellido_paterno": $("#txtPersona_ApPat").val(),
                 "apellido_materno": $("#txtPersona_ApMat").val(),
@@ -214,7 +305,8 @@
                 "codigo_recaudacion": $("#txtCodigo_Recaudacion").val(),
                 "colegio_procedencia_id": parseInt($("#cmbColegio_Procedencia").val()),
                 "padres_juntos": $("#chkPadres_Conviven").is(":checked"),
-                "activo": $("#chkActivo").is(":checked")}][0];
+                "activo": $("#chkActivo").is(":checked")
+            }][0];
             return info;
         }
 
@@ -316,9 +408,9 @@
                     $("#chkPadres_Conviven").iCheck(data['padres_juntos'] == true ? "check" : "uncheck");
                     $("#chkActivo").iCheck(data['activo'] == true ? "check" : "uncheck");
                     $("#btnGuardar").text("Guardar");
-                    $("#txtPersona_Numero_Documento").prop('disabled',true);
+                    $("#txtPersona_Numero_Documento").prop('disabled', true);
                     $('a[href="#tp2"]').click();
-                    $('a[href="#tp2"]').text("Modificando : "+data["apellido_paterno"]+' '+data['apellido_paterno']+' '+data["nombres"]);
+                    $('a[href="#tp2"]').text("Modificando : " + data["apellido_paterno"] + ' ' + data['apellido_paterno'] + ' ' + data["nombres"]);
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);
@@ -329,7 +421,7 @@
             });
         }
 
-        function cancelar(){
+        function cancelar() {
             $("#hddCodigo").val("");
             $("#txtPersona_Nombres").val("");
             $("#txtPersona_ApPat").val("");
@@ -345,7 +437,7 @@
             $("#chkPadres_Conviven").iCheck("check");
             $("#btnGuardar").text("Registrar");
             $('#frmAlumno').parsley().reset();
-            $("#txtPersona_Numero_Documento").prop('disabled',false);
+            $("#txtPersona_Numero_Documento").prop('disabled', false);
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();
@@ -360,14 +452,14 @@
                 },
                 success: function (data) {
                     t.clear().draw();
-                    $.each(data,function( index, value ) {
+                    $.each(data, function (index, value) {
                         var nodo = t.row.add([value['numero_documento'],
                             value['apellido_paterno'],
                             value['apellido_materno'],
                             value['nombres'],
                             value['colegio_procedencia']['nombre'],
                             grupo_opciones(value['id'])]).draw(false).node();
-                        if(value["activo"]==false)
+                        if (value["activo"] == false)
                             $(nodo).addClass('danger');
                     });
 
@@ -383,7 +475,7 @@
 
         function buscar_numero_documento(obj) {
             var numero_documento = $(obj).val();
-            if(numero_documento.length >=8){
+            if (numero_documento.length >= 8) {
                 $.ajax({
                     url: "/intranet/mantenimientos/alumno/buscar_numero_documento",
                     type: "GET",
@@ -393,11 +485,11 @@
                         $("#persona_loading").show();
                     },
                     success: function (data) {
-                        if(data.length > 0){
-                            notificacion('Validacion','DNI ya registrado','warning');
+                        if (data.length > 0) {
+                            notificacion('Validacion', 'DNI ya registrado', 'warning');
                             $("#txtPersona_Numero_Documento").val("");
-                        }else{
-                            notificacion('Validacion','DNI válido','info');
+                        } else {
+                            notificacion('Validacion', 'DNI válido', 'info');
                         }
                     },
                     error: function (request, status, error) {
@@ -420,8 +512,8 @@
                 },
                 success: function (data) {
                     var opciones = "<option value=''>---</option>";
-                    $.each(data,function( index, value ) {
-                        opciones += "<option value='"+value["id"]+"'>("+value["codigo"]+") "+value["nombre"]+"</option>";
+                    $.each(data, function (index, value) {
+                        opciones += "<option value='" + value["id"] + "'>(" + value["codigo"] + ") " + value["nombre"] + "</option>";
                     });
                     $("#cmbColegio_Procedencia").append(opciones);
                 },

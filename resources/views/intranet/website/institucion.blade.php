@@ -1,5 +1,13 @@
 @extends('intranet/principal')
 
+@section('css')
+    <style>
+        .cl-mcont .row {
+            margin-top: 5px;
+        }
+    </style>
+@endsection
+
 @section('content')
     <div id="pcont" class="container-fluid">
         <div class="page-head">
@@ -46,6 +54,15 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
+                                        <label class="col-md-2" for="txtAnio_Ficha">Anio Ficha</label>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control" id="txtAnio_Ficha" placeholder="Empresa">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for=""><input id="chkMostrar_Ficha" type="checkbox" class="icheck"> Mostrar Ficha de Matrícula</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <label class="col-md-3" for="txtPorque_Nosotros1">Porque Nosotros 1</label>
                                         <div class="col-md-9"><input type="text" class="form-control" id="txtPorque_Nosotros1" placeholder="Porque Nosotros"></div>
                                     </div>
@@ -62,7 +79,7 @@
                                         <div class="col-md-9"><input type="text" class="form-control" id="txtPorque_Nosotros4" placeholder="Porque Nosotros"></div>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-2" for="txtBienvenida_Url">Bienvenida Url</label>
+                                        <label class="col-md-3" for="txtBienvenida_Url">Bienvenida Url</label>
                                         <div class="col-md-9"><input type="text" class="form-control" id="txtBienvenida_Url" placeholder="Empresa"></div>
                                     </div>
                                 </div>
@@ -106,7 +123,9 @@
                 "porque_nosotros_1": $("#txtPorque_Nosotros1").val(),
                 "porque_nosotros_2": $("#txtPorque_Nosotros2").val(),
                 "porque_nosotros_3": $("#txtPorque_Nosotros3").val(),
-                "porque_nosotros_4": $("#txtPorque_Nosotros4").val()}][0];
+                "porque_nosotros_4": $("#txtPorque_Nosotros4").val(),
+                "mostrar_ficha": $("#chkMostrar_Ficha").is(":checked"),
+                "anio_ficha": parseInt($("#txtAnio_Ficha").val())}][0];
             return info;
         }
 
@@ -155,6 +174,8 @@
                         $("#txtPorque_Nosotros2").val(value["porque_nosotros_2"]);
                         $("#txtPorque_Nosotros3").val(value["porque_nosotros_3"]);
                         $("#txtPorque_Nosotros4").val(value["porque_nosotros_4"]);
+                        $("#txtAnio_Ficha").val(value["anio_ficha"]);
+                        $("#chkMostrar_Ficha").iCheck(value['mostrar_ficha'] == true ? "check" : "uncheck");
                     });
                 },
                 error: function (request, status, error) {

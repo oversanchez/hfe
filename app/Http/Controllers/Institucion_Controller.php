@@ -79,6 +79,9 @@ class Institucion_Controller extends Controller
         $institucion->porque_nosotros_2= $request->input('porque_nosotros_2');
         $institucion->porque_nosotros_3= $request->input('porque_nosotros_3');
         $institucion->porque_nosotros_4= $request->input('porque_nosotros_4');
+        $institucion->anio_ficha = $request->input('anio_ficha');
+        $institucion->mostrar_ficha = $request->input('mostrar_ficha');
+
         $institucion->save();
     }
 

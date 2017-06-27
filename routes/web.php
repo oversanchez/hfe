@@ -28,6 +28,8 @@ Route::get('/galeria', ['uses' => 'Album_Controller@ver_galeria', 'as' => 'album
 
 Route::get('/videos', ['uses' => 'Video_Controller@ver_videos', 'as' => 'album.ver_videos']);
 
+Route::get('/ficha_matricula', ['uses' => 'Ficha_Matricula_Controller@index', 'as' => 'ficha_matricula.index']);
+
 Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
 
 Route::group(['prefix'=>'intranet/mantenimientos'], function () {
@@ -79,6 +81,8 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
     Route::resource('familiar','\App\Http\Controllers\Familiar_Controller');
 
     Route::resource('usuario','\App\Http\Controllers\Usuario_Controller');
+
+    Route::resource('acceso_ficha_matricula','\App\Http\Controllers\Acceso_Ficha_Matricula_Controller');
 
 });
 

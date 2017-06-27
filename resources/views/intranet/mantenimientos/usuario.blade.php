@@ -6,8 +6,7 @@
             <h2 style="display:inline-block;">Usuarios</h2>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
             <select class="input-lg" id="cmbTipo">
-                <option value="AD">ADMINISTRATIVOS</option>
-                <option value="DO">DOCENTES</option>
+                <option value="TR">TRABAJADORES</option>
                 <option value="AL">ALUMNOS</option>
                 <option value="PA">PADRES</option>
             </select>
@@ -25,8 +24,8 @@
                                 <table class='table table-bordered dataTable no-footer' id="tblListado">
                                     <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Abreviatura</th>
+                                        <th>Trabajador</th>
+                                        <th>Usuario</th>
                                         <th>Activo</th>
                                         <th>Acción</th>
                                     </tr>
@@ -38,19 +37,19 @@
                             </div>
                             <div id="tp2" class="tab-pane cont">
                                 <div class="container">
-                                    <form id="frmPeriodo" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
+                                    <form id="frmUsuario" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
                                         <div class="row">
-                                            <label for="txtNombre" class="col-md-1 control-label">Nombre</label>
+                                            <label for="txtAlias" class="col-md-1 control-label">Alias</label>
                                             <div class="col-md-6">
-                                                <input id="txtNombre" type="text" placeholder="Ejem. Año del Buen Servicio al Ciudadano" class="form-control"
+                                                <input id="txtAlias" type="text" placeholder="Ejem. Dni, A0001, etc" class="form-control"
                                                        data-parsley-trigger="change" data-parsley-required="true">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="txtAbreviatura" class="col-md-1 control-label">Abreviatura</label>
+                                            <label for="txtClave" class="col-md-1 control-label">Clave</label>
                                             <div class="col-md-4">
-                                                <input id="txtAbreviatura" type="text" placeholder="Ejem. II BIM." class="form-control"
+                                                <input id="txtClave" type="password" placeholder="" class="form-control"
                                                        data-parsley-trigger="change" data-parsley-required="true"></div>
                                             <label for="chkActivo" class="col-sm-2 control-label">Activo
                                                 <input id="chkActivo" class="icheck" type="checkbox" >
@@ -93,7 +92,7 @@
 
         function guardar(){
             var accion = $("#hddCodigo").val() == "" ? true : false;
-            if($("#frmPeriodo").parsley().validate()){
+            if($("#frmUsuario").parsley().validate()){
                 if (accion)
                     registrar()
                 else
@@ -217,7 +216,7 @@
             $("#txtAbreviatura").val("");
             $("#chkActivo").iCheck("uncheck");
             $("#btnGuardar").text("Registrar");
-            $('#frmPeriodo').parsley().reset();
+            $('#frmUsuario').parsley().reset();
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();

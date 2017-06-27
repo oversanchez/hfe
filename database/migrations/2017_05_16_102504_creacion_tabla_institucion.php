@@ -26,6 +26,8 @@ class CreacionTablaInstitucion extends Migration
             $table->string('porque_nosotros_2')->nullable();
             $table->string('porque_nosotros_3')->nullable();
             $table->string('porque_nosotros_4')->nullable();
+            $table->integer('anio_ficha')->default(2017);
+            $table->boolean('mostrar_ficha')->default(false);
             $table->timestamps();
         });
     }

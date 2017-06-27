@@ -194,6 +194,20 @@
                 </div>
                 <!-- col-sm-8 col-xs-12 -->
                 <div class="col-sm-3 col-xs-12">
+                    @if($institucion->mostrar_ficha == true)
+                        <div class="row" onclick="javascript:location.href='ficha_matricula'">
+                            <div class="col-xs-12">
+                                <div style="cursor:pointer;width: 263px;height: 90px;background-color: black;border-radius: 11px;margin-bottom: 10px;">
+                                    <table>
+                                        <tr>
+                                            <td><img src="/royal/img/persona_ficha.png" style="height: 100px;width: 120px;margin-top: -8px;margin-left: 10px;"></td>
+                                            <td style="color:white;font-weight: 500;font-size:30px;text-align: center;">Ficha de Matrícula<h4 style="font-size: 29px;color:red;">{!! $institucion->anio_ficha !!}</h4></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="formArea clearfix">
                         <div class="formTitle">
                             <img src="/royal/img/hay_tarea.png">
@@ -213,8 +227,13 @@
                     </div>
                     <img class="img-responsive" src="/royal/img/playstore.png" style="cursor:pointer;">
                     <!-- formArea -->
-                    <div class="list_block related_post_sec" style="height: 526px;margin: 10px 0 5px;padding:15px 5px 5px 5px;">
-                        <div class="upcoming_events" style="height: 453px;">
+                    <?php
+                        $altura_eventos=0;
+                        if($institucion->mostrar_ficha)
+                            $altura_eventos=105;
+                    ?>
+                    <div class="list_block related_post_sec" style="height: {{ (526-$altura_eventos) }}px;margin: 10px 0 5px;padding:15px 5px 5px 5px;">
+                        <div class="upcoming_events" style="height:{{ (453-$altura_eventos) }}px;">
                             <h3 style="margin:-10px 0px 5px 0px;height: 33px;background-color: #d4be12;color: white;font-size: 20px;width: 100%;padding: 4px 0px 0px 10px;"><img src="/royal/img/eventos4.png" style="height: 30px;margin-top: -4px;padding-right: 13px;">Eventos</h3>
                             <div id="eventos" class="nano">
                                 <div class="overthrow nano-content">

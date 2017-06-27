@@ -17,6 +17,7 @@ class CreacionTablaUsuario extends Migration
             $table->increments('id');
             $table->string('alias')->unique();
             $table->string('clave');
+            $table->boolean('cambia_clave')->default(true);
             $table->boolean('confirmacion_correo')->default(false);
             $table->boolean('activo')->default(false);
             $table->timestamps();
