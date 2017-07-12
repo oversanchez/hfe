@@ -56,6 +56,7 @@ class CreacionTablaFichaMatricula extends Migration
             $table->enum('padre_estado_civil',['S','C','V','D'])->nullable();
             $table->string('padre_ocupacion')->nullable();
             $table->string('padre_lugar_trabajo')->nullable();
+            $table->string('padre_cargo')->nullable();
             $table->integer('padre_nivel_educativo_id')->unsigned()->nullable();
             $table->foreign('padre_nivel_educativo_id')->references('id')->on('nivel_educativo');
             //Datos del Madre
@@ -76,6 +77,7 @@ class CreacionTablaFichaMatricula extends Migration
             $table->enum('madre_estado_civil',['S','C','V','D'])->nullable();
             $table->string('madre_ocupacion')->nullable();
             $table->string('madre_lugar_trabajo')->nullable();
+            $table->string('madre_cargo')->nullable();
             $table->integer('madre_nivel_educativo_id')->unsigned()->nullable();
             $table->foreign('madre_nivel_educativo_id')->references('id')->on('nivel_educativo');
             //Datos del Apoderado
@@ -96,6 +98,7 @@ class CreacionTablaFichaMatricula extends Migration
             $table->enum('apoderado_estado_civil',['S','C','V','D'])->nullable();
             $table->string('apoderado_ocupacion')->nullable();
             $table->string('apoderado_lugar_trabajo')->nullable();
+            $table->string('apoderado_cargo')->nullable();
             $table->integer('apoderado_parentesco_id')->unsigned()->nullable();
             $table->foreign('apoderado_parentesco_id')->references('id')->on('parentesco');
             $table->integer('apoderado_nivel_educativo_id')->unsigned()->nullable();

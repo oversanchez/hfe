@@ -125,15 +125,12 @@ class Ficha_Matricula_Controller extends Controller
     {
         $ficha_matricula = \App\Ficha_Matricula::find($id);
 
-        switch ($ficha_matricula){
+        switch ($ficha_matricula->tipo_matricula){
             case "N":
-                $ficha_matricula->pem = $request->input('pem');
-                $ficha_matricula->tipo_matricula = $request->input('tipo_matricula');
-                $ficha_matricula->seccion_id = $request->input('seccion_id');
                 $ficha_matricula->alumno_nombres = $request->input('alumno_nombres');
                 $ficha_matricula->alumno_apellido_paterno = $request->input('alumno_apellido_paterno');
                 $ficha_matricula->alumno_apellido_materno = $request->input('alumno_apellido_materno');
-                $ficha_matricula->alumno_numero_documento = $request->input('alumno_numero_documento');
+                //$ficha_matricula->alumno_numero_documento = $request->input('alumno_numero_documento');
                 $ficha_matricula->alumno_tipo_documento_id = $request->input('alumno_tipo_documento_id');
                 $ficha_matricula->alumno_fecha_nacimiento = $request->input('alumno_fecha_nacimiento');
                 $ficha_matricula->alumno_sexo = $request->input('alumno_sexo');
@@ -149,6 +146,7 @@ class Ficha_Matricula_Controller extends Controller
                 $ficha_matricula->padre_tipo_documento_id = $request->input('padre_tipo_documento_id');
                 $ficha_matricula->padre_fecha_nacimiento = $request->input('padre_fecha_nacimiento');
                 $ficha_matricula->padre_sexo = $request->input('padre_sexo');
+
                 $ficha_matricula->padre_direccion = $request->input('padre_direccion');
                 $ficha_matricula->padre_email = $request->input('padre_email');
                 $ficha_matricula->padre_telf_movil = $request->input('padre_telf_movil');
