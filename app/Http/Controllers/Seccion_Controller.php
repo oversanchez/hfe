@@ -41,7 +41,7 @@ class Seccion_Controller extends Controller
         $seccion->grado_id = $request->input('grado_id');
         $seccion->trabajador_id = $request->input('trabajador_id');
         $seccion->letra= $request->input('letra');
-        $seccion->turno= $request->input('turno');
+        $seccion->turno_id= $request->input('turno_id');
         $seccion->tipo_calificacion= $request->input('tipo_calificacion');
         $seccion->vacantes= $request->input('vacantes');
         $seccion->activo= $request->input('activo');
@@ -66,16 +66,17 @@ class Seccion_Controller extends Controller
 
     public function listar()
     {
-        $turno = Input::get('turno');
+        $turno_id = Input::get('turno_id');
         $anio_lectivo_id = Input::get('anio_lectivo_id');
         $secciones =  \App\Seccion::where([
                                         ['anio_lectivo_id','=', $anio_lectivo_id],
-                                        ['turno', '=', $turno],
+                                        ['turno_id', '=', $turno_id],
                                             ])->get();
         foreach ($secciones as $seccion){
             $seccion->grado;
             $seccion->grado->nivel;
             $seccion->trabajador;
+            $seccion->turno;
         }
         return $secciones;
     }

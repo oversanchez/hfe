@@ -15,84 +15,92 @@ class CreacionTablaFichaMatricula extends Migration
     {
         Schema::create('ficha_matricula', function (Blueprint $table) {
             $table->increments('id');
+            //Datos del alumno
+            $table->string('pem');
+            $table->enum('tipo_matricula',['N','P','R']); //Nuevo/Promovido/Reingresante
 
+            $table->integer('seccion_id')->unsigned()->nullable();
+            $table->foreign('seccion_id')->references('id')->on('seccion')->onDelete('cascade');
+
+            $table->boolean('activo')->default(true);
+
+            $table->string('alumno_nombres')->nullable();
+            $table->string('alumno_apellido_paterno')->nullable();
+            $table->string('alumno_apellido_materno')->nullable();
+            $table->string('alumno_numero_documento',15);
+            $table->integer('alumno_tipo_documento_id')->unsigned()->nullable();
+            $table->foreign('alumno_tipo_documento_id')->references('id')->on('tipo_documento');
+            
+            $table->date('alumno_fecha_nacimiento')->nullable();
+            $table->enum('alumno_sexo',['M','F'])->nullable();
+            $table->string('alumno_direccion')->nullable();
+            $table->string('alumno_telf_fijo')->nullable();
+            $table->boolean('alumno_padres_juntos')->nullable();
+
+            $table->string('colegio_procedencia')->nullable();
             //Datos del Padre
-            $table->string('padre_nombres');
-            $table->string('padre_apellido_paterno');
+            $table->string('padre_apellido_paterno')->nullable();
             $table->string('padre_apellido_materno')->nullable();
-            $table->string('padre_numero_documento',15);
-            $table->enum('padre_tipo_documento',['DN','CE','PA']);
-            $table->date('padre_fecha_nacimiento');
-            $table->enum('padre_sexo',['M','F']);
-            $table->string('padre_direccion');
+            $table->string('padre_nombres')->nullable();
+            $table->string('padre_numero_documento',15)->nullable();
+            $table->integer('padre_tipo_documento_id')->unsigned()->nullable();
+            $table->foreign('padre_tipo_documento_id')->references('id')->on('tipo_documento');
+            $table->date('padre_fecha_nacimiento')->nullable();
+            $table->enum('padre_sexo',['M','F'])->nullable();
+            $table->string('padre_direccion')->nullable();
             $table->string('padre_email')->nullable();
-            $table->string('padre_telf_movil');
+            $table->string('padre_telf_movil')->nullable();
             $table->string('padre_telf_fijo')->nullable();
-            $table->boolean('padre_apoderado');
-            $table->boolean('padre_vive_educando');
-            $table->enum('padre_estado_civil',['SO','CA','VI','DI']);
-            $table->string('padre_ocupacion');
-            $table->string('padre_lugar_trabajo');
-            $table->integer('padre_parentesco_id')->unsigned();
-            $table->foreign('padre_parentesco_id')->references('id')->on('parentesco');
-            $table->integer('padre_nivel_educativo_id')->unsigned();
+            $table->boolean('padre_apoderado')->nullable();
+            $table->boolean('padre_vive_educando')->nullable();
+            $table->enum('padre_estado_civil',['S','C','V','D'])->nullable();
+            $table->string('padre_ocupacion')->nullable();
+            $table->string('padre_lugar_trabajo')->nullable();
+            $table->integer('padre_nivel_educativo_id')->unsigned()->nullable();
             $table->foreign('padre_nivel_educativo_id')->references('id')->on('nivel_educativo');
             //Datos del Madre
-            $table->string('madre_nombres');
-            $table->string('madre_apellido_paterno');
+            $table->string('madre_apellido_paterno')->nullable();
             $table->string('madre_apellido_materno')->nullable();
-            $table->string('madre_numero_documento',15);
-            $table->enum('madre_tipo_documento',['DN','CE','PA']);
-            $table->date('madre_fecha_nacimiento');
-            $table->enum('madre_sexo',['M','F']);
-            $table->string('madre_direccion');
+            $table->string('madre_nombres')->nullable();
+            $table->string('madre_numero_documento',15)->nullable();
+            $table->integer('madre_tipo_documento_id')->unsigned()->nullable();
+            $table->foreign('madre_tipo_documento_id')->references('id')->on('tipo_documento');
+            $table->date('madre_fecha_nacimiento')->nullable();
+            $table->enum('madre_sexo',['M','F'])->nullable();
+            $table->string('madre_direccion')->nullable();
             $table->string('madre_email')->nullable();
-            $table->string('madre_telf_movil');
+            $table->string('madre_telf_movil')->nullable();
             $table->string('madre_telf_fijo')->nullable();
-            $table->boolean('madre_apoderado');
-            $table->boolean('madre_vive_educando');
-            $table->enum('madre_estado_civil',['SO','CA','VI','DI']);
-            $table->string('madre_ocupacion');
-            $table->string('madre_lugar_trabajo');
-            $table->integer('madre_parentesco_id')->unsigned();
-            $table->foreign('madre_parentesco_id')->references('id')->on('parentesco');
-            $table->integer('madre_nivel_educativo_id')->unsigned();
+            $table->boolean('madre_apoderado')->nullable();
+            $table->boolean('madre_vive_educando')->nullable();
+            $table->enum('madre_estado_civil',['S','C','V','D'])->nullable();
+            $table->string('madre_ocupacion')->nullable();
+            $table->string('madre_lugar_trabajo')->nullable();
+            $table->integer('madre_nivel_educativo_id')->unsigned()->nullable();
             $table->foreign('madre_nivel_educativo_id')->references('id')->on('nivel_educativo');
             //Datos del Apoderado
-            $table->string('apoderado_nombres');
-            $table->string('apoderado_apellido_paterno');
+            $table->string('apoderado_nombres')->nullable();
+            $table->string('apoderado_apellido_paterno')->nullable();
             $table->string('apoderado_apellido_materno')->nullable();
-            $table->string('apoderado_numero_documento',15);
-            $table->enum('apoderado_tipo_documento',['DN','CE','PA']);
-            $table->date('apoderado_fecha_nacimiento');
-            $table->enum('apoderado_sexo',['M','F']);
-            $table->string('apoderado_direccion');
+            $table->string('apoderado_numero_documento',15)->nullable();
+            $table->integer('apoderado_tipo_documento_id')->unsigned()->nullable();
+            $table->foreign('apoderado_tipo_documento_id')->references('id')->on('tipo_documento');
+            $table->date('apoderado_fecha_nacimiento')->nullable();
+            $table->enum('apoderado_sexo',['M','F'])->nullable();
+            $table->string('apoderado_direccion')->nullable();
             $table->string('apoderado_email')->nullable();
-            $table->string('apoderado_telf_movil');
+            $table->string('apoderado_telf_movil')->nullable();
             $table->string('apoderado_telf_fijo')->nullable();
-            $table->boolean('apoderado_apoderado');
-            $table->boolean('apoderado_vive_educando');
-            $table->enum('apoderado_estado_civil',['SO','CA','VI','DI']);
-            $table->string('apoderado_ocupacion');
-            $table->string('apoderado_lugar_trabajo');
-            $table->integer('apoderado_parentesco_id')->unsigned();
+            $table->boolean('apoderado_apoderado')->nullable();
+            $table->boolean('apoderado_vive_educando')->nullable();
+            $table->enum('apoderado_estado_civil',['S','C','V','D'])->nullable();
+            $table->string('apoderado_ocupacion')->nullable();
+            $table->string('apoderado_lugar_trabajo')->nullable();
+            $table->integer('apoderado_parentesco_id')->unsigned()->nullable();
             $table->foreign('apoderado_parentesco_id')->references('id')->on('parentesco');
-            $table->integer('apoderado_nivel_educativo_id')->unsigned();
+            $table->integer('apoderado_nivel_educativo_id')->unsigned()->nullable();
             $table->foreign('apoderado_nivel_educativo_id')->references('id')->on('nivel_educativo');
-            //Datos del alumno
-            $table->string('alumno_nombres');
-            $table->string('alumno_apellido_paterno');
-            $table->string('alumno_apellido_materno')->nullable();
-            $table->string('alumno_numero_documento',15)->unique();
-            $table->enum('alumno_tipo_documento',['DN','CE','PA']);
-            $table->date('alumno_fecha_nacimiento');
-            $table->enum('alumno_sexo',['M','F']);
-            $table->string('alumno_direccion');
-            $table->string('alumno_telf_fijo');
-            $table->boolean('alumno_padres_juntos');
 
-            $table->integer('alumno_colegio_procedencia_id')->unsigned();
-            $table->foreign('alumno_colegio_procedencia_id')->references('id')->on('colegio_procedencia');
 
             $table->timestamps();
         });

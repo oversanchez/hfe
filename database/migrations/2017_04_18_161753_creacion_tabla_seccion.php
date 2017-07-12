@@ -17,12 +17,14 @@ class CreacionTablaSeccion extends Migration
             $table->increments('id');
             $table->string('letra');
             $table->integer('vacantes');
-            $table->boolean('activo');
-            $table->enum('turno',['M','T','N']);
+
             $table->enum('tipo_calificacion',['L','V']);
 
             $table->integer('anio_lectivo_id')->unsigned();
             $table->foreign('anio_lectivo_id')->references('id')->on('anio_lectivo');
+
+            $table->integer('turno_id')->unsigned();
+            $table->foreign('turno_id')->references('id')->on('turno');
 
             $table->integer('grado_id')->unsigned();
             $table->foreign('grado_id')->references('id')->on('grado');
@@ -30,6 +32,8 @@ class CreacionTablaSeccion extends Migration
             $table->integer('trabajador_id')->unsigned()->nullable();
             $table->foreign('trabajador_id')->references('id')->on('trabajador');
 
+            $table->boolean('activo');
+            
             $table->timestamps();
         });
     }

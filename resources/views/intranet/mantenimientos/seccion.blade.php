@@ -7,9 +7,6 @@
             <select class="input-lg" id="cmbAnio">
             </select>
             <select class="input-lg " id="cmbTurno" onchange="listar()">
-                <option value="M">MAÑANA</option>
-                <option value="T">TARDE</option>
-                <option value="N">NOCTURNA</option>
             </select>
             <i id="loading" style="display:none;" class="fa fa-2x fa-spinner fa-spin"></i>
         </div>
@@ -113,6 +110,7 @@
             t = $("#tblListado").DataTable();
             $("#frmSeccion").parsley();
             listarAnios();
+            listarTurnos();
             listarGrados();
             $("#cmbTrabajador").select2();
             listarTrabajadores();
@@ -135,7 +133,7 @@
                 "vacantes": parseInt($("#txtVacantes").val()),
                 "tipo_calificacion": $("#cmbTipo_Calificacion").val(),
                 "anio_lectivo_id": parseInt($("#cmbAnio").val()),
-                "turno":$("#cmbTurno").val(),
+                "turno_id":$("#cmbTurno").val(),
                 "trabajador_id": trabajador_id == "" ? null : parseInt(trabajador_id),
                 "grado_id": parseInt($("#cmbGrado").val()),
                 "activo": $("#chkActivo").is(":checked")}][0];
@@ -260,7 +258,7 @@
         function listar() {
             var info = [{"_token": "{{ csrf_token() }}",
                 "anio_lectivo_id": parseInt($("#cmbAnio").val()),
-                "turno": $("#cmbTurno").val()}][0];
+                "turno_id": $("#cmbTurno").val()}][0];
             $.ajax({
                 url: "/intranet/mantenimientos/seccion/listar",
                 type: "GET",
@@ -305,6 +303,30 @@
                         opciones += "<option value='"+value["id"]+"'>"+value["anio"]+"</option>";
                     });
                     $("#cmbAnio").append(opciones);
+                },
+                error: function (request, status, error) {
+                    mostrar_error(request.responseText);
+                },
+                complete: function () {
+                    $("#loading").hide();
+                    listar();
+                }
+            });
+        }
+
+        function listarTurnos() {
+            $.ajax({
+                url: "/intranet/mantenimientos/turno/*",
+                type: "GET",
+                beforeSend: function () {
+                    $("#loading").show();
+                },
+                success: function (data) {
+                    var opciones = "";
+                    $.each(data,function( index, value ) {
+                        opciones += "<option value='"+value["id"]+"'>"+value["nombre"]+"</option>";
+                    });
+                    $("#cmbTurno").append(opciones);
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);

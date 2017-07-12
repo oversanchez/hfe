@@ -25,6 +25,15 @@ class Academico_2017_Seeder extends Seeder
             ['nombre'=>'SECUNDARIA','abreviatura'=>'S']
         ]);
 
+        DB::table('tipo_documento')->insert([
+            ['codigo'=>'01','descripcion'=>'DOCUMENTO  NACIONAL DE IDENTIDAD','abreviatura'=>'DNI'],
+            ['codigo'=>'04','descripcion'=>'CARNÉ DE EXTRANJERÍA','abreviatura'=>'CARNÉ EXT.'],
+            ['codigo'=>'06','descripcion'=>'REG. ÚNICO DE CONTRIBUYENTES (1)','abreviatura'=>'RUC'],
+            ['codigo'=>'07','descripcion'=>'PASAPORTE','abreviatura'=>'PASAPORTE'],
+            ['codigo'=>'09','descripcion'=>'CARNÉ DE SOLICIT DE REFUGIO','abreviatura'=>'CARNÉ SOLIC REFUGIO'],
+            ['codigo'=>'11','descripcion' =>'PARTIDA DE NACIMIENTO (2)','abreviatura'=>'PART. NAC.'],
+        ]);
+
         DB::table('grado')->insert([
             ['nombre'=>'PRIMERO','numero'=>1,'activo'=>true,'grado_anterior_id'=>null,'nivel_id'=>1],
             ['nombre'=>'SEGUNDO','numero'=>2,'activo'=>true,'grado_anterior_id'=>1,'nivel_id'=>1],
@@ -34,11 +43,14 @@ class Academico_2017_Seeder extends Seeder
             ['nombre'=>'SEXTO','numero'=>6,'activo'=>true,'grado_anterior_id'=>5,'nivel_id'=>1],
         ]);
 
+        DB::table('turno')->insert([
+            ['nombre'=>'TARDE','abreviatura'=>'T'],
+        ]);
         
         DB::table('seccion')->insert([
-            ['letra'=>'A','vacantes'=>30,'activo'=>true,'turno'=>'M','tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>null],
-            ['letra'=>'B','vacantes'=>30,'activo'=>true,'turno'=>'M','tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>\App\Trabajador::all()->random()->id],
-            ['letra'=>'B','vacantes'=>30,'activo'=>true,'turno'=>'T','tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>\App\Trabajador::all()->random()->id]
+            ['letra'=>'A','vacantes'=>30,'turno_id'=>1,'activo'=>true,'tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>null],
+            ['letra'=>'B','vacantes'=>30,'turno_id'=>1,'activo'=>true,'tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>\App\Trabajador::all()->random()->id],
+            ['letra'=>'B','vacantes'=>30,'turno_id'=>1,'activo'=>true,'tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>\App\Trabajador::all()->random()->id]
         ]);
 
         DB::table('usuario')->insert([

@@ -58,7 +58,7 @@
                                 <li class="dropdown-header"><i class="fa fa-group"></i>Matrícula</li>
                                 <li><a href="#">Registrar</a></li>
                                 <li><a href="#">Estadisticas </a></li>
-                                <li><a href="#">Pre-matricula </a></li>
+                                <li><a href="/intranet/mantenimientos/ficha_matricula">Acceso a Matrícula </a></li>
                                 <li class="dropdown-header"><i class="fa fa-gear"></i>Procesos</li>
                                 <li><a href="/intranet/mantenimientos/anio_lectivo">Asistencia</a></li>
                                 <li><a href="/intranet/procesos/control_reunion">Control Reunión</a></li>
@@ -73,6 +73,7 @@
                             <ul>
                                 <li class="dropdown-header"><i class="fa fa-book"></i>Config. Académica</li>
                                 <li><a href="/intranet/mantenimientos/anio_lectivo">Años Lectivos</a></li>
+                                <li><a href="/intranet/mantenimientos/turno">Turnos</a></li>
                                 <li><a href="/intranet/mantenimientos/periodo">Periodos</a></li>
                                 <li><a href="/intranet/mantenimientos/nivel">Niveles</a></li>
                                 <li><a href="/intranet/mantenimientos/grado">Grados</a></li>

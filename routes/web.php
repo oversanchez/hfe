@@ -28,7 +28,7 @@ Route::get('/galeria', ['uses' => 'Album_Controller@ver_galeria', 'as' => 'album
 
 Route::get('/videos', ['uses' => 'Video_Controller@ver_videos', 'as' => 'album.ver_videos']);
 
-Route::get('/ficha_matricula', ['uses' => 'Ficha_Matricula_Controller@index', 'as' => 'ficha_matricula.index']);
+Route::get('/ficha_matricula', ['uses' => 'Ficha_Matricula_Controller@ver_ficha_matricula', 'as' => 'ficha_matricula.ver_ficha_matricula']);
 
 Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
 
@@ -72,6 +72,8 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::resource('alumno','\App\Http\Controllers\Alumno_Controller');
 
+    Route::resource('turno','\App\Http\Controllers\Turno_Controller');
+
     Route::get('seccion/listar', ['uses' => 'Seccion_Controller@listar', 'as' => 'seccion.listar']);
 
     Route::resource('seccion','\App\Http\Controllers\Seccion_Controller');
@@ -82,7 +84,11 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::resource('usuario','\App\Http\Controllers\Usuario_Controller');
 
-    Route::resource('acceso_ficha_matricula','\App\Http\Controllers\Acceso_Ficha_Matricula_Controller');
+    Route::get('ficha_matricula/listar', ['uses' => 'Ficha_Matricula_Controller@listar', 'as' => 'ficha_matricula.listar']);
+
+    Route::resource('ficha_matricula','\App\Http\Controllers\Ficha_Matricula_Controller');
+
+    Route::resource('tipo_documento','\App\Http\Controllers\Tipo_Documento_Controller');
 
 });
 

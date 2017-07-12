@@ -213,13 +213,13 @@
         setTimeout(function(){
             $("#loading").remove();
 
-            $(".main_wrapper").show(1000,function(){
+            $(".main_wrapper").show(200,function(){ // 1000
                 $(".main_wrapper").css("visibility","visible");
                 $("body").css("text-align","left");
                 $("body").css("overflow","");
-                $("body").show(200);
+                $("body").show(10); // 200
             });
-        }, 2000);
+        }, 100); //2000
 
         $(".nano").nanoScroller();
 
