@@ -18,11 +18,13 @@ class CreacionTablaFichaMatricula extends Migration
             //Datos del alumno
             $table->string('pem');
             $table->enum('tipo_matricula',['N','P','R']); //Nuevo/Promovido/Reingresante
+            $table->enum('alumno_apoderado',['P','M','O'])->nullable(); //Padre/Madre/Otro
 
             $table->integer('seccion_id')->unsigned()->nullable();
             $table->foreign('seccion_id')->references('id')->on('seccion')->onDelete('cascade');
 
             $table->boolean('activo')->default(true);
+            $table->boolean('imprimir')->default(false);
 
             $table->string('alumno_nombres')->nullable();
             $table->string('alumno_apellido_paterno')->nullable();
@@ -37,7 +39,7 @@ class CreacionTablaFichaMatricula extends Migration
             $table->string('alumno_telf_fijo')->nullable();
             $table->boolean('alumno_padres_juntos')->nullable();
 
-            $table->string('colegio_procedencia')->nullable();
+            $table->string('alumno_colegio_procedencia')->nullable();
             //Datos del Padre
             $table->string('padre_apellido_paterno')->nullable();
             $table->string('padre_apellido_materno')->nullable();
@@ -50,8 +52,6 @@ class CreacionTablaFichaMatricula extends Migration
             $table->string('padre_direccion')->nullable();
             $table->string('padre_email')->nullable();
             $table->string('padre_telf_movil')->nullable();
-            $table->string('padre_telf_fijo')->nullable();
-            $table->boolean('padre_apoderado')->nullable();
             $table->boolean('padre_vive_educando')->nullable();
             $table->enum('padre_estado_civil',['S','C','V','D'])->nullable();
             $table->string('padre_ocupacion')->nullable();
@@ -71,7 +71,6 @@ class CreacionTablaFichaMatricula extends Migration
             $table->string('madre_direccion')->nullable();
             $table->string('madre_email')->nullable();
             $table->string('madre_telf_movil')->nullable();
-            $table->string('madre_telf_fijo')->nullable();
             $table->boolean('madre_apoderado')->nullable();
             $table->boolean('madre_vive_educando')->nullable();
             $table->enum('madre_estado_civil',['S','C','V','D'])->nullable();
@@ -92,8 +91,6 @@ class CreacionTablaFichaMatricula extends Migration
             $table->string('apoderado_direccion')->nullable();
             $table->string('apoderado_email')->nullable();
             $table->string('apoderado_telf_movil')->nullable();
-            $table->string('apoderado_telf_fijo')->nullable();
-            $table->boolean('apoderado_apoderado')->nullable();
             $table->boolean('apoderado_vive_educando')->nullable();
             $table->enum('apoderado_estado_civil',['S','C','V','D'])->nullable();
             $table->string('apoderado_ocupacion')->nullable();

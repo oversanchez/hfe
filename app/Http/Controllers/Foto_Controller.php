@@ -36,7 +36,7 @@ class Foto_Controller extends Controller
     public function store(Request $request)
     {
         $album_id = $request->input('album_id');
-        $transparencia = $request->input('transparencia') == "true" ? true:false;
+        $transparencia = $request->input('transparencia') == "true" ? true:false; //Decide si lo conviertes en JPG
 
         $path = public_path() . '/royal/img/galeria/'.$album_id."/";
         $files = $request->file('file');
@@ -49,7 +49,7 @@ class Foto_Controller extends Controller
             $foto = new \App\Foto();
             $foto->nombre = $fileName;
             $foto->archivo = "/royal/img/galeria/".$album_id."/".$archivo;
-            $foto->extension = $fileExtension;
+            $foto->extension =$fileExtension;
 
             $foto->album_id = $album_id;
             $foto->save();

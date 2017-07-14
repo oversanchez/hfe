@@ -86,6 +86,8 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::get('ficha_matricula/listar', ['uses' => 'Ficha_Matricula_Controller@listar', 'as' => 'ficha_matricula.listar']);
 
+    Route::get('ficha_matricula/buscar', ['uses' => 'Ficha_Matricula_Controller@buscar', 'as' => 'ficha_matricula.buscar']);
+
     Route::resource('ficha_matricula','\App\Http\Controllers\Ficha_Matricula_Controller');
 
     Route::resource('tipo_documento','\App\Http\Controllers\Tipo_Documento_Controller');
