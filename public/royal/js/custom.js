@@ -15,8 +15,8 @@ jQuery(document).ready(function ($) {
                 if($(".logo img").attr('src') !== "/royal/img/logo2.png" ){
                     $(".logo img").hide();
                     $(".logo img").attr('src',"/royal/img/logo2.png");
-                    $(".logo img").css('width',"323px");
-                    $(".logo img").css('margin-top',"-14px");
+                    $(".logo img").css('width',"303px"); //323px
+                    $(".logo img").css('margin-top',"0px"); //-14px
                     setTimeout(function(){$(".logo img").fadeIn("slow"); }, 500);
                 }
             }
