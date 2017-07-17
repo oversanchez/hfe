@@ -196,6 +196,14 @@ class Ficha_Matricula_Controller extends Controller
         }
 
     }
+
+    public function imprimir(){
+        $ficha_matricula = \App\Ficha_Matricula::find(Input::get('id'));
+        if($ficha_matricula->pem == Input::get('pem') && $ficha_matricula->alumno_numero_documento == Input::get('alumno_numero_documento')){
+            $ficha_matricula->imprimir=true;
+            $ficha_matricula->save();
+        }
+    }
     public function destroy($id)
     {
         $ficha_matricula = \App\Ficha_Matricula::find($id);
@@ -214,9 +222,20 @@ class Ficha_Matricula_Controller extends Controller
     {
         $ficha_matriculas =  \App\Ficha_Matricula::where('pem',Input::get('pem'))->where('alumno_numero_documento',Input::get('alumno_numero_documento'))->get();
         foreach ($ficha_matriculas as $ficha_matricula){
+            $ficha_matricula->alumno_tipo_documento;
+            $ficha_matricula->padre_tipo_documento;
+            $ficha_matricula->madre_tipo_documento;
+            $ficha_matricula->apoderado_tipo_documento;
+
+            $ficha_matricula->padre_nivel_educativo;
+            $ficha_matricula->madre_nivel_educativo;
+            $ficha_matricula->apoderado_nivel_educativo;
+
+            $ficha_matricula->apoderado_parentesco;
             $ficha_matricula->seccion;
         }
         return $ficha_matriculas;
     }
 
 }
+
