@@ -84,7 +84,13 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Mantenimiento <b
+                <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Administrativo<b
+                                class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/intranet/mantenimientos/documento_recepcionado">Registrar Documento</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown pull-right"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class='fa fa-cog'></i> Configuración<b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/intranet/mantenimientos/categoria_trabajador">Categoria de Trabajador</a></li>
@@ -92,6 +98,7 @@
                         <li><a href="/intranet/mantenimientos/especialidad">Especialidades</a></li>
                         <li><a href="/intranet/mantenimientos/colegio_procedencia">Colegios de Procedencia</a></li>
                         <li><a href="/intranet/mantenimientos/parentesco">Parentesco</a></li>
+                        <li><a href="/intranet/mantenimientos/tipo_documento_recepcionado">Tipo de Documento R.</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Website <b

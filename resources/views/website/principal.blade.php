@@ -208,6 +208,13 @@
                             </div>
                         </div>
                     @endif
+                        @if($institucion->mostrar_tramite == true)
+                            <div class="row" onclick="javascript:location.href='consulta_tramite'" style="margin-bottom: 8px;">
+                                <div class="col-xs-12">
+                                    <img style="cursor:pointer;" class='img-reponsive' src="/royal/img/tramite_documentario.png">
+                                </div>
+                            </div>
+                        @endif
                     <div class="formArea clearfix">
                         <div class="formTitle">
                             <img src="/royal/img/hay_tarea.png">
@@ -230,7 +237,9 @@
                     <?php
                         $altura_eventos=0;
                         if($institucion->mostrar_ficha)
-                            $altura_eventos=105;
+                            $altura_eventos +=105;
+                        if($institucion->mostrar_tramite)
+                            $altura_eventos +=100;
                     ?>
                     <div class="list_block related_post_sec" style="height: {{ (526-$altura_eventos) }}px;margin: 10px 0 5px;padding:15px 5px 5px 5px;">
                         <div class="upcoming_events" style="height:{{ (453-$altura_eventos) }}px;">

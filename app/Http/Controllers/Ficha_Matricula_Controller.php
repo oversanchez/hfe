@@ -204,6 +204,14 @@ class Ficha_Matricula_Controller extends Controller
             $ficha_matricula->save();
         }
     }
+
+    public function habilitar_edicion(){
+        $ficha_matricula = \App\Ficha_Matricula::find(Input::get('id'));
+        if($ficha_matricula->pem == Input::get('pem') && $ficha_matricula->alumno_numero_documento == Input::get('alumno_numero_documento')){
+            $ficha_matricula->imprimir=false;
+            $ficha_matricula->save();
+        }
+    }
     public function destroy($id)
     {
         $ficha_matricula = \App\Ficha_Matricula::find($id);

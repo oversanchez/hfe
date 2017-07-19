@@ -54,12 +54,15 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
-                                        <label class="col-md-2" for="txtAnio_Ficha">Anio Ficha</label>
-                                        <div class="col-md-2">
-                                            <input type="text" class="form-control" id="txtAnio_Ficha" placeholder="Empresa">
+                                        <label class="col-md-1" for="txtAnio_Ficha">Anio Ficha</label>
+                                        <div class="col-md-1">
+                                            <input type="text" style="width:50px;" class="form-control" id="txtAnio_Ficha" placeholder="Empresa">
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5" style="text-align: right;">
                                             <label for=""><input id="chkMostrar_Ficha" type="checkbox" class="icheck"> Mostrar Ficha de Matrícula</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for=""><input id="chkMostrar_Tramite" type="checkbox" class="icheck"> Mostrar Consulta de Trámite</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -125,6 +128,7 @@
                 "porque_nosotros_3": $("#txtPorque_Nosotros3").val(),
                 "porque_nosotros_4": $("#txtPorque_Nosotros4").val(),
                 "mostrar_ficha": $("#chkMostrar_Ficha").is(":checked"),
+                "mostrar_tramite": $("#chkMostrar_Tramite").is(":checked"),
                 "anio_ficha": parseInt($("#txtAnio_Ficha").val())}][0];
             return info;
         }
@@ -176,6 +180,7 @@
                         $("#txtPorque_Nosotros4").val(value["porque_nosotros_4"]);
                         $("#txtAnio_Ficha").val(value["anio_ficha"]);
                         $("#chkMostrar_Ficha").iCheck(value['mostrar_ficha'] == true ? "check" : "uncheck");
+                        $("#chkMostrar_Tramite").iCheck(value['mostrar_tramite'] == true ? "check" : "uncheck");
                     });
                 },
                 error: function (request, status, error) {

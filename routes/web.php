@@ -90,6 +90,8 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::get('ficha_matricula/imprimir', ['uses' => 'Ficha_Matricula_Controller@imprimir', 'as' => 'ficha_matricula.imprimir']);
 
+    Route::get('ficha_matricula/habilitar_edicion', ['uses' => 'Ficha_Matricula_Controller@habilitar_edicion', 'as' => 'ficha_matricula.habilitar_edicion']);
+
     Route::resource('ficha_matricula','\App\Http\Controllers\Ficha_Matricula_Controller');
 
     Route::resource('tipo_documento','\App\Http\Controllers\Tipo_Documento_Controller');

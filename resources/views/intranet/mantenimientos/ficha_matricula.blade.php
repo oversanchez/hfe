@@ -33,7 +33,7 @@
                                     <th>Alumno</th>
                                     <th>Dni</th>
                                     <th>PEM</th>
-                                    <th>Acciones</th>
+                                    <th style="width: 300px;">Acciones</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -190,11 +190,17 @@
                 success: function (data) {
                     t.clear().draw();
                     $.each(data, function (index, value) {
+                        var habilitar_edicion="";
+                        if(value["imprimir"])
+                            habilitar_edicion="<button onclick=habilitarEdicionFicha("+value['id']+",'"+value['pem']+"','"+value['alumno_numero_documento']+"') class='btn btn-xs'><i class='fa fa-check'></i> Habilitar Edición</button>";
+
                         t.row.add([value['alumno_apellido_paterno']+' '+value['alumno_apellido_materno']+' '+value['alumno_nombres'],
                             value['alumno_numero_documento'],value['pem'],
                             "<button onclick=buscarFicha("+value['id']+") class='btn btn-xs'><i class='fa fa-search'></i></button>"+
                             "<button onclick=eliminarFicha("+value['id']+") class='btn btn-xs'><i class='fa fa-trash-o'></i></button>"+
                             "<button onclick=editarFicha("+value['id']+") class='btn btn-xs'><i class='fa fa-edit'></i></button>"+
+                            "<button onclick=imprimirFicha("+value['id']+") class='btn btn-xs'><i class='fa fa-print'></i></button>"+
+                                    habilitar_edicion+
                             "<button onclick=enviarSms_Ficha("+value['id']+") class='btn btn-xs'><i class='fa fa-mobile-phone'></i></button>"
                             , grupo_opciones(value['id'])]).draw(false);
                     });
@@ -331,6 +337,34 @@
                     },
                     success: function (data) {
                         notificacion('Actualización', 'Datos actualizados correctamente', 'success');
+                        cancelar();
+                    },
+                    error: function (request, status, error) {
+                        mostrar_error(request.responseText);
+                    },
+                    complete: function () {
+                        $("#loading").hide();
+                    }
+                });
+            }
+        }
+
+        function habilitarEdicionFicha(id,pem,alumno_numero_documento) {
+            if (confirm("¿Deseas habilitar el documento para edición?")) {
+                var info = [{"_token": "{{ csrf_token() }}",
+                    "id" : id,
+                    "pem": pem,
+                    "alumno_numero_documento": alumno_numero_documento
+                }][0];
+                $.ajax({
+                    url: "/intranet/mantenimientos/ficha_matricula/habilitar_edicion",
+                    type: "GET",
+                    data: info,
+                    beforeSend: function () {
+                        $("#loading").show();
+                    },
+                    success: function (data) {
+                        $("#modMsje").modal('show');
                         cancelar();
                     },
                     error: function (request, status, error) {
