@@ -19,13 +19,13 @@ class CreacionTablaPuestoTrabajo extends Migration
 
             //Responsables
             $table->integer('primer_trabajador_id')->unsigned()->nullable();
-            $table->foreign('trabajador_id')->references('id')->on('trabajador');
+            $table->foreign('primer_trabajador_id')->references('id')->on('trabajador');
 
             $table->integer('segundo_trabajador_id')->unsigned()->nullable();
-            $table->foreign('trabajador_id')->references('id')->on('trabajador');
+            $table->foreign('segundo_trabajador_id')->references('id')->on('trabajador');
 
             $table->integer('tercer_trabajador_id')->unsigned()->nullable();
-            $table->foreign('trabajador_id')->references('id')->on('trabajador');
+            $table->foreign('tercer_trabajador_id')->references('id')->on('trabajador');
 
             $table->boolean('permiso_registro')->default(true);
 
