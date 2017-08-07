@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaTipoDocumentoRecepcionado extends Migration
+class CreacionTablaEstadoTramite extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreacionTablaTipoDocumentoRecepcionado extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_documento_recepcionado', function (Blueprint $table) {
+        Schema::create('estado_tramite', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('font_icon');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreacionTablaTipoDocumentoRecepcionado extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_documento_recepcionado');
+        Schema::dropIfExists('estado_tramite');
     }
 }

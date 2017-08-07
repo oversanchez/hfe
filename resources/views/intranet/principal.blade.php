@@ -87,7 +87,8 @@
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Administrativo<b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/intranet/mantenimientos/documento_recepcionado">Registrar Documento</a></li>
+                        <li><a href="/intranet/mantenimientos/tramite">Registrar Trámite</a></li>
+                        <li><a href="/intranet/mantenimientos/puesto_trabajo">Puestos de Trabajo</a></li>
                     </ul>
                 </li>
                 <li class="dropdown pull-right"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class='fa fa-cog'></i> Configuración<b

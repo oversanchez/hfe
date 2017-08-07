@@ -84,6 +84,15 @@ class Trabajador_Controller extends Controller
         return $trabajadores;
     }
 
+    public function listar_usuarios()
+    {
+        $trabajadores =  \App\Trabajador::orderBy('apellido_paterno', 'ASC')->orderBy('apellido_materno', 'ASC')->orderBy('nombres', 'ASC')->get();
+        foreach ($trabajadores as $trabajador){
+            $trabajador->usuario;
+        }
+        return $trabajadores;
+    }
+
     public function buscar_numero_documento()
     {
         $numero_documento = Input::get('numero_documento');

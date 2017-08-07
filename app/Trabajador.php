@@ -25,5 +25,8 @@ class Trabajador extends Model
     public function seccions(){
         return $this->hasMany('App\Seccion');
     }
+    public function puesto_trabajos(){
+        return $this->hasMany('App\Puesto_Trabajo');
+    }
 
 }

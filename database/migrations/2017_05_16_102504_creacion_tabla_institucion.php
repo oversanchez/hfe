@@ -27,8 +27,12 @@ class CreacionTablaInstitucion extends Migration
             $table->string('porque_nosotros_3')->nullable();
             $table->string('porque_nosotros_4')->nullable();
             $table->integer('anio_ficha')->default(2017);
-            $table->boolean('mostrar_ficha')->default(false);
-            $table->boolean('mostrar_tramite')->default(false);
+            $table->boolean('mostrar_ficha')->default(true);
+            $table->boolean('mostrar_tramite')->default(true);
+
+            $table->string('sms_celular')->default('968644416');
+            $table->string('sms_cabecera')->default('PRUEBA 1');
+
             $table->timestamps();
         });
     }

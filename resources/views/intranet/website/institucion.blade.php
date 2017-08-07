@@ -66,6 +66,12 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <label class="col-md-3" for="txtSms_Celular">SMS Celular</label>
+                                        <div class="col-md-9"><input type="text" class="form-control" id="txtSms_Celular" placeholder="Sms Celular"></div>
+                                        <label class="col-md-3" for="txtSms_Cabecera">SMS Cabecera</label>
+                                        <div class="col-md-9"><input type="text" class="form-control" id="txtSms_Cabecera" placeholder="Sms Cabecera"></div>
+                                    </div>
+                                    <div class="row">
                                         <label class="col-md-3" for="txtPorque_Nosotros1">Porque Nosotros 1</label>
                                         <div class="col-md-9"><input type="text" class="form-control" id="txtPorque_Nosotros1" placeholder="Porque Nosotros"></div>
                                     </div>
@@ -127,6 +133,8 @@
                 "porque_nosotros_2": $("#txtPorque_Nosotros2").val(),
                 "porque_nosotros_3": $("#txtPorque_Nosotros3").val(),
                 "porque_nosotros_4": $("#txtPorque_Nosotros4").val(),
+                "sms_celular": $("#txtSms_Celular").val(),
+                "sms_cabecera": $("#txtSms_Cabecera").val(),
                 "mostrar_ficha": $("#chkMostrar_Ficha").is(":checked"),
                 "mostrar_tramite": $("#chkMostrar_Tramite").is(":checked"),
                 "anio_ficha": parseInt($("#txtAnio_Ficha").val())}][0];
@@ -178,6 +186,8 @@
                         $("#txtPorque_Nosotros2").val(value["porque_nosotros_2"]);
                         $("#txtPorque_Nosotros3").val(value["porque_nosotros_3"]);
                         $("#txtPorque_Nosotros4").val(value["porque_nosotros_4"]);
+                        $("#txtSms_Celular").val(value["sms_celular"]);
+                        $("#txtSms_Cabecera").val(value["sms_cabecera"]);
                         $("#txtAnio_Ficha").val(value["anio_ficha"]);
                         $("#chkMostrar_Ficha").iCheck(value['mostrar_ficha'] == true ? "check" : "uncheck");
                         $("#chkMostrar_Tramite").iCheck(value['mostrar_tramite'] == true ? "check" : "uncheck");

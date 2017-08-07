@@ -82,6 +82,8 @@ class Institucion_Controller extends Controller
         $institucion->anio_ficha = $request->input('anio_ficha');
         $institucion->mostrar_ficha = $request->input('mostrar_ficha');
         $institucion->mostrar_tramite = $request->input('mostrar_tramite');
+        $institucion->sms_celular = $request->input('sms_celular');
+        $institucion->sms_cabecera = $request->input('sms_cabecera');
 
         $institucion->save();
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaPuestoTrabajo extends Migration
+class CreacionTablaTipoTramite extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreacionTablaPuestoTrabajo extends Migration
      */
     public function up()
     {
-        Schema::create('puesto_trabajo', function (Blueprint $table) {
+        Schema::create('tipo_tramite', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-
-            //Responsable
-            $table->integer('trabajador_id')->unsigned()->nullable();
-            $table->foreign('trabajador_id')->references('id')->on('trabajador');
-
-            $table->boolean('registro')->default(false);
-
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ class CreacionTablaPuestoTrabajo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('puesto_trabajo');
+        Schema::dropIfExists('tipo_tramite');
     }
 }

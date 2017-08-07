@@ -58,6 +58,8 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::get('trabajador/listar', ['uses' => 'Trabajador_Controller@listar', 'as' => 'trabajador.listar']);
 
+    Route::get('trabajador/listar_usuarios', ['uses' => 'Trabajador_Controller@listar_usuarios', 'as' => 'trabajador.listar_usuarios']);
+
     Route::get('trabajador/buscar_numero_documento', ['uses' => 'Trabajador_Controller@buscar_numero_documento', 'as' => 'trabajador.buscar_numero_documento']);
 
     Route::resource('trabajador','\App\Http\Controllers\Trabajador_Controller');
@@ -95,6 +97,10 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
     Route::resource('ficha_matricula','\App\Http\Controllers\Ficha_Matricula_Controller');
 
     Route::resource('tipo_documento','\App\Http\Controllers\Tipo_Documento_Controller');
+
+    Route::get('puesto_trabajo/listar', ['uses' => 'Puesto_Trabajo_Controller@listar', 'as' => 'puesto_trabajo.listar']);
+
+    Route::resource('puesto_trabajo','\App\Http\Controllers\Puesto_Trabajo_Controller');
 
 });
 
