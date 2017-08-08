@@ -120,7 +120,7 @@
                     var trabajador_id = "";
                     $.each(data,function( index, value ) {
                         trabajador_id = value["trabajador_id"];
-                        alias="<a style='padding: 0px;' class='btn btn-link' onclick='agregar_usuario('"+tipo+"',"+trabajador_id+") href='#'>Agregar usuario</a>";
+                        alias="<a style='padding: 0px;' class='btn btn-link' onclick='agregar_usuario('"+tipo+"',"+trabajador_id+") href='#'>Asignar usuario</a>";
                         if(value["usuario_id"] != null)
                             alias = value["usuario"]["alias"];
                         t.row.add([alias,value["apellido_paterno"]+" "+value["apellido_materno"]+" "+value["nombres"],

@@ -89,6 +89,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/intranet/mantenimientos/tramite">Registrar Trámite</a></li>
                         <li><a href="/intranet/mantenimientos/puesto_trabajo">Puestos de Trabajo</a></li>
+                        <li><a href="/intranet/mantenimientos/estado_tramite">Estados de Trámite</a></li>
                     </ul>
                 </li>
                 <li class="dropdown pull-right"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class='fa fa-cog'></i> Configuración<b

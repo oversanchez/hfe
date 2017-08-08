@@ -16,7 +16,8 @@ class CreacionTablaEstadoTramite extends Migration
         Schema::create('estado_tramite', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('font_icon');
+            $table->string('color')->default('success');
+            $table->string('icono')->default('fa fa-check');
             $table->timestamps();
         });
     }

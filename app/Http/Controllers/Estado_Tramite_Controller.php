@@ -8,7 +8,7 @@ class Estado_Tramite_Controller extends Controller
 {
     public function index()
     {
-        return view('estado_tramite');
+        return view('intranet/mantenimientos/estado_tramite');
     }
     public function create()
     {
@@ -18,7 +18,8 @@ class Estado_Tramite_Controller extends Controller
     {
         $estado_tramite = new \App\Estado_Tramite();
         $estado_tramite->nombre = $request->input('nombre');
-        $estado_tramite->font_icon = $request->input('font_icon');
+        $estado_tramite->color = $request->input('color');
+        $estado_tramite->icono = $request->input('icono');
 
         $estado_tramite->save();
     }
@@ -38,7 +39,8 @@ class Estado_Tramite_Controller extends Controller
     {
         $estado_tramite = \App\Estado_Tramite::find($id);
         $estado_tramite->nombre = $request->input('nombre');
-        $estado_tramite->font_icon = $request->input('font_icon');
+        $estado_tramite->color = $request->input('color');
+        $estado_tramite->icono = $request->input('icono');
 
         $estado_tramite->save();
     }

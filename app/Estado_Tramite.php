@@ -8,7 +8,7 @@ class Estado_Tramite extends Model
 {
     protected $table = "estado_tramite";
 
-    protected $fillable = ['nombre','font_icon'];
+    protected $fillable = ['nombre','color','font_icon'];
 
     public function emite_tramite_transferidos(){
         return $this->hasMany('App\Tramite_Transferido');

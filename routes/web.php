@@ -102,6 +102,8 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::resource('puesto_trabajo','\App\Http\Controllers\Puesto_Trabajo_Controller');
 
+    Route::resource('estado_tramite','\App\Http\Controllers\Estado_Tramite_Controller');
+
 });
 
 Route::group(['prefix'=>'intranet/procesos'], function () {
@@ -150,6 +152,7 @@ Route::group(['prefix'=>'intranet/website'], function () {
 });
 
 //Route::resource('file', 'FileController');
+
 
 
 
