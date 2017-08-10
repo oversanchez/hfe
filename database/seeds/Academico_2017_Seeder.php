@@ -54,7 +54,7 @@ class Academico_2017_Seeder extends Seeder
         ]);
 
         DB::table('usuario')->insert([
-            ['alias'=>'admin','clave'=>'123'],
+            ['alias'=>'admin','clave'=>bcrypt('123'),'tipo'=>'AD'],
         ]);
         
 

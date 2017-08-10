@@ -8,7 +8,7 @@ class Usuario extends Model
 {
     protected $table = "usuario";
 
-    protected $fillable = ['alias','clave','activo'];
+    protected $fillable = ['alias','clave','tipo','persona_id','cambia_clave','activo'];
 
     public function alumnos(){
         return $this->hasOne('App\Alumno');

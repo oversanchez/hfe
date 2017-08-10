@@ -30,8 +30,9 @@
                                     <tr>
                                         <th>Usuario</th>
                                         <th>Apellidos y Nombres</th>
+                                        <th style="width: 120px;">Cambio de Clave</th>
                                         <th style="width: 80px;">Activo</th>
-                                        <th>Acción</th>
+                                        <th style="width: 250px;">Acción</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -43,6 +44,13 @@
                                 <div class="container">
                                     <form id="frmUsuario" method="post" data-parsley-validate="" data-parsley-excluded="[disabled=disabled]" novalidate="">
                                         <input type="hidden" id="hddCodigo" value="">
+                                        <input type="hidden" id="hddCodigo_Persona" value="">
+                                        <div class="row">
+                                            <label for="txtPersona" class="col-md-1 control-label">Persona</label>
+                                            <div class="col-md-6">
+                                                <input id="txtPersona" type="text" class="form-control" disabled>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <label for="txtAlias" class="col-md-1 control-label">Alias</label>
                                             <div class="col-md-6">
@@ -51,11 +59,24 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="txtClave" class="col-md-1 control-label">Clave</label>
+                                            <label for="txtClave1" class="col-md-1 control-label">Clave</label>
                                             <div class="col-md-4">
-                                                <input id="txtClave" type="password" placeholder="" class="form-control"
-                                                       data-parsley-trigger="change" data-parsley-required="true"></div>
-                                            <label for="chkActivo" class="col-sm-2 control-label">Activo
+                                                <input id="txtClave1" type="password" placeholder="" class="form-control"
+                                                       data-parsley-trigger="change" data-parsley-required="true">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="txtClave2" class="col-md-1 control-label">Repite</label>
+                                            <div class="col-md-4">
+                                                <input id="txtClave2" type="password" placeholder="" class="form-control"
+                                                       data-parsley-trigger="change" data-parsley-required="true" data-parsley-equalto="#txtClave1">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="chkCambia_Clave" class="col-sm-4 control-label">Cambia la clave cuando inicie sesión
+                                                <input id="chkCambia_Clave" class="icheck" type="checkbox" >
+                                            </label>
+                                            <label for="chkActivo" class="col-sm-4 control-label">Activo
                                                 <input id="chkActivo" class="icheck" type="checkbox" >
                                             </label>
                                         </div>
@@ -63,7 +84,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button id="btnGuardar" class="btn btn-primary" onclick="guardar()">Registrar</button>
+                                        <button id="btnGuardar" class="btn btn-primary" onclick="guardar()" disabled>Registrar</button>
                                         <button class="btn btn-default" onclick="cancelar()">Cancelar</button>
                                     </div>
                                 </div>
@@ -115,17 +136,30 @@
                 },
                 success: function (data) {
                     t.clear().draw();
-                    var alias;
-                    var tipo = "T";
-                    var trabajador_id = "";
+                    console.log(data);
                     $.each(data,function( index, value ) {
-                        trabajador_id = value["trabajador_id"];
-                        alias="<a style='padding: 0px;' class='btn btn-link' onclick='agregar_usuario('"+tipo+"',"+trabajador_id+") href='#'>Asignar usuario</a>";
-                        if(value["usuario_id"] != null)
+                        var alias= "";
+                        var boton_editar = "<button style='padding: 0px;' class='btn btn-link' onclick='editar("+value["id"]+")'>Editar</button>";
+                        var boton_eliminar = "";
+                        var boton_clave = "";
+                        var cambia_clave=false;
+                        var activo=false;
+                        if(value["usuario_id"] != null){
                             alias = value["usuario"]["alias"];
-                        t.row.add([alias,value["apellido_paterno"]+" "+value["apellido_materno"]+" "+value["nombres"],
-                            "<input type='checkbox' "+( value['activo'] == true ? "checked" : "")+" disabled>",
-                            grupo_opciones(value['id'])]).draw(false);
+                            boton_clave = "<button style='padding: 0px;margin-left: 15px;' class='btn btn-link' onclick='cambiar_clave("+value["id"]+")'><i class='fa fa-refresh'></i>Cambiar Clave</button>";
+                            boton_eliminar = "<button style='padding: 0px;margin-left: 15px;' class='btn btn-link' onclick='eliminar("+value["usuario_id"]+")'><i class='fa fa-trash'></i>Eliminar</button>";
+                            cambia_clave= value['usuario']['cambia_clave'];
+                            activo = value['usuario']['activo'];
+                        }
+                        var nodo = t.row.add([alias,value["apellido_paterno"]+" "+value["apellido_materno"]+" "+value["nombres"],
+                            "<input type='checkbox' "+( cambia_clave == true ? "checked" : "")+" disabled>",
+                            "<input type='checkbox' "+( activo == true ? "checked" : "")+" disabled>",boton_editar+boton_clave+boton_eliminar,
+                            ]).draw(false).node();
+
+                        if (activo == false && value["usuario_id"] != null)
+                            $(nodo).addClass('danger');
+                        else if(activo == true && value["usuario_id"] != null)
+                            $(nodo).addClass('success');
                     });
                 },
                 error: function (request, status, error) {
@@ -149,9 +183,13 @@
 
         function obtenerDatos(){
             var info = [{"_token": "{{ csrf_token() }}",
-                "nombre": $("#txtNombre").val(),
-                "abreviatura": $("#txtAbreviatura").val(),
-                "anio_lectivo_id": parseInt($("#cmbAnio").val()),
+                "persona_id" : $("#hddCodigo_Persona").val(),
+                "id" : $("#hddCodigo").val(),
+                "tipo" : $("#cmbTipo").val(),
+                "alias": $("#txtAlias").val(),
+                "clave1": $("#txtClave1").val(),
+                "clave2": $("#txtClave2").val(),
+                "cambia_clave": $("#chkCambia_Clave").is(":checked"),
                 "activo": $("#chkActivo").is(":checked")}][0];
             return info;
         }
@@ -160,7 +198,7 @@
             if (confirm("¿Deseas continuar el registro?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/mantenimientos/periodo",
+                    url: "/intranet/mantenimientos/usuario",
                     type: "POST",
                     data: info,
                     beforeSend: function () {
@@ -184,7 +222,7 @@
             if (confirm("¿Deseas continuar la modificación?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/mantenimientos/periodo/" + $("#hddCodigo").val(),
+                    url: "/intranet/mantenimientos/usuario/" + $("#hddCodigo").val(),
                     type: "PUT",
                     data: info,
                     beforeSend: function () {
@@ -208,7 +246,7 @@
             if (confirm("¿Deseas eliminar el elemento?")) {
                 var info = [{"_token": "{{ csrf_token() }}"}][0];
                 $.ajax({
-                    url: "/intranet/mantenimientos/anio_lectivo/" + id,
+                    url: "/intranet/mantenimientos/usuario/" + id,
                     type: "DELETE",
                     data: info,
                     beforeSend: function () {
@@ -229,20 +267,45 @@
         }
 
         function editar(id) {
+            var opcion = $("#cmbTipo").val();
+            var url = "";
+            switch(opcion){
+                case "TR": url="trabajador"; break;
+                case "AL": url="alumno"; break;
+            }
             $.ajax({
-                url: "/intranet/mantenimientos/periodo/" + id,
+                url: "/intranet/mantenimientos/"+url+"/" + id,
                 type: "GET",
                 beforeSend: function () {
                     $("#loading").show();
                 },
                 success: function (data) {
-                    $("#hddCodigo").val(id);
-                    $("#txtNombre").val(data["nombre"]);
-                    $("#txtAbreviatura").val(data["abreviatura"]);
-                    $("#chkActivo").iCheck(data["activo"] == true ? "check" : "uncheck" );
+                    var usuario = data["usuario"];
+                    $("#hddCodigo_Persona").val(data["id"]);
+                    $("#hddCodigo").val(null);
+                    $("#txtPersona").val(data["apellido_paterno"]+" "+data["apellido_materno"]+" "+data["nombres"]);
+                    $("#btnGuardar").prop('disabled',false);
+                    if(usuario != null){
+                        console.log(usuario);
+                        $("#hddCodigo").val(data["usuario_id"]);
+                        $("#txtAlias").val(usuario["alias"]);
+                        $("#chkCambia_Clave").iCheck(usuario["cambia_clave"] == true ? "check" : "uncheck" );
+                        $("#chkActivo").iCheck(usuario["activo"] == true ? "check" : "uncheck" );
+                        $("#txtClave1").attr('disabled','disabled');
+                        $("#txtClave2").attr('disabled','disabled');
+                        $('a[href="#tp2"]').text("Modificando : "+data["apellido_paterno"]+" "+data["apellido_materno"]+" "+data["nombres"]);
+                    }else{
+                        var alias = data["nombres"].substr(0,1)+data["apellido_paterno"];
+                        alias = alias.replace(/\s/g, "").toLowerCase();
+                        $("#txtAlias").val(alias);
+                        $("#chkCambia_Clave").iCheck("uncheck");
+                        $("#chkActivo").iCheck("uncheck");
+                        $("#txtClave1").prop('disabled',false);
+                        $("#txtClave2").prop('disabled',false);
+                        $('a[href="#tp2"]').text("Registrar");
+                    }
                     $("#btnGuardar").text("Guardar");
                     $('a[href="#tp2"]').click();
-                    $('a[href="#tp2"]').text("Modificando : "+data["nombre"]);
                 },
                 error: function (request, status, error) {
                     mostrar_error(request.responseText);
@@ -255,14 +318,21 @@
 
         function cancelar(){
             $("#hddCodigo").val("");
+            $("#hddCodigo_Persona").val("");
+            $("#txtPersona").val("");
             $("#txtNombre").val("");
-            $("#txtAbreviatura").val("");
+            $("#txtClave1").val("");
+            $("#txtClave2").val("");
+            $("#txtClave1").prop("disabled",false);
+            $("#txtClave2").prop("disabled",false);
+            $("#chkCambia_Clave").iCheck("uncheck");
             $("#chkActivo").iCheck("uncheck");
             $("#btnGuardar").text("Registrar");
             $('#frmUsuario').parsley().reset();
             $('a[href="#tp1"]').click();
             $('a[href="#tp2"]').text("Registrar");
             listar();
+            $("#btnGuardar").prop("disabled",true);
         }
 
         function listarAnios() {

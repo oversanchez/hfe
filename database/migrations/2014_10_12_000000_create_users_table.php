@@ -19,6 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
+
+            //
+            $table->enum('tipo',['AD','TR','AL','PA']);
+            $table->integer('persona_id')->nullable();
+            
             $table->timestamps();
         });
     }

@@ -16,9 +16,10 @@ class CreacionTablaUsuario extends Migration
         Schema::create('usuario', function (Blueprint $table) {
             $table->increments('id');
             $table->string('alias')->unique();
+            $table->enum('tipo',['AD','TR','AL','PA']);
+            $table->integer('persona_id')->nullable();
             $table->string('clave');
             $table->boolean('cambia_clave')->default(true);
-            $table->boolean('confirmacion_correo')->default(false);
             $table->boolean('activo')->default(false);
             $table->timestamps();
         });

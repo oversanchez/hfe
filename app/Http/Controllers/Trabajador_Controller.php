@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -69,6 +70,7 @@ class Trabajador_Controller extends Controller
             $trabajador->nivel_educativo;
             $trabajador->categoria_trabajador;
             $trabajador->especialidad;
+            $trabajador->usuario;
             return $trabajador;
         }
     }
