@@ -84,7 +84,7 @@ Route::group(['prefix'=>'intranet/mantenimientos'], function () {
 
     Route::resource('familiar','\App\Http\Controllers\Familiar_Controller');
 
-    Route::resource('usuario','\App\Http\Controllers\Usuario_Controller');
+    Route::resource('user_info','\App\Http\Controllers\User_Info_Controller');
 
     Route::get('ficha_matricula/listar', ['uses' => 'Ficha_Matricula_Controller@listar', 'as' => 'ficha_matricula.listar']);
 

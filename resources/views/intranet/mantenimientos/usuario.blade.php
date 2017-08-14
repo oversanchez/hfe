@@ -136,29 +136,28 @@
                 },
                 success: function (data) {
                     t.clear().draw();
-                    console.log(data);
                     $.each(data,function( index, value ) {
                         var alias= "";
-                        var boton_editar = "<button style='padding: 0px;' class='btn btn-link' onclick='editar("+value["id"]+")'>Editar</button>";
+                        var boton_editar = "<button style='padding: 0px;margin-left: 15px;' class='btn btn-link' onclick='editar("+value["id"]+")'><i class='fa fa-edit'></i>Editar</button>";
                         var boton_eliminar = "";
                         var boton_clave = "";
                         var cambia_clave=false;
                         var activo=false;
-                        if(value["usuario_id"] != null){
-                            alias = value["usuario"]["alias"];
+                        if(value["user_info_id"] != null){
+                            alias = value["user_info"]["user"]["email"];
                             boton_clave = "<button style='padding: 0px;margin-left: 15px;' class='btn btn-link' onclick='cambiar_clave("+value["id"]+")'><i class='fa fa-refresh'></i>Cambiar Clave</button>";
-                            boton_eliminar = "<button style='padding: 0px;margin-left: 15px;' class='btn btn-link' onclick='eliminar("+value["usuario_id"]+")'><i class='fa fa-trash'></i>Eliminar</button>";
-                            cambia_clave= value['usuario']['cambia_clave'];
-                            activo = value['usuario']['activo'];
+                            boton_eliminar = "<button style='padding: 0px;margin-left: 15px;' class='btn btn-link' onclick='eliminar("+value["user_info_id"]+")'><i class='fa fa-trash'></i>Eliminar</button>";
+                            cambia_clave= value["user_info"]['cambia_clave'];
+                            activo = value["user_info"]['activo'];
                         }
                         var nodo = t.row.add([alias,value["apellido_paterno"]+" "+value["apellido_materno"]+" "+value["nombres"],
                             "<input type='checkbox' "+( cambia_clave == true ? "checked" : "")+" disabled>",
                             "<input type='checkbox' "+( activo == true ? "checked" : "")+" disabled>",boton_editar+boton_clave+boton_eliminar,
                             ]).draw(false).node();
 
-                        if (activo == false && value["usuario_id"] != null)
+                        if (activo == false && value["user_info_id"] != null)
                             $(nodo).addClass('danger');
-                        else if(activo == true && value["usuario_id"] != null)
+                        else if(activo == true && value["user_info_id"] != null)
                             $(nodo).addClass('success');
                     });
                 },
@@ -198,7 +197,7 @@
             if (confirm("¿Deseas continuar el registro?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/mantenimientos/usuario",
+                    url: "/intranet/mantenimientos/user_info",
                     type: "POST",
                     data: info,
                     beforeSend: function () {
@@ -222,7 +221,7 @@
             if (confirm("¿Deseas continuar la modificación?")) {
                 var info = obtenerDatos();
                 $.ajax({
-                    url: "/intranet/mantenimientos/usuario/" + $("#hddCodigo").val(),
+                    url: "/intranet/mantenimientos/user_info/" + $("#hddCodigo").val(),
                     type: "PUT",
                     data: info,
                     beforeSend: function () {
@@ -246,7 +245,7 @@
             if (confirm("¿Deseas eliminar el elemento?")) {
                 var info = [{"_token": "{{ csrf_token() }}"}][0];
                 $.ajax({
-                    url: "/intranet/mantenimientos/usuario/" + id,
+                    url: "/intranet/mantenimientos/user_info/" + id,
                     type: "DELETE",
                     data: info,
                     beforeSend: function () {
@@ -280,17 +279,16 @@
                     $("#loading").show();
                 },
                 success: function (data) {
-                    var usuario = data["usuario"];
+                    var user_info = data["user_info"];
                     $("#hddCodigo_Persona").val(data["id"]);
                     $("#hddCodigo").val(null);
                     $("#txtPersona").val(data["apellido_paterno"]+" "+data["apellido_materno"]+" "+data["nombres"]);
                     $("#btnGuardar").prop('disabled',false);
-                    if(usuario != null){
-                        console.log(usuario);
-                        $("#hddCodigo").val(data["usuario_id"]);
-                        $("#txtAlias").val(usuario["alias"]);
-                        $("#chkCambia_Clave").iCheck(usuario["cambia_clave"] == true ? "check" : "uncheck" );
-                        $("#chkActivo").iCheck(usuario["activo"] == true ? "check" : "uncheck" );
+                    if(user_info != null){
+                        $("#hddCodigo").val(data["user_info_id"]);
+                        $("#txtAlias").val(user_info["user"]["email"]);
+                        $("#chkCambia_Clave").iCheck(user_info["cambia_clave"] == true ? "check" : "uncheck" );
+                        $("#chkActivo").iCheck(user_info["activo"] == true ? "check" : "uncheck" );
                         $("#txtClave1").attr('disabled','disabled');
                         $("#txtClave2").attr('disabled','disabled');
                         $('a[href="#tp2"]').text("Modificando : "+data["apellido_paterno"]+" "+data["apellido_materno"]+" "+data["nombres"]);

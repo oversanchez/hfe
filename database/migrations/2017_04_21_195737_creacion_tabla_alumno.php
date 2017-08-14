@@ -34,8 +34,8 @@ class CreacionTablaAlumno extends Migration
             $table->integer('colegio_procedencia_id')->unsigned()->nullable();
             $table->foreign('colegio_procedencia_id')->references('id')->on('colegio_procedencia');
 
-            $table->integer('usuario_id')->unsigned()->nullable()->unique();
-            $table->foreign('usuario_id')->references('id')->on('usuario');
+            $table->integer('user_info_id')->unsigned()->nullable()->unique();
+            $table->foreign('user_info_id')->references('id')->on('user_info');
 
             $table->timestamps();
         });

@@ -53,8 +53,12 @@ class Academico_2017_Seeder extends Seeder
             ['letra'=>'B','vacantes'=>30,'turno_id'=>1,'activo'=>true,'tipo_calificacion'=>'L','grado_id'=>\App\Grado::all()->random()->id,'anio_lectivo_id'=>\App\Anio_Lectivo::all()->random()->id,'trabajador_id'=>\App\Trabajador::all()->random()->id]
         ]);
 
-        DB::table('usuario')->insert([
-            ['alias'=>'admin','clave'=>bcrypt('123'),'tipo'=>'AD'],
+        DB::table('users')->insert([
+            ['name'=>'Oliver','email'=>'admin','password'=>bcrypt('123')],
+        ]);
+
+        DB::table('user_info')->insert([
+            ['user_id'=> 1,'tipo'=>'AD'],
         ]);
         
 

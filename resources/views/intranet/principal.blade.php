@@ -79,7 +79,7 @@
                                 <li><a href="/intranet/mantenimientos/grado">Grados</a></li>
                                 <li><a href="/intranet/mantenimientos/seccion">Secciones</a></li>
                                 <li class="dropdown-header"><i class="fa fa-book"></i>Seguridad & Notificación</li>
-                                <li><a href="/intranet/mantenimientos/usuario">Usuarios</a></li>
+                                <li><a href="/intranet/mantenimientos/user_info">Usuarios</a></li>
                             </ul>
                         </li>
                     </ul>

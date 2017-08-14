@@ -66,6 +66,8 @@ class Alumno_Controller extends Controller
         if (is_numeric($id)) {
             $alumno = \App\Alumno::find($id);
             $alumno->colegio_procedencia;
+            $alumno->user_info;
+            $alumno->user_info->user;
             return $alumno;
         }else if($id == "*"){
             return \App\Alumno::where('activo',true)->select('id','apellido_paterno', 'apellido_materno','nombres')->get();

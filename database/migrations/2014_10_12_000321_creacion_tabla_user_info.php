@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreacionTablaUsuario extends Migration
+class CreacionTablaUserInfo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreacionTablaUsuario extends Migration
      */
     public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
+        Schema::create('user_info', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('alias')->unique();
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->enum('tipo',['AD','TR','AL','PA']);
             $table->integer('persona_id')->nullable();
-            $table->string('clave');
             $table->boolean('cambia_clave')->default(true);
             $table->boolean('activo')->default(false);
+
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreacionTablaUsuario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario');
+        Schema::dropIfExists('user_info');
     }
 }

@@ -70,7 +70,9 @@ class Trabajador_Controller extends Controller
             $trabajador->nivel_educativo;
             $trabajador->categoria_trabajador;
             $trabajador->especialidad;
-            $trabajador->usuario;
+            $trabajador->user_info;
+            if($trabajador->user_info != null)
+                $trabajador->user_info->user;
             return $trabajador;
         }
     }
@@ -90,7 +92,9 @@ class Trabajador_Controller extends Controller
     {
         $trabajadores =  \App\Trabajador::orderBy('apellido_paterno', 'ASC')->orderBy('apellido_materno', 'ASC')->orderBy('nombres', 'ASC')->get();
         foreach ($trabajadores as $trabajador){
-            $trabajador->usuario;
+            $trabajador->user_info;
+            if($trabajador->user_info != null)
+                $trabajador->user_info->user;
         }
         return $trabajadores;
     }
@@ -156,3 +160,4 @@ class Trabajador_Controller extends Controller
         $trabajador->delete();
     }
 }
+
