@@ -226,6 +226,20 @@
 @yield('scripts')
 <script>
 
+    (function(open) {
+        XMLHttpRequest.prototype.open = function(method, url, async, user, pass) {
+            this.addEventListener("readystatechange", function() {
+                if (this.readyState == 4)
+                {
+                    console.log(this.status);
+                }
+            }, false);
+            open.call(this, method, url, async, user, pass);
+
+            this.setRequestHeader("Authorization", "Bearer " + localStorage.getItem('jwt_token'));
+        };
+    })(XMLHttpRequest.prototype.open);
+
     function grupo_opciones(id){
         var opciones = "<div class='btn-group'>";
         opciones += "<button class='btn btn-default btn-xs' type='button'>Acciones</button>";

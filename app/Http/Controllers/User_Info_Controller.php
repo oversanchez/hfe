@@ -38,7 +38,7 @@ class User_Info_Controller extends Controller
 
         $usuario->name =$request->input('alias');
         $usuario->email = $request->input('alias');
-        $usuario->password = Bcrypt($request->input('clave'));
+        $usuario->password = bcrypt($request->input('clave1').'');
 
         $usuario->save();
 
@@ -49,6 +49,7 @@ class User_Info_Controller extends Controller
 
             $user_info = new \App\User_Info();
             $user_info->user_id = $usuario->id;
+            $user_info->clave= bcrypt($request->input('clave1').'');
             $user_info->tipo = $tipo;
             $user_info->persona_id= $persona_id;
             $user_info->cambia_clave= $request->input('cambia_clave');
@@ -76,7 +77,7 @@ class User_Info_Controller extends Controller
     public function update(Request $request, $id)
     {
         $user_info = \App\User_Info::find($id);
-        $user = \App\User::find($user_info->id);
+        $user = \App\User::find($user_info->user_id);
 
         $user->email = $request->input('alias');
         $user_info->cambia_clave = $request->input('cambia_clave');

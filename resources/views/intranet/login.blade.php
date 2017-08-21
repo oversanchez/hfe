@@ -32,7 +32,7 @@
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input id="txtUsuario" type="text" placeholder="Usuario" class="form-control">
+                                    <input id="txtUsuario" type="text" placeholder="Usuario" class="form-control" value="mabbott">
                                 </div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                             <div class="col-sm-12">
                                 <div class="input-group"><span class="input-group-addon"><i
                                                 class="fa fa-lock"></i></span>
-                                    <input id="txtClave" type="password" placeholder="Clave" class="form-control">
+                                    <input id="txtClave" type="password" placeholder="Clave" class="form-control" value="123">
                                 </div>
                             </div>
                         </div>
@@ -60,24 +60,48 @@
 {!! HTML::script('cleanzone/lib/bootstrap/dist/js/bootstrap.min.js') !!}
 
 <script type="text/javascript">
+
+    (function(open) {
+        XMLHttpRequest.prototype.open = function(method, url, async, user, pass) {
+            this.addEventListener("readystatechange", function() {
+                if (this.readyState == 4)
+                {
+                    console.log(this.status);
+                }
+            }, false);
+            open.call(this, method, url, async, user, pass);
+            this.setRequestHeader("Authorization", "Token " + localStorage.getItem('jwt_token'));
+        };
+    })(XMLHttpRequest.prototype.open);
+
+    function go(url){
+        var oReq = new XMLHttpRequest();
+        oReq.open("get", url, true);
+        oReq.send();
+    }
+
     $(document).ready(function () {
         //initialize the javascript
         App.init();
+
 
         $("#frmLogin").on('submit',function(e){
             e.preventDefault();
             var usuario = $("#txtUsuario").val();
             var clave = $("#txtClave").val();
             $.ajax({
-                url: "/Anio_Academico/iniciar_sesion", // Url to which the request is send
+                url: "/intranet/authenticate", // Url to which the request is send
                 type: "POST",             // Type of request to be send, called as method
-                data: {"opcion" : "L"}, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                data: {"email" : usuario,"password": clave}, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
                 beforeSend: function() {  // Custom XMLHttpRequest
                     $("#loading").show();
                 },
                 success: function(data){
-                    $("#dvTabla").html(data);
-                    $('#tabla').DataTable();
+                    console.log(data["token"]);
+                    localStorage.setItem('jwt_token', data["token"]);
+
+                    window.location = "inicio?token="+data["token"];
+                    //go('inicio');
                 },
                 complete : function(){
                     $("#loading").hide();

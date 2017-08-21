@@ -20,6 +20,7 @@ class CreacionTablaUserInfo extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->enum('tipo',['AD','TR','AL','PA']);
+            $table->string('clave');
             $table->integer('persona_id')->nullable();
             $table->boolean('cambia_clave')->default(true);
             $table->boolean('activo')->default(false);

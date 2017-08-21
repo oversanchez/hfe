@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Http\Request;
+//use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Support\Facades\Input;
+use Tymon\JWTAuth\Providers\JWT\NamshiAdapter;
+
 
 class Anio_Lectivo_Controller extends Controller
 {
@@ -13,7 +18,7 @@ class Anio_Lectivo_Controller extends Controller
      */
     public function index()
     {
-        return view('intranet/mantenimientos/anio_lectivo');
+        return view('intranet/mantienimientos/anio_lectivo');
     }
 
     /**
