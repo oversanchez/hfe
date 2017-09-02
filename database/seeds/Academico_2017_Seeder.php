@@ -54,7 +54,7 @@ class Academico_2017_Seeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            ['name'=>'Oliver','email'=>'admin','password'=>bcrypt('123')],
+            ['name'=>'Oliver Sánchez','email'=>'admin','password'=>bcrypt('123')],
         ]);
 
         DB::table('user_info')->insert([

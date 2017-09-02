@@ -11,6 +11,7 @@
 |
 */
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 Route::get('/intranet/login', function () {
     return view('intranet/login');
@@ -20,8 +21,12 @@ Route::post('/intranet/authenticate',[
     'uses' => 'ApiAuthController@authenticate', 'as' => 'intranet.authenticate'
 ]);
 
+Route::post('/intranet/logout',[
+    'uses' => 'ApiAuthController@logout', 'as' => 'intranet.logout'
+])->middleware('jwt.auth');
+
 Route::get('/intranet/inicio', function (Request $request) {
-    return view('intranet/inicio');
+    return view('intranet/inicio',['token'=>$request->input('token')]);
 })->middleware('jwt.auth');
 
 Route::resource('/','\App\Http\Controllers\Website_Controller');
@@ -40,11 +45,9 @@ Route::get('/ficha_matricula', ['uses' => 'Ficha_Matricula_Controller@ver_ficha_
 
 Route::get('/mensaje_texto', ['uses' => 'Sms_Controller@enviar', 'as' => 'sms.enviar']);
 
-Route::get('intranet/mantenimientos/anio_lectivo', ['uses' => 'Anio_Lectivo_Controller@index', 'as' => 'anio_lectivo.index']);
+Route::group(['prefix'=>'intranet/mantenimientos','middleware' => 'jwt.auth'], function () {
 
-Route::group(['prefix'=>'intranet/mantenimientos'], function () {
-
-    //Route::resource('anio_lectivo','\App\Http\Controllers\Anio_Lectivo_Controller');
+    Route::resource('anio_lectivo','\App\Http\Controllers\Anio_Lectivo_Controller');
 
     Route::get('periodo/listar', ['uses' => 'Periodo_Controller@listar', 'as' => 'periodo.listar']);
 

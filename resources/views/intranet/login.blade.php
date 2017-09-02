@@ -61,25 +61,6 @@
 
 <script type="text/javascript">
 
-    (function(open) {
-        XMLHttpRequest.prototype.open = function(method, url, async, user, pass) {
-            this.addEventListener("readystatechange", function() {
-                if (this.readyState == 4)
-                {
-                    console.log(this.status);
-                }
-            }, false);
-            open.call(this, method, url, async, user, pass);
-            this.setRequestHeader("Authorization", "Token " + localStorage.getItem('jwt_token'));
-        };
-    })(XMLHttpRequest.prototype.open);
-
-    function go(url){
-        var oReq = new XMLHttpRequest();
-        oReq.open("get", url, true);
-        oReq.send();
-    }
-
     $(document).ready(function () {
         //initialize the javascript
         App.init();
@@ -92,16 +73,13 @@
             $.ajax({
                 url: "/intranet/authenticate", // Url to which the request is send
                 type: "POST",             // Type of request to be send, called as method
-                data: {"email" : usuario,"password": clave}, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                data: {"_token": "{{ csrf_token() }}","email" : usuario,"password": clave}, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
                 beforeSend: function() {  // Custom XMLHttpRequest
                     $("#loading").show();
                 },
                 success: function(data){
-                    console.log(data["token"]);
                     localStorage.setItem('jwt_token', data["token"]);
-
                     window.location = "inicio?token="+data["token"];
-                    //go('inicio');
                 },
                 complete : function(){
                     $("#loading").hide();

@@ -86,6 +86,13 @@
             t = $("#tblListado").DataTable();
             $("#frmPeriodo").parsley();
             listarAnios();
+
+            $.ajaxSetup({
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer '+localStorage.getItem("jwt_token"));
+                }
+            });
+
         });
 
         function guardar(){
@@ -251,7 +258,7 @@
             $.ajax({
                 url: "/intranet/mantenimientos/anio_lectivo/*",
                 type: "GET",
-                beforeSend: function () {
+                beforeSend: function (xhr) {
                     $("#loading").show();
                 },
                 success: function (data) {

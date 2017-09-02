@@ -58,28 +58,28 @@
                                 <li class="dropdown-header"><i class="fa fa-group"></i>Matrícula</li>
                                 <li><a href="#">Registrar</a></li>
                                 <li><a href="#">Estadisticas </a></li>
-                                <li><a href="/intranet/mantenimientos/ficha_matricula">Acceso a Matrícula </a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/ficha_matricula')">Acceso a Matrícula </a></li>
                                 <li class="dropdown-header"><i class="fa fa-gear"></i>Procesos</li>
                                 <li><a href="/intranet/mantenimientos/anio_lectivo">Asistencia</a></li>
                                 <li><a href="/intranet/procesos/control_reunion">Control Reunión</a></li>
                                 <li class="dropdown-header"><i class="fa fa-legal"></i>Personas</li>
-                                <li><a href="/intranet/mantenimientos/alumno">Alumnos</a></li>
-                                <li><a href="/intranet/mantenimientos/familiar">Padres y Madres</a></li>
-                                <li><a href="/intranet/mantenimientos/apoderado">Apoderados</a></li>
-                                <li><a href="/intranet/mantenimientos/trabajador">Trabajadores</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/alumno')">Alumnos</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/familiar')">Padres y Madres</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/apoderado')">Apoderados</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/trabajador')">Trabajadores</a></li>
                             </ul>
                         </li>
                         <li class="col-sm-6 no-padding">
                             <ul>
                                 <li class="dropdown-header"><i class="fa fa-book"></i>Config. Académica</li>
-                                <li><a href="/intranet/mantenimientos/anio_lectivo">Años Lectivos</a></li>
-                                <li><a href="/intranet/mantenimientos/turno">Turnos</a></li>
-                                <li><a href="/intranet/mantenimientos/periodo">Periodos</a></li>
-                                <li><a href="/intranet/mantenimientos/nivel">Niveles</a></li>
-                                <li><a href="/intranet/mantenimientos/grado">Grados</a></li>
-                                <li><a href="/intranet/mantenimientos/seccion">Secciones</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/anio_lectivo')">Años Lectivos</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/turno')">Turnos</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/periodo')">Periodos</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/nivel')">Niveles</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/grado')">Grados</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/seccion')">Secciones</a></li>
                                 <li class="dropdown-header"><i class="fa fa-book"></i>Seguridad & Notificación</li>
-                                <li><a href="/intranet/mantenimientos/user_info">Usuarios</a></li>
+                                <li><a href="#" onclick="ir('/intranet/mantenimientos/user_info')">Usuarios</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -87,50 +87,50 @@
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Administrativo<b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/intranet/mantenimientos/tramite">Registrar Trámite</a></li>
-                        <li><a href="/intranet/mantenimientos/puesto_trabajo">Puestos de Trabajo</a></li>
-                        <li><a href="/intranet/mantenimientos/estado_tramite">Estados de Trámite</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/tramite')">Registrar Trámite</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/puesto_trabajo')">Puestos de Trabajo</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/estado_tramite')">Estados de Trámite</a></li>
                     </ul>
                 </li>
                 <li class="dropdown pull-right"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class='fa fa-cog'></i> Configuración<b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/intranet/mantenimientos/categoria_trabajador">Categoria de Trabajador</a></li>
-                        <li><a href="/intranet/mantenimientos/nivel_educativo">Niveles Educativos</a></li>
-                        <li><a href="/intranet/mantenimientos/especialidad">Especialidades</a></li>
-                        <li><a href="/intranet/mantenimientos/colegio_procedencia">Colegios de Procedencia</a></li>
-                        <li><a href="/intranet/mantenimientos/parentesco">Parentesco</a></li>
-                        <li><a href="/intranet/mantenimientos/tipo_documento_recepcionado">Tipo de Documento R.</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/categoria_trabajador')">Categoria de Trabajador</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/nivel_educativo')">Niveles Educativos</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/especialidad')">Especialidades</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/colegio_procedencia')">Colegios de Procedencia</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/parentesco')">Parentesco</a></li>
+                        <li><a href="#" onclick="ir('/intranet/mantenimientos/tipo_documento_recepcionado')">Tipo de Documento R.</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Website <b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/intranet/website/institucion">Inicio</a></li>
-                        <li><a href="/intranet/website/slider"><i class="fa fa-picture-o"></i> Sliders</a></li>
-                        <li><a href="/intranet/website/noticia"><i class="fa fa-file-o"></i> Noticias</a></li>
-                        <li><a href="/intranet/website/evento"><i class="fa fa-calendar"></i> Eventos</a></li>
-                        <li><a href="/intranet/website/enlace_rapido"><i class="fa fa-link"></i> Enlaces rápidos (Comunicados,Documentos,Descargas)</a></li>
-                        <li><a href="/intranet/website/pagina_web"><i class="fa fa-globe"></i> Páginas Web</a></li>
-                        <li><a href="/intranet/website/emergente"><i class="fa fa-globe"></i> Emergentes</a></li>
-                        <li><a href="/intranet/website/testimonio"><i class="fa fa-comment"></i> Testimonios</a></li>
-                        <li><a href="/intranet/website/opcion_menu"><i class="fa fa-bars"></i> Head Opciones</a></li>
-                        <li><a href="/intranet/website/opcion_footer"><i class="fa fa-bars"></i> Footer Opciones</a></li>
-                        <li><a href="/intranet/website/album"><i class="fa fa-camera"></i> Galería de Fotos</a></li>
-                        <li><a href="/intranet/website/video"><i class="fa fa-video-camera"></i> Galería de Videos</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/institucion')">Inicio</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/slider')"><i class="fa fa-picture-o"></i> Sliders</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/noticia')"><i class="fa fa-file-o"></i> Noticias</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/evento')"><i class="fa fa-calendar"></i> Eventos</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/enlace_rapido')"><i class="fa fa-link"></i> Enlaces rápidos (Comunicados,Documentos,Descargas)</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/pagina_web')"><i class="fa fa-globe"></i> Páginas Web</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/emergente')"><i class="fa fa-globe"></i> Emergentes</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/testimonio')"><i class="fa fa-comment"></i> Testimonios</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/opcion_menu')"><i class="fa fa-bars"></i> Head Opciones</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/opcion_footer')"><i class="fa fa-bars"></i> Footer Opciones</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/album')"><i class="fa fa-camera"></i> Galería de Fotos</a></li>
+                        <li><a href="#" onclick="ir('/intranet/website/video')"><i class="fa fa-video-camera"></i> Galería de Videos</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right user-nav">
                 <li class="dropdown profile_menu">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img class="img-circle" style='width: 25px;' alt="Avatar" src="http://i1184.photobucket.com/albums/z337/pocaspenas/gato_shrek.jpg"><span>Oliver Sánchez</span><b
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img class="img-circle" style='margin-top: -6px;width: 45px;' alt="Avatar" src="http://iconshow.me/media/images/ui/ios7-icons/png/256/contact-outline.png"><span>Oliver Sánchez</span><b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Messages</a></li>
+                        <li><a href="#">Mi cuenta</a></li>
+                        <li><a href="#">Perfil</a></li>
+                        <li><a href="#">Mensajes</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Sign Out</a></li>
+                        <li><a href="#" onclick="logout()">Salir</a></li>
                     </ul>
                 </li>
             </ul>
@@ -226,19 +226,39 @@
 @yield('scripts')
 <script>
 
-    (function(open) {
-        XMLHttpRequest.prototype.open = function(method, url, async, user, pass) {
-            this.addEventListener("readystatechange", function() {
-                if (this.readyState == 4)
-                {
-                    console.log(this.status);
-                }
-            }, false);
-            open.call(this, method, url, async, user, pass);
+    (function(send) {
 
-            this.setRequestHeader("Authorization", "Bearer " + localStorage.getItem('jwt_token'));
+        XMLHttpRequest.prototype.send = function(data) {
+            if(localStorage.getItem('jwt_token')) this.setRequestHeader("Authorization", "Bearer " + localStorage.getItem('jwt_token'));
+            send.call(this, data);
         };
-    })(XMLHttpRequest.prototype.open);
+
+    })(XMLHttpRequest.prototype.send);
+
+    function ir(site) {
+        if(localStorage.getItem('jwt_token')) window.location = site + "?token="+localStorage.getItem('jwt_token');
+    }
+
+    function logout(){
+        $.ajax({
+            url: "/intranet/logout/",
+            type: "POST",
+            data: {"_token": "{{ csrf_token()}}"},
+            beforeSend: function () {
+                $("#loading").show();
+            },
+            success: function (data) {
+                localStorage.removeItem("jwt_token");
+                window.location = "/intranet/login";
+            },
+            error: function (request, status, error) {
+                mostrar_error(request.responseText);
+            },
+            complete: function () {
+                $("#loading").hide();
+            }
+        });
+    }
 
     function grupo_opciones(id){
         var opciones = "<div class='btn-group'>";
