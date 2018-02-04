@@ -11,7 +11,6 @@ class ApiAuthController extends Controller
 {
     //
 
-    
     public function authenticate(Request $request)
     {
         // grab credentials from the request
@@ -30,7 +29,7 @@ class ApiAuthController extends Controller
                             return response()->json(['error' => 'invalid_credentials3'], 401);
                         }
                         //$token = JWTAuth::fromUser($user);
-                        return response()->json(['token' => $token,'username'=>$user->email],200);
+                        return response()->json(['token' => $token],200);
 
                     } catch (JWTException $e) {
                         // something went wrong whilst attempting to encode the token
@@ -65,4 +64,16 @@ class ApiAuthController extends Controller
         // all good so return the token
         return response()->json(compact('token'));
     }
+
+    public function logout(Request $request){
+        try {
+            //$token = $request->input("token");
+            JWTAuth::parseToken()->invalidate();
+            return response()->json(['message' => "correcto"],200);
+        } catch (JWTException $e) {
+            // something went wrong whilst attempting to encode the token
+            return response()->json(['error' => 'Could no logout'], 500);
+        }
+    }
 }
+

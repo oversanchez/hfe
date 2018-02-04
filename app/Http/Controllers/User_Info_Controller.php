@@ -61,6 +61,8 @@ class User_Info_Controller extends Controller
                 case "TR":
                     $trabajador =  \App\Trabajador::find($persona_id);
                     $trabajador->user_info_id = $user_info->id;
+                    $usuario->name = $trabajador->nombres." ".$trabajador->apellido_paterno;
+                    $usuario->save();
                     $trabajador->save();
                     break;
                 case "AL":
